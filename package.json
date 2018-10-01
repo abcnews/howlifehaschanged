@@ -1,0 +1,28 @@
+{
+  "name": "howlifehaschanged",
+  "version": "1.0.0-pre",
+  "description": "A project generated from aunty's react app template.",
+  "license": "MIT",
+  "private": true,
+  "contributors": [
+    "Joshua Byrd <phocks@gmail.com>"
+  ],
+  "aunty": {
+    "type": "react",
+    "webpack": {
+      "watchDelay": 1000
+    }
+  },
+  "scripts": {
+    "start": "aunty serve",
+    "test": "aunty test"
+  },
+  "devDependencies": {
+    "@abcnews/aunty": "^9.8.1",
+    "react-test-renderer": "^16.5.2"
+  },
+  "dependencies": {
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2"
+  }
+}
