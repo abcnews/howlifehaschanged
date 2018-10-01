@@ -8,9 +8,6 @@ class App extends React.Component {
       <div className={styles.root}>
         <img className={styles.worm} src={worm} />
         <h1>{this.props.projectName}</h1>
-        <p>Has ifddfadfssddfngkjbhjmhfffffeddgdgdg? Sokjhme
-          \sdf
-          sdf"Yes".</p>
       </div>
     );
   }
