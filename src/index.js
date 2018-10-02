@@ -5,13 +5,23 @@ const d3 = Object.assign({}, require("d3-selection"));
 const PROJECT_NAME = "howlifehaschanged";
 const root = document.querySelector(`[data-${PROJECT_NAME}-root]`);
 
-function init() {
-  const App = require("./components/App");
-  render(<App projectName={PROJECT_NAME} />, root);
-  changeHeaderBackground();
+const App = require("./components/App");
+const TeaserIllo = require("./components/TeaserIllo");
+
+preInit();
+init();
+
+function preInit() {
+  const header = d3.select(".Header");
+  // header.style("background-color", "#175482");
+  header.insert("div", ":first-child").classed("pre-header", true);
 }
 
-init();
+function init() {
+  const teaserIllo = document.querySelector(".pre-header");
+
+  render(<TeaserIllo projectName={PROJECT_NAME} />, teaserIllo);
+}
 
 if (module.hot) {
   module.hot.accept("./components/App", () => {
@@ -26,9 +36,4 @@ if (module.hot) {
 
 if (process.env.NODE_ENV === "development") {
   console.debug(`[${PROJECT_NAME}] public path: ${__webpack_public_path__}`);
-}
-
-function changeHeaderBackground() {
-  const header = d3.select(".Header");
-  header.style("background-color", "#175482");
 }
