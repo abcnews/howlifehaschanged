@@ -8,7 +8,12 @@
     "Joshua Byrd <phocks@gmail.com>"
   ],
   "aunty": {
-    "type": "react"
+    "type": "react",
+    "webpack": {
+      "performance": {
+        "hints": false
+      }
+    }
   },
   "scripts": {
     "start": "aunty serve",
