@@ -8,7 +8,7 @@ class TeaserIllo extends React.Component {
   render() {
     return (
       <div className={styles.wrapper}>
-        <img className={styles.change} src={this.props.publicPath + change} width={375} />
+        <img className={styles.change} src={change} width={375} />
       </div>
     );
   }
