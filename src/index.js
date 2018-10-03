@@ -1,44 +1,35 @@
 const React = require("react");
 const { render } = require("react-dom");
 const d3 = Object.assign({}, require("d3-selection"));
+const hashify = require("spanify").hashify;
 
 const PROJECT_NAME = "howlifehaschanged";
 const root = document.querySelector(`[data-${PROJECT_NAME}-root]`);
 
-const App = require("./components/App");
-const TeaserIllo = require("./components/TeaserIllo");
-
-let PUBLIC_PATH = "";
-
-if (!process.env.NODE_ENV || process.env.NODE_ENV === "development") {
-  // dev code
-  console.log("development");
-} else {
-  // production code
-  console.log("production");
-  PUBLIC_PATH =
-    "http://www.abc.net.au/res/sites/news-projects/howlifehaschanged/master";
-  __webpack_public_path__ =
-    "http://www.abc.net.au/res/sites/news-projects/howlifehaschanged/master";
-}
-
+// Runs at page load and full request but not on hot reload
 function preFlight(odyssey) {
   // Odyssey header modifications
   const header = d3.select(".Header");
   header.insert("div", ":first-child").classed("pre-header", true);
+
+  // Turn anchors into divs
+  hashify({ hashList: ["hashchooser"], defaultClass: "u-full" });
 }
 
+// Re-loads on hot reload
 function init(odyssey) {
-  const teaserIllo = document.querySelector(".pre-header");
+  const App = require("./components/App");
+  const TeaserIllo = require("./components/TeaserIllo");
 
   render(
-    <TeaserIllo projectName={PROJECT_NAME} publicPath={PUBLIC_PATH} />,
-    teaserIllo
+    <TeaserIllo projectName={PROJECT_NAME} />,
+    document.querySelector(".pre-header")
   );
+  render(<App projectName={PROJECT_NAME} />, root);
 }
 
 if (module.hot) {
-  module.hot.accept("./components/App", () => {
+  module.hot.accept(["./components/App", "./components/TeaserIllo"], () => {
     try {
       init();
     } catch (err) {
