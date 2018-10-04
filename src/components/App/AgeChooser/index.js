@@ -1,16 +1,18 @@
-const React = require('react');
-const styles = require('./styles.scss');
+const React = require("react");
+const styles = require("./styles.scss");
+
+const ChooserButton = require("./ChooserButton");
 
 class AgeChooser extends React.Component {
   render() {
-
-console.log(..."hello")
-
-
     return (
       <div className={styles.wrapper}>
-        <div className={styles.question}>What age-group are you interested in?</div>
-        {/* <button>All</button> */}
+        <div className={styles.question}>
+          What age-group are you interested in?
+        </div>
+        <ChooserButton>Millennials</ChooserButton>
+        <ChooserButton>Generation X</ChooserButton>
+        <ChooserButton>Baby Boomers</ChooserButton>
       </div>
     );
   }

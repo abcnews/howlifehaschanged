@@ -1,13 +1,14 @@
 .wrapper {
-  padding: 20px;
+  padding: 20px 0;
   text-align: center;
   color: white;
   font-size: 16px;
 }
 
 .question {
-  font-family: "ABCSans-bold", sans-serif;
-  font-weight: 300;
+  font-family: "ABCSans-bold", ABCSans, Helvetica, Arial, sans-serif;
+  font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 1.14px;
+  margin-bottom: 1em;
 }
