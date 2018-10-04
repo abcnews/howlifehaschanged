@@ -1,8 +1,7 @@
-const React = require('react');
-const styles = require('./styles.scss');
+const React = require("react");
+const styles = require("./styles.scss");
 
 const change = require("./john.gif");
-
 
 class TeaserIllo extends React.Component {
   render() {
