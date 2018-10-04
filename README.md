@@ -1,6 +1,6 @@
-# howlifehaschanged
+# How Life Has Changed
 
-A project generated from [aunty](https://github.com/abcnews/aunty)'s `react` app template.
+A look at how life has changed for Australians over the years.
 
 ## Authors
 

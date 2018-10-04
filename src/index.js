@@ -21,10 +21,13 @@ function init(odyssey) {
   const App = require("./components/App");
   const TeaserIllo = require("./components/TeaserIllo");
 
+  // Render the pre-header animation
   render(
     <TeaserIllo projectName={PROJECT_NAME} />,
     document.querySelector(".pre-header")
   );
+
+  // Render main App
   render(<App projectName={PROJECT_NAME} />, root);
 }
 
