@@ -5,7 +5,8 @@ class AgeChooser extends React.Component {
   render() {
     return (
       <div className={styles.wrapper}>
-        What are-group are you interested in?
+        <div className={styles.question}>What age-group are you interested in?</div>
+        <button>All</button>
       </div>
     );
   }
