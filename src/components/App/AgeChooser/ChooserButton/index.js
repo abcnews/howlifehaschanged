@@ -8,8 +8,9 @@ class ChooserButton extends React.Component {
   };
 
   render() {
+    const isActive = this.props.children === this.props.currentGeneration;
     return (
-      <button onClick={this.handleClick} className={styles.wrapper}>
+      <button onClick={this.handleClick} className={styles.wrapper + " " + (isActive ? styles.active : styles.inactive)}>
         {this.props.children}
       </button>
     );

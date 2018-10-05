@@ -22,7 +22,10 @@ class App extends React.Component {
   render() {
     return (
       <Portal into={document.querySelector(".hashchooser")}>
-        <AgeChooser setGeneration={this.setGeneration} />
+        <AgeChooser
+          setGeneration={this.setGeneration}
+          currentGeneration={this.state.myGeneration}
+        />
       </Portal>
     );
   }
