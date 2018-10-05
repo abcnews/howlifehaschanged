@@ -3,7 +3,7 @@ const styles = require("./styles.scss");
 
 class ChooserButton extends React.Component {
   handleClick = () => {
-    console.log("this is:", this);
+    console.log("this is:", this.props.children);
   };
 
   render() {

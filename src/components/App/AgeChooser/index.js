@@ -10,9 +10,11 @@ class AgeChooser extends React.Component {
         <div className={styles.question}>
           What age-group are you interested in?
         </div>
+        <ChooserButton>Generation Z</ChooserButton>
         <ChooserButton>Millennials</ChooserButton>
         <ChooserButton>Generation X</ChooserButton>
         <ChooserButton>Baby Boomers</ChooserButton>
+        <ChooserButton>Builders</ChooserButton>
       </div>
     );
   }
