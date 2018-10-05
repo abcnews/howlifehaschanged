@@ -4,8 +4,6 @@ const styles = require("./styles.scss");
 const Portal = require("../Portal"); // To inject components into other page areas
 const AgeChooser = require("./AgeChooser");
 
-const Context = React.createContext({ test: true });
-
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -13,10 +11,18 @@ class App extends React.Component {
     this.state = { myGeneration: "Millenials" };
   }
 
+  setGeneration = whatGeneration => {
+    this.setState({ myGeneration: whatGeneration });
+  };
+
+  componentDidUpdate() {
+    console.log(this.state);
+  }
+
   render() {
     return (
       <Portal into={document.querySelector(".hashchooser")}>
-        <AgeChooser />
+        <AgeChooser setGeneration={this.setGeneration} />
       </Portal>
     );
   }
