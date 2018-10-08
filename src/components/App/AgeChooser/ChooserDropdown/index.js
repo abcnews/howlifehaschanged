@@ -2,8 +2,10 @@ const React = require("react");
 const styles = require("./styles.scss");
 
 class ChooserDropdown extends React.Component {
-  valueSelected = () => {
+  valueSelected = (event) => {
     console.log("Selected...");
+    console.log("this is:", this.props.currentGeneration);
+    this.props.setGeneration(event.target.value);
   };
 
   render() {

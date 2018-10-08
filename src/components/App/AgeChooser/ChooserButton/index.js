@@ -15,7 +15,7 @@ class ChooserButton extends React.Component {
         className={
           styles.wrapper + " " + (isActive ? styles.active : styles.inactive)
         }
-        generationSlug={this.props.generationSlug}
+        value={this.props.generationSlug}
       >
         {this.props.children}
       </button>

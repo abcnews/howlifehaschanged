@@ -14,7 +14,10 @@ class AgeChooser extends React.Component {
           What age-group are you interested in?
         </div>
 
-        <ChooserDropdown currentGeneration={this.props.currentGeneration} />
+        <ChooserDropdown
+          currentGeneration={this.props.currentGeneration}
+          setGeneration={setGeneration}
+        />
 
         <ChooserButton
           setGeneration={setGeneration}
