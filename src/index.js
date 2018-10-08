@@ -13,7 +13,7 @@ function preFlight(odyssey) {
   header.insert("div", ":first-child").classed("pre-header", true);
 
   // Turn anchors into divs
-  hashify({ hashList: ["hashchooser"], defaultClass: "u-full" });
+  hashify({ hashList: ["hashchooser", "hashcharts"], defaultClass: "u-full" });
 }
 
 // Re-loads on hot reload

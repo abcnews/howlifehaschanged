@@ -3,6 +3,7 @@ const styles = require("./styles.scss");
 
 const Portal = require("../Portal"); // To inject components into other page areas
 const AgeChooser = require("./AgeChooser");
+const GenerationStories = require("./GenerationStories");
 
 class App extends React.Component {
   constructor(props) {
@@ -21,12 +22,17 @@ class App extends React.Component {
 
   render() {
     return (
-      <Portal into={document.querySelector(".hashchooser")}>
-        <AgeChooser
-          setGeneration={this.setGeneration}
-          currentGeneration={this.state.myGeneration}
-        />
-      </Portal>
+      <div>
+        <Portal into={document.querySelector(".hashchooser")}>
+          <AgeChooser
+            setGeneration={this.setGeneration}
+            currentGeneration={this.state.myGeneration}
+          />
+        </Portal>
+        <Portal into={document.querySelector(".hashcharts")}>
+          <GenerationStories>{this.state.myGeneration}</GenerationStories>
+        </Portal>
+      </div>
     );
   }
 }
