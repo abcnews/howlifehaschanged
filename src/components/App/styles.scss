@@ -1,6 +1,11 @@
+// Using this section to override some global styles
 :global {
   .Header {
     // Match header color to that of the CoreMedia theme
+    background-color: #175482 !important;
+  }
+
+  .is-dark-mode body {
     background-color: #175482 !important;
   }
 }

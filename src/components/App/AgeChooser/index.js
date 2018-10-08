@@ -11,11 +11,42 @@ class AgeChooser extends React.Component {
         <div className={styles.question}>
           What age-group are you interested in?
         </div>
-        <ChooserButton setGeneration={setGeneration} currentGeneration={this.props.currentGeneration}>Generation Z</ChooserButton>
-        <ChooserButton setGeneration={setGeneration} currentGeneration={this.props.currentGeneration}>Millennials</ChooserButton>
-        <ChooserButton setGeneration={setGeneration} currentGeneration={this.props.currentGeneration}>Generation X</ChooserButton>
-        <ChooserButton setGeneration={setGeneration} currentGeneration={this.props.currentGeneration}>Baby Boomers</ChooserButton>
-        <ChooserButton setGeneration={setGeneration} currentGeneration={this.props.currentGeneration}>Builders</ChooserButton>
+        <ChooserButton
+          setGeneration={setGeneration}
+          currentGeneration={this.props.currentGeneration}
+        >
+          All ages
+        </ChooserButton>
+        <ChooserButton
+          setGeneration={setGeneration}
+          currentGeneration={this.props.currentGeneration}
+        >
+          Generation Z
+        </ChooserButton>
+        <ChooserButton
+          setGeneration={setGeneration}
+          currentGeneration={this.props.currentGeneration}
+        >
+          Millennials
+        </ChooserButton>
+        <ChooserButton
+          setGeneration={setGeneration}
+          currentGeneration={this.props.currentGeneration}
+        >
+          Generation X
+        </ChooserButton>
+        <ChooserButton
+          setGeneration={setGeneration}
+          currentGeneration={this.props.currentGeneration}
+        >
+          Baby Boomers
+        </ChooserButton>
+        <ChooserButton
+          setGeneration={setGeneration}
+          currentGeneration={this.props.currentGeneration}
+        >
+          Builders
+        </ChooserButton>
       </div>
     );
   }
