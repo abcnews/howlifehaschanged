@@ -2,15 +2,20 @@ const React = require("react");
 const styles = require("./styles.scss");
 
 const ChooserButton = require("./ChooserButton");
+const ChooserDropdown = require("./ChooserDropdown");
 
 class AgeChooser extends React.Component {
   render() {
-    const setGeneration = this.props.setGeneration;
+    const { setGeneration } = this.props;
+
     return (
       <div className={styles.wrapper}>
         <div className={styles.question}>
           What age-group are you interested in?
         </div>
+
+        <ChooserDropdown />
+
         <ChooserButton
           setGeneration={setGeneration}
           currentGeneration={this.props.currentGeneration}
@@ -21,7 +26,7 @@ class AgeChooser extends React.Component {
           setGeneration={setGeneration}
           currentGeneration={this.props.currentGeneration}
         >
-          Generation Z
+          Gen Z
         </ChooserButton>
         <ChooserButton
           setGeneration={setGeneration}
@@ -33,7 +38,7 @@ class AgeChooser extends React.Component {
           setGeneration={setGeneration}
           currentGeneration={this.props.currentGeneration}
         >
-          Generation X
+          Gen X
         </ChooserButton>
         <ChooserButton
           setGeneration={setGeneration}
