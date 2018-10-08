@@ -10,7 +10,7 @@ class App extends React.Component {
     super(props); // Provide acces to "this"
 
     // Initialise the component state
-    this.state = { myGeneration: "All ages" };
+    this.state = { myGeneration: "millennials" };
   }
 
   setGeneration = whatGeneration => {
