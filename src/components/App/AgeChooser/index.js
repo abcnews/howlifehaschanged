@@ -31,7 +31,7 @@ class AgeChooser extends React.Component {
           currentGeneration={this.props.currentGeneration}
           generationSlug={"generation-z"}
         >
-          Gen Z
+          Generation Z
         </ChooserButton>
         <ChooserButton
           setGeneration={setGeneration}
@@ -45,7 +45,7 @@ class AgeChooser extends React.Component {
           currentGeneration={this.props.currentGeneration}
           generationSlug={"generation-x"}
         >
-          Gen X
+          Generation X
         </ChooserButton>
         <ChooserButton
           setGeneration={setGeneration}
