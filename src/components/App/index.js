@@ -1,24 +1,19 @@
 const React = require("react");
-const styles = require("./styles.scss");
+const styles = require("./styles.scss"); // Mostly global
 
 const Portal = require("../Portal"); // To inject components into other page areas
 const AgeChooser = require("../AgeChooser");
 const GenerationStories = require("../GenerationStories");
 
 class App extends React.Component {
-  constructor(props) {
-    super(props); // Provide acces to "this"
-
-    // Initialise the component state
-    this.state = { myGeneration: "millennials" };
-  }
+  state = { myGeneration: "millennials" };
 
   setGeneration = whatGeneration => {
     this.setState({ myGeneration: whatGeneration });
   };
 
   componentDidUpdate() {
-    console.log(this.state);
+    console.log("App state:", this.state);
   }
 
   render() {
@@ -42,7 +37,7 @@ class App extends React.Component {
           depending on the current generation.
         */}
         <Portal into={document.querySelector(".hashcharts")}>
-          <GenerationStories>{this.state.myGeneration}</GenerationStories>
+          <GenerationStories currentGeneration={this.state.myGeneration} />
         </Portal>
       </div>
     );

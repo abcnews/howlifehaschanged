@@ -2,7 +2,6 @@ const React = require("react");
 const styles = require("./styles.scss");
 const ReactResizeDetector = require("react-resize-detector").default;
 
-const ChooserButton = require("../ChooserButton");
 const ChooserButtonGroup = require("../ChooserButtonGroup");
 const ChooserDropdown = require("../ChooserDropdown");
 
