@@ -1,8 +1,8 @@
 const React = require("react");
 const styles = require("./styles.scss");
 
-const ChooserButton = require("./ChooserButton");
-const ChooserDropdown = require("./ChooserDropdown");
+const ChooserButton = require("../ChooserButton");
+const ChooserDropdown = require("../ChooserDropdown");
 
 class AgeChooser extends React.Component {
   render() {
