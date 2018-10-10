@@ -22,7 +22,7 @@ class ChooserButtonGroup extends React.Component {
           currentGeneration={this.props.currentGeneration}
           generationSlug={"generation-z"}
         >
-          Gen Z <span className={styles.year}>1995 - 2018</span>
+          Generation Z <span className={styles.year}>1995 - 2018</span>
         </ChooserButton>
         <ChooserButton
           setGeneration={setGeneration}
@@ -36,7 +36,7 @@ class ChooserButtonGroup extends React.Component {
           currentGeneration={this.props.currentGeneration}
           generationSlug={"generation-x"}
         >
-          Gen X <span className={styles.year}>1965 - 1979</span>
+          Generation X <span className={styles.year}>1965 - 1979</span>
         </ChooserButton>
         <ChooserButton
           setGeneration={setGeneration}
