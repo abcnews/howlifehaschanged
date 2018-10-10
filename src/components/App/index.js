@@ -3,7 +3,7 @@ const styles = require("./styles.scss");
 
 const Portal = require("../Portal"); // To inject components into other page areas
 const AgeChooser = require("../AgeChooser");
-const GenerationStories = require("./GenerationStories");
+const GenerationStories = require("../GenerationStories");
 
 class App extends React.Component {
   constructor(props) {

@@ -4,13 +4,14 @@ const Select = require("react-select").default;
 
 const options = [
   { value: "all-ages", label: "All ages" },
-  { value: "generation-z", label: "Generation Z" },
-  { value: "millennials", label: "Milliennials" },
-  { value: "generation-x", label: "Generation X" },
-  { value: "baby-boomers", label: "Baby Boomers" },
-  { value: "builders", label: "Builders" }
+  { value: "generation-z", label: "Generation Z: born 1995 - 2018" },
+  { value: "millennials", label: "Millennials: born 1980 -1994" },
+  { value: "generation-x", label: "Generation X: born 1965 - 1979" },
+  { value: "baby-boomers", label: "Baby Boomers: born 1946 - 1964" },
+  { value: "builders", label: "Builders: born 1925 - 1945" }
 ];
 
+// React Select v2 now uses a wrapper around Emotion for CSS-in-JS
 const customStyles = {
   control: (base, state) => {
     return {
@@ -31,9 +32,9 @@ const customStyles = {
     }
   },
   dropdownIndicator: (base, state) => {
-    console.log(base, state)
     return {
       ...base, color: "white"
+      // The :hover styles are in ./styles.css
     }
   }
 };
