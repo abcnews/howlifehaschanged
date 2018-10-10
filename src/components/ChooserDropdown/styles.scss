@@ -14,10 +14,7 @@
 }
 
 :global {
-  .react-select__dropdown-indicator {
-    color: white;
-  }
-
+  // :hover selectors are easier done here than in code
   .react-select__dropdown-indicator:hover {
     color: white !important;
   }

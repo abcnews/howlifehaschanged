@@ -9,12 +9,6 @@ const ChooserDropdown = require("../ChooserDropdown");
 const TABLET_PORTRAIT_OR_UP = 600;
 
 class AgeChooser extends React.Component {
-  state = {
-    isMobile: false
-  };
-  onResize = () => {
-    console.log("resizing...");
-  };
   render() {
     // Function passed down from main App
     const { setGeneration } = this.props;
@@ -26,10 +20,9 @@ class AgeChooser extends React.Component {
           Maybe think about resizing this on mobile
         */}
         <div className={styles.question}>
-          What age-group are you interested in?
+          Which generation whould you like to know about?
         </div>
 
-        
         <ReactResizeDetector handleWidth onResize={this.onResize}>
           {(width, height) => (
             <div>

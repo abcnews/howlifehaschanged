@@ -7,7 +7,7 @@ class ChooserButtonGroup extends React.Component {
   render() {
     // Function passed down from main App
     const { setGeneration } = this.props;
-    
+
     return (
       <div className={styles.wrapper}>
         <ChooserButton
@@ -15,42 +15,42 @@ class ChooserButtonGroup extends React.Component {
           currentGeneration={this.props.currentGeneration}
           generationSlug={"all-ages"}
         >
-          All ages
+          All ages <span className={styles.year}>1925 - 2018</span>
         </ChooserButton>
         <ChooserButton
           setGeneration={setGeneration}
           currentGeneration={this.props.currentGeneration}
           generationSlug={"generation-z"}
         >
-          Generation Z
+          Gen Z <span className={styles.year}>1995 - 2018</span>
         </ChooserButton>
         <ChooserButton
           setGeneration={setGeneration}
           currentGeneration={this.props.currentGeneration}
           generationSlug={"millennials"}
         >
-          Millennials
+          Millennials <span className={styles.year}>1980 - 1994</span>
         </ChooserButton>
         <ChooserButton
           setGeneration={setGeneration}
           currentGeneration={this.props.currentGeneration}
           generationSlug={"generation-x"}
         >
-          Generation X
+          Gen X <span className={styles.year}>1965 - 1979</span>
         </ChooserButton>
         <ChooserButton
           setGeneration={setGeneration}
           currentGeneration={this.props.currentGeneration}
           generationSlug={"baby-boomers"}
         >
-          Baby Boomers
+          Boomers <span className={styles.year}>1946 - 1964</span>
         </ChooserButton>
         <ChooserButton
           setGeneration={setGeneration}
           currentGeneration={this.props.currentGeneration}
           generationSlug={"builders"}
         >
-          Builders
+          Builders <span className={styles.year}>1925 - 1945</span>
         </ChooserButton>
       </div>
     );
