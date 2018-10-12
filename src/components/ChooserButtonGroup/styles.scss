@@ -3,6 +3,11 @@
 
 .year {
   font-family: ABCSerif, Book Antiqua, Palatino Linotype, Palatino, serif;
+  font-variant-numeric: oldstyle-nums; /* high-level property          */
+  -moz-font-feature-settings: "onum"; /* low-level (old Firefox)      */
+  -webkit-font-feature-settings: "onum"; /* low-level (old Webkit)       */
+  font-feature-settings: "onum" on; /* low-level (all new browsers) */
+  
   font-size: 13px;
   font-weight: normal;
   display: block;

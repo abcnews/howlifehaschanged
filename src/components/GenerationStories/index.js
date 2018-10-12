@@ -22,8 +22,8 @@ class ChartStory extends React.Component {
         {this.props.currentGeneration === "millennials" && (
           <div>
             <h3>Millennials</h3>
-            <SlopeChart />
-            <SlopeChart />
+            <SlopeChart width={400} />
+            <SlopeChart width={300} />
           </div>
         )}
         {this.props.currentGeneration === "generation-x" && (
