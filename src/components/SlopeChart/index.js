@@ -3,6 +3,7 @@ const styles = require("./styles.scss");
 const d3 = Object.assign({}, require("d3-selection"), require("d3-scale"));
 
 const CHART_WIDTH = 350;
+const MARGIN = 10;
 
 class SlopeChart extends React.Component {
   constructor(props) {
@@ -35,10 +36,10 @@ class SlopeChart extends React.Component {
 
     var line = svg
       .append("line")
-      .attr("x1", 0)
-      .attr("y1", didIncrease() ? chartHeight : 0)
-      .attr("x2", 350)
-      .attr("y2", didIncrease() ? 0 : chartHeight)
+      .attr("x1", 0 + MARGIN)
+      .attr("y1", didIncrease() ? chartHeight - MARGIN : 0 + MARGIN)
+      .attr("x2", 350 - MARGIN)
+      .attr("y2", didIncrease() ? 0 + MARGIN : chartHeight - MARGIN)
       .attr("stroke-width", 2)
       .attr("stroke", "#FFD70D");
   };

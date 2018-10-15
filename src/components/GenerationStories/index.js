@@ -10,13 +10,13 @@ class ChartStory extends React.Component {
         {this.props.currentGeneration === "all-ages" && (
           <div>
             <h3>All ages</h3>
-            <SlopeChart line={[400, 100]} lines={[{ first: 100, last: 300 }]} />
+            <SlopeChart line={[400, 100]} lines={[{ first: 123, last: 342 }]} />
           </div>
         )}
         {this.props.currentGeneration === "generation-z" && (
           <div>
             <h3>Generation Z</h3>
-            <SlopeChart line={[493, 34]} lines={[{ first: 100, last: 300 }]} />
+            <SlopeChart line={[493, 34]} lines={[{ first: 324, last: 665 }]} />
           </div>
         )}
         {this.props.currentGeneration === "millennials" && (
@@ -31,14 +31,14 @@ class ChartStory extends React.Component {
             <h3>Generation X</h3>
             <SlopeChart
               line={[789, 1200]}
-              lines={[{ first: 100, last: 300 }]}
+              lines={[{ first: 765, last: 654 }]}
             />
           </div>
         )}
         {this.props.currentGeneration === "baby-boomers" && (
           <div>
             <h3>Baby Boomers</h3>
-            <SlopeChart line={[47, 454]} lines={[{ first: 100, last: 300 }]} />
+            <SlopeChart line={[47, 454]} lines={[{ first: 234, last: 543 }]} />
           </div>
         )}
         {this.props.currentGeneration === "builders" && (
@@ -46,7 +46,7 @@ class ChartStory extends React.Component {
             <h3>Builders</h3>
             <SlopeChart
               line={[546, 1200]}
-              lines={[{ first: 100, last: 300 }]}
+              lines={[{ first: 234, last: 343 }]}
             />
           </div>
         )}
