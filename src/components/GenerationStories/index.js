@@ -7,13 +7,13 @@ class ChartStory extends React.Component {
   render() {
     return (
       <div className={styles.wrapper}>
-        {this.props.currentGeneration === "all-ages" && (
+        {this.props.currentGeneration === "allages" && (
           <div>
             <h3>All ages</h3>
             <SlopeChart line={[400, 100]} lines={[{ first: 123, last: 342 }]} />
           </div>
         )}
-        {this.props.currentGeneration === "generation-z" && (
+        {this.props.currentGeneration === "genz" && (
           <div>
             <h3>Generation Z</h3>
             <SlopeChart line={[493, 34]} lines={[{ first: 324, last: 665 }]} />
@@ -26,7 +26,7 @@ class ChartStory extends React.Component {
             <SlopeChart line={[100, 400]} lines={[{ first: 500, last: 300 }]} />
           </div>
         )}
-        {this.props.currentGeneration === "generation-x" && (
+        {this.props.currentGeneration === "genx" && (
           <div>
             <h3>Generation X</h3>
             <SlopeChart
@@ -35,7 +35,7 @@ class ChartStory extends React.Component {
             />
           </div>
         )}
-        {this.props.currentGeneration === "baby-boomers" && (
+        {this.props.currentGeneration === "boomers" && (
           <div>
             <h3>Baby Boomers</h3>
             <SlopeChart line={[47, 454]} lines={[{ first: 234, last: 543 }]} />

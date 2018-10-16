@@ -13,14 +13,14 @@ class ChooserButtonGroup extends React.Component {
         <ChooserButton
           setGeneration={setGeneration}
           currentGeneration={this.props.currentGeneration}
-          generationSlug={"all-ages"}
+          generationSlug={"allages"}
         >
           All ages <span className={styles.year}>1925 - 2018</span>
         </ChooserButton>
         <ChooserButton
           setGeneration={setGeneration}
           currentGeneration={this.props.currentGeneration}
-          generationSlug={"generation-z"}
+          generationSlug={"genz"}
         >
           Generation Z <span className={styles.year}>1995 - 2018</span>
         </ChooserButton>
@@ -34,14 +34,14 @@ class ChooserButtonGroup extends React.Component {
         <ChooserButton
           setGeneration={setGeneration}
           currentGeneration={this.props.currentGeneration}
-          generationSlug={"generation-x"}
+          generationSlug={"genx"}
         >
           Generation X <span className={styles.year}>1965 - 1979</span>
         </ChooserButton>
         <ChooserButton
           setGeneration={setGeneration}
           currentGeneration={this.props.currentGeneration}
-          generationSlug={"baby-boomers"}
+          generationSlug={"boomers"}
         >
           Boomers <span className={styles.year}>1946 - 1964</span>
         </ChooserButton>

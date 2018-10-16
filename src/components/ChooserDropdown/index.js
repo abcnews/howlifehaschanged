@@ -3,11 +3,11 @@ const styles = require("./styles.scss");
 const Select = require("react-select").default;
 
 const options = [
-  { value: "all-ages", label: "All ages" },
-  { value: "generation-z", label: "Generation Z: 1995 - 2018" },
+  { value: "allages", label: "All ages" },
+  { value: "genz", label: "Generation Z: 1995 - 2018" },
   { value: "millennials", label: "Millennials: 1980 -1994" },
-  { value: "generation-x", label: "Generation X: 1965 - 1979" },
-  { value: "baby-boomers", label: "Baby Boomers: 1946 - 1964" },
+  { value: "genx", label: "Generation X: 1965 - 1979" },
+  { value: "boomers", label: "Baby Boomers: 1946 - 1964" },
   { value: "builders", label: "Builders: 1925 - 1945" }
 ];
 

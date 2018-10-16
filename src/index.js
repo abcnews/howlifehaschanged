@@ -15,6 +15,9 @@ function preFlight(odyssey) {
 
   // Turn anchors into divs
   hashify({ hashList: ["hashchooser", "hashcharts"], defaultClass: "u-full" });
+
+  // Add classes to paragraphs
+  hashNext();
 }
 
 // Re-loads on hot reload
@@ -55,5 +58,36 @@ if (window.__ODYSSEY__) {
   window.addEventListener("odyssey:api", e => {
     preFlight(e.detail);
     init(e.detail);
+  });
+}
+
+// Add class via CoreMedia hashtags eg. #classverytop
+function hashNext(targetString) {
+  // Set deafult for params
+  if (targetString === undefined) {
+    targetString = "class";
+  }
+
+  const anchors = document.querySelectorAll("a");
+
+  // Loop through all the anchor nodes
+  anchors.forEach(anchor => {
+    // Leave normal links on the page alone
+    if (anchor.innerHTML !== " ") return;
+
+    // Get name value
+    const elementName = anchor.getAttribute("name");
+
+    // Detect class
+    if (elementName.slice(0, targetString.length) !== targetString) return;
+
+    // Get class name to apply
+    const classToApply = elementName.substr(targetString.length);
+
+    // Get the next paragraph to work with
+    const nextElement = anchor.nextElementSibling;
+
+    // Apply the class
+    nextElement.classList.add(classToApply);
   });
 }
