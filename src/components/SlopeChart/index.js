@@ -3,10 +3,13 @@ const styles = require("./styles.scss");
 const d3 = Object.assign({}, require("d3-selection"), require("d3-scale"));
 
 const CHART_WIDTH = 350;
+
 const MARGIN_TOP = 15;
 const MARGIN_RIGHT = 20;
 const MARGIN_BOTTOM = 15;
 const MARGIN_LEFT = 20;
+
+const CIRCLE_RADIUS = 5;
 
 class SlopeChart extends React.Component {
   constructor(props) {
@@ -38,22 +41,31 @@ class SlopeChart extends React.Component {
       .domain([0, CHART_WIDTH])
       .range([0 + MARGIN_LEFT, CHART_WIDTH - MARGIN_RIGHT]);
 
-    console.log(scaleX(0));
-
     const didIncrease = () => first < last;
 
+    // The main svg container
     svg
       .attr("width", this.props.width || CHART_WIDTH)
       .attr("height", chartHeight)
-      .style("background-color", "rgba(0, 0, 0, 0.1");
+      .style("background-color", "rgba(0, 0, 0, 0.1"); // remove later
 
+    // Bounding lines
+    svg.append("line")
+      .attr("x1", scaleX(0))
+      .attr("y1", scaleHeight(min))
+      .attr("x2", scaleX(0))
+      .attr("y2", scaleHeight(max))
+      .attr("stroke-width", 3)
+      .attr("stroke", "#333");
+
+    // The first line
     svg
       .append("line")
-      .attr("x1", 0 + MARGIN_LEFT)
+      .attr("x1", scaleX(0))
       .attr("y1", scaleHeight(first))
-      .attr("x2", CHART_WIDTH - MARGIN_RIGHT)
+      .attr("x2", scaleX(CHART_WIDTH))
       .attr("y2", scaleHeight(last))
-      .attr("stroke-width", 2)
+      .attr("stroke-width", 3)
       .attr("stroke", "#FFD70D");
 
     // Start circle
@@ -61,7 +73,7 @@ class SlopeChart extends React.Component {
       .append("circle")
       .attr("cx", scaleX(0))
       .attr("cy", scaleHeight(first))
-      .attr("r", 5)
+      .attr("r", CIRCLE_RADIUS)
       .attr("fill", "#FFD70D");
 
     // End circle
@@ -69,7 +81,7 @@ class SlopeChart extends React.Component {
       .append("circle")
       .attr("cx", scaleX(CHART_WIDTH))
       .attr("cy", scaleHeight(last))
-      .attr("r", 5)
+      .attr("r", CIRCLE_RADIUS)
       .attr("fill", "#FFD70D");
   };
 
