@@ -1,5 +1,6 @@
 const React = require("react");
 const styles = require("./styles.scss");
+const Portal = require("../Portal"); // To inject components into other page areas
 
 const SlopeChart = require("../SlopeChart");
 
@@ -16,13 +17,20 @@ class ChartStory extends React.Component {
             />
           </div>
         )}
-        {this.props.currentGeneration === "genz" && (
+        {(this.props.currentGeneration === "genz" ||
+          this.props.currentGeneration === "allages") && (
           <div>
-            <h3>Generation Z</h3>
+            {/* <h3>Generation Z</h3>
             <SlopeChart
               years={["1981", "2016"]}
               lines={[{ first: 324, last: 665 }]}
-            />
+            /> */}
+            <Portal into={document.querySelector(".infantmortality")}>
+              <SlopeChart
+                years={["1981", "2016"]}
+                lines={[{ first: 10.0, last: 3.1, percentChange: -69 }]}
+              />
+            </Portal>
           </div>
         )}
         {this.props.currentGeneration === "millennials" && (

@@ -14,7 +14,7 @@ function preFlight(odyssey) {
   header.insert("div", ":first-child").classed("pre-header", true);
 
   // Turn anchors into divs
-  hashify({ hashList: ["hashchooser", "hashcharts"], defaultClass: "u-full" });
+  hashify({ hashList: ["hashchooser", "hashcharts", "infantmortality"], defaultClass: "u-full" });
 
   // Add classes to paragraphs
   hashNext();
@@ -89,5 +89,8 @@ function hashNext(targetString) {
 
     // Apply the class
     nextElement.classList.add(classToApply);
+
+    // Remove anchor
+    anchor.parentNode.removeChild(anchor);
   });
 }

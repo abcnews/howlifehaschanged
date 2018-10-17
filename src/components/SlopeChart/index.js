@@ -2,14 +2,19 @@ const React = require("react");
 const styles = require("./styles.scss");
 const d3 = Object.assign({}, require("d3-selection"), require("d3-scale"));
 
+const yScaleFactor = 1.5;
+
 const CHART_WIDTH = 350;
 
 const MARGIN_TOP = 35;
-const MARGIN_RIGHT = 20;
-const MARGIN_BOTTOM = 25;
-const MARGIN_LEFT = 20;
+const MARGIN_RIGHT = 40;
+const MARGIN_BOTTOM = 15;
+const MARGIN_LEFT = 40;
 
 const CIRCLE_RADIUS = 5;
+const line1color = "#F7FFF7";
+const line2color = "#FFD70D";
+const line3color = "#4ECDC4";
 
 class SlopeChart extends React.Component {
   constructor(props) {
@@ -22,11 +27,15 @@ class SlopeChart extends React.Component {
     // TODO: loops over lines.... maybe make lines their own component?
     const first = this.props.lines[0].first;
     const last = this.props.lines[0].last;
+    const percentChange = (last - first) / first * 100 * yScaleFactor;
+
 
     const min = Math.min(first, last);
     const max = Math.max(first, last);
 
-    const chartHeight = Math.abs(first - last);
+  
+
+    const chartHeight = Math.abs(percentChange) // Math.abs(first - last);
 
     const wrapper = d3.select(this.node.current);
     const svg = wrapper.append("svg");
@@ -78,12 +87,15 @@ class SlopeChart extends React.Component {
       .attr("text-anchor", "start")
       .attr("alignment-baseline", "baseline")
       .attr("fill", "#B0E6FF")
-      .style("font-family", "ABCSans")
+      .style(
+        "font-family",
+        `"ABCSans-bold", ABCSans, Helvetica, Arial, sans-serif`
+      )
       .style("font-size", "12px")
-      .style("font-weight", "bold")
+      .style("font-weight", "bold");
 
-      // Right year
-      svg
+    // Right year
+    svg
       .append("text")
       .text(this.props.years[1])
       .attr("x", scaleX(CHART_WIDTH) + 3)
@@ -91,9 +103,12 @@ class SlopeChart extends React.Component {
       .attr("text-anchor", "end")
       .attr("alignment-baseline", "baseline")
       .attr("fill", "#B0E6FF")
-      .style("font-family", "ABCSans")
+      .style(
+        "font-family",
+        `"ABCSans-bold", ABCSans, Helvetica, Arial, sans-serif`
+      )
       .style("font-size", "12px")
-      .style("font-weight", "bold")
+      .style("font-weight", "bold");
 
     // The first line
     svg
@@ -103,7 +118,7 @@ class SlopeChart extends React.Component {
       .attr("x2", scaleX(CHART_WIDTH))
       .attr("y2", scaleHeight(last))
       .attr("stroke-width", 3)
-      .attr("stroke", "#FFD70D");
+      .attr("stroke", line1color);
 
     // Start circle
     svg
@@ -111,7 +126,7 @@ class SlopeChart extends React.Component {
       .attr("cx", scaleX(0))
       .attr("cy", scaleHeight(first))
       .attr("r", CIRCLE_RADIUS)
-      .attr("fill", "#FFD70D");
+      .attr("fill", line1color);
 
     // End circle
     svg
@@ -119,7 +134,7 @@ class SlopeChart extends React.Component {
       .attr("cx", scaleX(CHART_WIDTH))
       .attr("cy", scaleHeight(last))
       .attr("r", CIRCLE_RADIUS)
-      .attr("fill", "#FFD70D");
+      .attr("fill", line1color);
   };
 
   componentDidMount() {
