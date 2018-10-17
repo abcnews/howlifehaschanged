@@ -49,14 +49,23 @@ class SlopeChart extends React.Component {
       .attr("height", chartHeight)
       .style("background-color", "rgba(0, 0, 0, 0.1"); // remove later
 
-    // Bounding lines
+    // Bounding left line
     svg.append("line")
       .attr("x1", scaleX(0))
       .attr("y1", scaleHeight(min))
       .attr("x2", scaleX(0))
       .attr("y2", scaleHeight(max))
       .attr("stroke-width", 3)
-      .attr("stroke", "#333");
+      .attr("stroke", "#003C66");
+
+    // Bounding right line
+    svg.append("line")
+      .attr("x1", scaleX(CHART_WIDTH))
+      .attr("y1", scaleHeight(min))
+      .attr("x2", scaleX(CHART_WIDTH))
+      .attr("y2", scaleHeight(max))
+      .attr("stroke-width", 3)
+      .attr("stroke", "#003C66");
 
     // The first line
     svg
