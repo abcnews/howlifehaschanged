@@ -6,7 +6,7 @@ const CHART_WIDTH = 350;
 
 const MARGIN_TOP = 35;
 const MARGIN_RIGHT = 20;
-const MARGIN_BOTTOM = 35;
+const MARGIN_BOTTOM = 25;
 const MARGIN_LEFT = 20;
 
 const CIRCLE_RADIUS = 5;
@@ -76,6 +76,19 @@ class SlopeChart extends React.Component {
       .attr("x", scaleX(0) - 3)
       .attr("y", scaleHeight(max) - 12)
       .attr("text-anchor", "start")
+      .attr("alignment-baseline", "baseline")
+      .attr("fill", "#B0E6FF")
+      .style("font-family", "ABCSans")
+      .style("font-size", "12px")
+      .style("font-weight", "bold")
+
+      // Right year
+      svg
+      .append("text")
+      .text(this.props.years[1])
+      .attr("x", scaleX(CHART_WIDTH) + 3)
+      .attr("y", scaleHeight(max) - 12)
+      .attr("text-anchor", "end")
       .attr("alignment-baseline", "baseline")
       .attr("fill", "#B0E6FF")
       .style("font-family", "ABCSans")
