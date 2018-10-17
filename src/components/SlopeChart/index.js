@@ -4,9 +4,9 @@ const d3 = Object.assign({}, require("d3-selection"), require("d3-scale"));
 
 const CHART_WIDTH = 350;
 
-const MARGIN_TOP = 15;
+const MARGIN_TOP = 35;
 const MARGIN_RIGHT = 20;
-const MARGIN_BOTTOM = 15;
+const MARGIN_BOTTOM = 35;
 const MARGIN_LEFT = 20;
 
 const CIRCLE_RADIUS = 5;
@@ -47,10 +47,11 @@ class SlopeChart extends React.Component {
     svg
       .attr("width", this.props.width || CHART_WIDTH)
       .attr("height", chartHeight)
-      .style("background-color", "rgba(0, 0, 0, 0.1"); // remove later
+      .style("background-color", "rgba(0, 0, 0, 0.05"); // remove later
 
     // Bounding left line
-    svg.append("line")
+    svg
+      .append("line")
       .attr("x1", scaleX(0))
       .attr("y1", scaleHeight(min))
       .attr("x2", scaleX(0))
@@ -59,13 +60,27 @@ class SlopeChart extends React.Component {
       .attr("stroke", "#003C66");
 
     // Bounding right line
-    svg.append("line")
+    svg
+      .append("line")
       .attr("x1", scaleX(CHART_WIDTH))
       .attr("y1", scaleHeight(min))
       .attr("x2", scaleX(CHART_WIDTH))
       .attr("y2", scaleHeight(max))
       .attr("stroke-width", 3)
       .attr("stroke", "#003C66");
+
+    // Left year
+    svg
+      .append("text")
+      .text(this.props.years[0])
+      .attr("x", scaleX(0) - 3)
+      .attr("y", scaleHeight(max) - 12)
+      .attr("text-anchor", "start")
+      .attr("alignment-baseline", "baseline")
+      .attr("fill", "#B0E6FF")
+      .style("font-family", "ABCSans")
+      .style("font-size", "12px")
+      .style("font-weight", "bold")
 
     // The first line
     svg
