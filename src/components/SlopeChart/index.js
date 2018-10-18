@@ -11,7 +11,7 @@ const MARGIN_TOP = 35;
 const MARGIN_RIGHT = 60;
 const MARGIN_BOTTOM = 35;
 const MARGIN_LEFT = 60;
-const LABEL_RIGHT_OFFSET = 16;
+const LABEL_RIGHT_OFFSET = 20;
 const LABEL_LEFT_OFFSET = 10;
 
 const CIRCLE_RADIUS = 5;
@@ -27,185 +27,216 @@ class SlopeChart extends React.Component {
   }
 
   attachChart = () => {
-    // TODO: loops over lines.... maybe make lines their own component?
-    const first = this.props.lines[0].first;
-    const last = this.props.lines[0].last;
-    const percentChange = ((last - first) / first) * 100 * yScaleFactor;
-    const labelStart = this.props.lines[0].labelStart;
-    const labelEnd = this.props.lines[0].labelEnd;
-    const labelSex = this.props.lines[0].labelSex;
-    const labelPercent = this.props.lines[0].labelPercent;
-
-    const min = Math.min(first, last);
-    const max = Math.max(first, last);
-
-    const chartHeight = Math.abs(percentChange); // Math.abs(first - last);
-
     const wrapper = d3.select(this.node.current);
     const svg = wrapper.append("svg");
-
-    const scaleHeight = d3
-      .scaleLinear()
-      .domain([min, max])
-      .range([chartHeight - MARGIN_BOTTOM, 0 + MARGIN_TOP]);
 
     const scaleX = d3
       .scaleLinear()
       .domain([0, CHART_WIDTH])
       .range([0 + MARGIN_LEFT, CHART_WIDTH - MARGIN_RIGHT]);
 
-    const didIncrease = () => first < last;
+    let min;
+    let max;
 
-    // The main svg container
-    svg
-      .attr("width", this.props.width || CHART_WIDTH)
-      .attr("height", chartHeight)
-      .style("background-color", "rgba(0, 0, 0, 0.03"); // remove later
+    // Loop over lines
+    this.props.lines.forEach((line, iteration) => {
+      console.log(line);
+      console.log(iteration);
 
-    // Bounding left line
-    svg
-      .append("line")
-      .attr("x1", scaleX(0))
-      .attr("y1", scaleHeight(min))
-      .attr("x2", scaleX(0))
-      .attr("y2", scaleHeight(max))
-      .attr("stroke-width", 3)
-      .attr("stroke", "#003C66");
+      const percentChange =
+        ((line.last - line.first) / line.first) * 100 * yScaleFactor;
 
-    // Bounding right line
-    svg
-      .append("line")
-      .attr("x1", scaleX(CHART_WIDTH))
-      .attr("y1", scaleHeight(min))
-      .attr("x2", scaleX(CHART_WIDTH))
-      .attr("y2", scaleHeight(max))
-      .attr("stroke-width", 3)
-      .attr("stroke", "#003C66");
-
-    // Left year
-    svg
-      .append("text")
-      .text(this.props.years[0])
-      .attr("x", scaleX(0) - 3)
-      .attr("y", scaleHeight(max) - 12)
-      .attr("text-anchor", "start")
-      .attr("dominant-baseline", "baseline")
-      .attr("fill", "#B0E6FF")
-      .style(
-        "font-family",
-        `"ABCSans-bold", ABCSans, Helvetica, Arial, sans-serif`
+      // Set new min and max for chart if
+      // lines go out of upper and lower bounds
+      if (
+        typeof lastname === "undefined" ||
+        Math.min(line.first, line.last) < min
       )
-      .style("font-size", "12px")
-      .style("font-weight", "bold");
-
-    // Right year
-    svg
-      .append("text")
-      .text(this.props.years[1])
-      .attr("x", scaleX(CHART_WIDTH) + 3)
-      .attr("y", scaleHeight(max) - 12)
-      .attr("text-anchor", "end")
-      .attr("dominant-baseline", "baseline")
-      .attr("fill", "#B0E6FF")
-      .style(
-        "font-family",
-        `"ABCSans-bold", ABCSans, Helvetica, Arial, sans-serif`
+        min = Math.min(line.first, line.last);
+      if (
+        typeof lastname === "undefined" ||
+        Math.max(line.first, line.last) > max
       )
-      .style("font-size", "12px")
-      .style("font-weight", "bold");
+        max = Math.max(line.first, line.last);
 
-    // The first line
-    svg
-      .append("line")
-      .attr("x1", scaleX(0))
-      .attr("y1", scaleHeight(first))
-      .attr("x2", scaleX(CHART_WIDTH))
-      .attr("y2", scaleHeight(last))
-      .attr("stroke-width", 3)
-      .attr("stroke", line1color);
+      const chartHeight = Math.abs(percentChange);
 
-    // Start circle
-    svg
-      .append("circle")
-      .attr("cx", scaleX(0))
-      .attr("cy", scaleHeight(first))
-      .attr("r", CIRCLE_RADIUS)
-      .attr("fill", line1color);
+      const scaleHeight = d3
+        .scaleLinear()
+        .domain([min, max])
+        .range([chartHeight - MARGIN_BOTTOM, 0 + MARGIN_TOP]);
 
-    // End circle
-    svg
-      .append("circle")
-      .attr("cx", scaleX(CHART_WIDTH))
-      .attr("cy", scaleHeight(last))
-      .attr("r", CIRCLE_RADIUS)
-      .attr("fill", line1color);
+      const didIncrease = () => line.first < line.last;
 
-    // Label start
-    svg
-      .append("text")
-      .text(labelStart)
-      .attr("x", scaleX(0) - LABEL_LEFT_OFFSET)
-      .attr("y", scaleHeight(first) + 1.35)
-      .attr("text-anchor", "end")
-      .attr("dominant-baseline", "middle")
-      .attr("fill", line1color)
-      .style(
-        "font-family",
-        `"ABCSans-bold", ABCSans, Helvetica, Arial, sans-serif`
-      )
-      .style("font-size", "11px")
-      .style("font-weight", "bold");
+      // Style main svg container
+      svg
+        .attr("width", this.props.width || CHART_WIDTH)
+        .attr("height", chartHeight)
+        .style("background-color", "rgba(0, 0, 0, 0.03"); // remove later
 
-    // Label end
-    svg
-      .append("text")
-      .text(labelEnd)
-      .attr("x", scaleX(CHART_WIDTH) + LABEL_RIGHT_OFFSET)
-      .attr("y", scaleHeight(last) + 1.35)
-      .attr("text-anchor", "start")
-      .attr("dominant-baseline", "middle")
-      .attr("fill", line1color)
-      .style(
-        "font-family",
-        `"ABCSans-bold", ABCSans, Helvetica, Arial, sans-serif`
-      )
-      .style("font-size", "11px")
-      .style("font-weight", "bold");
+      // Bounding left line
+      svg
+        .append("line")
+        .attr("x1", scaleX(0))
+        .attr("y1", scaleHeight(min))
+        .attr("x2", scaleX(0))
+        .attr("y2", scaleHeight(max))
+        .attr("stroke-width", 3)
+        .attr("stroke", "#003C66");
 
-    // Label sex
-    svg
-      .append("text")
-      .text(labelSex)
-      .attr("x", scaleX(CHART_WIDTH) + LABEL_RIGHT_OFFSET)
-      .attr("y", scaleHeight(last) - 11)
-      .attr("text-anchor", "start")
-      .attr("dominant-baseline", "middle")
-      .attr("fill", line1color)
-      .style(
-        "font-family",
-        `"ABCSans-bold", ABCSans, Helvetica, Arial, sans-serif`
-      )
-      .style("font-size", "11px")
-      .style("font-weight", "bold")
-      .style("text-transform", "uppercase");
+      // Bounding right line
+      svg
+        .append("line")
+        .attr("x1", scaleX(CHART_WIDTH))
+        .attr("y1", scaleHeight(min))
+        .attr("x2", scaleX(CHART_WIDTH))
+        .attr("y2", scaleHeight(max))
+        .attr("stroke-width", 3)
+        .attr("stroke", "#003C66");
 
-    // Label percent
-    svg
-      .append("text")
-      .text(labelPercent)
-      .attr("x", scaleX(CHART_WIDTH) + LABEL_RIGHT_OFFSET)
-      .attr("y", scaleHeight(last) + 15)
-      .attr("text-anchor", "start")
-      .attr("dominant-baseline", "middle")
-      .attr("fill", line1color)
-      .style(
-        "font-family",
-        `"ABCSans-black", ABCSans, Helvetica, Arial, sans-serif`
-      )
-      .style("font-size", "14px")
-      .style("font-weight", "900")
-      .style("text-transform", "uppercase")
-      .style("font-variant-numeric", "tabular-nums");
+      // Left year
+      svg
+        .append("text")
+        .text(this.props.years[0])
+        .attr("x", scaleX(0) - 3)
+        .attr("y", scaleHeight(max) - 12)
+        .attr("text-anchor", "start")
+        .attr("dominant-baseline", "baseline")
+        .attr("fill", "#B0E6FF")
+        .style(
+          "font-family",
+          `"ABCSans-bold", ABCSans, Helvetica, Arial, sans-serif`
+        )
+        .style("font-size", "12px")
+        .style("font-weight", "bold");
+
+      // Right year
+      svg
+        .append("text")
+        .text(this.props.years[1])
+        .attr("x", scaleX(CHART_WIDTH) + 3)
+        .attr("y", scaleHeight(max) - 12)
+        .attr("text-anchor", "end")
+        .attr("dominant-baseline", "baseline")
+        .attr("fill", "#B0E6FF")
+        .style(
+          "font-family",
+          `"ABCSans-bold", ABCSans, Helvetica, Arial, sans-serif`
+        )
+        .style("font-size", "12px")
+        .style("font-weight", "bold");
+
+      // The first line
+      svg
+        .append("line")
+        .attr("x1", scaleX(0))
+        .attr("y1", scaleHeight(line.first))
+        .attr("x2", scaleX(CHART_WIDTH))
+        .attr("y2", scaleHeight(line.last))
+        .attr("stroke-width", 3)
+        .attr("stroke", line1color);
+
+      // Start circle
+      svg
+        .append("circle")
+        .attr("cx", scaleX(0))
+        .attr("cy", scaleHeight(line.first))
+        .attr("r", CIRCLE_RADIUS)
+        .attr("fill", line1color);
+
+      // End circle
+      svg
+        .append("circle")
+        .attr("cx", scaleX(CHART_WIDTH))
+        .attr("cy", scaleHeight(line.last))
+        .attr("r", CIRCLE_RADIUS)
+        .attr("fill", line1color);
+
+      // Label start
+      svg
+        .append("text")
+        .text(line.labelStart)
+        .attr("x", scaleX(0) - LABEL_LEFT_OFFSET)
+        .attr("y", scaleHeight(line.first) + 1.35)
+        .attr("text-anchor", "end")
+        .attr("dominant-baseline", "middle")
+        .attr("fill", line1color)
+        .style(
+          "font-family",
+          `"ABCSans-bold", ABCSans, Helvetica, Arial, sans-serif`
+        )
+        .style("font-size", "11px")
+        .style("font-weight", "bold");
+
+      // Label end
+      svg
+        .append("text")
+        .text(line.labelEnd)
+        .attr("x", scaleX(CHART_WIDTH) + LABEL_RIGHT_OFFSET)
+        .attr("y", scaleHeight(line.last) + 1.35)
+        .attr("text-anchor", "start")
+        .attr("dominant-baseline", "middle")
+        .attr("fill", line1color)
+        .style(
+          "font-family",
+          `"ABCSans-bold", ABCSans, Helvetica, Arial, sans-serif`
+        )
+        .style("font-size", "11px")
+        .style("font-weight", "bold");
+
+      // Label sex
+      svg
+        .append("text")
+        .text(line.labelSex)
+        .attr("x", scaleX(CHART_WIDTH) + LABEL_RIGHT_OFFSET)
+        .attr("y", scaleHeight(line.last) - 11)
+        .attr("text-anchor", "start")
+        .attr("dominant-baseline", "middle")
+        .attr("fill", line1color)
+        .style(
+          "font-family",
+          `"ABCSans-bold", ABCSans, Helvetica, Arial, sans-serif`
+        )
+        .style("font-size", "11px")
+        .style("font-weight", "bold")
+        .style("text-transform", "uppercase");
+
+      // Label percent
+      svg
+        .append("text")
+        .text(line.labelPercent)
+        .attr("x", scaleX(CHART_WIDTH) + LABEL_RIGHT_OFFSET)
+        .attr("y", scaleHeight(line.last) + 15)
+        .attr("text-anchor", "start")
+        .attr("dominant-baseline", "middle")
+        .attr("fill", line1color)
+        .style(
+          "font-family",
+          `"ABCSans-bold", ABCSans, Helvetica, Arial, sans-serif`
+        )
+        .style("font-size", "14px")
+        .style("font-weight", "900")
+        .style("text-transform", "uppercase")
+        .style("font-variant-numeric", "tabular-nums");
+
+      // Label sign + or -
+      svg
+        .append("text")
+        .text(line.labelSign)
+        .attr("x", scaleX(CHART_WIDTH) + LABEL_RIGHT_OFFSET - 3)
+        .attr("y", scaleHeight(line.last) + 15)
+        .attr("text-anchor", "end")
+        .attr("dominant-baseline", "middle")
+        .attr("fill", line1color)
+        .style(
+          "font-family",
+          `"ABCSans-bold", ABCSans, Helvetica, Arial, sans-serif`
+        )
+        .style("font-size", "14px")
+        .style("font-weight", "900")
+        .style("text-transform", "uppercase")
+        .style("font-variant-numeric", "tabular-nums");
+    });
   };
 
   componentDidMount() {
