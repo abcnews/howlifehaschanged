@@ -32,7 +32,8 @@ class ChartStory extends React.Component {
                   {
                     first: 10.0,
                     last: 3.1,
-                    labelPercent: "- 69%",
+                    labelPercent: "69%",
+                    labelSign: "-",
                     labelSex: "All",
                     labelStart: "10.0",
                     labelEnd: "3.1"
@@ -47,7 +48,8 @@ class ChartStory extends React.Component {
                   {
                     first: 1.9,
                     last: 0.1,
-                    labelPercent: "- 95%",
+                    labelPercent: "95%",
+                    labelSign: "-",
                     labelSex: "All",
                     labelStart: "1.9",
                     labelEnd: "0.1"
@@ -62,7 +64,8 @@ class ChartStory extends React.Component {
                   {
                     first: 9,
                     last: 28,
-                    labelPercent: "+ 211%",
+                    labelPercent: "211%",
+                    labelSign: "+",
                     labelSex: "All",
                     labelStart: "9%",
                     labelEnd: "28%"

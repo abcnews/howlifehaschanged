@@ -8,9 +8,11 @@ const yScaleFactor = 1.8;
 const CHART_WIDTH = 350;
 
 const MARGIN_TOP = 35;
-const MARGIN_RIGHT = 40;
-const MARGIN_BOTTOM = 15;
-const MARGIN_LEFT = 40;
+const MARGIN_RIGHT = 60;
+const MARGIN_BOTTOM = 35;
+const MARGIN_LEFT = 60;
+const LABEL_RIGHT_OFFSET = 16;
+const LABEL_LEFT_OFFSET = 10;
 
 const CIRCLE_RADIUS = 5;
 const line1color = "#F7FFF7";
@@ -31,6 +33,8 @@ class SlopeChart extends React.Component {
     const percentChange = ((last - first) / first) * 100 * yScaleFactor;
     const labelStart = this.props.lines[0].labelStart;
     const labelEnd = this.props.lines[0].labelEnd;
+    const labelSex = this.props.lines[0].labelSex;
+    const labelPercent = this.props.lines[0].labelPercent;
 
     const min = Math.min(first, last);
     const max = Math.max(first, last);
@@ -56,7 +60,7 @@ class SlopeChart extends React.Component {
     svg
       .attr("width", this.props.width || CHART_WIDTH)
       .attr("height", chartHeight)
-      .style("background-color", "rgba(0, 0, 0, 0.05"); // remove later
+      .style("background-color", "rgba(0, 0, 0, 0.03"); // remove later
 
     // Bounding left line
     svg
@@ -140,7 +144,7 @@ class SlopeChart extends React.Component {
     svg
       .append("text")
       .text(labelStart)
-      .attr("x", scaleX(0) - 8)
+      .attr("x", scaleX(0) - LABEL_LEFT_OFFSET)
       .attr("y", scaleHeight(first) + 1.35)
       .attr("text-anchor", "end")
       .attr("dominant-baseline", "middle")
@@ -156,7 +160,7 @@ class SlopeChart extends React.Component {
     svg
       .append("text")
       .text(labelEnd)
-      .attr("x", scaleX(CHART_WIDTH) + 8)
+      .attr("x", scaleX(CHART_WIDTH) + LABEL_RIGHT_OFFSET)
       .attr("y", scaleHeight(last) + 1.35)
       .attr("text-anchor", "start")
       .attr("dominant-baseline", "middle")
@@ -167,6 +171,41 @@ class SlopeChart extends React.Component {
       )
       .style("font-size", "11px")
       .style("font-weight", "bold");
+
+    // Label sex
+    svg
+      .append("text")
+      .text(labelSex)
+      .attr("x", scaleX(CHART_WIDTH) + LABEL_RIGHT_OFFSET)
+      .attr("y", scaleHeight(last) - 11)
+      .attr("text-anchor", "start")
+      .attr("dominant-baseline", "middle")
+      .attr("fill", line1color)
+      .style(
+        "font-family",
+        `"ABCSans-bold", ABCSans, Helvetica, Arial, sans-serif`
+      )
+      .style("font-size", "11px")
+      .style("font-weight", "bold")
+      .style("text-transform", "uppercase");
+
+    // Label percent
+    svg
+      .append("text")
+      .text(labelPercent)
+      .attr("x", scaleX(CHART_WIDTH) + LABEL_RIGHT_OFFSET)
+      .attr("y", scaleHeight(last) + 15)
+      .attr("text-anchor", "start")
+      .attr("dominant-baseline", "middle")
+      .attr("fill", line1color)
+      .style(
+        "font-family",
+        `"ABCSans-black", ABCSans, Helvetica, Arial, sans-serif`
+      )
+      .style("font-size", "14px")
+      .style("font-weight", "900")
+      .style("text-transform", "uppercase")
+      .style("font-variant-numeric", "tabular-nums");
   };
 
   componentDidMount() {
