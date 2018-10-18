@@ -8,9 +8,9 @@ const yScaleFactor = 1.8;
 const CHART_WIDTH = 350;
 
 const MARGIN_TOP = 35;
-const MARGIN_RIGHT = 60;
+const MARGIN_RIGHT = 66;
 const MARGIN_BOTTOM = 35;
-const MARGIN_LEFT = 60;
+const MARGIN_LEFT = 45;
 const LABEL_RIGHT_OFFSET = 20;
 const LABEL_LEFT_OFFSET = 10;
 
@@ -142,7 +142,11 @@ class SlopeChart extends React.Component {
         .attr("x2", scaleX(CHART_WIDTH))
         .attr("y2", scaleHeight(line.last))
         .attr("stroke-width", 3)
-        .attr("stroke", line1color);
+        .attr("stroke", () => {
+          if (line.labelSex === "All") return line1color;
+          else if (line.labelSex === "Female") return line2color;
+          else if (line.labelSex === "Male") return line3color;
+        });
 
       // Start circle
       svg
@@ -150,7 +154,11 @@ class SlopeChart extends React.Component {
         .attr("cx", scaleX(0))
         .attr("cy", scaleHeight(line.first))
         .attr("r", CIRCLE_RADIUS)
-        .attr("fill", line1color);
+        .attr("fill", () => {
+          if (line.labelSex === "All") return line1color;
+          else if (line.labelSex === "Female") return line2color;
+          else if (line.labelSex === "Male") return line3color;
+        });
 
       // End circle
       svg
@@ -158,7 +166,11 @@ class SlopeChart extends React.Component {
         .attr("cx", scaleX(CHART_WIDTH))
         .attr("cy", scaleHeight(line.last))
         .attr("r", CIRCLE_RADIUS)
-        .attr("fill", line1color);
+        .attr("fill", () => {
+          if (line.labelSex === "All") return line1color;
+          else if (line.labelSex === "Female") return line2color;
+          else if (line.labelSex === "Male") return line3color;
+        });
 
       // Label start
       svg
@@ -168,7 +180,11 @@ class SlopeChart extends React.Component {
         .attr("y", scaleHeight(line.first) + 1.35)
         .attr("text-anchor", "end")
         .attr("dominant-baseline", "middle")
-        .attr("fill", line1color)
+        .attr("fill", () => {
+          if (line.labelSex === "All") return line1color;
+          else if (line.labelSex === "Female") return line2color;
+          else if (line.labelSex === "Male") return line3color;
+        })
         .style(
           "font-family",
           `"ABCSans-bold", ABCSans, Helvetica, Arial, sans-serif`
@@ -184,7 +200,11 @@ class SlopeChart extends React.Component {
         .attr("y", scaleHeight(line.last) + 1.35)
         .attr("text-anchor", "start")
         .attr("dominant-baseline", "middle")
-        .attr("fill", line1color)
+        .attr("fill", () => {
+          if (line.labelSex === "All") return line1color;
+          else if (line.labelSex === "Female") return line2color;
+          else if (line.labelSex === "Male") return line3color;
+        })
         .style(
           "font-family",
           `"ABCSans-bold", ABCSans, Helvetica, Arial, sans-serif`
@@ -200,7 +220,11 @@ class SlopeChart extends React.Component {
         .attr("y", scaleHeight(line.last) - 11)
         .attr("text-anchor", "start")
         .attr("dominant-baseline", "middle")
-        .attr("fill", line1color)
+        .attr("fill", () => {
+          if (line.labelSex === "All") return line1color;
+          else if (line.labelSex === "Female") return line2color;
+          else if (line.labelSex === "Male") return line3color;
+        })
         .style(
           "font-family",
           `"ABCSans-bold", ABCSans, Helvetica, Arial, sans-serif`
@@ -217,7 +241,11 @@ class SlopeChart extends React.Component {
         .attr("y", scaleHeight(line.last) + 15)
         .attr("text-anchor", "start")
         .attr("dominant-baseline", "middle")
-        .attr("fill", line1color)
+        .attr("fill", () => {
+          if (line.labelSex === "All") return line1color;
+          else if (line.labelSex === "Female") return line2color;
+          else if (line.labelSex === "Male") return line3color;
+        })
         .style(
           "font-family",
           `"ABCSans-bold", ABCSans, Helvetica, Arial, sans-serif`
@@ -235,7 +263,11 @@ class SlopeChart extends React.Component {
         .attr("y", scaleHeight(line.last) + 15)
         .attr("text-anchor", "end")
         .attr("dominant-baseline", "middle")
-        .attr("fill", line1color)
+        .attr("fill", () => {
+          if (line.labelSex === "All") return line1color;
+          else if (line.labelSex === "Female") return line2color;
+          else if (line.labelSex === "Male") return line3color;
+        })
         .style(
           "font-family",
           `"ABCSans-bold", ABCSans, Helvetica, Arial, sans-serif`
