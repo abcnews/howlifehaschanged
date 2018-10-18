@@ -28,6 +28,7 @@ class ChartStory extends React.Component {
                 ]}
               />
             </Portal>
+
             <Portal into={document.querySelector(".sidsdeaths")}>
               <SlopeChart
                 years={["1981", "2016"]}
@@ -44,6 +45,7 @@ class ChartStory extends React.Component {
                 ]}
               />
             </Portal>
+
             <Portal into={document.querySelector(".formalchildcare")}>
               <SlopeChart
                 years={["1981", "2017"]}
@@ -60,6 +62,7 @@ class ChartStory extends React.Component {
                 ]}
               />
             </Portal>
+
             <Portal into={document.querySelector(".costchildcare")}>
               <SlopeChart
                 years={["1984", "2016"]}
@@ -76,6 +79,24 @@ class ChartStory extends React.Component {
                 ]}
               />
             </Portal>
+
+            <Portal into={document.querySelector(".kidsobese")}>
+              <SlopeChart
+                years={["1985", "2015"]}
+                lines={[
+                  {
+                    first: 11,
+                    last: 27,
+                    labelPercent: "145%",
+                    labelSign: "+",
+                    labelSex: "All",
+                    labelStart: "11%",
+                    labelEnd: "27%"
+                  }
+                ]}
+              />
+            </Portal>
+
             <Portal into={document.querySelector(".schooltoyrtwelve")}>
               <SlopeChart
                 years={["1981", "2016"]}

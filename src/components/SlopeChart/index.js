@@ -3,7 +3,7 @@ const styles = require("./styles.scss");
 const d3 = Object.assign({}, require("d3-selection"), require("d3-scale"));
 
 // Increase > 1.0 or decrease < 1.0 height of all charts
-const yScaleFactor = 1.8;
+const yScaleFactor = 3.0;
 
 const CHART_WIDTH = 350;
 
@@ -34,7 +34,7 @@ class SlopeChart extends React.Component {
     // so things don't get out of hand
     const scaleChartHeight = d3
       .scaleLog()
-      .domain([10, 10000])
+      .domain([100, 10000])
       .range([0, 700]);
 
 
