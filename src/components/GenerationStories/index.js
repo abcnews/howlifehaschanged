@@ -46,7 +46,7 @@ class ChartStory extends React.Component {
             </Portal>
             <Portal into={document.querySelector(".formalchildcare")}>
               <SlopeChart
-                years={["1981", "2016"]}
+                years={["1981", "2017"]}
                 lines={[
                   {
                     first: 9,
@@ -56,6 +56,22 @@ class ChartStory extends React.Component {
                     labelSex: "All",
                     labelStart: "9%",
                     labelEnd: "28%"
+                  }
+                ]}
+              />
+            </Portal>
+            <Portal into={document.querySelector(".costchildcare")}>
+              <SlopeChart
+                years={["1984", "2016"]}
+                lines={[
+                  {
+                    first: 2.31,
+                    last: 17.56,
+                    labelPercent: "660%",
+                    labelSign: "+",
+                    labelSex: "All",
+                    labelStart: "$2.31",
+                    labelEnd: "$17.56"
                   }
                 ]}
               />
