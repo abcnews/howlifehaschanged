@@ -8,11 +8,7 @@ class ChartStory extends React.Component {
   render() {
     return (
       <div className={styles.wrapper}>
-        {this.props.currentGeneration === "allages" && (
-          <div>
-            
-          </div>
-        )}
+        {this.props.currentGeneration === "allages" && <div />}
         {(this.props.currentGeneration === "genz" ||
           this.props.currentGeneration === "allages") && (
           <div>
@@ -64,28 +60,37 @@ class ChartStory extends React.Component {
                 ]}
               />
             </Portal>
+            <Portal into={document.querySelector(".schooltoyrtwelve")}>
+              <SlopeChart
+                years={["1981", "2016"]}
+                lines={[
+                  {
+                    first: 38,
+                    last: 88,
+                    labelPercent: "132%",
+                    labelSign: "+",
+                    labelSex: "Female",
+                    labelStart: "38%",
+                    labelEnd: "88%"
+                  },
+                  {
+                    first: 32,
+                    last: 81,
+                    labelPercent: "132%",
+                    labelSign: "+",
+                    labelSex: "Male",
+                    labelStart: "32%",
+                    labelEnd: "81%"
+                  }
+                ]}
+              />
+            </Portal>
           </div>
         )}
-        {this.props.currentGeneration === "millennials" && (
-          <div>
-            
-          </div>
-        )}
-        {this.props.currentGeneration === "genx" && (
-          <div>
-            
-          </div>
-        )}
-        {this.props.currentGeneration === "boomers" && (
-          <div>
-            
-          </div>
-        )}
-        {this.props.currentGeneration === "builders" && (
-          <div>
-            
-          </div>
-        )}
+        {this.props.currentGeneration === "millennials" && <div />}
+        {this.props.currentGeneration === "genx" && <div />}
+        {this.props.currentGeneration === "boomers" && <div />}
+        {this.props.currentGeneration === "builders" && <div />}
       </div>
     );
   }

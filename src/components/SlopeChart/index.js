@@ -35,8 +35,23 @@ class SlopeChart extends React.Component {
       .domain([0, CHART_WIDTH])
       .range([0 + MARGIN_LEFT, CHART_WIDTH - MARGIN_RIGHT]);
 
+    const scaleHeight = d3.scaleLinear();
+
     let min;
     let max;
+    let chartHeight;
+
+    // Bounding left line
+    const leftBound = svg.append("line");
+
+    // Bounding right line
+    const rightBound = svg.append("line");
+
+    // Left year
+    const leftYear = svg.append("text");
+
+    // Right year
+    const rightYear = svg.append("text");
 
     // Loop over lines
     this.props.lines.forEach((line, iteration) => {
@@ -59,10 +74,11 @@ class SlopeChart extends React.Component {
       )
         max = Math.max(line.first, line.last);
 
-      const chartHeight = Math.abs(percentChange);
+      // Chart height is percentage change of
+      // the minimum and maximu value for all lines
+      chartHeight = Math.abs(((max - min) / max) * 100 * yScaleFactor);
 
-      const scaleHeight = d3
-        .scaleLinear()
+      scaleHeight
         .domain([min, max])
         .range([chartHeight - MARGIN_BOTTOM, 0 + MARGIN_TOP]);
 
@@ -74,9 +90,7 @@ class SlopeChart extends React.Component {
         .attr("height", chartHeight)
         .style("background-color", "rgba(0, 0, 0, 0.03"); // remove later
 
-      // Bounding left line
-      svg
-        .append("line")
+      leftBound
         .attr("x1", scaleX(0))
         .attr("y1", scaleHeight(min))
         .attr("x2", scaleX(0))
@@ -84,9 +98,7 @@ class SlopeChart extends React.Component {
         .attr("stroke-width", 3)
         .attr("stroke", "#003C66");
 
-      // Bounding right line
-      svg
-        .append("line")
+      rightBound
         .attr("x1", scaleX(CHART_WIDTH))
         .attr("y1", scaleHeight(min))
         .attr("x2", scaleX(CHART_WIDTH))
@@ -94,9 +106,7 @@ class SlopeChart extends React.Component {
         .attr("stroke-width", 3)
         .attr("stroke", "#003C66");
 
-      // Left year
-      svg
-        .append("text")
+      leftYear
         .text(this.props.years[0])
         .attr("x", scaleX(0) - 3)
         .attr("y", scaleHeight(max) - 12)
@@ -110,9 +120,7 @@ class SlopeChart extends React.Component {
         .style("font-size", "12px")
         .style("font-weight", "bold");
 
-      // Right year
-      svg
-        .append("text")
+      rightYear
         .text(this.props.years[1])
         .attr("x", scaleX(CHART_WIDTH) + 3)
         .attr("y", scaleHeight(max) - 12)
