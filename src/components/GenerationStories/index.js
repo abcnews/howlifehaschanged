@@ -28,7 +28,46 @@ class ChartStory extends React.Component {
             <Portal into={document.querySelector(".infantmortality")}>
               <SlopeChart
                 years={["1981", "2016"]}
-                lines={[{ first: 10.0, last: 3.1, percentChange: -69 }]}
+                lines={[
+                  {
+                    first: 10.0,
+                    last: 3.1,
+                    labelPercent: "- 69%",
+                    labelSex: "All",
+                    labelStart: "10.0",
+                    labelEnd: "3.1"
+                  }
+                ]}
+              />
+            </Portal>
+            <Portal into={document.querySelector(".sidsdeaths")}>
+              <SlopeChart
+                years={["1981", "2016"]}
+                lines={[
+                  {
+                    first: 1.9,
+                    last: 0.1,
+                    labelPercent: "- 95%",
+                    labelSex: "All",
+                    labelStart: "1.9",
+                    labelEnd: "0.1"
+                  }
+                ]}
+              />
+            </Portal>
+            <Portal into={document.querySelector(".formalchildcare")}>
+              <SlopeChart
+                years={["1981", "2016"]}
+                lines={[
+                  {
+                    first: 9,
+                    last: 28,
+                    labelPercent: "+ 211%",
+                    labelSex: "All",
+                    labelStart: "9%",
+                    labelEnd: "28%"
+                  }
+                ]}
               />
             </Portal>
           </div>
@@ -51,7 +90,7 @@ class ChartStory extends React.Component {
             <h3>Generation X</h3>
             <SlopeChart
               years={["1981", "2016"]}
-              lines={[{ first: 765, last: 654 }]}
+              lines={[{ first: 765, last: 254 }]}
             />
           </div>
         )}

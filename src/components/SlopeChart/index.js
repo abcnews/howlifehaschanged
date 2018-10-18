@@ -2,7 +2,8 @@ const React = require("react");
 const styles = require("./styles.scss");
 const d3 = Object.assign({}, require("d3-selection"), require("d3-scale"));
 
-const yScaleFactor = 1.5;
+// Increase > 1.0 or decrease < 1.0 height of all charts
+const yScaleFactor = 1.8;
 
 const CHART_WIDTH = 350;
 
@@ -27,15 +28,13 @@ class SlopeChart extends React.Component {
     // TODO: loops over lines.... maybe make lines their own component?
     const first = this.props.lines[0].first;
     const last = this.props.lines[0].last;
-    const percentChange = (last - first) / first * 100 * yScaleFactor;
-
+    const percentChange = ((last - first) / first) * 100 * yScaleFactor;
+    const labelStart = this.props.lines[0].labelStart;
 
     const min = Math.min(first, last);
     const max = Math.max(first, last);
 
-  
-
-    const chartHeight = Math.abs(percentChange) // Math.abs(first - last);
+    const chartHeight = Math.abs(percentChange); // Math.abs(first - last);
 
     const wrapper = d3.select(this.node.current);
     const svg = wrapper.append("svg");
@@ -85,7 +84,7 @@ class SlopeChart extends React.Component {
       .attr("x", scaleX(0) - 3)
       .attr("y", scaleHeight(max) - 12)
       .attr("text-anchor", "start")
-      .attr("alignment-baseline", "baseline")
+      .attr("dominant-baseline", "baseline")
       .attr("fill", "#B0E6FF")
       .style(
         "font-family",
@@ -101,7 +100,7 @@ class SlopeChart extends React.Component {
       .attr("x", scaleX(CHART_WIDTH) + 3)
       .attr("y", scaleHeight(max) - 12)
       .attr("text-anchor", "end")
-      .attr("alignment-baseline", "baseline")
+      .attr("dominant-baseline", "baseline")
       .attr("fill", "#B0E6FF")
       .style(
         "font-family",
@@ -135,6 +134,22 @@ class SlopeChart extends React.Component {
       .attr("cy", scaleHeight(last))
       .attr("r", CIRCLE_RADIUS)
       .attr("fill", line1color);
+
+    // Label start
+    svg
+      .append("text")
+      .text(labelStart)
+      .attr("x", scaleX(0) - 8)
+      .attr("y", scaleHeight(first) + 1)
+      .attr("text-anchor", "end")
+      .attr("dominant-baseline", "middle")
+      .attr("fill", line1color)
+      .style(
+        "font-family",
+        `"ABCSans-bold", ABCSans, Helvetica, Arial, sans-serif`
+      )
+      .style("font-size", "12px")
+      .style("font-weight", "bold");
   };
 
   componentDidMount() {
