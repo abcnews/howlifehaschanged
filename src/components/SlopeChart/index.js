@@ -30,6 +30,7 @@ class SlopeChart extends React.Component {
     const last = this.props.lines[0].last;
     const percentChange = ((last - first) / first) * 100 * yScaleFactor;
     const labelStart = this.props.lines[0].labelStart;
+    const labelEnd = this.props.lines[0].labelEnd;
 
     const min = Math.min(first, last);
     const max = Math.max(first, last);
@@ -140,7 +141,7 @@ class SlopeChart extends React.Component {
       .append("text")
       .text(labelStart)
       .attr("x", scaleX(0) - 8)
-      .attr("y", scaleHeight(first) + 1)
+      .attr("y", scaleHeight(first) + 1.35)
       .attr("text-anchor", "end")
       .attr("dominant-baseline", "middle")
       .attr("fill", line1color)
@@ -148,7 +149,23 @@ class SlopeChart extends React.Component {
         "font-family",
         `"ABCSans-bold", ABCSans, Helvetica, Arial, sans-serif`
       )
-      .style("font-size", "12px")
+      .style("font-size", "11px")
+      .style("font-weight", "bold");
+
+    // Label end
+    svg
+      .append("text")
+      .text(labelEnd)
+      .attr("x", scaleX(CHART_WIDTH) + 8)
+      .attr("y", scaleHeight(last) + 1.35)
+      .attr("text-anchor", "start")
+      .attr("dominant-baseline", "middle")
+      .attr("fill", line1color)
+      .style(
+        "font-family",
+        `"ABCSans-bold", ABCSans, Helvetica, Arial, sans-serif`
+      )
+      .style("font-size", "11px")
       .style("font-weight", "bold");
   };
 
