@@ -12,7 +12,7 @@ class ChartStory extends React.Component {
         {(this.props.currentGeneration === "genz" ||
           this.props.currentGeneration === "allages") && (
           <div>
-            <Portal into={document.querySelector(".infantmortality")}>
+            {/* <Portal into={document.querySelector(".infantmortality")}>
               <SlopeChart
                 years={["1981", "2016"]}
                 lines={[
@@ -112,7 +112,7 @@ class ChartStory extends React.Component {
                   }
                 ]}
               />
-            </Portal>
+            </Portal> */}
 
             <Portal into={document.querySelector(".schooltoyrtwelve")}>
               <SlopeChart
@@ -129,7 +129,7 @@ class ChartStory extends React.Component {
                   },
                   {
                     first: 32,
-                    last: 81,
+                    last: 61,
                     labelPercent: "132%",
                     labelSign: "+",
                     labelSex: "Male",
@@ -140,7 +140,7 @@ class ChartStory extends React.Component {
               />
             </Portal>
 
-            <Portal into={document.querySelector(".incometeens")}>
+            {/* <Portal into={document.querySelector(".incometeens")}>
               <SlopeChart
                 years={["1981", "2016"]}
                 lines={[
@@ -190,7 +190,7 @@ class ChartStory extends React.Component {
                   }
                 ]}
               />
-            </Portal>
+            </Portal> */}
           </div>
         )}
         {this.props.currentGeneration === "millennials" && <div />}

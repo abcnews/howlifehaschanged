@@ -60,39 +60,46 @@ class SlopeChart extends React.Component {
     // Right year
     const rightYear = svg.append("text");
 
+    let rightLabels = [];
+
     // Loop over lines
     this.props.lines.forEach((line, iteration) => {
+      // Create a group so we can nudge these later
+      rightLabels[iteration] = svg.append("g");
+
       const percentChange =
         ((line.last - line.first) / line.first) * 100 * yScaleFactor;
 
       // Set new min and max for chart if
       // lines go out of upper and lower bounds
       if (
-        typeof lastname === "undefined" ||
+        typeof min === "undefined" ||
         Math.min(line.first, line.last) < min
       )
         min = Math.min(line.first, line.last);
       if (
-        typeof lastname === "undefined" ||
+        typeof max === "undefined" ||
         Math.max(line.first, line.last) > max
       )
         max = Math.max(line.first, line.last);
 
-      // const totalChange = ((max - min) / min) * 100 * yScaleFactor;
-
-      console.log(percentChange / yScaleFactor);
-
       // Chart height is percentage change of
       // the minimum and maximu value for all lines
       if (
-        typeof lastname === "undefined" ||
+        typeof chartHeight === "undefined" ||
         scaleChartHeight(Math.abs(percentChange)) > chartHeight
       )
         chartHeight = scaleChartHeight(Math.abs(percentChange));
 
+      console.log(min, max)
+
+      console.log(chartHeight)
+
       scaleY
         .domain([min, max])
         .range([chartHeight - MARGIN_BOTTOM, 0 + MARGIN_TOP]);
+
+        // console.log(scaleY())
 
       const didIncrease = () => line.first < line.last;
 
@@ -145,7 +152,10 @@ class SlopeChart extends React.Component {
         )
         .style("font-size", "12px")
         .style("font-weight", "bold");
+    });
 
+    // Second pass now that we know the upper limits
+    this.props.lines.forEach((line, iteration) => {
       // The first line
       svg
         .append("line")
@@ -205,7 +215,7 @@ class SlopeChart extends React.Component {
         .style("font-weight", "bold");
 
       // Label end
-      svg
+      rightLabels[iteration]
         .append("text")
         .text(line.labelEnd)
         .attr("x", scaleX(CHART_WIDTH) + LABEL_RIGHT_OFFSET)
@@ -225,7 +235,7 @@ class SlopeChart extends React.Component {
         .style("font-weight", "bold");
 
       // Label sex
-      svg
+      rightLabels[iteration]
         .append("text")
         .text(line.labelSex)
         .attr("x", scaleX(CHART_WIDTH) + LABEL_RIGHT_OFFSET)
@@ -246,7 +256,7 @@ class SlopeChart extends React.Component {
         .style("text-transform", "uppercase");
 
       // Label percent
-      svg
+      rightLabels[iteration]
         .append("text")
         .text(line.labelPercent)
         .attr("x", scaleX(CHART_WIDTH) + LABEL_RIGHT_OFFSET)
@@ -268,7 +278,7 @@ class SlopeChart extends React.Component {
         .style("font-variant-numeric", "tabular-nums");
 
       // Label sign + or -
-      svg
+      rightLabels[iteration]
         .append("text")
         .text(line.labelSign)
         .attr("x", scaleX(CHART_WIDTH) + LABEL_RIGHT_OFFSET - 3)
@@ -288,7 +298,19 @@ class SlopeChart extends React.Component {
         .style("font-weight", "900")
         .style("text-transform", "uppercase")
         .style("font-variant-numeric", "tabular-nums");
-    });
+    })
+
+    // Nudge labels that may overlap
+    if (rightLabels.length === 2) {
+      rightLabels.forEach(label => {
+        const bounds = label.node().getBBox();
+        // label.attr(
+        //   "transform",
+        //   `translate(0, ${label.node().getBBox().height})`
+        // );
+        console.log(label.node().getBBox());
+      });
+    }
   };
 
   componentDidMount() {
