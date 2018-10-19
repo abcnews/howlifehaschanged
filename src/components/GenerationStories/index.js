@@ -97,6 +97,23 @@ class ChartStory extends React.Component {
               />
             </Portal>
 
+            <Portal into={document.querySelector(".twoparentswork")}>
+              <SlopeChart
+                years={["1981", "2016"]}
+                lines={[
+                  {
+                    first: 39,
+                    last: 63,
+                    labelPercent: "62%",
+                    labelSign: "+",
+                    labelSex: "All",
+                    labelStart: "39%",
+                    labelEnd: "63%"
+                  }
+                ]}
+              />
+            </Portal>
+
             <Portal into={document.querySelector(".schooltoyrtwelve")}>
               <SlopeChart
                 years={["1981", "2016"]}
@@ -118,6 +135,58 @@ class ChartStory extends React.Component {
                     labelSex: "Male",
                     labelStart: "32%",
                     labelEnd: "81%"
+                  }
+                ]}
+              />
+            </Portal>
+
+            <Portal into={document.querySelector(".incometeens")}>
+              <SlopeChart
+                years={["1981", "2016"]}
+                lines={[
+                  {
+                    first: 26188,
+                    last: 10197,
+                    labelPercent: "61%",
+                    labelSign: "-",
+                    labelSex: "All",
+                    labelStart: "$26,188",
+                    labelEnd: "$10,197"
+                  }
+                ]}
+              />
+            </Portal>
+
+            <Portal into={document.querySelector(".unemployedteens")}>
+              <SlopeChart
+                years={["1981", "2016"]}
+                lines={[
+                  {
+                    first: 16,
+                    last: 28,
+                    labelPercent: "75%",
+                    labelSign: "+",
+                    labelSex: "All",
+                    labelStart: "16%",
+                    labelEnd: "28%"
+                  },
+                  {
+                    first: 19,
+                    last: 29,
+                    labelPercent: "52%",
+                    labelSign: "+",
+                    labelSex: "Female",
+                    labelStart: "19%",
+                    labelEnd: "29%"
+                  },
+                  {
+                    first: 13,
+                    last: 26,
+                    labelPercent: "105%",
+                    labelSign: "+",
+                    labelSex: "Male",
+                    labelStart: "13%",
+                    labelEnd: "26%"
                   }
                 ]}
               />

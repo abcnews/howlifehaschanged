@@ -10,7 +10,7 @@ const CHART_WIDTH = 350;
 const MARGIN_TOP = 35;
 const MARGIN_RIGHT = 66;
 const MARGIN_BOTTOM = 35;
-const MARGIN_LEFT = 45;
+const MARGIN_LEFT = 66;
 const LABEL_RIGHT_OFFSET = 20;
 const LABEL_LEFT_OFFSET = 10;
 
@@ -34,9 +34,8 @@ class SlopeChart extends React.Component {
     // so things don't get out of hand
     const scaleChartHeight = d3
       .scaleLog()
-      .domain([100, 10000])
+      .domain([70, 10000])
       .range([0, 700]);
-
 
     const scaleX = d3
       .scaleLinear()
@@ -63,7 +62,6 @@ class SlopeChart extends React.Component {
 
     // Loop over lines
     this.props.lines.forEach((line, iteration) => {
-
       const percentChange =
         ((line.last - line.first) / line.first) * 100 * yScaleFactor;
 
@@ -80,9 +78,17 @@ class SlopeChart extends React.Component {
       )
         max = Math.max(line.first, line.last);
 
+      // const totalChange = ((max - min) / min) * 100 * yScaleFactor;
+
+      console.log(percentChange / yScaleFactor);
+
       // Chart height is percentage change of
       // the minimum and maximu value for all lines
-      chartHeight = scaleChartHeight(Math.abs(percentChange));
+      if (
+        typeof lastname === "undefined" ||
+        scaleChartHeight(Math.abs(percentChange)) > chartHeight
+      )
+        chartHeight = scaleChartHeight(Math.abs(percentChange));
 
       scaleY
         .domain([min, max])
