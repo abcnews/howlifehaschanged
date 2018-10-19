@@ -129,7 +129,7 @@ class ChartStory extends React.Component {
                   },
                   {
                     first: 32,
-                    last: 61,
+                    last: 81,
                     labelPercent: "132%",
                     labelSign: "+",
                     labelSex: "Male",

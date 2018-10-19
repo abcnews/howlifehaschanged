@@ -60,6 +60,7 @@ class SlopeChart extends React.Component {
     // Right year
     const rightYear = svg.append("text");
 
+    // Used for overlap detection
     let rightLabels = [];
 
     // Loop over lines
@@ -72,15 +73,9 @@ class SlopeChart extends React.Component {
 
       // Set new min and max for chart if
       // lines go out of upper and lower bounds
-      if (
-        typeof min === "undefined" ||
-        Math.min(line.first, line.last) < min
-      )
+      if (typeof min === "undefined" || Math.min(line.first, line.last) < min)
         min = Math.min(line.first, line.last);
-      if (
-        typeof max === "undefined" ||
-        Math.max(line.first, line.last) > max
-      )
+      if (typeof max === "undefined" || Math.max(line.first, line.last) > max)
         max = Math.max(line.first, line.last);
 
       // Chart height is percentage change of
@@ -91,15 +86,9 @@ class SlopeChart extends React.Component {
       )
         chartHeight = scaleChartHeight(Math.abs(percentChange));
 
-      console.log(min, max)
-
-      console.log(chartHeight)
-
       scaleY
         .domain([min, max])
         .range([chartHeight - MARGIN_BOTTOM, 0 + MARGIN_TOP]);
-
-        // console.log(scaleY())
 
       const didIncrease = () => line.first < line.last;
 
@@ -298,18 +287,30 @@ class SlopeChart extends React.Component {
         .style("font-weight", "900")
         .style("text-transform", "uppercase")
         .style("font-variant-numeric", "tabular-nums");
-    })
+    });
 
     // Nudge labels that may overlap
     if (rightLabels.length === 2) {
-      rightLabels.forEach(label => {
-        const bounds = label.node().getBBox();
+      label1 = rightLabels[0].node().getBBox();
+      label2 = rightLabels[1].node().getBBox();
+
+      console.log(label1, label2);
+
+      const label1Lowest = label1.y + label1.height;
+
+      const overlap = label1Lowest - label2.y;
+
+      rightLabels[0].attr("transform", `translate(0, -${overlap/2})`)
+      rightLabels[1].attr("transform", `translate(0, ${overlap/2})`)
+      
+      // rightLabels.forEach(label => {
+      //   const bounds = label.node().getBBox();
         // label.attr(
         //   "transform",
         //   `translate(0, ${label.node().getBBox().height})`
         // );
-        console.log(label.node().getBBox());
-      });
+        // console.log(label.node().getBBox());
+      // });
     }
   };
 
