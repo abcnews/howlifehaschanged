@@ -290,27 +290,28 @@ class SlopeChart extends React.Component {
     });
 
     // Nudge labels that may overlap
+    // for exactly 2 labels
     if (rightLabels.length === 2) {
-      label1 = rightLabels[0].node().getBBox();
-      label2 = rightLabels[1].node().getBBox();
+      const label1 = rightLabels[0].node().getBBox();
+      const label2 = rightLabels[1].node().getBBox();
 
-      console.log(label1, label2);
+      // Work out which is on top
+      // then nudge accordingly
+      if (label1.y < label2.y) {
+        const label1Lowest = label1.y + label1.height;
 
-      const label1Lowest = label1.y + label1.height;
+        const overlap = label1Lowest - label2.y;
 
-      const overlap = label1Lowest - label2.y;
+        rightLabels[0].attr("transform", `translate(0, -${overlap / 2})`);
+        rightLabels[1].attr("transform", `translate(0, ${overlap / 2})`);
+      } else {
+        const label2Lowest = label2.y + label2.height;
 
-      rightLabels[0].attr("transform", `translate(0, -${overlap/2})`)
-      rightLabels[1].attr("transform", `translate(0, ${overlap/2})`)
-      
-      // rightLabels.forEach(label => {
-      //   const bounds = label.node().getBBox();
-        // label.attr(
-        //   "transform",
-        //   `translate(0, ${label.node().getBBox().height})`
-        // );
-        // console.log(label.node().getBBox());
-      // });
+        const overlap = label2Lowest - label1.y;
+
+        rightLabels[1].attr("transform", `translate(0, -${overlap / 2})`);
+        rightLabels[0].attr("transform", `translate(0, ${overlap / 2})`);
+      }
     }
   };
 
