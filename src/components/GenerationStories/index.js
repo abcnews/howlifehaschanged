@@ -12,7 +12,7 @@ class ChartStory extends React.Component {
         {(this.props.currentGeneration === "genz" ||
           this.props.currentGeneration === "allages") && (
           <div>
-            {/* <Portal into={document.querySelector(".infantmortality")}>
+            <Portal into={document.querySelector(".infantmortality")}>
               <SlopeChart
                 years={["1981", "2016"]}
                 lines={[
@@ -112,7 +112,7 @@ class ChartStory extends React.Component {
                   }
                 ]}
               />
-            </Portal> */}
+            </Portal>
 
             <Portal into={document.querySelector(".schooltoyrtwelve")}>
               <SlopeChart
@@ -140,7 +140,7 @@ class ChartStory extends React.Component {
               />
             </Portal>
 
-            {/* <Portal into={document.querySelector(".incometeens")}>
+            <Portal into={document.querySelector(".incometeens")}>
               <SlopeChart
                 years={["1981", "2016"]}
                 lines={[
@@ -156,20 +156,11 @@ class ChartStory extends React.Component {
                 ]}
               />
             </Portal>
-*/}
+
             <Portal into={document.querySelector(".unemployedteens")}>
               <SlopeChart
                 years={["1981", "2016"]}
                 lines={[
-                  {
-                    first: 16,
-                    last: 30,
-                    labelPercent: "75%",
-                    labelSign: "+",
-                    labelSex: "All",
-                    labelStart: "16%",
-                    labelEnd: "28%"
-                  },
                   {
                     first: 19,
                     last: 29,
@@ -187,6 +178,68 @@ class ChartStory extends React.Component {
                     labelSex: "Male",
                     labelStart: "13%",
                     labelEnd: "26%"
+                  },
+                  {
+                    first: 16,
+                    last: 28,
+                    labelPercent: "75%",
+                    labelSign: "+",
+                    labelSex: "All",
+                    labelStart: "16%",
+                    labelEnd: "28%"
+                  }
+                ]}
+              />
+            </Portal>
+
+             <Portal into={document.querySelector(".underemployed")}>
+              <SlopeChart
+                years={["1981", "2016"]}
+                lines={[
+                  {
+                    first: 5,
+                    last: 18,
+                    labelPercent: "259%",
+                    labelSign: "+",
+                    labelSex: "Female",
+                    labelStart: "5%",
+                    labelEnd: "18%"
+                  },
+                  {
+                    first: 3,
+                    last: 16,
+                    labelPercent: "423%",
+                    labelSign: "+",
+                    labelSex: "Male",
+                    labelStart: "3%",
+                    labelEnd: "16%"
+                  },
+                  {
+                    first: 4,
+                    last: 17,
+                    labelPercent: "326%",
+                    labelSign: "+",
+                    labelSex: "All",
+                    labelStart: "4%",
+                    labelEnd: "17%"
+                  }
+                ]}
+              />
+            </Portal>
+
+            <Portal into={document.querySelector(".roadaccidents")}>
+              <SlopeChart
+                years={["1981", "2016"]}
+                lines={[
+                  
+                  {
+                    first: 53,
+                    last: 9,
+                    labelPercent: "83%",
+                    labelSign: "-",
+                    labelSex: "All",
+                    labelStart: "53",
+                    labelEnd: "9"
                   }
                 ]}
               />

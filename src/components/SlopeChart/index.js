@@ -69,7 +69,9 @@ class SlopeChart extends React.Component {
       rightLabels[iteration] = svg.append("g");
 
       const percentChange =
-        ((line.last - line.first) / line.first) * 100 * yScaleFactor;
+        ((line.last - line.first) / line.first) * 100;
+
+      console.log(percentChange);
 
       // Set new min and max for chart if
       // lines go out of upper and lower bounds
@@ -82,9 +84,9 @@ class SlopeChart extends React.Component {
       // the minimum and maximu value for all lines
       if (
         // typeof chartHeight === "undefined" ||
-        scaleChartHeight(Math.abs(percentChange)) > chartHeight
+        scaleChartHeight(Math.abs(percentChange * yScaleFactor)) > chartHeight
       )
-        chartHeight = scaleChartHeight(Math.abs(percentChange));
+        chartHeight = scaleChartHeight(Math.abs(percentChange * yScaleFactor));
 
       scaleY
         .domain([min, max])
@@ -145,6 +147,7 @@ class SlopeChart extends React.Component {
 
     // Second pass now that we know the upper limits
     this.props.lines.forEach((line, iteration) => {
+console.log(line.labelSex)
       // The first line
       svg
         .append("line")
@@ -362,8 +365,6 @@ class SlopeChart extends React.Component {
         .node()
         .getBBox();
 
-      console.log(topBox, middleBox, bottomBox);
-
       // There can be 2 overlaps (maybe 3???)
       const topLowest = topBox.y + topBox.height;
       const middleLowest = middleBox.y + middleBox.height;
@@ -373,14 +374,15 @@ class SlopeChart extends React.Component {
 
       const bottomOverlap = bottomLowest - bottomBox.y;
 
-      console.log(topOverlap, bottomOverlap);
-
+      // Set up the translates to change later
+      // Zero means we leave the labels alone
       let topTranslate = 0;
       let middleTranslate = 0;
       let bottomTranslate = 0;
 
+      // Use the difference between overlaps
+      // to smooth out average of all
       const diff = topOverlap - bottomOverlap;
-      console.log(diff)
 
       // If only top overlaps
       if (topOverlap > 0 && bottomOverlap <= 0) {
@@ -400,16 +402,16 @@ class SlopeChart extends React.Component {
         // Just in case the nudge overlaps the top
         if (middleBox.y + middleTranslate < topLowest)
           topTranslate = middleBox.y + middleTranslate - topLowest;
-      }
-
+      } 
       
-
+      // If both overlap
       else if (bottomOverlap > 0 && topOverlap > 0) {
         topTranslate = -topOverlap + diff / 2;
         middleTranslate = 0 + diff / 2;
         bottomTranslate = bottomOverlap + diff / 2;
       }
 
+      // Now actually do the label translations
       top().attr("transform", `translate(0, ${topTranslate})`);
       middle().attr("transform", `translate(0, ${middleTranslate})`);
       bottom().attr("transform", `translate(0, ${bottomTranslate})`);
