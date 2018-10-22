@@ -46,7 +46,7 @@ class SlopeChart extends React.Component {
 
     let min;
     let max;
-    let chartHeight;
+    let chartHeight = 100; // set min height
 
     // Bounding left line
     const leftBound = svg.append("line");
@@ -81,7 +81,7 @@ class SlopeChart extends React.Component {
       // Chart height is percentage change of
       // the minimum and maximu value for all lines
       if (
-        typeof chartHeight === "undefined" ||
+        // typeof chartHeight === "undefined" ||
         scaleChartHeight(Math.abs(percentChange)) > chartHeight
       )
         chartHeight = scaleChartHeight(Math.abs(percentChange));
@@ -324,7 +324,7 @@ class SlopeChart extends React.Component {
       const label2 = rightLabels[1].node().getBBox();
       const label3 = rightLabels[2].node().getBBox();
 
-      // Calculate which order they are in top to bottom
+      // Calculate which order they are in, top to bottom
       const top = () => {
         if (label1.y === Math.min(label1.y, label2.y, label3.y))
           return rightLabels[0];
@@ -344,74 +344,60 @@ class SlopeChart extends React.Component {
       };
 
       const middle = () => {
-        if (
-          Math.max(label1.y, label2.y, label3.y) <
-          label1 <
-          Math.min(label1.y, label2.y, label3.y)
-        )
+        if (rightLabels[0] !== top() && rightLabels[0] !== bottom())
           return rightLabels[0];
-        if (
-          Math.max(label1.y, label2.y, label3.y) <
-          label2 <
-          Math.min(label1.y, label2.y, label3.y)
-        )
+        if (rightLabels[1] !== top() && rightLabels[1] !== bottom())
           return rightLabels[1];
-        if (
-          Math.max(label1.y, label2.y, label3.y) <
-          label3 <
-          Math.min(label1.y, label2.y, label3.y)
-        )
+        if (rightLabels[2] !== top() && rightLabels[2] !== bottom())
           return rightLabels[2];
       };
 
-      console.log(
-        top()
-          .node()
-          .getBBox(),
+      const topBox = top()
+        .node()
+        .getBBox();
+      const middleBox = middle()
+        .node()
+        .getBBox();
+      const bottomBox = bottom()
+        .node()
+        .getBBox();
 
-        middle()
-          .node()
-          .getBBox(),
-
-        bottom()
-          .node()
-          .getBBox()
-      );
+      console.log(topBox, middleBox, bottomBox);
 
       // There can be 2 overlaps (maybe 3???)
-      const topLowest =
-        top()
-          .node()
-          .getBBox().y +
-        top()
-          .node()
-          .getBBox().height;
+      const topLowest = topBox.y + topBox.height;
+      const middleLowest = middleBox.y + middleBox.height;
+      const bottomLowest = middleBox.y + topBox.height;
 
-      const bottomLowest =
-        middle()
-          .node()
-          .getBBox().y +
-        top()
-          .node()
-          .getBBox().height;
+      const topOverlap = topLowest - middleBox.y;
 
-      const topOverlap =
-        topLowest -
-        middle()
-          .node()
-          .getBBox().y;
+      const bottomOverlap = bottomLowest - bottomBox.y;
 
-      const bottomOverlap =
-        bottomLowest -
-        bottom()
-          .node()
-          .getBBox().y;
+      console.log(topOverlap, bottomOverlap);
 
-      console.log(topOverlap, bottomOverlap)
-
-      let topTranslate = -topOverlap;
+      let topTranslate = 0;
       let middleTranslate = 0;
-      let bottomTranslate = bottomOverlap;
+      let bottomTranslate = 0;
+
+      // If only top overlaps
+      if (topOverlap > 0 && bottomOverlap <= 0) {
+        bottomTranslate = 0;
+        middleTranslate = topOverlap / 2;
+        topTranslate = -topOverlap / 2;
+        if (middleLowest + middleTranslate > bottomBox.y)
+          bottomTranslate = middleLowest + middleTranslate - bottomBox.y;
+      }
+
+      // If only bottom overlaps
+      if (bottomOverlap > 0 && topOverlap <= 0) {
+        topTranslate = 0;
+        middleTranslate = -bottomOverlap / 2;
+        bottomTranslate = bottomOverlap / 2;
+        if (middleBox.y + middleTranslate < topLowest)
+          topTranslate = middleBox.y + middleTranslate - topLowest;
+      }
+
+      // const diff = topOverlap - bottomOverlap;
 
       top().attr("transform", `translate(0, ${topTranslate})`);
       middle().attr("transform", `translate(0, ${middleTranslate})`);
