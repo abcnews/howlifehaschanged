@@ -379,25 +379,36 @@ class SlopeChart extends React.Component {
       let middleTranslate = 0;
       let bottomTranslate = 0;
 
+      const diff = topOverlap - bottomOverlap;
+      console.log(diff)
+
       // If only top overlaps
       if (topOverlap > 0 && bottomOverlap <= 0) {
         bottomTranslate = 0;
         middleTranslate = topOverlap / 2;
         topTranslate = -topOverlap / 2;
+        // Just in case the nudge overlaps the bottom
         if (middleLowest + middleTranslate > bottomBox.y)
           bottomTranslate = middleLowest + middleTranslate - bottomBox.y;
       }
 
       // If only bottom overlaps
-      if (bottomOverlap > 0 && topOverlap <= 0) {
+      else if (bottomOverlap > 0 && topOverlap <= 0) {
         topTranslate = 0;
         middleTranslate = -bottomOverlap / 2;
         bottomTranslate = bottomOverlap / 2;
+        // Just in case the nudge overlaps the top
         if (middleBox.y + middleTranslate < topLowest)
           topTranslate = middleBox.y + middleTranslate - topLowest;
       }
 
-      // const diff = topOverlap - bottomOverlap;
+      
+
+      else if (bottomOverlap > 0 && topOverlap > 0) {
+        topTranslate = -topOverlap + diff / 2;
+        middleTranslate = 0 + diff / 2;
+        bottomTranslate = bottomOverlap + diff / 2;
+      }
 
       top().attr("transform", `translate(0, ${topTranslate})`);
       middle().attr("transform", `translate(0, ${middleTranslate})`);
