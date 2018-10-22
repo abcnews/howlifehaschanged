@@ -3,13 +3,13 @@ const styles = require("./styles.scss");
 const d3 = Object.assign({}, require("d3-selection"), require("d3-scale"));
 
 // Increase > 1.0 or decrease < 1.0 height of all charts
-const yScaleFactor = 3.0;
+const yScaleFactor = 4.0;
 
 const CHART_WIDTH = 350;
 
-const MARGIN_TOP = 35;
+const MARGIN_TOP = 60;
 const MARGIN_RIGHT = 66;
-const MARGIN_BOTTOM = 35;
+const MARGIN_BOTTOM = 60;
 const MARGIN_LEFT = 66;
 const LABEL_RIGHT_OFFSET = 20;
 const LABEL_LEFT_OFFSET = 10;
@@ -208,7 +208,7 @@ class SlopeChart extends React.Component {
         .append("text")
         .text(line.labelEnd)
         .attr("x", scaleX(CHART_WIDTH) + LABEL_RIGHT_OFFSET)
-        .attr("y", scaleY(line.last) + 1.35)
+        .attr("y", scaleY(line.last) + 1.3)
         .attr("text-anchor", "start")
         .attr("dominant-baseline", "middle")
         .attr("fill", () => {
@@ -263,7 +263,6 @@ class SlopeChart extends React.Component {
         )
         .style("font-size", "14px")
         .style("font-weight", "900")
-        .style("text-transform", "uppercase")
         .style("font-variant-numeric", "tabular-nums");
 
       // Label sign + or -
@@ -321,13 +320,11 @@ class SlopeChart extends React.Component {
     // Charts with 3 lines
     // 3 labels makes things harder
     if (rightLabels.length === 3) {
-      console.log("Three lines!!!");
       const label1 = rightLabels[0].node().getBBox();
       const label2 = rightLabels[1].node().getBBox();
       const label3 = rightLabels[2].node().getBBox();
 
-      console.log(label1, label2, label3);
-
+      // Calculate which order they are in top to bottom
       const top = () => {
         if (label1.y === Math.min(label1.y, label2.y, label3.y))
           return rightLabels[0];
@@ -380,6 +377,45 @@ class SlopeChart extends React.Component {
           .node()
           .getBBox()
       );
+
+      // There can be 2 overlaps (maybe 3???)
+      const topLowest =
+        top()
+          .node()
+          .getBBox().y +
+        top()
+          .node()
+          .getBBox().height;
+
+      const bottomLowest =
+        middle()
+          .node()
+          .getBBox().y +
+        top()
+          .node()
+          .getBBox().height;
+
+      const topOverlap =
+        topLowest -
+        middle()
+          .node()
+          .getBBox().y;
+
+      const bottomOverlap =
+        bottomLowest -
+        bottom()
+          .node()
+          .getBBox().y;
+
+      console.log(topOverlap, bottomOverlap)
+
+      let topTranslate = -topOverlap;
+      let middleTranslate = 0;
+      let bottomTranslate = bottomOverlap;
+
+      top().attr("transform", `translate(0, ${topTranslate})`);
+      middle().attr("transform", `translate(0, ${middleTranslate})`);
+      bottom().attr("transform", `translate(0, ${bottomTranslate})`);
     }
   };
 
