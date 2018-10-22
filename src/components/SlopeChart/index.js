@@ -289,6 +289,7 @@ class SlopeChart extends React.Component {
         .style("font-variant-numeric", "tabular-nums");
     });
 
+    // COLLISION DETECTION!!!!
     // Nudge labels that may overlap
     // for exactly 2 labels
     if (rightLabels.length === 2) {
@@ -302,16 +303,83 @@ class SlopeChart extends React.Component {
 
         const overlap = label1Lowest - label2.y;
 
-        rightLabels[0].attr("transform", `translate(0, -${overlap / 2})`);
-        rightLabels[1].attr("transform", `translate(0, ${overlap / 2})`);
+        if (overlap > 0) {
+          rightLabels[0].attr("transform", `translate(0, -${overlap / 2})`);
+          rightLabels[1].attr("transform", `translate(0, ${overlap / 2})`);
+        }
       } else {
         const label2Lowest = label2.y + label2.height;
 
         const overlap = label2Lowest - label1.y;
-
-        rightLabels[1].attr("transform", `translate(0, -${overlap / 2})`);
-        rightLabels[0].attr("transform", `translate(0, ${overlap / 2})`);
+        if (overlap > 0) {
+          rightLabels[1].attr("transform", `translate(0, -${overlap / 2})`);
+          rightLabels[0].attr("transform", `translate(0, ${overlap / 2})`);
+        }
       }
+    }
+
+    // Charts with 3 lines
+    // 3 labels makes things harder
+    if (rightLabels.length === 3) {
+      console.log("Three lines!!!");
+      const label1 = rightLabels[0].node().getBBox();
+      const label2 = rightLabels[1].node().getBBox();
+      const label3 = rightLabels[2].node().getBBox();
+
+      console.log(label1, label2, label3);
+
+      const top = () => {
+        if (label1.y === Math.min(label1.y, label2.y, label3.y))
+          return rightLabels[0];
+        if (label2.y === Math.min(label2.y, label2.y, label3.y))
+          return rightLabels[1];
+        if (label3.y === Math.min(label3.y, label2.y, label3.y))
+          return rightLabels[2];
+      };
+
+      const bottom = () => {
+        if (label1.y === Math.max(label1.y, label2.y, label3.y))
+          return rightLabels[0];
+        if (label2.y === Math.max(label2.y, label2.y, label3.y))
+          return rightLabels[1];
+        if (label3.y === Math.max(label3.y, label2.y, label3.y))
+          return rightLabels[2];
+      };
+
+      const middle = () => {
+        if (
+          Math.max(label1.y, label2.y, label3.y) <
+          label1 <
+          Math.min(label1.y, label2.y, label3.y)
+        )
+          return rightLabels[0];
+        if (
+          Math.max(label1.y, label2.y, label3.y) <
+          label2 <
+          Math.min(label1.y, label2.y, label3.y)
+        )
+          return rightLabels[1];
+        if (
+          Math.max(label1.y, label2.y, label3.y) <
+          label3 <
+          Math.min(label1.y, label2.y, label3.y)
+        )
+          return rightLabels[2];
+      };
+
+      console.log(
+        top()
+          .node()
+          .getBBox(),
+
+        middle()
+          .node()
+          .getBBox(),
+
+        bottom()
+          .node()
+          .getBBox()
+      );
     }
   };
 

@@ -156,7 +156,7 @@ class ChartStory extends React.Component {
                 ]}
               />
             </Portal>
-
+*/}
             <Portal into={document.querySelector(".unemployedteens")}>
               <SlopeChart
                 years={["1981", "2016"]}
@@ -190,7 +190,7 @@ class ChartStory extends React.Component {
                   }
                 ]}
               />
-            </Portal> */}
+            </Portal>
           </div>
         )}
         {this.props.currentGeneration === "millennials" && <div />}
