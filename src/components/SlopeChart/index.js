@@ -23,7 +23,19 @@ class SlopeChart extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = { title: "" };
+
     this.node = React.createRef();
+  }
+
+  componentDidMount() {
+    this.setState({title: this.node.current.parentNode.previousSibling.innerText})
+    this.attachChart();
+  }
+
+  componentDidUpdate() {
+    const titleD3El = d3.select(this.node.current.parentNode.previousSibling);
+    titleD3El.classed("interactive-always-hide", true);
   }
 
   attachChart = () => {
@@ -68,8 +80,7 @@ class SlopeChart extends React.Component {
       // Create a group so we can nudge these later
       rightLabels[iteration] = svg.append("g");
 
-      const percentChange =
-        ((line.last - line.first) / line.first) * 100;
+      const percentChange = ((line.last - line.first) / line.first) * 100;
 
       console.log(percentChange);
 
@@ -147,7 +158,7 @@ class SlopeChart extends React.Component {
 
     // Second pass now that we know the upper limits
     this.props.lines.forEach((line, iteration) => {
-console.log(line.labelSex)
+      console.log(line.labelSex);
       // The first line
       svg
         .append("line")
@@ -402,8 +413,8 @@ console.log(line.labelSex)
         // Just in case the nudge overlaps the top
         if (middleBox.y + middleTranslate < topLowest)
           topTranslate = middleBox.y + middleTranslate - topLowest;
-      } 
-      
+      }
+
       // If both overlap
       else if (bottomOverlap > 0 && topOverlap > 0) {
         topTranslate = -topOverlap + diff / 2;
@@ -418,12 +429,10 @@ console.log(line.labelSex)
     }
   };
 
-  componentDidMount() {
-    this.attachChart();
-  }
-
   render() {
-    return <div ref={this.node} className={styles.wrapper} />;
+    return <div ref={this.node} className={styles.wrapper}>
+    <div>{this.state.title}</div>
+    </div>;
   }
 
   // Set default props

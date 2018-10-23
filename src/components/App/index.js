@@ -51,8 +51,12 @@ function hideOtherGenrations(visibleGeneration) {
   generations.forEach(generation => {
     const gens = d3.selectAll("." + generation);
     if (visibleGeneration === "allages" || generation === visibleGeneration)
-      gens.style("display", null);
-    else gens.style("display", "none");
+      // gens.style("display", null);
+      gens.classed(styles.hidden, false);
+    else {
+      // gens.style("display", "none");
+      gens.classed(styles.hidden, true);
+    }
   });
 }
 

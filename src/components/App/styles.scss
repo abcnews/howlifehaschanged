@@ -1,3 +1,7 @@
+.hidden {
+  display: none;
+}
+
 // Using this section to override some global styles
 :global {
   .Header {
@@ -7,5 +11,9 @@
 
   .is-dark-mode body {
     background-color: #175482 !important;
+  }
+
+  .interactive-always-hide {
+    display: none !important;
   }
 }
