@@ -29,7 +29,9 @@ class SlopeChart extends React.Component {
   }
 
   componentDidMount() {
-    this.setState({title: this.node.current.parentNode.previousSibling.innerText})
+    this.setState({
+      title: this.node.current.parentNode.previousSibling.innerText
+    });
     this.attachChart();
   }
 
@@ -108,8 +110,8 @@ class SlopeChart extends React.Component {
       // Style main svg container
       svg
         .attr("width", this.props.width || CHART_WIDTH)
-        .attr("height", chartHeight)
-        .style("background-color", "rgba(0, 0, 0, 0.03"); // remove later
+        .attr("height", chartHeight);
+      // .style("background-color", "rgba(0, 0, 0, 0.03"); // remove later
 
       leftBound
         .attr("x1", scaleX(0))
@@ -430,9 +432,11 @@ class SlopeChart extends React.Component {
   };
 
   render() {
-    return <div ref={this.node} className={styles.wrapper}>
-    <div>{this.state.title}</div>
-    </div>;
+    return (
+      <div ref={this.node} className={styles.wrapper}>
+        <div>{this.state.title}</div>
+      </div>
+    );
   }
 
   // Set default props
