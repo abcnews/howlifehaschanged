@@ -36,6 +36,7 @@ function preFlight(odyssey) {
   // Add classes to paragraphs
   hashNext("class");
 
+  // Hide the chart title text coming in from CoreMedia
   hideTitles(classesToHide);
 }
 
@@ -116,7 +117,6 @@ function hashNext(targetString) {
 
 function hideTitles(classesToHide) {
   classesToHide.forEach(paragraphClass => {
-    // console.log(document.querySelector("." + paragraphClass).previousSibling)
     d3.select(
       document.querySelector("." + paragraphClass).previousSibling
     ).classed("interactive-always-hidden", true);

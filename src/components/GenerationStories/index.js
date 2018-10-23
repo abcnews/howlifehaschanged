@@ -16,7 +16,7 @@ class ChartStory extends React.Component {
               <div className={styles.row}>
                 <div className={styles.column}>
                   <SlopeChart
-                    title={document.querySelector(".infantmortality").previousSibling.innerText}
+                    title={getTitle("infantmortality")}
                     years={["1981", "2016"]}
                     lines={[
                       {
@@ -33,7 +33,7 @@ class ChartStory extends React.Component {
                 </div>
                 <div className={styles.column}>
                   <SlopeChart
-                    title={document.querySelector(".sidsdeaths").previousSibling.innerText}
+                    title={getTitle("sidsdeaths")}
                     years={["1981", "2016"]}
                     lines={[
                       {
@@ -55,6 +55,7 @@ class ChartStory extends React.Component {
 
             <Portal into={document.querySelector(".formalchildcare")}>
               <SlopeChart
+                title={getTitle("formalchildcare")}
                 years={["1981", "2017"]}
                 lines={[
                   {
@@ -72,6 +73,7 @@ class ChartStory extends React.Component {
 
             <Portal into={document.querySelector(".costchildcare")}>
               <SlopeChart
+                title={getTitle("costchildcare")}
                 years={["1984", "2016"]}
                 lines={[
                   {
@@ -89,6 +91,7 @@ class ChartStory extends React.Component {
 
             <Portal into={document.querySelector(".kidsobese")}>
               <SlopeChart
+              title={getTitle("kidsobese")}
                 years={["1985", "2015"]}
                 lines={[
                   {
@@ -106,6 +109,7 @@ class ChartStory extends React.Component {
 
             <Portal into={document.querySelector(".twoparentswork")}>
               <SlopeChart
+              title={getTitle("twoparentswork")}
                 years={["1981", "2016"]}
                 lines={[
                   {
@@ -123,6 +127,7 @@ class ChartStory extends React.Component {
 
             <Portal into={document.querySelector(".schooltoyrtwelve")}>
               <SlopeChart
+              title={getTitle("schooltoyrtwelve")}
                 years={["1981", "2016"]}
                 lines={[
                   {
@@ -149,6 +154,7 @@ class ChartStory extends React.Component {
 
             <Portal into={document.querySelector(".incometeens")}>
               <SlopeChart
+              title={getTitle("incometeens")}
                 years={["1981", "2016"]}
                 lines={[
                   {
@@ -166,6 +172,7 @@ class ChartStory extends React.Component {
 
             <Portal into={document.querySelector(".unemployedteens")}>
               <SlopeChart
+              title={getTitle("unemployedteens")}
                 years={["1981", "2016"]}
                 lines={[
                   {
@@ -201,6 +208,7 @@ class ChartStory extends React.Component {
 
             <Portal into={document.querySelector(".underemployed")}>
               <SlopeChart
+              title={getTitle("underemployed")}
                 years={["1981", "2016"]}
                 lines={[
                   {
@@ -236,6 +244,7 @@ class ChartStory extends React.Component {
 
             <Portal into={document.querySelector(".roadaccidents")}>
               <SlopeChart
+              title={getTitle("roadaccidents")}
                 years={["1981", "2016"]}
                 lines={[
                   {
@@ -259,6 +268,10 @@ class ChartStory extends React.Component {
       </div>
     );
   }
+}
+
+function getTitle(selector) {
+  return document.querySelector("." + selector).previousSibling.innerText;
 }
 
 module.exports = ChartStory;
