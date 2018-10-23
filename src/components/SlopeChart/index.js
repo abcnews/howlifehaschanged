@@ -23,21 +23,11 @@ class SlopeChart extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { title: "" };
-
     this.node = React.createRef();
   }
 
   componentDidMount() {
-    this.setState({
-      title: this.node.current.parentNode.previousSibling.innerText
-    });
     this.attachChart();
-  }
-
-  componentDidUpdate() {
-    const titleD3El = d3.select(this.node.current.parentNode.previousSibling);
-    titleD3El.classed("interactive-always-hide", true);
   }
 
   attachChart = () => {
@@ -434,7 +424,7 @@ class SlopeChart extends React.Component {
   render() {
     return (
       <div ref={this.node} className={styles.wrapper}>
-        <div>{this.state.title}</div>
+        <div>{this.props.title}</div>
       </div>
     );
   }

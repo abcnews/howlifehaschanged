@@ -13,28 +13,30 @@ function preFlight(odyssey) {
   const header = d3.select(".Header");
   header.insert("div", ":first-child").classed("pre-header", true);
 
+  const classesToHide = [
+    "infantmortality",
+    "sidsdeaths",
+    "formalchildcare",
+    "costchildcare",
+    "kidsobese",
+    "twoparentswork",
+    "schooltoyrtwelve",
+    "incometeens",
+    "unemployedteens",
+    "underemployed",
+    "roadaccidents"
+  ];
+
   // Turn anchors into divs
   hashify({
-    hashList: [
-      "hashchooser",
-      "hashcharts",
-      "infantmortality",
-      "sidsdeaths",
-      "formalchildcare",
-      "costchildcare",
-      "kidsobese",
-      "twoparentswork",
-      "schooltoyrtwelve",
-      "incometeens",
-      "unemployedteens",
-      "underemployed",
-      "roadaccidents"
-    ],
+    hashList: ["hashchooser", "hashcharts", ...classesToHide],
     defaultClass: "u-full"
   });
 
   // Add classes to paragraphs
-  hashNext();
+  hashNext("class");
+
+  hideTitles(classesToHide);
 }
 
 // Re-loads on hot reload
@@ -109,5 +111,14 @@ function hashNext(targetString) {
 
     // Remove anchor
     anchor.parentNode.removeChild(anchor);
+  });
+}
+
+function hideTitles(classesToHide) {
+  classesToHide.forEach(paragraphClass => {
+    // console.log(document.querySelector("." + paragraphClass).previousSibling)
+    d3.select(
+      document.querySelector("." + paragraphClass).previousSibling
+    ).classed("interactive-always-hidden", true);
   });
 }
