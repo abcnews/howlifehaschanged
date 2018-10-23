@@ -24,7 +24,18 @@ function preFlight(odyssey) {
     "incometeens",
     "unemployedteens",
     "underemployed",
-    "roadaccidents"
+    "roadaccidents",
+    "twentiesmarried",
+    "medianmarriage",
+    "defacto",
+    "livingwithparents",
+    "highestdegreethirties",
+    "firstchild",
+    "youthallowance",
+    "costofrent",
+    "doleperweek",
+    "medianhouseprice",
+    "mortgageaffordability"
   ];
 
   // Turn anchors into divs
@@ -117,8 +128,10 @@ function hashNext(targetString) {
 
 function hideTitles(classesToHide) {
   classesToHide.forEach(paragraphClass => {
-    d3.select(
-      document.querySelector("." + paragraphClass).previousSibling
-    ).classed("interactive-always-hidden", true);
+    if (document.querySelector("." + paragraphClass)) {
+      d3.select(
+        document.querySelector("." + paragraphClass).previousSibling
+      ).classed("interactive-always-hidden", true);
+    }
   });
 }

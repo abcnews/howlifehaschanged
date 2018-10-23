@@ -38,7 +38,7 @@ class SlopeChart extends React.Component {
     // so things don't get out of hand
     const scaleChartHeight = d3
       .scaleLog()
-      .domain([70, 10000])
+      .domain([10, 100000])
       .range([0, 700]);
 
     const scaleX = d3
@@ -73,8 +73,6 @@ class SlopeChart extends React.Component {
       rightLabels[iteration] = svg.append("g");
 
       const percentChange = ((line.last - line.first) / line.first) * 100;
-
-      console.log(percentChange);
 
       // Set new min and max for chart if
       // lines go out of upper and lower bounds
@@ -150,7 +148,6 @@ class SlopeChart extends React.Component {
 
     // Second pass now that we know the upper limits
     this.props.lines.forEach((line, iteration) => {
-      console.log(line.labelSex);
       // The first line
       svg
         .append("line")
