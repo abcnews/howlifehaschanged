@@ -57,7 +57,17 @@ function preFlight(odyssey) {
     "lifeexpectancyboomers",
     "heartattackboomers",
     "boomerssmokers",
-    "lungdisease"
+    "lungdisease",
+    "lessthan15k",
+    "morethan65k",
+    "householdincomebuilders",
+    "powerspending",
+    "medicalspending",
+    "annualpension",
+    "buildersasproportion",
+    "deathscancer",
+    "widowedbuilders",
+    "ownedhomeoutright"
   ];
 
   // Turn anchors into divs
