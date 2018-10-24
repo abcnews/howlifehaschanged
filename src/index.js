@@ -35,7 +35,19 @@ function preFlight(odyssey) {
     "costofrent",
     "doleperweek",
     "medianhouseprice",
-    "mortgageaffordability"
+    "mortgageaffordability",
+    "bachelorsforties",
+    "fourchildren",
+    "marriednotworking",
+    "mortgageinterest",
+    "householdspending",
+    "householdincome",
+    "genxsmokers",
+    "adultdrinking",
+    "adultobese",
+    "heartattackgenx",
+    "strokegenx",
+    "divorceboomers"
   ];
 
   // Turn anchors into divs
