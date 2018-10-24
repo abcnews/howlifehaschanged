@@ -49,7 +49,15 @@ function preFlight(odyssey) {
     "strokegenx",
     "divorceboomers",
     "overonehundred",
-    "highestdegreeboomers"
+    "highestdegreeboomers",
+    "manufacturing",
+    "tradeunion",
+    "boomersretired",
+    "retirementaverage",
+    "lifeexpectancyboomers",
+    "heartattackboomers",
+    "boomerssmokers",
+    "lungdisease"
   ];
 
   // Turn anchors into divs

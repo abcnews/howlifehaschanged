@@ -6,6 +6,7 @@ const d3 = Object.assign({}, require("d3-selection"), require("d3-scale"));
 const yScaleFactor = 4.0;
 
 const CHART_WIDTH = 350;
+const MIN_CHART_HEIGHT = 180;
 
 const MARGIN_TOP = 62;
 const MARGIN_RIGHT = 66;
@@ -50,7 +51,7 @@ class SlopeChart extends React.Component {
 
     let min;
     let max;
-    let chartHeight = 100; // set min height
+    let chartHeight = MIN_CHART_HEIGHT; // set min height
 
     // Bounding left line
     const leftBound = svg.append("line");
