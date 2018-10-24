@@ -643,7 +643,7 @@ class ChartStory extends React.Component {
               </div>
             </Portal>
 
-             <Portal into={document.querySelector(".marriednotworking")}>
+            <Portal into={document.querySelector(".marriednotworking")}>
               <div className={styles.row}>
                 <div className={styles.column}>
                   <SlopeChart
@@ -745,7 +745,8 @@ class ChartStory extends React.Component {
                         labelSex: "Female",
                         labelStart: "27%",
                         labelEnd: "17%"
-                      },{
+                      },
+                      {
                         first: 40,
                         last: 21,
                         labelPercent: "48%",
@@ -825,7 +826,8 @@ class ChartStory extends React.Component {
                         labelSex: "Female",
                         labelStart: "47",
                         labelEnd: "8"
-                      },{
+                      },
+                      {
                         first: 202,
                         last: 35,
                         labelPercent: "83%",
@@ -836,14 +838,12 @@ class ChartStory extends React.Component {
                       }
                     ]}
                   />
-                  
                 </div>
                 <div className={styles.column}>
                   <SlopeChart
                     title={getTitle("strokegenx")}
                     years={["1981", "2016"]}
                     lines={[
-                      
                       {
                         first: 28,
                         last: 7,
@@ -869,7 +869,114 @@ class ChartStory extends React.Component {
             </Portal>
           </div>
         )}
-        {this.props.currentGeneration === "boomers" && <div />}
+        {(this.props.currentGeneration === "boomers" ||
+          this.props.currentGeneration === "allages") && <div>
+            <Portal into={document.querySelector(".divorceboomers")}>
+              <div className={styles.row}>
+                <div className={styles.column}>
+                  <SlopeChart
+                    title={getTitle("divorceboomers")}
+                    years={["1981", "2016"]}
+                    lines={[
+                      {
+                        first: 4.1,
+                        last: 7.1,
+                        labelPercent: "73%",
+                        labelSign: "+",
+                        labelSex: "Female",
+                        labelStart: "4.1%",
+                        labelEnd: "7.1%"
+                      },
+                      {
+                        first: 5.4,
+                        last: 10.1,
+                        labelPercent: "87%",
+                        labelSign: "+",
+                        labelSex: "Male",
+                        labelStart: "5.4%",
+                        labelEnd: "10.1"
+                      }
+                    ]}
+                  />
+                </div>
+                
+              </div>
+            </Portal>
+
+             <Portal into={document.querySelector(".overonehundred")}>
+              <div className={styles.row}>
+                <div className={styles.column}>
+                  <SlopeChart
+                    title={getTitle("overonehundred")}
+                    years={["1981", "2016"]}
+                    lines={[
+                      {
+                        first: 48,
+                        last: 15,
+                        labelPercent: "69%",
+                        labelSign: "-",
+                        labelSex: "All",
+                        labelStart: "48%",
+                        labelEnd: "15"
+                      },
+                      {
+                        first: 58,
+                        last: 15,
+                        labelPercent: "75%",
+                        labelSign: "-",
+                        labelSex: "Female",
+                        labelStart: "58%",
+                        labelEnd: "15%"
+                      },{
+                        first: 46,
+                        last: 15,
+                        labelPercent: "67%",
+                        labelSign: "-",
+                        labelSex: "Male",
+                        labelStart: "46%",
+                        labelEnd: "15%"
+                      }
+                    ]}
+                  />
+                </div>
+                <div className={styles.column}>
+                  <SlopeChart
+                    title={getTitle("highestdegreeboomers")}
+                    years={["1981", "2016"]}
+                    lines={[
+                      {
+                        first: 1.4,
+                        last: 14,
+                        labelPercent: "900%",
+                        labelSign: "+",
+                        labelSex: "All",
+                        labelStart: "1.4%",
+                        labelEnd: "14%"
+                      },
+                      {
+                        first: 0.7,
+                        last: 14,
+                        labelPercent: "1900%",
+                        labelSign: "+",
+                        labelSex: "Female",
+                        labelStart: "0.7%",
+                        labelEnd: "14%"
+                      },{
+                        first: 2.2,
+                        last: 13,
+                        labelPercent: "491%",
+                        labelSign: "+",
+                        labelSex: "Male",
+                        labelStart: "2.2%",
+                        labelEnd: "13%"
+                      }
+                    ]}
+                  />
+                </div>
+              </div>
+            </Portal>
+            
+            </div>}
         {this.props.currentGeneration === "builders" && <div />}
       </div>
     );

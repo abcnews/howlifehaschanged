@@ -7,9 +7,9 @@ const yScaleFactor = 4.0;
 
 const CHART_WIDTH = 350;
 
-const MARGIN_TOP = 60;
+const MARGIN_TOP = 62;
 const MARGIN_RIGHT = 66;
-const MARGIN_BOTTOM = 60;
+const MARGIN_BOTTOM = 62;
 const MARGIN_LEFT = 66;
 const LABEL_RIGHT_OFFSET = 20;
 const LABEL_LEFT_OFFSET = 10;

@@ -47,7 +47,9 @@ function preFlight(odyssey) {
     "adultobese",
     "heartattackgenx",
     "strokegenx",
-    "divorceboomers"
+    "divorceboomers",
+    "overonehundred",
+    "highestdegreeboomers"
   ];
 
   // Turn anchors into divs
