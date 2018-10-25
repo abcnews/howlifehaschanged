@@ -1329,7 +1329,7 @@ class ChartStory extends React.Component {
                       },
                       {
                         first: 3.3,
-                        last: 11.70,
+                        last: 11.7,
                         labelPercent: "255%",
                         labelSign: "+",
                         labelSex: "Male",
@@ -1338,7 +1338,6 @@ class ChartStory extends React.Component {
                       }
                     ]}
                   />
-                  
                 </div>
               </div>
             </Portal>
@@ -1361,6 +1360,21 @@ class ChartStory extends React.Component {
                       }
                     ]}
                   />
+                  <SlopeChart
+                    title={getTitle("annualpension")}
+                    years={["1981", "2016"]}
+                    lines={[
+                      {
+                        first: 13100,
+                        last: 20665,
+                        labelPercent: "58%",
+                        labelSign: "+",
+                        labelSex: "All",
+                        labelStart: "$13,100",
+                        labelEnd: "$20,665"
+                      }
+                    ]}
+                  />
                 </div>
                 <div className={styles.column}>
                   <SlopeChart
@@ -1375,21 +1389,6 @@ class ChartStory extends React.Component {
                         labelSex: "All",
                         labelStart: "$30",
                         labelEnd: "$81"
-                      }
-                    ]}
-                  />
-                  <SlopeChart
-                    title={getTitle("annualpension")}
-                    years={["1981", "2016"]}
-                    lines={[
-                      {
-                        first: 13100,
-                        last: 20665,
-                        labelPercent: "58%",
-                        labelSign: "+",
-                        labelSex: "All",
-                        labelStart: "$13,100",
-                        labelEnd: "$20,665"
                       }
                     ]}
                   />
