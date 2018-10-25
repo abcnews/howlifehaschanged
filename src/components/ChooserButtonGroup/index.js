@@ -6,12 +6,13 @@ const ChooserButton = require("../ChooserButton");
 class ChooserButtonGroup extends React.Component {
   render() {
     // Function passed down from main App
-    const { setGeneration } = this.props;
+    const { setGeneration, clearGeneration } = this.props;
 
     return (
       <div className={styles.wrapper}>
         <ChooserButton
           setGeneration={setGeneration}
+          clearGeneration={clearGeneration}
           currentGeneration={this.props.currentGeneration}
           generationSlug={"allages"}
         >
@@ -19,6 +20,7 @@ class ChooserButtonGroup extends React.Component {
         </ChooserButton>
         <ChooserButton
           setGeneration={setGeneration}
+          clearGeneration={clearGeneration}
           currentGeneration={this.props.currentGeneration}
           generationSlug={"genz"}
         >
@@ -26,6 +28,7 @@ class ChooserButtonGroup extends React.Component {
         </ChooserButton>
         <ChooserButton
           setGeneration={setGeneration}
+          clearGeneration={clearGeneration}
           currentGeneration={this.props.currentGeneration}
           generationSlug={"millennials"}
         >
@@ -33,6 +36,7 @@ class ChooserButtonGroup extends React.Component {
         </ChooserButton>
         <ChooserButton
           setGeneration={setGeneration}
+          clearGeneration={clearGeneration}
           currentGeneration={this.props.currentGeneration}
           generationSlug={"genx"}
         >
@@ -40,6 +44,7 @@ class ChooserButtonGroup extends React.Component {
         </ChooserButton>
         <ChooserButton
           setGeneration={setGeneration}
+          clearGeneration={clearGeneration}
           currentGeneration={this.props.currentGeneration}
           generationSlug={"boomers"}
         >
@@ -47,6 +52,7 @@ class ChooserButtonGroup extends React.Component {
         </ChooserButton>
         <ChooserButton
           setGeneration={setGeneration}
+          clearGeneration={clearGeneration}
           currentGeneration={this.props.currentGeneration}
           generationSlug={"builders"}
         >

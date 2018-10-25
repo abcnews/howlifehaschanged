@@ -10,7 +10,7 @@ const TABLET_PORTRAIT_OR_UP = 600;
 class AgeChooser extends React.Component {
   render() {
     // Function passed down from main App
-    const { setGeneration } = this.props;
+    const { setGeneration, clearGeneration } = this.props;
 
     return (
       <div className={styles.wrapper}>
@@ -34,6 +34,7 @@ class AgeChooser extends React.Component {
                 <ChooserDropdown
                   currentGeneration={this.props.currentGeneration}
                   setGeneration={setGeneration}
+                  clearGeneration={clearGeneration}
                 />
               )}
 
@@ -43,8 +44,9 @@ class AgeChooser extends React.Component {
               */}
               {width > TABLET_PORTRAIT_OR_UP && (
                 <ChooserButtonGroup
-                  setGeneration={setGeneration}
                   currentGeneration={this.props.currentGeneration}
+                  setGeneration={setGeneration}
+                  clearGeneration={clearGeneration}
                 />
               )}
             </div>

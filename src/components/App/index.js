@@ -15,6 +15,10 @@ class App extends React.Component {
     this.setState({ myGeneration: whatGeneration });
   };
 
+  clearGeneration = () => {
+    this.setState({ myGeneration: "" });
+  };
+
   componentDidMount() {
     hideOtherGenrations(this.state.myGeneration);
   }
@@ -35,6 +39,7 @@ class App extends React.Component {
         <Portal into={document.querySelector(".hashchooser")}>
           <AgeChooser
             setGeneration={this.setGeneration}
+            clearGeneration={this.clearGeneration}
             currentGeneration={this.state.myGeneration}
           />
         </Portal>

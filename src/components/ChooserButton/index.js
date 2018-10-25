@@ -3,7 +3,16 @@ const styles = require("./styles.scss");
 
 class ChooserButton extends React.Component {
   handleClick = () => {
-    this.props.setGeneration(this.props.generationSlug);
+    // Extract props
+    const {
+      currentGeneration,
+      generationSlug,
+      clearGeneration,
+      setGeneration
+    } = this.props;
+
+    if (currentGeneration === generationSlug) clearGeneration();
+    else setGeneration(generationSlug);
   };
 
   render() {
