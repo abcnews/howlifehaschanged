@@ -57,14 +57,13 @@ class App extends React.Component {
 }
 
 function hideOtherGenrations(visibleGeneration) {
-  console.log(visibleGeneration);
   generations.forEach(generation => {
     const gens = d3.selectAll("." + generation);
-    if (visibleGeneration === "") {
-      console.log("none");
-      gens.classed(styles.hidden, true);
-    }
-    if (visibleGeneration === "allages" || generation === visibleGeneration)
+    if (visibleGeneration === "") gens.classed(styles.hidden, true);
+    else if (
+      visibleGeneration === "allages" ||
+      generation === visibleGeneration
+    )
       gens.classed(styles.hidden, false);
     else {
       gens.classed(styles.hidden, true);

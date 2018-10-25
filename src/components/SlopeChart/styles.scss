@@ -11,3 +11,10 @@
   dummy: value;
   border: 1px solid #333;
 }
+
+.title {
+  // To prevent side-by-side headers running
+  // into each other on desktop
+  padding-left: 5px;
+  padding-right: 5px;
+}

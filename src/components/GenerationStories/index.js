@@ -869,6 +869,14 @@ class ChartStory extends React.Component {
             </Portal>
           </div>
         )}
+
+        {/* 
+          *
+          *
+          Baby Boomers
+          *
+          *    
+          */}
         {(this.props.currentGeneration === "boomers" ||
           this.props.currentGeneration === "allages") && (
           <div>
@@ -1234,6 +1242,13 @@ class ChartStory extends React.Component {
             </Portal>
           </div>
         )}
+        {/* 
+          *
+          *
+          Builders
+          *
+          *    
+          */}
         {(this.props.currentGeneration === "builders" ||
           this.props.currentGeneration === "allages") && (
           <div>
@@ -1273,6 +1288,21 @@ class ChartStory extends React.Component {
                       }
                     ]}
                   />
+                  <SlopeChart
+                    title={getTitle("householdincomebuilders")}
+                    years={["1984", "2016"]}
+                    lines={[
+                      {
+                        first: 695,
+                        last: 1145,
+                        labelPercent: "65%",
+                        labelSign: "+",
+                        labelSex: "All",
+                        labelStart: "$695",
+                        labelEnd: "$1,145"
+                      }
+                    ]}
+                  />
                 </div>
                 <div className={styles.column}>
                   <SlopeChart
@@ -1308,21 +1338,7 @@ class ChartStory extends React.Component {
                       }
                     ]}
                   />
-                  <SlopeChart
-                    title={getTitle("householdincomebuilders")}
-                    years={["1984", "2016"]}
-                    lines={[
-                      {
-                        first: 695,
-                        last: 1145,
-                        labelPercent: "65%",
-                        labelSign: "+",
-                        labelSex: "All",
-                        labelStart: "$695",
-                        labelEnd: "$1,145"
-                      }
-                    ]}
-                  />
+                  
                 </div>
               </div>
             </Portal>
