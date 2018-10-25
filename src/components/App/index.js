@@ -9,11 +9,15 @@ const GenerationStories = require("../GenerationStories");
 const generations = ["genz", "millennials", "genx", "boomers", "builders"];
 
 class App extends React.Component {
-  state = { myGeneration: "allages" };
+  state = { myGeneration: "" };
 
   setGeneration = whatGeneration => {
     this.setState({ myGeneration: whatGeneration });
   };
+
+  componentDidMount() {
+    hideOtherGenrations(this.state.myGeneration);
+  }
 
   componentDidUpdate() {
     hideOtherGenrations(this.state.myGeneration);
@@ -48,13 +52,16 @@ class App extends React.Component {
 }
 
 function hideOtherGenrations(visibleGeneration) {
+  console.log(visibleGeneration);
   generations.forEach(generation => {
     const gens = d3.selectAll("." + generation);
+    if (visibleGeneration === "") {
+      console.log("none");
+      gens.classed(styles.hidden, true);
+    }
     if (visibleGeneration === "allages" || generation === visibleGeneration)
-      // gens.style("display", null);
       gens.classed(styles.hidden, false);
     else {
-      // gens.style("display", "none");
       gens.classed(styles.hidden, true);
     }
   });
