@@ -187,12 +187,14 @@ class SlopeChart extends React.Component {
           else if (line.labelSex === "Male") return line3color;
         });
 
+       
+
       // Label start
       svg
         .append("text")
         .text(line.labelStart)
         .attr("x", scaleX(0) - LABEL_LEFT_OFFSET)
-        .attr("y", scaleY(line.first) + 1.35)
+        .attr("y", scaleY(line.first) + 1.35 + (line.firstNudge ? line.firstNudge : 0))
         .attr("text-anchor", "end")
         .attr("dominant-baseline", "middle")
         .attr("fill", () => {

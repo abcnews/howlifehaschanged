@@ -925,7 +925,8 @@ class ChartStory extends React.Component {
                         labelSign: "-",
                         labelSex: "All",
                         labelStart: "48%",
-                        labelEnd: "15"
+                        labelEnd: "15%",
+                        firstNudge: -2
                       },
                       {
                         first: 58,
@@ -943,7 +944,8 @@ class ChartStory extends React.Component {
                         labelSign: "-",
                         labelSex: "Male",
                         labelStart: "46%",
-                        labelEnd: "15%"
+                        labelEnd: "15%",
+                        firstNudge: 2
                       }
                     ]}
                   />
