@@ -1,6 +1,7 @@
 const React = require("react");
 const styles = require("./styles.scss");
 const d3 = Object.assign({}, require("d3-selection"), require("d3-scale"));
+const ReactResizeDetector = require("react-resize-detector").default;
 
 // Increase > 1.0 or decrease < 1.0 height of all charts
 const yScaleFactor = 4.0;
