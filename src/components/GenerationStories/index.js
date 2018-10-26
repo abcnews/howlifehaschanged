@@ -893,8 +893,8 @@ class ChartStory extends React.Component {
                         labelPercent: "73%",
                         labelSign: "+",
                         labelSex: "Female",
-                        labelStart: "4.1%",
-                        labelEnd: "7.1%"
+                        labelStart: "4.1",
+                        labelEnd: "7.1"
                       },
                       {
                         first: 5.4,
@@ -902,7 +902,7 @@ class ChartStory extends React.Component {
                         labelPercent: "87%",
                         labelSign: "+",
                         labelSex: "Male",
-                        labelStart: "5.4%",
+                        labelStart: "5.4",
                         labelEnd: "10.1"
                       }
                     ]}
