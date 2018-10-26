@@ -42,7 +42,7 @@ const customStyles = {
 class ChooserDropdown extends React.Component {
   handleChange = selectedOption => {
     // Don't process if user backspaces
-    if (selectedOption instanceof Array) return;
+    // if (selectedOption instanceof Array) return;
 
     // Set the generation state back in the App component
     this.props.setGeneration(selectedOption.value);

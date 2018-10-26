@@ -5,7 +5,7 @@ const d3 = Object.assign({}, require("d3-selection"), require("d3-scale"));
 // Increase > 1.0 or decrease < 1.0 height of all charts
 const yScaleFactor = 4.0;
 
-const CHART_WIDTH = 350;
+// const CHART_WIDTH = 300;
 const MIN_CHART_HEIGHT = 180;
 
 const MARGIN_TOP = 62;
@@ -44,8 +44,8 @@ class SlopeChart extends React.Component {
 
     const scaleX = d3
       .scaleLinear()
-      .domain([0, CHART_WIDTH])
-      .range([0 + MARGIN_LEFT, CHART_WIDTH - MARGIN_RIGHT]);
+      .domain([0, chartWidth()])
+      .range([0 + MARGIN_LEFT, chartWidth() - MARGIN_RIGHT]);
 
     const scaleY = d3.scaleLinear();
 
@@ -98,7 +98,7 @@ class SlopeChart extends React.Component {
 
       // Style main svg container
       svg
-        .attr("width", this.props.width || CHART_WIDTH)
+        .attr("width", chartWidth()) //this.props.width || CHART_WIDTH)
         .attr("height", chartHeight);
       // .style("background-color", "rgba(0, 0, 0, 0.03"); // remove later
 
@@ -111,9 +111,9 @@ class SlopeChart extends React.Component {
         .attr("stroke", "#003C66");
 
       rightBound
-        .attr("x1", scaleX(CHART_WIDTH))
+        .attr("x1", scaleX(chartWidth()))
         .attr("y1", scaleY(min))
-        .attr("x2", scaleX(CHART_WIDTH))
+        .attr("x2", scaleX(chartWidth()))
         .attr("y2", scaleY(max))
         .attr("stroke-width", 3)
         .attr("stroke", "#003C66");
@@ -134,7 +134,7 @@ class SlopeChart extends React.Component {
 
       rightYear
         .text(this.props.years[1])
-        .attr("x", scaleX(CHART_WIDTH) + 3)
+        .attr("x", scaleX(chartWidth()) + 3)
         .attr("y", scaleY(max) - 12)
         .attr("text-anchor", "end")
         .attr("dominant-baseline", "baseline")
@@ -154,7 +154,7 @@ class SlopeChart extends React.Component {
         .append("line")
         .attr("x1", scaleX(0))
         .attr("y1", scaleY(line.first))
-        .attr("x2", scaleX(CHART_WIDTH))
+        .attr("x2", scaleX(chartWidth()))
         .attr("y2", scaleY(line.last))
         .attr("stroke-width", 3)
         .attr("stroke", () => {
@@ -178,7 +178,7 @@ class SlopeChart extends React.Component {
       // End circle
       svg
         .append("circle")
-        .attr("cx", scaleX(CHART_WIDTH))
+        .attr("cx", scaleX(chartWidth()))
         .attr("cy", scaleY(line.last))
         .attr("r", CIRCLE_RADIUS)
         .attr("fill", () => {
@@ -187,14 +187,15 @@ class SlopeChart extends React.Component {
           else if (line.labelSex === "Male") return line3color;
         });
 
-       
-
       // Label start
       svg
         .append("text")
         .text(line.labelStart)
         .attr("x", scaleX(0) - LABEL_LEFT_OFFSET)
-        .attr("y", scaleY(line.first) + 1.35 + (line.firstNudge ? line.firstNudge : 0))
+        .attr(
+          "y",
+          scaleY(line.first) + 1.35 + (line.firstNudge ? line.firstNudge : 0)
+        )
         .attr("text-anchor", "end")
         .attr("dominant-baseline", "middle")
         .attr("fill", () => {
@@ -213,7 +214,7 @@ class SlopeChart extends React.Component {
       rightLabels[iteration]
         .append("text")
         .text(line.labelEnd)
-        .attr("x", scaleX(CHART_WIDTH) + LABEL_RIGHT_OFFSET)
+        .attr("x", scaleX(chartWidth()) + LABEL_RIGHT_OFFSET)
         .attr("y", scaleY(line.last) + 1.3)
         .attr("text-anchor", "start")
         .attr("dominant-baseline", "middle")
@@ -233,7 +234,7 @@ class SlopeChart extends React.Component {
       rightLabels[iteration]
         .append("text")
         .text(line.labelSex)
-        .attr("x", scaleX(CHART_WIDTH) + LABEL_RIGHT_OFFSET)
+        .attr("x", scaleX(chartWidth()) + LABEL_RIGHT_OFFSET)
         .attr("y", scaleY(line.last) - 11)
         .attr("text-anchor", "start")
         .attr("dominant-baseline", "middle")
@@ -254,7 +255,7 @@ class SlopeChart extends React.Component {
       rightLabels[iteration]
         .append("text")
         .text(line.labelPercent)
-        .attr("x", scaleX(CHART_WIDTH) + LABEL_RIGHT_OFFSET)
+        .attr("x", scaleX(chartWidth()) + LABEL_RIGHT_OFFSET)
         .attr("y", scaleY(line.last) + 15)
         .attr("text-anchor", "start")
         .attr("dominant-baseline", "middle")
@@ -275,7 +276,7 @@ class SlopeChart extends React.Component {
       rightLabels[iteration]
         .append("text")
         .text(line.labelSign)
-        .attr("x", scaleX(CHART_WIDTH) + LABEL_RIGHT_OFFSET - 3)
+        .attr("x", scaleX(chartWidth()) + LABEL_RIGHT_OFFSET - 3)
         .attr("y", scaleY(line.last) + 15)
         .attr("text-anchor", "end")
         .attr("dominant-baseline", "middle")
@@ -431,9 +432,25 @@ class SlopeChart extends React.Component {
 
   // Set default props
   static defaultProps = {
-    width: 350,
+    width: chartWidth(),
     line: [100, 300]
   };
+}
+
+// Helper functions down here
+function chartWidth() {
+  if (getWidth() > 330) return 350;
+  else return 300;
+}
+
+function getWidth() {
+  return Math.max(
+    document.body.scrollWidth,
+    document.documentElement.scrollWidth,
+    document.body.offsetWidth,
+    document.documentElement.offsetWidth,
+    document.documentElement.clientWidth
+  );
 }
 
 module.exports = SlopeChart;
