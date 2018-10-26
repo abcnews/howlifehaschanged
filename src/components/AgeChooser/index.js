@@ -22,7 +22,9 @@ class AgeChooser extends React.Component {
           Which generation whould you like to know about?
         </div>
 
-        <ReactResizeDetector handleWidth onResize={this.onResize}>
+        
+
+        <ReactResizeDetector handleWidth>
           {(width, height) => (
             <div>
               {/*

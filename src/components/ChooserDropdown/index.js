@@ -40,12 +40,13 @@ const customStyles = {
 };
 
 class ChooserDropdown extends React.Component {
-  handleChange = selectedOption => {
+  handleChange = selected => {
     // Don't process if user backspaces
     // if (selectedOption instanceof Array) return;
 
     // Set the generation state back in the App component
-    this.props.setGeneration(selectedOption.value);
+    if (selected === null) this.props.setGeneration("")
+    else this.props.setGeneration(selected.value);
   };
 
   render() {
@@ -55,7 +56,7 @@ class ChooserDropdown extends React.Component {
     );
 
     // Set the selected option for React Select
-    const selectedOption = {
+    const selectedOption = this.props.currentGeneration === "" ? null : {
       value: this.props.currentGeneration,
       label: currentOption ? currentOption.label : ""
     };
@@ -67,10 +68,11 @@ class ChooserDropdown extends React.Component {
             value={selectedOption}
             onChange={this.handleChange}
             options={options}
-            isClearable={false}
+            isClearable={true}
             isSearchable={false}
             styles={customStyles}
             classNamePrefix="react-select"
+            placeholder="Please select..."
           />
         </div>
       </div>

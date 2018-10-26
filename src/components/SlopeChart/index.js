@@ -437,20 +437,10 @@ class SlopeChart extends React.Component {
   };
 }
 
-// Helper functions down here
+// if small phone go smaller
 function chartWidth() {
-  if (getWidth() > 330) return 350;
+  if (window.innerWidth > 330) return 350;
   else return 300;
-}
-
-function getWidth() {
-  return Math.max(
-    document.body.scrollWidth,
-    document.documentElement.scrollWidth,
-    document.body.offsetWidth,
-    document.documentElement.offsetWidth,
-    document.documentElement.clientWidth
-  );
 }
 
 module.exports = SlopeChart;
