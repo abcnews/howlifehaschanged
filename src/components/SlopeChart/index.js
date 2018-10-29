@@ -33,9 +33,21 @@ class SlopeChart extends React.Component {
     this.attachChart();
   }
 
+  componentDidUpdate() {
+    console.log("Updated...");
+    // Scale on browser resize
+    this.svg.attr("width", chartWidth());
+
+    this.rightBound
+      .attr("x1", this.scaleX(chartWidth()))
+      .attr("x2", this.scaleX(chartWidth()));
+
+    this.rightYear.attr("x", this.scaleX(chartWidth()) + 3);
+  }
+
   attachChart = () => {
     const wrapper = d3.select(this.node.current);
-    const svg = wrapper.append("svg");
+    this.svg = wrapper.append("svg");
 
     // Logarithmically scale the chart height
     // so things don't get out of hand
@@ -44,7 +56,7 @@ class SlopeChart extends React.Component {
       .domain([10, 100000])
       .range([0, 700]);
 
-    const scaleX = d3
+    this.scaleX = d3
       .scaleLinear()
       .domain([0, chartWidth()])
       .range([0 + MARGIN_LEFT, chartWidth() - MARGIN_RIGHT]);
@@ -56,24 +68,24 @@ class SlopeChart extends React.Component {
     let chartHeight = MIN_CHART_HEIGHT; // set min height
 
     // Bounding left line
-    const leftBound = svg.append("line");
+    this.leftBound = this.svg.append("line");
 
     // Bounding right line
-    const rightBound = svg.append("line");
+    this.rightBound = this.svg.append("line");
 
     // Left year
-    const leftYear = svg.append("text");
+    this.leftYear = this.svg.append("text");
 
     // Right year
-    const rightYear = svg.append("text");
+    this.rightYear = this.svg.append("text");
 
     // Used for overlap detection
-    let rightLabels = [];
+    this.rightLabels = [];
 
     // Loop over lines
     this.props.lines.forEach((line, iteration) => {
       // Create a group so we can nudge these later
-      rightLabels[iteration] = svg.append("g");
+      this.rightLabels[iteration] = this.svg.append("g");
 
       const percentChange = ((line.last - line.first) / line.first) * 100;
 
@@ -98,31 +110,31 @@ class SlopeChart extends React.Component {
 
       const didIncrease = () => line.first < line.last;
 
-      // Style main svg container
-      svg
+      // Style main this.svg container
+      this.svg
         .attr("width", chartWidth()) //this.props.width || CHART_WIDTH)
         .attr("height", chartHeight);
       // .style("background-color", "rgba(0, 0, 0, 0.03"); // remove later
 
-      leftBound
-        .attr("x1", scaleX(0))
+      this.leftBound
+        .attr("x1", this.scaleX(0))
         .attr("y1", scaleY(min))
-        .attr("x2", scaleX(0))
+        .attr("x2", this.scaleX(0))
         .attr("y2", scaleY(max))
         .attr("stroke-width", 3)
         .attr("stroke", "#003C66");
 
-      rightBound
-        .attr("x1", scaleX(chartWidth()))
+      this.rightBound
+        .attr("x1", this.scaleX(chartWidth()))
         .attr("y1", scaleY(min))
-        .attr("x2", scaleX(chartWidth()))
+        .attr("x2", this.scaleX(chartWidth()))
         .attr("y2", scaleY(max))
         .attr("stroke-width", 3)
         .attr("stroke", "#003C66");
 
-      leftYear
+      this.leftYear
         .text(this.props.years[0])
-        .attr("x", scaleX(0) - 3)
+        .attr("x", this.scaleX(0) - 3)
         .attr("y", scaleY(max) - 12)
         .attr("text-anchor", "start")
         .attr("dominant-baseline", "baseline")
@@ -134,9 +146,9 @@ class SlopeChart extends React.Component {
         .style("font-size", "12px")
         .style("font-weight", "bold");
 
-      rightYear
+      this.rightYear
         .text(this.props.years[1])
-        .attr("x", scaleX(chartWidth()) + 3)
+        .attr("x", this.scaleX(chartWidth()) + 3)
         .attr("y", scaleY(max) - 12)
         .attr("text-anchor", "end")
         .attr("dominant-baseline", "baseline")
@@ -152,11 +164,11 @@ class SlopeChart extends React.Component {
     // Second pass now that we know the upper limits
     this.props.lines.forEach((line, iteration) => {
       // The first line
-      svg
+      this.svg
         .append("line")
-        .attr("x1", scaleX(0))
+        .attr("x1", this.scaleX(0))
         .attr("y1", scaleY(line.first))
-        .attr("x2", scaleX(chartWidth()))
+        .attr("x2", this.scaleX(chartWidth()))
         .attr("y2", scaleY(line.last))
         .attr("stroke-width", 3)
         .attr("stroke", () => {
@@ -166,9 +178,9 @@ class SlopeChart extends React.Component {
         });
 
       // Start circle
-      svg
+      this.svg
         .append("circle")
-        .attr("cx", scaleX(0))
+        .attr("cx", this.scaleX(0))
         .attr("cy", scaleY(line.first))
         .attr("r", CIRCLE_RADIUS)
         .attr("fill", () => {
@@ -178,9 +190,9 @@ class SlopeChart extends React.Component {
         });
 
       // End circle
-      svg
+      this.svg
         .append("circle")
-        .attr("cx", scaleX(chartWidth()))
+        .attr("cx", this.scaleX(chartWidth()))
         .attr("cy", scaleY(line.last))
         .attr("r", CIRCLE_RADIUS)
         .attr("fill", () => {
@@ -190,10 +202,10 @@ class SlopeChart extends React.Component {
         });
 
       // Label start
-      svg
+      this.svg
         .append("text")
         .text(line.labelStart)
-        .attr("x", scaleX(0) - LABEL_LEFT_OFFSET)
+        .attr("x", this.scaleX(0) - LABEL_LEFT_OFFSET)
         .attr(
           "y",
           scaleY(line.first) + 1.35 + (line.firstNudge ? line.firstNudge : 0)
@@ -213,10 +225,10 @@ class SlopeChart extends React.Component {
         .style("font-weight", "bold");
 
       // Label end
-      rightLabels[iteration]
+      this.rightLabels[iteration]
         .append("text")
         .text(line.labelEnd)
-        .attr("x", scaleX(chartWidth()) + LABEL_RIGHT_OFFSET)
+        .attr("x", this.scaleX(chartWidth()) + LABEL_RIGHT_OFFSET)
         .attr("y", scaleY(line.last) + 1.3)
         .attr("text-anchor", "start")
         .attr("dominant-baseline", "middle")
@@ -233,10 +245,10 @@ class SlopeChart extends React.Component {
         .style("font-weight", "bold");
 
       // Label sex
-      rightLabels[iteration]
+      this.rightLabels[iteration]
         .append("text")
         .text(line.labelSex)
-        .attr("x", scaleX(chartWidth()) + LABEL_RIGHT_OFFSET)
+        .attr("x", this.scaleX(chartWidth()) + LABEL_RIGHT_OFFSET)
         .attr("y", scaleY(line.last) - 11)
         .attr("text-anchor", "start")
         .attr("dominant-baseline", "middle")
@@ -254,10 +266,10 @@ class SlopeChart extends React.Component {
         .style("text-transform", "uppercase");
 
       // Label percent
-      rightLabels[iteration]
+      this.rightLabels[iteration]
         .append("text")
         .text(line.labelPercent)
-        .attr("x", scaleX(chartWidth()) + LABEL_RIGHT_OFFSET)
+        .attr("x", this.scaleX(chartWidth()) + LABEL_RIGHT_OFFSET)
         .attr("y", scaleY(line.last) + 15)
         .attr("text-anchor", "start")
         .attr("dominant-baseline", "middle")
@@ -275,10 +287,10 @@ class SlopeChart extends React.Component {
         .style("font-variant-numeric", "tabular-nums");
 
       // Label sign + or -
-      rightLabels[iteration]
+      this.rightLabels[iteration]
         .append("text")
         .text(line.labelSign)
-        .attr("x", scaleX(chartWidth()) + LABEL_RIGHT_OFFSET - 3)
+        .attr("x", this.scaleX(chartWidth()) + LABEL_RIGHT_OFFSET - 3)
         .attr("y", scaleY(line.last) + 15)
         .attr("text-anchor", "end")
         .attr("dominant-baseline", "middle")
@@ -300,9 +312,9 @@ class SlopeChart extends React.Component {
     // COLLISION DETECTION!!!!
     // Nudge labels that may overlap
     // for exactly 2 labels
-    if (rightLabels.length === 2) {
-      const label1 = rightLabels[0].node().getBBox();
-      const label2 = rightLabels[1].node().getBBox();
+    if (this.rightLabels.length === 2) {
+      const label1 = this.rightLabels[0].node().getBBox();
+      const label2 = this.rightLabels[1].node().getBBox();
 
       // Work out which is on top
       // then nudge accordingly
@@ -312,53 +324,59 @@ class SlopeChart extends React.Component {
         const overlap = label1Lowest - label2.y;
 
         if (overlap > 0) {
-          rightLabels[0].attr("transform", `translate(0, -${overlap / 2})`);
-          rightLabels[1].attr("transform", `translate(0, ${overlap / 2})`);
+          this.rightLabels[0].attr(
+            "transform",
+            `translate(0, -${overlap / 2})`
+          );
+          this.rightLabels[1].attr("transform", `translate(0, ${overlap / 2})`);
         }
       } else {
         const label2Lowest = label2.y + label2.height;
 
         const overlap = label2Lowest - label1.y;
         if (overlap > 0) {
-          rightLabels[1].attr("transform", `translate(0, -${overlap / 2})`);
-          rightLabels[0].attr("transform", `translate(0, ${overlap / 2})`);
+          this.rightLabels[1].attr(
+            "transform",
+            `translate(0, -${overlap / 2})`
+          );
+          this.rightLabels[0].attr("transform", `translate(0, ${overlap / 2})`);
         }
       }
     }
 
     // Charts with 3 lines
     // 3 labels makes things harder
-    if (rightLabels.length === 3) {
-      const label1 = rightLabels[0].node().getBBox();
-      const label2 = rightLabels[1].node().getBBox();
-      const label3 = rightLabels[2].node().getBBox();
+    if (this.rightLabels.length === 3) {
+      const label1 = this.rightLabels[0].node().getBBox();
+      const label2 = this.rightLabels[1].node().getBBox();
+      const label3 = this.rightLabels[2].node().getBBox();
 
       // Calculate which order they are in, top to bottom
       const top = () => {
         if (label1.y === Math.min(label1.y, label2.y, label3.y))
-          return rightLabels[0];
+          return this.rightLabels[0];
         if (label2.y === Math.min(label2.y, label2.y, label3.y))
-          return rightLabels[1];
+          return this.rightLabels[1];
         if (label3.y === Math.min(label3.y, label2.y, label3.y))
-          return rightLabels[2];
+          return this.rightLabels[2];
       };
 
       const bottom = () => {
         if (label1.y === Math.max(label1.y, label2.y, label3.y))
-          return rightLabels[0];
+          return this.rightLabels[0];
         if (label2.y === Math.max(label2.y, label2.y, label3.y))
-          return rightLabels[1];
+          return this.rightLabels[1];
         if (label3.y === Math.max(label3.y, label2.y, label3.y))
-          return rightLabels[2];
+          return this.rightLabels[2];
       };
 
       const middle = () => {
-        if (rightLabels[0] !== top() && rightLabels[0] !== bottom())
-          return rightLabels[0];
-        if (rightLabels[1] !== top() && rightLabels[1] !== bottom())
-          return rightLabels[1];
-        if (rightLabels[2] !== top() && rightLabels[2] !== bottom())
-          return rightLabels[2];
+        if (this.rightLabels[0] !== top() && this.rightLabels[0] !== bottom())
+          return this.rightLabels[0];
+        if (this.rightLabels[1] !== top() && this.rightLabels[1] !== bottom())
+          return this.rightLabels[1];
+        if (this.rightLabels[2] !== top() && this.rightLabels[2] !== bottom())
+          return this.rightLabels[2];
       };
 
       const topBox = top()
@@ -428,7 +446,8 @@ class SlopeChart extends React.Component {
     return (
       <ContextConsumer>
         {context => {
-          console.log(context.state);
+          console.log(context);
+
           return (
             <div ref={this.node} className={styles.wrapper}>
               <div className={styles.title}>{this.props.title}</div>
@@ -448,6 +467,7 @@ class SlopeChart extends React.Component {
 
 // if small phone go smaller
 function chartWidth() {
+  console.log(window.innerWidth);
   if (window.innerWidth > 330) return 350;
   else return 300;
 }

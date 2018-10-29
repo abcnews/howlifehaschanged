@@ -1,6 +1,7 @@
 const React = require("react");
 const styles = require("./styles.scss"); // Mostly global
 const d3 = Object.assign({}, require("d3-selection"));
+const ReactResizeDetector = require("react-resize-detector").default;
 
 const Portal = require("../Portal"); // To inject components into other page areas
 const AgeChooser = require("../AgeChooser");
@@ -32,29 +33,44 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <ContextProvider value={{ state: this.state }}>
-          {/*
-          This is the "What age-group are you interested in?"
-          with various buttons or a drop-down on mobile.
-          It sets the App state to whichever generation the
-          user is interested in learning about.
-        */}
-          <Portal into={document.querySelector(".hashchooser")}>
-            <AgeChooser
-              setGeneration={this.setGeneration}
-              clearGeneration={this.clearGeneration}
-              currentGeneration={this.state.myGeneration}
-            />
-          </Portal>
+        <ReactResizeDetector handleWidth>
+          {(width, height) => {
+            return (
+              // Global context is provided to any 
+              // consumers.
+              <ContextProvider
+                value={{
+                  // state: this.state,
+                  width: width
+                }}
+              >
+                {/*
+                  This is the "What age-group are you interested in?"
+                  with various buttons or a drop-down on mobile.
+                  It sets the App state to whichever generation the
+                  user is interested in learning about.
+                */}
+                <Portal into={document.querySelector(".hashchooser")}>
+                  <AgeChooser
+                    setGeneration={this.setGeneration}
+                    clearGeneration={this.clearGeneration}
+                    currentGeneration={this.state.myGeneration}
+                  />
+                </Portal>
 
-          {/* 
-          The Generation Stories component displays different content
-          depending on the current generation.
-        */}
-          <Portal into={document.querySelector(".hashcharts")}>
-            <GenerationStories currentGeneration={this.state.myGeneration} />
-          </Portal>
-        </ContextProvider>
+                {/* 
+                  The Generation Stories component displays different content
+                  depending on the current generation.
+                */}
+                <Portal into={document.querySelector(".hashcharts")}>
+                  <GenerationStories
+                    currentGeneration={this.state.myGeneration}
+                  />
+                </Portal>
+              </ContextProvider>
+            );
+          }}
+        </ReactResizeDetector>
       </div>
     );
   }
