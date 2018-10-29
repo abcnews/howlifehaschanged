@@ -34,15 +34,17 @@ class SlopeChart extends React.Component {
   }
 
   componentDidUpdate() {
-    console.log("Updated...");
+    // console.log("Updated...");
     // Scale on browser resize
-    this.svg.attr("width", chartWidth());
+    // this.svg.attr("width", chartWidth());
 
-    this.rightBound
-      .attr("x1", this.scaleX(chartWidth()))
-      .attr("x2", this.scaleX(chartWidth()));
+    // this.rightBound
+    //   .attr("x1", this.scaleX(chartWidth()))
+    //   .attr("x2", this.scaleX(chartWidth()));
 
-    this.rightYear.attr("x", this.scaleX(chartWidth()) + 3);
+    // this.rightYear.attr("x", this.scaleX(chartWidth()) + 3);
+    this.svg.remove()
+    this.attachChart()
   }
 
   attachChart = () => {
@@ -467,7 +469,6 @@ class SlopeChart extends React.Component {
 
 // if small phone go smaller
 function chartWidth() {
-  console.log(window.innerWidth);
   if (window.innerWidth > 330) return 350;
   else return 300;
 }

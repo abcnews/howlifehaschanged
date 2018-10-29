@@ -31,7 +31,7 @@ class AgeChooser extends React.Component {
                 mobile devices that can't display all
                 the buttons.
               */}
-                {width < TABLET_PORTRAIT_OR_UP && (
+                {width <= TABLET_PORTRAIT_OR_UP && (
                   <ChooserDropdown
                     currentGeneration={this.props.currentGeneration}
                     setGeneration={setGeneration}
