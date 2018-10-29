@@ -31,20 +31,15 @@ class SlopeChart extends React.Component {
 
   componentDidMount() {
     this.attachChart();
+    this.currentChartWidth = chartWidth();
   }
 
   componentDidUpdate() {
-    // console.log("Updated...");
-    // Scale on browser resize
-    // this.svg.attr("width", chartWidth());
-
-    // this.rightBound
-    //   .attr("x1", this.scaleX(chartWidth()))
-    //   .attr("x2", this.scaleX(chartWidth()));
-
-    // this.rightYear.attr("x", this.scaleX(chartWidth()) + 3);
-    this.svg.remove()
-    this.attachChart()
+    if (this.currentChartWidth !== chartWidth()) {
+      this.svg.remove();
+      this.attachChart();
+      this.currentChartWidth = chartWidth();
+    }
   }
 
   attachChart = () => {
@@ -448,8 +443,6 @@ class SlopeChart extends React.Component {
     return (
       <ContextConsumer>
         {context => {
-          console.log(context);
-
           return (
             <div ref={this.node} className={styles.wrapper}>
               <div className={styles.title}>{this.props.title}</div>

@@ -36,6 +36,11 @@ const customStyles = {
       ...base, color: "white"
       // The :hover styles are in ./styles.css
     }
+  },
+  placeholder: (base, state) => {
+    return {
+      ...base, color: "#3170a0"
+    }
   }
 };
 
