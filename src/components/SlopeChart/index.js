@@ -1,7 +1,8 @@
 const React = require("react");
 const styles = require("./styles.scss");
 const d3 = Object.assign({}, require("d3-selection"), require("d3-scale"));
-const ReactResizeDetector = require("react-resize-detector").default;
+
+const { ContextConsumer } = require("../ContextProvider");
 
 // Increase > 1.0 or decrease < 1.0 height of all charts
 const yScaleFactor = 4.0;
@@ -425,9 +426,16 @@ class SlopeChart extends React.Component {
 
   render() {
     return (
-      <div ref={this.node} className={styles.wrapper}>
-        <div className={styles.title}>{this.props.title}</div>
-      </div>
+      <ContextConsumer>
+        {context => {
+          console.log(context.state);
+          return (
+            <div ref={this.node} className={styles.wrapper}>
+              <div className={styles.title}>{this.props.title}</div>
+            </div>
+          );
+        }}
+      </ContextConsumer>
     );
   }
 

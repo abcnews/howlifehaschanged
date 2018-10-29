@@ -22,37 +22,37 @@ class AgeChooser extends React.Component {
           Which generation whould you like to know about?
         </div>
 
-        
-
         <ReactResizeDetector handleWidth>
-          {(width, height) => (
-            <div>
-              {/*
+          {(width, height) => {
+            return (
+              <div>
+                {/*
                 Dropdown box generation selector for
                 mobile devices that can't display all
                 the buttons.
               */}
-              {width < TABLET_PORTRAIT_OR_UP && (
-                <ChooserDropdown
-                  currentGeneration={this.props.currentGeneration}
-                  setGeneration={setGeneration}
-                  clearGeneration={clearGeneration}
-                />
-              )}
+                {width < TABLET_PORTRAIT_OR_UP && (
+                  <ChooserDropdown
+                    currentGeneration={this.props.currentGeneration}
+                    setGeneration={setGeneration}
+                    clearGeneration={clearGeneration}
+                  />
+                )}
 
-              {/* 
+                {/* 
                 If the device isn't mobile
                 then show the buttons.
               */}
-              {width > TABLET_PORTRAIT_OR_UP && (
-                <ChooserButtonGroup
-                  currentGeneration={this.props.currentGeneration}
-                  setGeneration={setGeneration}
-                  clearGeneration={clearGeneration}
-                />
-              )}
-            </div>
-          )}
+                {width > TABLET_PORTRAIT_OR_UP && (
+                  <ChooserButtonGroup
+                    currentGeneration={this.props.currentGeneration}
+                    setGeneration={setGeneration}
+                    clearGeneration={clearGeneration}
+                  />
+                )}
+              </div>
+            );
+          }}
         </ReactResizeDetector>
       </div>
     );

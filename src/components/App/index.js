@@ -6,6 +6,8 @@ const Portal = require("../Portal"); // To inject components into other page are
 const AgeChooser = require("../AgeChooser");
 const GenerationStories = require("../GenerationStories");
 
+const { ContextProvider } = require("../ContextProvider");
+
 const generations = ["genz", "millennials", "genx", "boomers", "builders"];
 
 class App extends React.Component {
@@ -30,27 +32,29 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        {/*
+        <ContextProvider value={{ state: this.state }}>
+          {/*
           This is the "What age-group are you interested in?"
           with various buttons or a drop-down on mobile.
           It sets the App state to whichever generation the
           user is interested in learning about.
         */}
-        <Portal into={document.querySelector(".hashchooser")}>
-          <AgeChooser
-            setGeneration={this.setGeneration}
-            clearGeneration={this.clearGeneration}
-            currentGeneration={this.state.myGeneration}
-          />
-        </Portal>
+          <Portal into={document.querySelector(".hashchooser")}>
+            <AgeChooser
+              setGeneration={this.setGeneration}
+              clearGeneration={this.clearGeneration}
+              currentGeneration={this.state.myGeneration}
+            />
+          </Portal>
 
-        {/* 
+          {/* 
           The Generation Stories component displays different content
           depending on the current generation.
         */}
-        <Portal into={document.querySelector(".hashcharts")}>
-          <GenerationStories currentGeneration={this.state.myGeneration} />
-        </Portal>
+          <Portal into={document.querySelector(".hashcharts")}>
+            <GenerationStories currentGeneration={this.state.myGeneration} />
+          </Portal>
+        </ContextProvider>
       </div>
     );
   }
