@@ -2,10 +2,21 @@ const React = require("react");
 const styles = require("./styles.scss");
 const ReactResizeDetector = require("react-resize-detector").default;
 
+// A library that makes scroll triggering easier
+require("waypoints/lib/noframework.waypoints.min.js");
+
 const ChooserButtonGroup = require("../ChooserButtonGroup");
 const ChooserDropdown = require("../ChooserDropdown");
 
 const TABLET_PORTRAIT_OR_UP = 600;
+
+// TODO: Unmount the event on dismount
+const waypoint = new Waypoint({
+  element: document.querySelector(".Header-updated"),
+  handler: function(direction) {
+    console.log(direction, this.element);
+  }
+});
 
 class AgeChooser extends React.Component {
   render() {
@@ -19,7 +30,7 @@ class AgeChooser extends React.Component {
           Maybe think about resizing this on mobile
         */}
         <div className={styles.question}>
-          Which generation whould you like to know about?
+          Which age-group would you like to know about?
         </div>
 
         <ReactResizeDetector handleWidth>

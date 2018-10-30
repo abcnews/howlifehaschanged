@@ -12,7 +12,7 @@ const { ContextProvider } = require("../ContextProvider");
 const generations = ["genz", "millennials", "genx", "boomers", "builders"];
 
 class App extends React.Component {
-  state = { myGeneration: "" };
+  state = { myGeneration: "allages" };
 
   setGeneration = whatGeneration => {
     this.setState({ myGeneration: whatGeneration });
