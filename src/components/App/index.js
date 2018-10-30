@@ -2,6 +2,7 @@ const React = require("react");
 const styles = require("./styles.scss"); // Mostly global
 const d3 = Object.assign({}, require("d3-selection"));
 const ReactResizeDetector = require("react-resize-detector").default;
+const ScrollReveal = require("scrollreveal").default;
 
 const Portal = require("../Portal"); // To inject components into other page areas
 const AgeChooser = require("../AgeChooser");
@@ -24,6 +25,23 @@ class App extends React.Component {
 
   componentDidMount() {
     hideOtherGenrations(this.state.myGeneration);
+    // ScrollReveal().reveal(".chart-svg");
+    // console.log(ScrollReveal)
+    // setTimeout(() => {
+    //   ScrollReveal().reveal(".chart-div", {
+    //     delay: 0,
+    //     duration: 750,
+    //     scale: 0.9,
+    //     distance: "20px",
+    //     // viewOffset: {
+    //     //   top: 60,
+    //     //   bottom: 60
+    //     // },
+    //     reset: true,
+    //     viewFactor: 0.2 
+    //   }),
+    //   1000
+    // })
   }
 
   componentDidUpdate() {
@@ -36,7 +54,7 @@ class App extends React.Component {
         <ReactResizeDetector handleWidth>
           {(width, height) => {
             return (
-              // Global context is provided to any 
+              // Global context is provided to any
               // consumers.
               <ContextProvider
                 value={{

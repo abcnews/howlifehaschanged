@@ -10,15 +10,20 @@ const ChooserDropdown = require("../ChooserDropdown");
 
 const TABLET_PORTRAIT_OR_UP = 600;
 
-// TODO: Unmount the event on dismount
+
 const waypoint = new Waypoint({
-  element: document.querySelector(".Header-updated"),
+  element: document.querySelector(".Header"),
   handler: function(direction) {
-    console.log(direction, this.element);
+    console.log(direction, this.element, "Hello!!!!");
   }
 });
 
 class AgeChooser extends React.Component {
+  componentWillUnmount() {
+    // Removes event listeners from page
+    waypoint.destroy();
+  }
+
   render() {
     // Function passed down from main App
     const { setGeneration, clearGeneration } = this.props;

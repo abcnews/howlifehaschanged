@@ -1,6 +1,7 @@
 const React = require("react");
 const styles = require("./styles.scss");
 const d3 = Object.assign({}, require("d3-selection"), require("d3-scale"));
+const ScrollReveal = require("scrollreveal").default;
 
 const { ContextConsumer } = require("../ContextProvider");
 
@@ -45,6 +46,7 @@ class SlopeChart extends React.Component {
   attachChart = () => {
     const wrapper = d3.select(this.node.current);
     this.svg = wrapper.append("svg");
+    this.svg.classed("chart-svg", true);
 
     // Logarithmically scale the chart height
     // so things don't get out of hand
@@ -343,6 +345,8 @@ class SlopeChart extends React.Component {
 
     // Charts with 3 lines
     // 3 labels makes things harder
+    // NOTE: There shouldn't be any with 3 now after
+    // removing "All" from those with "Male" and "Female" lines
     if (this.rightLabels.length === 3) {
       const label1 = this.rightLabels[0].node().getBBox();
       const label2 = this.rightLabels[1].node().getBBox();
@@ -437,6 +441,19 @@ class SlopeChart extends React.Component {
       middle().attr("transform", `translate(0, ${middleTranslate})`);
       bottom().attr("transform", `translate(0, ${bottomTranslate})`);
     }
+
+    ScrollReveal().reveal(this.node.current, {
+      delay: 0,
+      duration: 750,
+      scale: 0.9,
+      distance: "20px",
+      // viewOffset: {
+      //   top: 60,
+      //   bottom: 60
+      // },
+      reset: true,
+      viewFactor: 0.2 
+    });
   };
 
   render() {
@@ -444,8 +461,9 @@ class SlopeChart extends React.Component {
       <ContextConsumer>
         {context => {
           return (
-            <div ref={this.node} className={styles.wrapper}>
+            <div className={styles.wrapper}>
               <div className={styles.title}>{this.props.title}</div>
+              <div ref={this.node} className={"chart-div"}></div>
             </div>
           );
         }}
