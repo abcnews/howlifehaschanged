@@ -2,7 +2,11 @@ const React = require("react");
 const styles = require("./styles.scss"); // Mostly global
 const d3 = Object.assign({}, require("d3-selection"));
 const ReactResizeDetector = require("react-resize-detector").default;
-// const ScrollReveal = require("scrollreveal").default;
+const animateScrollTo = require("animated-scroll-to");
+
+// Smooth scroll into view support for Safari, Edge, IE, etc.
+const smoothScrollPollyfill = require("smoothscroll-polyfill");
+smoothScrollPollyfill.polyfill();
 
 const Portal = require("../Portal"); // To inject components into other page areas
 const AgeChooser = require("../AgeChooser");
@@ -17,6 +21,12 @@ class App extends React.Component {
 
   setGeneration = whatGeneration => {
     this.setState({ myGeneration: whatGeneration });
+
+    // Select element and scroll to it
+    let sectionHead = document.querySelector("." + whatGeneration);
+    if (sectionHead) {
+      animateScrollTo(sectionHead, {offset: -42})
+    }
   };
 
   clearGeneration = () => {
@@ -29,7 +39,6 @@ class App extends React.Component {
 
   componentDidUpdate() {
     // hideOtherGenrations(this.state.myGeneration);
-    console.log(this.state)
   }
 
   render() {
