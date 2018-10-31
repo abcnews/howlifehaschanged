@@ -50,7 +50,7 @@ module.exports = {
     "powerspending",
     "medicalspending",
     "annualpension",
-    "buildersasproportion",
+    "eightyfiveplusasproportion",
     "deathscancer",
     "widowedbuilders",
     "ownedhomeoutright"

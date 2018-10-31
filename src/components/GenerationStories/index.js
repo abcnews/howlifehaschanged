@@ -17,7 +17,8 @@ class ChartStory extends React.Component {
           *
           *    
           */}
-        {(true || this.props.currentGeneration === "genz" ||
+        {(true ||
+          this.props.currentGeneration === "genz" ||
           this.props.currentGeneration === "allages") && (
           <div>
             <Portal into={document.querySelector(".infantmortality")}>
@@ -59,7 +60,7 @@ class ChartStory extends React.Component {
               </div>
             </Portal>
 
-            <Portal into={document.querySelector(".sidsdeaths")} />
+            {/* <Portal into={document.querySelector(".sidsdeaths")} /> */}
 
             <Portal into={document.querySelector(".formalchildcare")}>
               <div className={styles.row}>
@@ -100,7 +101,7 @@ class ChartStory extends React.Component {
               </div>
             </Portal>
 
-            <Portal into={document.querySelector(".costchildcare")} />
+            {/* <Portal into={document.querySelector(".costchildcare")} /> */}
 
             <Portal into={document.querySelector(".kidsobese")}>
               <div className={styles.row}>
@@ -141,7 +142,7 @@ class ChartStory extends React.Component {
               </div>
             </Portal>
 
-            <Portal into={document.querySelector(".twoparentswork")} />
+            {/* <Portal into={document.querySelector(".twoparentswork")} /> */}
 
             <Portal into={document.querySelector(".schooltoyrtwelve")}>
               <div className={styles.row}>
@@ -191,7 +192,7 @@ class ChartStory extends React.Component {
               </div>
             </Portal>
 
-            <Portal into={document.querySelector(".incometeens")} />
+            {/* <Portal into={document.querySelector(".incometeens")} /> */}
 
             <Portal into={document.querySelector(".unemployedteens")}>
               <div className={styles.row}>
@@ -268,7 +269,7 @@ class ChartStory extends React.Component {
               </div>
             </Portal>
 
-            <Portal into={document.querySelector(".underemployed")} />
+            {/* <Portal into={document.querySelector(".underemployed")} /> */}
 
             <Portal into={document.querySelector(".roadaccidents")}>
               <SlopeChart
@@ -297,7 +298,8 @@ class ChartStory extends React.Component {
           *
           *    
           */}
-        {(true || this.props.currentGeneration === "millennials" ||
+        {(true ||
+          this.props.currentGeneration === "millennials" ||
           this.props.currentGeneration === "allages") && (
           <div>
             <Portal into={document.querySelector(".twentiesmarried")}>
@@ -447,7 +449,7 @@ class ChartStory extends React.Component {
                         labelSex: "Male",
                         labelStart: "7%",
                         labelEnd: "23%"
-                      },
+                      }
                       // {
                       //   first: 6,
                       //   last: 27,
@@ -583,7 +585,8 @@ class ChartStory extends React.Component {
           *    
           */}
 
-        {(true || this.props.currentGeneration === "genx" ||
+        {(true ||
+          this.props.currentGeneration === "genx" ||
           this.props.currentGeneration === "allages") && (
           <div>
             <Portal into={document.querySelector(".bachelorsforties")}>
@@ -610,7 +613,7 @@ class ChartStory extends React.Component {
                         labelSex: "Female",
                         labelStart: "2%",
                         labelEnd: "25%"
-                      },
+                      }
                       // {
                       //   first: 3,
                       //   last: 23,
@@ -877,7 +880,8 @@ class ChartStory extends React.Component {
           *
           *    
           */}
-        {(true || this.props.currentGeneration === "boomers" ||
+        {(true ||
+          this.props.currentGeneration === "boomers" ||
           this.props.currentGeneration === "allages") && (
           <div>
             <Portal into={document.querySelector(".divorceboomers")}>
@@ -972,7 +976,7 @@ class ChartStory extends React.Component {
                         labelSex: "Male",
                         labelStart: "2.2%",
                         labelEnd: "13%"
-                      },
+                      }
                       // {
                       //   first: 1.4,
                       //   last: 14,
@@ -1251,7 +1255,8 @@ class ChartStory extends React.Component {
           *
           *    
           */}
-        {(true || this.props.currentGeneration === "builders" ||
+        {(true ||
+          this.props.currentGeneration === "builders" ||
           this.props.currentGeneration === "allages") && (
           <div>
             <Portal into={document.querySelector(".lessthan15k")}>
@@ -1398,11 +1403,11 @@ class ChartStory extends React.Component {
               </div>
             </Portal>
 
-            <Portal into={document.querySelector(".buildersasproportion")}>
+            <Portal into={document.querySelector(".eightyfiveplusasproportion")}>
               <div className={styles.row}>
                 <div className={styles.column}>
                   <SlopeChart
-                    title={getTitle("buildersasproportion")}
+                    title={getTitle("eightyfiveplusasproportion")}
                     years={["1981", "2016"]}
                     lines={[
                       // {
@@ -1528,7 +1533,10 @@ class ChartStory extends React.Component {
 }
 
 function getTitle(selector) {
-  return document.querySelector("." + selector).previousSibling.innerText;
+  const element = document.querySelector("." + selector);
+  if (element) {
+    return document.querySelector("." + selector).previousSibling.innerText;
+  } else return null;
 }
 
 module.exports = ChartStory;
