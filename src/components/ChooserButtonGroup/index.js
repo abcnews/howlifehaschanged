@@ -30,6 +30,14 @@ class ChooserButtonGroup extends React.Component {
           setGeneration={setGeneration}
           clearGeneration={clearGeneration}
           currentGeneration={this.props.currentGeneration}
+          generationSlug={"twenties"}
+        >
+          Twenties
+        </ChooserButton>
+        <ChooserButton
+          setGeneration={setGeneration}
+          clearGeneration={clearGeneration}
+          currentGeneration={this.props.currentGeneration}
           generationSlug={"thirties"}
         >
           Thirties
