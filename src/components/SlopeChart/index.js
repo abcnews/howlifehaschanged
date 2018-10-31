@@ -11,9 +11,9 @@ const yScaleFactor = 4.0;
 // const CHART_WIDTH = 300;
 const MIN_CHART_HEIGHT = 180;
 
-const MARGIN_TOP = 62;
+const MARGIN_TOP = 42;
 const MARGIN_RIGHT = 66;
-const MARGIN_BOTTOM = 62;
+const MARGIN_BOTTOM = 42;
 const MARGIN_LEFT = 66;
 const LABEL_RIGHT_OFFSET = 20;
 const LABEL_LEFT_OFFSET = 10;
@@ -41,6 +41,10 @@ class SlopeChart extends React.Component {
       this.attachChart();
       this.currentChartWidth = chartWidth();
     }
+  }
+
+  componentWillUnmount() {
+    ScrollReveal().reveal(this.node.current);
   }
 
   attachChart = () => {
@@ -112,7 +116,7 @@ class SlopeChart extends React.Component {
       // Style main this.svg container
       this.svg
         .attr("width", chartWidth()) //this.props.width || CHART_WIDTH)
-        .attr("height", chartHeight);
+        .attr("height", chartHeight)
       // .style("background-color", "rgba(0, 0, 0, 0.03"); // remove later
 
       this.leftBound
@@ -261,7 +265,7 @@ class SlopeChart extends React.Component {
           `"ABCSans-bold", ABCSans, Helvetica, Arial, sans-serif`
         )
         .style("font-size", "11px")
-        .style("font-weight", "bold")
+        .style("font-weight", "900")
         .style("text-transform", "uppercase");
 
       // Label percent
@@ -442,17 +446,14 @@ class SlopeChart extends React.Component {
       bottom().attr("transform", `translate(0, ${bottomTranslate})`);
     }
 
+    // Chart animations when they enter the page
     ScrollReveal().reveal(this.node.current, {
       delay: 0,
       duration: 750,
       scale: 0.9,
       distance: "20px",
-      // viewOffset: {
-      //   top: 60,
-      //   bottom: 60
-      // },
       reset: true,
-      viewFactor: 0.2 
+      viewFactor: 0.3
     });
   };
 
@@ -463,7 +464,7 @@ class SlopeChart extends React.Component {
           return (
             <div className={styles.wrapper}>
               <div className={styles.title}>{this.props.title}</div>
-              <div ref={this.node} className={"chart-div"}></div>
+              <div ref={this.node} className={"chart-div"} />
             </div>
           );
         }}
