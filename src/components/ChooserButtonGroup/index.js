@@ -14,49 +14,57 @@ class ChooserButtonGroup extends React.Component {
           setGeneration={setGeneration}
           clearGeneration={clearGeneration}
           currentGeneration={this.props.currentGeneration}
-          generationSlug={"allages"}
+          generationSlug={"children"}
         >
-          All ages <span className={styles.year}>1925 - 2018</span>
+          Children
         </ChooserButton>
         <ChooserButton
           setGeneration={setGeneration}
           clearGeneration={clearGeneration}
           currentGeneration={this.props.currentGeneration}
-          generationSlug={"genz"}
+          generationSlug={"teenagers"}
         >
-          Generation Z <span className={styles.year}>1995 - 2018</span>
+          Teenagers
         </ChooserButton>
         <ChooserButton
           setGeneration={setGeneration}
           clearGeneration={clearGeneration}
           currentGeneration={this.props.currentGeneration}
-          generationSlug={"millennials"}
+          generationSlug={"thirties"}
         >
-          Millennials <span className={styles.year}>1980 - 1994</span>
+          Thirties
         </ChooserButton>
         <ChooserButton
           setGeneration={setGeneration}
           clearGeneration={clearGeneration}
           currentGeneration={this.props.currentGeneration}
-          generationSlug={"genx"}
+          generationSlug={"forties"}
         >
-          Generation X <span className={styles.year}>1965 - 1979</span>
+          Forties
         </ChooserButton>
         <ChooserButton
           setGeneration={setGeneration}
           clearGeneration={clearGeneration}
           currentGeneration={this.props.currentGeneration}
-          generationSlug={"boomers"}
+          generationSlug={"fifties"}
         >
-          Boomers <span className={styles.year}>1946 - 1964</span>
+          Fifties
         </ChooserButton>
         <ChooserButton
           setGeneration={setGeneration}
           clearGeneration={clearGeneration}
           currentGeneration={this.props.currentGeneration}
-          generationSlug={"builders"}
+          generationSlug={"sixties"}
         >
-          Builders <span className={styles.year}>1925 - 1945</span>
+          Sixties
+        </ChooserButton>
+        <ChooserButton
+          setGeneration={setGeneration}
+          clearGeneration={clearGeneration}
+          currentGeneration={this.props.currentGeneration}
+          generationSlug={"seventiesandover"}
+        >
+          Seventies and over
         </ChooserButton>
       </div>
     );

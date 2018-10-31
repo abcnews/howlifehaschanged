@@ -3,12 +3,13 @@ const styles = require("./styles.scss");
 const Select = require("react-select").default;
 
 const options = [
-  { value: "allages", label: "All ages" },
-  { value: "genz", label: "Generation Z: 1995 - 2018" },
-  { value: "millennials", label: "Millennials: 1980 -1994" },
-  { value: "genx", label: "Generation X: 1965 - 1979" },
-  { value: "boomers", label: "Baby Boomers: 1946 - 1964" },
-  { value: "builders", label: "Builders: 1925 - 1945" }
+  { value: "children", label: "Children" },
+  { value: "teenagers", label: "Teenagers" },
+  { value: "thirties", label: "Thirties" },
+  { value: "forties", label: "Forties" },
+  { value: "fifteies", label: "Fifties" },
+  { value: "sixties", label: "Sixties" },
+  { value: "seventiesandover", label: "Seventies and over" }
 ];
 
 // React Select v2 now uses a wrapper around Emotion for CSS-in-JS

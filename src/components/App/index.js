@@ -13,7 +13,7 @@ const { ContextProvider } = require("../ContextProvider");
 const generations = ["genz", "millennials", "genx", "boomers", "builders"];
 
 class App extends React.Component {
-  state = { myGeneration: "allages" };
+  state = { myGeneration: "" };
 
   setGeneration = whatGeneration => {
     this.setState({ myGeneration: whatGeneration });
@@ -24,7 +24,8 @@ class App extends React.Component {
   };
 
   componentDidMount() {
-    hideOtherGenrations(this.state.myGeneration);
+    // hideOtherGenrations(this.state.myGeneration);
+
     // ScrollReveal().reveal(".chart-svg");
     // console.log(ScrollReveal)
     // setTimeout(() => {
@@ -45,7 +46,8 @@ class App extends React.Component {
   }
 
   componentDidUpdate() {
-    hideOtherGenrations(this.state.myGeneration);
+    // hideOtherGenrations(this.state.myGeneration);
+    console.log(this.state)
   }
 
   render() {

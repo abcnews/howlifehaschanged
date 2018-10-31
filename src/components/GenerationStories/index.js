@@ -17,7 +17,7 @@ class ChartStory extends React.Component {
           *
           *    
           */}
-        {(this.props.currentGeneration === "genz" ||
+        {(true || this.props.currentGeneration === "genz" ||
           this.props.currentGeneration === "allages") && (
           <div>
             <Portal into={document.querySelector(".infantmortality")}>
@@ -297,7 +297,7 @@ class ChartStory extends React.Component {
           *
           *    
           */}
-        {(this.props.currentGeneration === "millennials" ||
+        {(true || this.props.currentGeneration === "millennials" ||
           this.props.currentGeneration === "allages") && (
           <div>
             <Portal into={document.querySelector(".twentiesmarried")}>
@@ -583,7 +583,7 @@ class ChartStory extends React.Component {
           *    
           */}
 
-        {(this.props.currentGeneration === "genx" ||
+        {(true || this.props.currentGeneration === "genx" ||
           this.props.currentGeneration === "allages") && (
           <div>
             <Portal into={document.querySelector(".bachelorsforties")}>
@@ -877,7 +877,7 @@ class ChartStory extends React.Component {
           *
           *    
           */}
-        {(this.props.currentGeneration === "boomers" ||
+        {(true || this.props.currentGeneration === "boomers" ||
           this.props.currentGeneration === "allages") && (
           <div>
             <Portal into={document.querySelector(".divorceboomers")}>
@@ -1251,7 +1251,7 @@ class ChartStory extends React.Component {
           *
           *    
           */}
-        {(this.props.currentGeneration === "builders" ||
+        {(true || this.props.currentGeneration === "builders" ||
           this.props.currentGeneration === "allages") && (
           <div>
             <Portal into={document.querySelector(".lessthan15k")}>
