@@ -2,11 +2,12 @@ const React = require("react");
 const styles = require("./styles.scss"); // Mostly global
 const d3 = Object.assign({}, require("d3-selection"));
 const ReactResizeDetector = require("react-resize-detector").default;
-const animateScrollTo = require("animated-scroll-to");
 
-// Smooth scroll into view support for Safari, Edge, IE, etc.
-const smoothScrollPollyfill = require("smoothscroll-polyfill");
-smoothScrollPollyfill.polyfill();
+const SmoothScroll = require("smooth-scroll");
+
+// Smooth scroll library
+var scroll = new SmoothScroll('a[href*="#"]');
+
 
 const Portal = require("../Portal"); // To inject components into other page areas
 const AgeChooser = require("../AgeChooser");
@@ -25,7 +26,11 @@ class App extends React.Component {
     // Select element and scroll to it
     let sectionHead = document.querySelector("." + whatGeneration);
     if (sectionHead) {
-      animateScrollTo(sectionHead, {offset: -42})
+      scroll.animateScroll(
+        sectionHead, // Node
+        null, // Toggle
+        { speed: 750, easing: "easeInOutCubic", offset: 42 }
+      );
     }
   };
 

@@ -103,43 +103,40 @@ class ChartStory extends React.Component {
 
             {/* <Portal into={document.querySelector(".costchildcare")} /> */}
 
+            <Portal into={document.querySelector(".twoparentswork")}>
+              <SlopeChart
+                title={getTitle("twoparentswork")}
+                years={["1981", "2016"]}
+                lines={[
+                  {
+                    first: 39,
+                    last: 63,
+                    labelPercent: "62%",
+                    labelSign: "+",
+                    labelSex: "All",
+                    labelStart: "39%",
+                    labelEnd: "63%"
+                  }
+                ]}
+              />
+            </Portal>
+
             <Portal into={document.querySelector(".kidsobese")}>
-              <div className={styles.row}>
-                <div className={styles.column}>
-                  <SlopeChart
-                    title={getTitle("kidsobese")}
-                    years={["1985", "2015"]}
-                    lines={[
-                      {
-                        first: 11,
-                        last: 27,
-                        labelPercent: "145%",
-                        labelSign: "+",
-                        labelSex: "All",
-                        labelStart: "11%",
-                        labelEnd: "27%"
-                      }
-                    ]}
-                  />
-                </div>
-                <div className={styles.column}>
-                  <SlopeChart
-                    title={getTitle("twoparentswork")}
-                    years={["1981", "2016"]}
-                    lines={[
-                      {
-                        first: 39,
-                        last: 63,
-                        labelPercent: "62%",
-                        labelSign: "+",
-                        labelSex: "All",
-                        labelStart: "39%",
-                        labelEnd: "63%"
-                      }
-                    ]}
-                  />
-                </div>
-              </div>
+              <SlopeChart
+                title={getTitle("kidsobese")}
+                years={["1985", "2015"]}
+                lines={[
+                  {
+                    first: 11,
+                    last: 27,
+                    labelPercent: "145%",
+                    labelSign: "+",
+                    labelSex: "All",
+                    labelStart: "11%",
+                    labelEnd: "27%"
+                  }
+                ]}
+              />
             </Portal>
 
             {/* <Portal into={document.querySelector(".twoparentswork")} /> */}
@@ -517,7 +514,15 @@ class ChartStory extends React.Component {
                       }
                     ]}
                   />
-                  <SlopeChart
+                 
+                </div>
+              </div>
+            </Portal>
+
+            <Portal into={document.querySelector(".doleperweek")}>
+            
+            
+            <SlopeChart
                     title={getTitle("doleperweek")}
                     years={["1981", "2016"]}
                     lines={[
@@ -532,8 +537,7 @@ class ChartStory extends React.Component {
                       }
                     ]}
                   />
-                </div>
-              </div>
+            
             </Portal>
 
             <Portal into={document.querySelector(".medianhouseprice")}>
@@ -948,8 +952,8 @@ class ChartStory extends React.Component {
                         labelSign: "-",
                         labelSex: "Male",
                         labelStart: "46%",
-                        labelEnd: "15%",
-                        firstNudge: 2
+                        labelEnd: "15%"
+                        // firstNudge: 2
                       }
                     ]}
                   />
@@ -1403,7 +1407,9 @@ class ChartStory extends React.Component {
               </div>
             </Portal>
 
-            <Portal into={document.querySelector(".eightyfiveplusasproportion")}>
+            <Portal
+              into={document.querySelector(".eightyfiveplusasproportion")}
+            >
               <div className={styles.row}>
                 <div className={styles.column}>
                   <SlopeChart
