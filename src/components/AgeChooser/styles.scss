@@ -3,6 +3,26 @@
   text-align: center;
   color: white;
   font-size: 16px;
+  height: 100px;
+}
+
+.panel {
+  width: 100%;
+  position: absolute;
+}
+
+.space {
+  min-height: 200px;
+}
+
+.fixed {
+  position: fixed;
+  top: 0px;
+  padding-top: 10px;
+
+  z-index: 1;
+  background: #175482;
+  padding-bottom: 5px;
 }
 
 .question {
