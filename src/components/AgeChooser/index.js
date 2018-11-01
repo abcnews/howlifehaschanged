@@ -11,17 +11,28 @@ const ChooserDropdown = require("../ChooserDropdown");
 const TABLET_PORTRAIT_OR_UP = 600;
 
 
-const waypoint = new Waypoint({
-  element: document.querySelector(".Header"),
-  handler: function(direction) {
-    console.log(direction, this.element, "Hello!!!!");
-  }
-});
 
 class AgeChooser extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = { isScrolledPast: true };
+
+    this.node = React.createRef();
+  }
+
+  componentDidMount() {
+    this.waypoint = new Waypoint({
+      element: this.node.current, //document.querySelector(".Header"),
+      handler: function(direction) {
+        console.log(direction, this.element, "Hello!!!!");
+      }
+    });
+  }
+
   componentWillUnmount() {
     // Removes event listeners from page
-    waypoint.destroy();
+    this.waypoint.destroy();
   }
 
   render() {
@@ -29,7 +40,7 @@ class AgeChooser extends React.Component {
     const { setGeneration, clearGeneration } = this.props;
 
     return (
-      <div className={styles.wrapper}>
+      <div ref={this.node} className={styles.wrapper}>
         {/* 
           This is just a label for the user
           Maybe think about resizing this on mobile

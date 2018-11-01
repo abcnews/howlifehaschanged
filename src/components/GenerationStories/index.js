@@ -671,8 +671,6 @@ class ChartStory extends React.Component {
               />
             </Portal>
 
-            
-
             <Portal into={document.querySelector(".householdspending")}>
               <div className={styles.row}>
                 <div className={styles.column}>
@@ -757,6 +755,8 @@ class ChartStory extends React.Component {
                       }
                     ]}
                   />
+                </div>
+                <div className={styles.column}>
                   <SlopeChart
                     title={getTitle("adultdrinking")}
                     years={["1981", "2016"]}
@@ -769,41 +769,6 @@ class ChartStory extends React.Component {
                         labelSex: "All",
                         labelStart: "12.8",
                         labelEnd: "9.7"
-                      }
-                    ]}
-                  />
-                </div>
-                <div className={styles.column}>
-                  <SlopeChart
-                    title={getTitle("adultobese")}
-                    years={["1989", "2016"]}
-                    lines={[
-                      // {
-                      //   first: 48,
-                      //   last: 73,
-                      //   labelPercent: "51%",
-                      //   labelSign: "+",
-                      //   labelSex: "All",
-                      //   labelStart: "48%",
-                      //   labelEnd: "73%"
-                      // },
-                      {
-                        first: 42,
-                        last: 65,
-                        labelPercent: "54%",
-                        labelSign: "+",
-                        labelSex: "Female",
-                        labelStart: "42%",
-                        labelEnd: "65%"
-                      },
-                      {
-                        first: 54,
-                        last: 81,
-                        labelPercent: "50%",
-                        labelSign: "+",
-                        labelSex: "Male",
-                        labelStart: "54%",
-                        labelEnd: "81%"
                       }
                     ]}
                   />
@@ -866,6 +831,41 @@ class ChartStory extends React.Component {
                   />
                 </div>
               </div>
+            </Portal>
+            <Portal into={document.querySelector(".heartattackgenx")}>
+              <SlopeChart
+                title={getTitle("adultobese")}
+                years={["1989", "2016"]}
+                lines={[
+                  // {
+                  //   first: 48,
+                  //   last: 73,
+                  //   labelPercent: "51%",
+                  //   labelSign: "+",
+                  //   labelSex: "All",
+                  //   labelStart: "48%",
+                  //   labelEnd: "73%"
+                  // },
+                  {
+                    first: 42,
+                    last: 65,
+                    labelPercent: "54%",
+                    labelSign: "+",
+                    labelSex: "Female",
+                    labelStart: "42%",
+                    labelEnd: "65%"
+                  },
+                  {
+                    first: 54,
+                    last: 81,
+                    labelPercent: "50%",
+                    labelSign: "+",
+                    labelSex: "Male",
+                    labelStart: "54%",
+                    labelEnd: "81%"
+                  }
+                ]}
+              />
             </Portal>
           </div>
         )}
@@ -1292,21 +1292,6 @@ class ChartStory extends React.Component {
                       }
                     ]}
                   />
-                  <SlopeChart
-                    title={getTitle("householdincomebuilders")}
-                    years={["1984", "2016"]}
-                    lines={[
-                      {
-                        first: 695,
-                        last: 1145,
-                        labelPercent: "65%",
-                        labelSign: "+",
-                        labelSex: "All",
-                        labelStart: "$695",
-                        labelEnd: "$1,145"
-                      }
-                    ]}
-                  />
                 </div>
                 <div className={styles.column}>
                   <SlopeChart
@@ -1364,6 +1349,32 @@ class ChartStory extends React.Component {
                       }
                     ]}
                   />
+                </div>
+                <div className={styles.column} />
+
+                <div className={styles.column}>
+                  <SlopeChart
+                    title={getTitle("medicalspending")}
+                    years={["1984", "2016"]}
+                    lines={[
+                      {
+                        first: 30,
+                        last: 81,
+                        labelPercent: "168%",
+                        labelSign: "+",
+                        labelSex: "All",
+                        labelStart: "$30",
+                        labelEnd: "$81"
+                      }
+                    ]}
+                  />
+                </div>
+              </div>
+            </Portal>
+
+            <Portal into={document.querySelector(".annualpension")}>
+              <div className={styles.row}>
+                <div className={styles.column}>
                   <SlopeChart
                     title={getTitle("annualpension")}
                     years={["1981", "2016"]}
@@ -1382,17 +1393,17 @@ class ChartStory extends React.Component {
                 </div>
                 <div className={styles.column}>
                   <SlopeChart
-                    title={getTitle("medicalspending")}
+                    title={getTitle("householdincomebuilders")}
                     years={["1984", "2016"]}
                     lines={[
                       {
-                        first: 30,
-                        last: 81,
-                        labelPercent: "168%",
+                        first: 695,
+                        last: 1145,
+                        labelPercent: "65%",
                         labelSign: "+",
                         labelSex: "All",
-                        labelStart: "$30",
-                        labelEnd: "$81"
+                        labelStart: "$695",
+                        labelEnd: "$1,145"
                       }
                     ]}
                   />
