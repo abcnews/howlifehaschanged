@@ -465,6 +465,7 @@ class SlopeChart extends React.Component {
             <div className={styles.wrapper}>
               <div className={styles.title}>{this.props.title}</div>
               <div ref={this.node} className={"chart-div"} />
+              {/* <div>{this.props.note}</div> */}
             </div>
           );
         }}

@@ -43,6 +43,7 @@ class ChartStory extends React.Component {
                 <div className={styles.column}>
                   <SlopeChart
                     title={getTitle("sidsdeaths")}
+                    note={"*SIDS deaths per 1,000 live births"}
                     years={["1981", "2016"]}
                     lines={[
                       {
@@ -365,61 +366,58 @@ class ChartStory extends React.Component {
               </div>
             </Portal>
 
+            <Portal into={document.querySelector(".livingwithparents")}>
+              <SlopeChart
+                title={getTitle("livingwithparents")}
+                years={["1981", "2016"]}
+                lines={[
+                  {
+                    first: 24,
+                    last: 30,
+                    labelPercent: "24%",
+                    labelSign: "+",
+                    labelSex: "All",
+                    labelStart: "24%",
+                    labelEnd: "30%"
+                  }
+                ]}
+              />
+            </Portal>
+
             <Portal into={document.querySelector(".defacto")}>
-              <div className={styles.row}>
-                <div className={styles.column}>
-                  <SlopeChart
-                    title={getTitle("defacto")}
-                    years={["1981", "2016"]}
-                    lines={[
-                      {
-                        first: 1,
-                        last: 17,
-                        labelPercent: "1208%",
-                        labelSign: "+",
-                        labelSex: "Female",
-                        labelStart: "1%",
-                        labelEnd: "17%"
-                      },
-                      {
-                        first: 3,
-                        last: 19,
-                        labelPercent: "660%",
-                        labelSign: "+",
-                        labelSex: "Male",
-                        labelStart: "3%",
-                        labelEnd: "19%"
-                      }
-                      // {
-                      //   first: 2,
-                      //   last: 18,
-                      //   labelPercent: "800%",
-                      //   labelSign: "+",
-                      //   labelSex: "All",
-                      //   labelStart: "2%",
-                      //   labelEnd: "18%"
-                      // }
-                    ]}
-                  />
-                </div>
-                <div className={styles.column}>
-                  <SlopeChart
-                    title={getTitle("livingwithparents")}
-                    years={["1981", "2016"]}
-                    lines={[
-                      {
-                        first: 24,
-                        last: 30,
-                        labelPercent: "24%",
-                        labelSign: "+",
-                        labelSex: "All",
-                        labelStart: "24%",
-                        labelEnd: "30%"
-                      }
-                    ]}
-                  />
-                </div>
-              </div>
+              <SlopeChart
+                title={getTitle("defacto")}
+                years={["1981", "2016"]}
+                lines={[
+                  {
+                    first: 1,
+                    last: 17,
+                    labelPercent: "1208%",
+                    labelSign: "+",
+                    labelSex: "Female",
+                    labelStart: "1%",
+                    labelEnd: "17%"
+                  },
+                  {
+                    first: 3,
+                    last: 19,
+                    labelPercent: "660%",
+                    labelSign: "+",
+                    labelSex: "Male",
+                    labelStart: "3%",
+                    labelEnd: "19%"
+                  }
+                  // {
+                  //   first: 2,
+                  //   last: 18,
+                  //   labelPercent: "800%",
+                  //   labelSign: "+",
+                  //   labelSex: "All",
+                  //   labelStart: "2%",
+                  //   labelEnd: "18%"
+                  // }
+                ]}
+              />
             </Portal>
 
             <Portal into={document.querySelector(".highestdegreethirties")}>
@@ -514,30 +512,26 @@ class ChartStory extends React.Component {
                       }
                     ]}
                   />
-                 
                 </div>
               </div>
             </Portal>
 
             <Portal into={document.querySelector(".doleperweek")}>
-            
-            
-            <SlopeChart
-                    title={getTitle("doleperweek")}
-                    years={["1981", "2016"]}
-                    lines={[
-                      {
-                        first: 219.61,
-                        last: 263.8,
-                        labelPercent: "20%",
-                        labelSign: "+",
-                        labelSex: "All",
-                        labelStart: "$219.61",
-                        labelEnd: "$263.80"
-                      }
-                    ]}
-                  />
-            
+              <SlopeChart
+                title={getTitle("doleperweek")}
+                years={["1981", "2016"]}
+                lines={[
+                  {
+                    first: 219.61,
+                    last: 263.8,
+                    labelPercent: "20%",
+                    labelSign: "+",
+                    labelSex: "All",
+                    labelStart: "$219.61",
+                    labelEnd: "$263.80"
+                  }
+                ]}
+              />
             </Portal>
 
             <Portal into={document.querySelector(".medianhouseprice")}>
@@ -651,52 +645,33 @@ class ChartStory extends React.Component {
             </Portal>
 
             <Portal into={document.querySelector(".marriednotworking")}>
-              <div className={styles.row}>
-                <div className={styles.column}>
-                  <SlopeChart
-                    title={getTitle("marriednotworking")}
-                    years={["1981", "2016"]}
-                    lines={[
-                      {
-                        first: 5.8,
-                        last: 7.3,
-                        labelPercent: "26%",
-                        labelSign: "-",
-                        labelSex: "Male",
-                        labelStart: "5.8%",
-                        labelEnd: "7.3%"
-                      },
-                      {
-                        first: 48,
-                        last: 19,
-                        labelPercent: "60%",
-                        labelSign: "-",
-                        labelSex: "Female",
-                        labelStart: "48%",
-                        labelEnd: "19%"
-                      }
-                    ]}
-                  />
-                </div>
-                <div className={styles.column}>
-                  <SlopeChart
-                    title={getTitle("mortgageinterest")}
-                    years={["1984", "2016"]}
-                    lines={[
-                      {
-                        first: 43.86,
-                        last: 80.19,
-                        labelPercent: "83%",
-                        labelSign: "-",
-                        labelSex: "All",
-                        labelStart: "$43.86",
-                        labelEnd: "$80.19"
-                      }
-                    ]}
-                  />
-                </div>
-              </div>
+              <SlopeChart
+                title={getTitle("marriednotworking")}
+                years={["1981", "2016"]}
+                lines={[
+                  {
+                    first: 5.8,
+                    last: 7.3,
+                    labelPercent: "26%",
+                    labelSign: "-",
+                    labelSex: "Male",
+                    labelStart: "5.8%",
+                    labelEnd: "7.3%"
+                  },
+                  {
+                    first: 48,
+                    last: 19,
+                    labelPercent: "60%",
+                    labelSign: "-",
+                    labelSex: "Female",
+                    labelStart: "48%",
+                    labelEnd: "19%"
+                  }
+                ]}
+              />
             </Portal>
+
+            
 
             <Portal into={document.querySelector(".householdspending")}>
               <div className={styles.row}>
@@ -736,6 +711,24 @@ class ChartStory extends React.Component {
                 </div>
               </div>
             </Portal>
+
+            {/* <Portal into={document.querySelector(".mortgageinterest")}>
+              <SlopeChart
+                title={getTitle("mortgageinterest")}
+                years={["1984", "2016"]}
+                lines={[
+                  {
+                    first: 43.86,
+                    last: 80.19,
+                    labelPercent: "83%",
+                    labelSign: "-",
+                    labelSex: "All",
+                    labelStart: "$43.86",
+                    labelEnd: "$80.19"
+                  }
+                ]}
+              />
+            </Portal> */}
 
             <Portal into={document.querySelector(".genxsmokers")}>
               <div className={styles.row}>
