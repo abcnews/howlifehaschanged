@@ -29,7 +29,7 @@ class App extends React.Component {
       scroll.animateScroll(
         sectionHead, // Node
         null, // Toggle
-        { speed: 750, easing: "easeInOutCubic", offset: 42 }
+        { speed: 750, easing: "easeInOutCubic", offset: 118 }
       );
     }
   };
