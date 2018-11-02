@@ -92,19 +92,21 @@ class App extends React.Component {
   }
 }
 
-function hideOtherGenrations(visibleGeneration) {
-  generations.forEach(generation => {
-    const gens = d3.selectAll("." + generation);
-    if (visibleGeneration === "") gens.classed(styles.hidden, true);
-    else if (
-      visibleGeneration === "allages" ||
-      generation === visibleGeneration
-    )
-      gens.classed(styles.hidden, false);
-    else {
-      gens.classed(styles.hidden, true);
-    }
-  });
-}
+// WE ARE NOT DOING THIS ANY MORE
+// JUST SCROLLING TO SECTION INSTEAD
+// function hideOtherGenrations(visibleGeneration) {
+//   generations.forEach(generation => {
+//     const gens = d3.selectAll("." + generation);
+//     if (visibleGeneration === "") gens.classed(styles.hidden, true);
+//     else if (
+//       visibleGeneration === "allages" ||
+//       generation === visibleGeneration
+//     )
+//       gens.classed(styles.hidden, false);
+//     else {
+//       gens.classed(styles.hidden, true);
+//     }
+//   });
+// }
 
 module.exports = App;
