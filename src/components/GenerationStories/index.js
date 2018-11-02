@@ -396,7 +396,7 @@ class ChartStory extends React.Component {
             <Portal into={document.querySelector(".defacto")}>
               <SlopeChart
                 title={getTitle("defacto")}
-                years={["1981", "2016"]}
+                years={["1982", "2016"]}
                 lines={[
                   {
                     first: 1,
@@ -662,7 +662,7 @@ class ChartStory extends React.Component {
                     first: 5.8,
                     last: 7.3,
                     labelPercent: "26%",
-                    labelSign: "-",
+                    labelSign: "+",
                     labelSex: "Male",
                     labelStart: "5.8%",
                     labelEnd: "7.3%"
@@ -685,16 +685,16 @@ class ChartStory extends React.Component {
                 <div className={styles.column}>
                   <SlopeChart
                     title={getTitle("householdspending")}
-                    years={["1981", "2016"]}
+                    years={["1984", "2016"]}
                     lines={[
                       {
-                        first: 1077,
-                        last: 1425,
-                        labelPercent: "32%",
+                        first: 1073,
+                        last: 1537,
+                        labelPercent: "43%",
                         labelSign: "+",
                         labelSex: "All",
-                        labelStart: "$1,077",
-                        labelEnd: "$1,425"
+                        labelStart: "$1,073",
+                        labelEnd: "$1,537"
                       }
                     ]}
                   />
@@ -719,7 +719,7 @@ class ChartStory extends React.Component {
               </div>
             </Portal>
 
-            {/* <Portal into={document.querySelector(".mortgageinterest")}>
+            <Portal into={document.querySelector(".mortgageinterest")}>
               <SlopeChart
                 title={getTitle("mortgageinterest")}
                 years={["1984", "2016"]}
@@ -728,14 +728,14 @@ class ChartStory extends React.Component {
                     first: 43.86,
                     last: 80.19,
                     labelPercent: "83%",
-                    labelSign: "-",
+                    labelSign: "+",
                     labelSex: "All",
                     labelStart: "$43.86",
                     labelEnd: "$80.19"
                   }
                 ]}
               />
-            </Portal> */}
+            </Portal>
 
             <Portal into={document.querySelector(".genxsmokers")}>
               <div className={styles.row}>
@@ -745,12 +745,12 @@ class ChartStory extends React.Component {
                     years={["1981", "2015"]}
                     lines={[
                       {
-                        first: 27,
+                        first: 26,
                         last: 17,
                         labelPercent: "33%",
                         labelSign: "-",
                         labelSex: "Female",
-                        labelStart: "27%",
+                        labelStart: "26%",
                         labelEnd: "17%"
                       },
                       {
@@ -841,7 +841,7 @@ class ChartStory extends React.Component {
                 </div>
               </div>
             </Portal>
-            <Portal into={document.querySelector(".heartattackgenx")}>
+            <Portal into={document.querySelector(".adultobese")}>
               <SlopeChart
                 title={getTitle("adultobese")}
                 years={["1989", "2016"]}
@@ -929,12 +929,12 @@ class ChartStory extends React.Component {
                     years={["1981", "2016"]}
                     lines={[
                       // {
-                      //   first: 48,
+                      //   first: 35,
                       //   last: 15.01,
-                      //   labelPercent: "69%",
+                      //   labelPercent: "57%",
                       //   labelSign: "-",
                       //   labelSex: "All",
-                      //   labelStart: "48%",
+                      //   labelStart: "35%",
                       //   labelEnd: "15%",
                       //   firstNudge: -2
                       // },
@@ -948,12 +948,12 @@ class ChartStory extends React.Component {
                         labelEnd: "15%"
                       },
                       {
-                        first: 46,
+                        first: 32,
                         last: 14.99,
-                        labelPercent: "67%",
+                        labelPercent: "53%",
                         labelSign: "-",
                         labelSex: "Male",
-                        labelStart: "46%",
+                        labelStart: "32%",
                         labelEnd: "15%"
                         // firstNudge: 2
                       }
@@ -976,21 +976,21 @@ class ChartStory extends React.Component {
                       },
                       {
                         first: 2.2,
-                        last: 13,
-                        labelPercent: "491%",
+                        last: 13.4,
+                        labelPercent: "509%",
                         labelSign: "+",
                         labelSex: "Male",
                         labelStart: "2.2%",
-                        labelEnd: "13%"
+                        labelEnd: "13.4%"
                       }
                       // {
                       //   first: 1.4,
-                      //   last: 14,
-                      //   labelPercent: "900%",
+                      //   last: 13.7,
+                      //   labelPercent: "879%",
                       //   labelSign: "+",
                       //   labelSex: "All",
                       //   labelStart: "1.4%",
-                      //   labelEnd: "14%"
+                      //   labelEnd: "13.7%"
                       // }
                     ]}
                   />
@@ -1081,12 +1081,12 @@ class ChartStory extends React.Component {
                     years={["1981", "2016"]}
                     lines={[
                       // {
-                      //   first: 90,
+                      //   first: 88,
                       //   last: 74,
-                      //   labelPercent: "18%",
+                      //   labelPercent: "16%",
                       //   labelSign: "-",
                       //   labelSex: "All",
-                      //   labelStart: "90%",
+                      //   labelStart: "88%",
                       //   labelEnd: "74%"
                       // },
                       {
@@ -1130,8 +1130,8 @@ class ChartStory extends React.Component {
                         labelPercent: "7%",
                         labelSign: "+",
                         labelSex: "Male",
-                        labelStart: "59.5%",
-                        labelEnd: "63.6%"
+                        labelStart: "59.5",
+                        labelEnd: "63.6"
                       }
                     ]}
                   />
@@ -1206,7 +1206,7 @@ class ChartStory extends React.Component {
                       {
                         first: 23,
                         last: 13,
-                        labelPercent: "25%",
+                        labelPercent: "44%",
                         labelSign: "-",
                         labelSex: "Female",
                         labelStart: "23%",
@@ -1406,12 +1406,12 @@ class ChartStory extends React.Component {
                     years={["1984", "2016"]}
                     lines={[
                       {
-                        first: 695,
+                        first: 681,
                         last: 1145,
-                        labelPercent: "65%",
+                        labelPercent: "68%",
                         labelSign: "+",
                         labelSex: "All",
-                        labelStart: "$695",
+                        labelStart: "$681",
                         labelEnd: "$1,145"
                       }
                     ]}
@@ -1479,7 +1479,7 @@ class ChartStory extends React.Component {
                         labelPercent: "14%",
                         labelSign: "-",
                         labelSex: "Female",
-                        labelStart: "236.5",
+                        labelStart: "178.6",
                         labelEnd: "153.1"
                       },
                       {
