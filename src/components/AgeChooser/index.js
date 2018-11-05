@@ -18,27 +18,24 @@ class AgeChooser extends React.Component {
     this.state = { isScrolledPast: true };
 
     this.node = React.createRef();
-
-    
   }
 
   componentDidMount() {
     // Waits a sec to bind as a hacky way of not screwing up waypoints
     setTimeout(() => {
-      
       // Waypoint to snap panel to top
       this.waypointPanel = new Waypoint({
-        element: this.node.current.querySelector("." + styles.panel), //document.querySelector(".Header"),
-        handler: (direction) => {
-          const panel = d3.select(this.node.current.querySelector("." + styles.panel));
-          const question = d3.select(this.node.current.querySelector("." + styles.question));
-          console.log(panel, direction, "Start of story...");
+        element: this.node.current.querySelector("." + styles.chooser),
+        offset: 0,
+        handler: direction => {
+          const chooser = d3.select(
+            this.node.current.querySelector("." + styles.chooser)
+          );
+
           if (direction === "down") {
-            panel.classed(styles.fixed, true);
-            question.classed(styles.noDisplay, true);
+            chooser.classed(styles.fixed, true);
           } else {
-            panel.classed(styles.fixed, false);
-            question.classed(styles.noDisplay, false);
+            chooser.classed(styles.fixed, false);
           }
         }
       });
@@ -46,16 +43,20 @@ class AgeChooser extends React.Component {
       // Waypoint to hide when we reach the bottom
       this.waypointPanelEnd = new Waypoint({
         element: document.querySelector(".endofstorywaypoint"),
-        handler: (direction) => {
-          const panel = d3.select(this.node.current.querySelector("." + styles.panel));
-          console.log(direction, "End of story...");
+        handler: direction => {
+          const chooser = d3.select(
+            this.node.current.querySelector("." + styles.chooser)
+          );
+
           if (direction === "down") {
-            panel.classed(styles.faded, true);
+            chooser.classed(styles.faded, true);
           } else {
-            panel.classed(styles.faded, false);
+            chooser.classed(styles.faded, false);
           }
         }
       });
+
+      window.addEventListener("scroll", this.pushDocked);
     }, 1000);
   }
 
@@ -63,7 +64,21 @@ class AgeChooser extends React.Component {
     // Removes waypoint event listeners on hot reload
     this.waypointPanel.destroy();
     this.waypointPanelEnd.destroy();
+    window.removeEventListener("scroll", this.pushDocked);
   }
+
+  pushDocked = () => {
+    const topNavHiding = document.querySelector(".Nav-bar.is-hiding");
+    const chooser = d3.select(
+      this.node.current.querySelector("." + styles.chooser)
+    );
+    if (!chooser.classed(styles.fixed)) chooser.classed(styles.padding, false);
+    else if (topNavHiding) {
+      chooser.classed(styles.padding, false);
+    } else {
+      chooser.classed(styles.padding, true);
+    }
+  };
 
   render() {
     // Function passed down from main App
@@ -83,7 +98,7 @@ class AgeChooser extends React.Component {
           <ReactResizeDetector handleWidth>
             {(width, height) => {
               return (
-                <div>
+                <div className={styles.chooser}>
                   {/*
                 Dropdown box generation selector for
                 mobile devices that can't display all

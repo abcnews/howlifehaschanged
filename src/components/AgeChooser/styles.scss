@@ -7,6 +7,10 @@
 }
 
 .panel {
+  dummy: value;
+}
+
+.chooser {
   width: 100%;
   position: absolute;
   transition: all 0.2s ease;
@@ -44,4 +48,8 @@
 
 .no-display {
   display: none;
+}
+
+.padding {
+  padding-top: 45px;
 }

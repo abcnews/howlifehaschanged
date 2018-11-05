@@ -8,7 +8,7 @@ const options = [
   { value: "twenties", label: "Twenties" },
   { value: "thirties", label: "Thirties" },
   { value: "forties", label: "Forties" },
-  { value: "fifteies", label: "Fifties" },
+  { value: "fifties", label: "Fifties" },
   { value: "sixties", label: "Sixties" },
   { value: "seventiesandover", label: "Seventies and over" }
 ];
