@@ -22,11 +22,10 @@ class App extends React.Component {
 
     // Select element and scroll to it
     const sectionHead = document.querySelector("." + whatGeneration);
-    const topNavHiding = document.querySelector(".Nav-bar.is-hiding");
     if (sectionHead) {
       scroll.animateScroll(
         sectionHead, // Node
-        topNavHiding, // Toggle
+        null, // Toggle
         {
           speed: 750,
           easing: "easeInOutCubic",

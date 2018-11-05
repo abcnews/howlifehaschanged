@@ -68,15 +68,21 @@ class AgeChooser extends React.Component {
   }
 
   pushDocked = () => {
-    const topNavHiding = document.querySelector(".Nav-bar.is-hiding");
-    const chooser = d3.select(
-      this.node.current.querySelector("." + styles.chooser)
-    );
-    if (!chooser.classed(styles.fixed)) chooser.classed(styles.padding, false);
-    else if (topNavHiding) {
-      chooser.classed(styles.padding, false);
-    } else {
-      chooser.classed(styles.padding, true);
+    // First check that the ABC Nav bar is still there
+    // There have been talks of taking it out
+    if (document.querySelector(".Nav-bar")) {
+      const topNavHiding = document.querySelector(".Nav-bar.is-hiding");
+
+      const chooser = d3.select(
+        this.node.current.querySelector("." + styles.chooser)
+      );
+      if (!chooser.classed(styles.fixed))
+        chooser.classed(styles.padding, false);
+      else if (topNavHiding) {
+        chooser.classed(styles.padding, false);
+      } else {
+        chooser.classed(styles.padding, true);
+      }
     }
   };
 
