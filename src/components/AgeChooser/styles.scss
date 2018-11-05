@@ -9,20 +9,11 @@
 .panel {
   width: 100%;
   position: absolute;
+  transition: all 0.2s ease;
 }
 
 .space {
   min-height: 200px;
-}
-
-.fixed {
-  position: fixed;
-  top: 0px;
-  padding-top: 10px;
-
-  z-index: 1;
-  background-image: linear-gradient(rgba(23, 84, 130, 1) 80%, rgba(23, 84, 130, 0.0) 100%);
-  padding-bottom: 15px;
 }
 
 .question {
@@ -33,4 +24,24 @@
   margin-bottom: 1.5em;
   margin-left: 15px;
   margin-right: 15px;
+}
+
+// Add some classes to animate on scroll etc
+.fixed {
+  position: fixed;
+  top: 0px;
+  padding-top: 10px;
+
+  z-index: 1;
+  background-image: linear-gradient(rgba(23, 84, 130, 1) 80%, rgba(23, 84, 130, 0.0) 100%);
+  padding-bottom: 15px;
+}
+
+.faded {
+  opacity: 0.0;
+  pointer-events: none;
+}
+
+.no-display {
+  display: none;
 }

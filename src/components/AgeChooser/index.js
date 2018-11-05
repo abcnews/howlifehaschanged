@@ -18,26 +18,51 @@ class AgeChooser extends React.Component {
     this.state = { isScrolledPast: true };
 
     this.node = React.createRef();
+
+    
   }
 
   componentDidMount() {
-    this.waypoint = new Waypoint({
-      element: this.node.current.querySelector("." + styles.panel), //document.querySelector(".Header"),
-      handler: function(direction) {
-        const panel = d3.select(this.element);
-        console.log(direction, this.element, "Hello!!!!");
-        if (direction === "down") {
-          panel.classed(styles.fixed, true);
-        } else {
-          panel.classed(styles.fixed, false);
+    // Waits a sec to bind as a hacky way of not screwing up waypoints
+    setTimeout(() => {
+      
+      // Waypoint to snap panel to top
+      this.waypointPanel = new Waypoint({
+        element: this.node.current.querySelector("." + styles.panel), //document.querySelector(".Header"),
+        handler: (direction) => {
+          const panel = d3.select(this.node.current.querySelector("." + styles.panel));
+          const question = d3.select(this.node.current.querySelector("." + styles.question));
+          console.log(panel, direction, "Start of story...");
+          if (direction === "down") {
+            panel.classed(styles.fixed, true);
+            question.classed(styles.noDisplay, true);
+          } else {
+            panel.classed(styles.fixed, false);
+            question.classed(styles.noDisplay, false);
+          }
         }
-      }
-    });
+      });
+
+      // Waypoint to hide when we reach the bottom
+      this.waypointPanelEnd = new Waypoint({
+        element: document.querySelector(".endofstorywaypoint"),
+        handler: (direction) => {
+          const panel = d3.select(this.node.current.querySelector("." + styles.panel));
+          console.log(direction, "End of story...");
+          if (direction === "down") {
+            panel.classed(styles.faded, true);
+          } else {
+            panel.classed(styles.faded, false);
+          }
+        }
+      });
+    }, 1000);
   }
 
   componentWillUnmount() {
-    // Removes event listeners from page
-    this.waypoint.destroy();
+    // Removes waypoint event listeners on hot reload
+    this.waypointPanel.destroy();
+    this.waypointPanelEnd.destroy();
   }
 
   render() {
@@ -46,8 +71,7 @@ class AgeChooser extends React.Component {
 
     return (
       <div ref={this.node} className={styles.wrapper}>
-      <div className={styles.panel}>
-        
+        <div className={styles.panel}>
           {/* 
           This is just a label for the user
           Maybe think about resizing this on mobile
@@ -88,8 +112,8 @@ class AgeChooser extends React.Component {
               );
             }}
           </ReactResizeDetector>
-          </div>
-          <div className={styles.space}></div>
+        </div>
+        <div className={styles.space} />
       </div>
     );
   }
