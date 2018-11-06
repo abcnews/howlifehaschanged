@@ -95,6 +95,9 @@ class AgeChooser extends React.Component {
     // Removes waypoint event listeners on hot reload
     this.waypointPanel.destroy();
     this.waypointPanelEnd.destroy();
+    this.waypointGenerations.forEach(waypoint => {
+      waypoint.destroy();
+    });
     window.removeEventListener("scroll", this.doOnScroll);
   }
 
