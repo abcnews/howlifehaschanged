@@ -11,8 +11,10 @@ class ChooserButton extends React.Component {
       setGeneration
     } = this.props;
 
-    if (currentGeneration === generationSlug) clearGeneration();
-    else setGeneration(generationSlug, true);
+    // if (currentGeneration === generationSlug) clearGeneration();
+    // else 
+    
+    setGeneration(generationSlug, true);
   };
 
   render() {

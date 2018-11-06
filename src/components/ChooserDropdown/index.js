@@ -75,7 +75,7 @@ class ChooserDropdown extends React.Component {
             value={selectedOption}
             onChange={this.handleChange}
             options={options}
-            isClearable={true}
+            isClearable={false}
             isSearchable={false}
             styles={customStyles}
             classNamePrefix="react-select"

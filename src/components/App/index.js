@@ -18,8 +18,6 @@ class App extends React.Component {
   state = { myGeneration: "" };
 
   setGeneration = (whatGeneration, doScroll) => {
-    if (!doScroll) this.setState({ myGeneration: whatGeneration });
-
     // Only scroll if directed to
     if (doScroll) {
       // Select element and scroll to it
@@ -43,7 +41,9 @@ class App extends React.Component {
           }
         );
       }
-    }
+      // Scroll now sets generation so only set the generation
+      // if we are not auto-scrolling 
+    } else this.setState({ myGeneration: whatGeneration });
   };
 
   clearGeneration = () => {
