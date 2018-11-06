@@ -27,11 +27,14 @@ const line1color = "#F7FFF7";
 const line2color = "#FFD70D";
 const line3color = "#4ECDC4";
 
+let drawDuration = 1700;
+
 class SlopeChart extends React.Component {
   constructor(props) {
     super(props);
 
     this.lines = [];
+    this.endCircles = [];
     this.node = React.createRef();
   }
 
@@ -173,7 +176,7 @@ class SlopeChart extends React.Component {
 
     // Second pass now that we know the upper limits
     this.props.lines.forEach((line, iteration) => {
-      // The first line
+      // The lines
       this.lines[iteration] = this.svg
         .append("line")
         .attr("x1", this.scaleX(0))
@@ -185,7 +188,8 @@ class SlopeChart extends React.Component {
           if (line.labelSex === "All") return line1color;
           else if (line.labelSex === "Female") return line2color;
           else if (line.labelSex === "Male") return line3color;
-        }).attr("stroke-dasharray", 3);
+        })
+        .attr("stroke-dasharray", 3);
 
       // Start circle
       this.svg
@@ -200,11 +204,11 @@ class SlopeChart extends React.Component {
         });
 
       // End circle
-      this.svg
+      this.endCircles[iteration] = this.svg
         .append("circle")
         .attr("cx", this.scaleX(chartWidth()))
         .attr("cy", scaleY(line.last))
-        .attr("r", CIRCLE_RADIUS)
+        .attr("r", 0) //CIRCLE_RADIUS)
         .attr("fill", () => {
           if (line.labelSex === "All") return line1color;
           else if (line.labelSex === "Female") return line2color;
@@ -457,21 +461,43 @@ class SlopeChart extends React.Component {
     ScrollReveal().reveal(this.node.current, {
       delay: 0,
       duration: 750,
-      scale: 0.9,
-      distance: "20px",
+      scale: 0.95,
+      distance: "5px",
       reset: true,
       viewFactor: 0.3,
       beforeReveal: el => {
         this.props.lines.forEach((line, iteration) => {
+          // Modify speed of line depending on the length
+          let length = distance(
+            this.lines[iteration].attr("x1"),
+            this.scaleX(chartWidth()),
+            this.lines[iteration].attr("y1"),
+            scaleY(line.last)
+          );
+
+          drawDuration = length * 5;
+
+          // Reset the lines
           this.lines[iteration]
             .attr("x2", this.scaleX(0))
             .attr("y2", scaleY(line.first));
 
+          // Set line transitions
           this.lines[iteration]
             .transition()
-            .duration(2500)
+            .duration(drawDuration)
             .attr("x2", this.scaleX(chartWidth()))
             .attr("y2", scaleY(line.last));
+
+          // Reset the cirlces
+          this.endCircles[iteration].attr("r", 0);
+
+          // Transition the circles with delay
+          this.endCircles[iteration]
+            .transition()
+            .delay(drawDuration * 0.79)
+            .duration(250)
+            .attr("r", CIRCLE_RADIUS);
         });
       }
     });
@@ -506,6 +532,11 @@ class SlopeChart extends React.Component {
 function chartWidth() {
   if (window.innerWidth > 330) return 350;
   else return 300;
+}
+
+// Calculate distance between two points
+function distance(x1, x2, y1, y2) {
+  return Math.sqrt((x2 -= x1) * x2 + (y2 -= y1) * y2);
 }
 
 module.exports = SlopeChart;
