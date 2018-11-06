@@ -17,29 +17,32 @@ const { ContextProvider } = require("../ContextProvider");
 class App extends React.Component {
   state = { myGeneration: "" };
 
-  setGeneration = whatGeneration => {
-    this.setState({ myGeneration: whatGeneration });
+  setGeneration = (whatGeneration, doScroll) => {
+    if (!doScroll) this.setState({ myGeneration: whatGeneration });
 
-    // Select element and scroll to it
-    const sectionHead = document.querySelector("." + whatGeneration);
-    if (sectionHead) {
-      scroll.animateScroll(
-        sectionHead, // Node
-        null, // Toggle
-        {
-          speed: 750,
-          easing: "easeInOutCubic",
-          offset: function(anchor, toggle) {
-            const standardOffset = 80;
-            const toggleOffset = 34;
-            const boundsTop = anchor.getBoundingClientRect().top
+    // Only scroll if directed to
+    if (doScroll) {
+      // Select element and scroll to it
+      const sectionHead = document.querySelector("." + whatGeneration);
+      if (sectionHead) {
+        scroll.animateScroll(
+          sectionHead, // Node
+          null, // Toggle
+          {
+            speed: 750,
+            easing: "easeInOutCubic",
+            offset: function(anchor, toggle) {
+              const standardOffset = 80;
+              const toggleOffset = 34;
+              const boundsTop = anchor.getBoundingClientRect().top;
 
-            // Adjust the offset depending on scroll direction
-            if (boundsTop > 0) return standardOffset;
-            else return standardOffset + toggleOffset;
+              // Adjust the offset depending on scroll direction
+              if (boundsTop > 0) return standardOffset;
+              else return standardOffset + toggleOffset;
+            }
           }
-        }
-      );
+        );
+      }
     }
   };
 

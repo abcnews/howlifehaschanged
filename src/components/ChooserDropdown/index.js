@@ -53,7 +53,7 @@ class ChooserDropdown extends React.Component {
 
     // Set the generation state back in the App component
     if (selected === null) this.props.setGeneration("")
-    else this.props.setGeneration(selected.value);
+    else this.props.setGeneration(selected.value, true);
   };
 
   render() {

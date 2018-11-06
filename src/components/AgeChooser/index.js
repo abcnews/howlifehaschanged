@@ -2,6 +2,7 @@ const React = require("react");
 const styles = require("./styles.scss");
 const ReactResizeDetector = require("react-resize-detector").default;
 const d3 = Object.assign({}, require("d3-selection"));
+const inViewport = require("in-viewport");
 
 // A library that makes scroll triggering easier
 require("waypoints/lib/noframework.waypoints.min.js");
@@ -56,7 +57,37 @@ class AgeChooser extends React.Component {
         }
       });
 
-      window.addEventListener("scroll", this.pushDocked);
+      // Section waypoints
+      const generations = [
+        "",
+        "children",
+        "teenagers",
+        "twenties",
+        "thirties",
+        "forties",
+        "fifties",
+        "sixties",
+        "seventiesandover"
+      ];
+
+      this.waypointGenerations = [];
+
+      generations.forEach((generation, iteration) => {
+        if (generation === "") return;
+        this.waypointGenerations[iteration] = new Waypoint({
+          element: document.querySelector("." + generation),
+          offset: "bottom-in-view",
+          handler: direction => {
+            if (direction === "down") {
+              this.props.setGeneration(generation);
+            } else {
+              this.props.setGeneration(generations[iteration - 1]);
+            }
+          }
+        });
+      });
+
+      window.addEventListener("scroll", this.doOnScroll);
     }, 1000);
   }
 
@@ -64,10 +95,10 @@ class AgeChooser extends React.Component {
     // Removes waypoint event listeners on hot reload
     this.waypointPanel.destroy();
     this.waypointPanelEnd.destroy();
-    window.removeEventListener("scroll", this.pushDocked);
+    window.removeEventListener("scroll", this.doOnScroll);
   }
 
-  pushDocked = () => {
+  doOnScroll = () => {
     // First check that the ABC Nav bar is still there
     // There have been talks of taking it out
     if (document.querySelector(".Nav-bar")) {
@@ -82,8 +113,40 @@ class AgeChooser extends React.Component {
         chooser.classed(styles.padding, false);
       } else {
         chooser.classed(styles.padding, true);
-      }
+      } // TODO: maybe make this more efficient by breaking out if not needed
     }
+
+    // if (inViewport(document.querySelector(".children"))) {
+    //   this.props.setGeneration("children", false);
+    // }
+
+    // if (inViewport(document.querySelector(".teenagers"))) {
+    //   this.props.setGeneration("teenagers", false);
+    // }
+
+    // if (inViewport(document.querySelector(".twenties"))) {
+    //   this.props.setGeneration("twenties", false);
+    // }
+
+    // if (inViewport(document.querySelector(".thirties"))) {
+    //   this.props.setGeneration("thirties", false);
+    // }
+
+    // if (inViewport(document.querySelector(".forties"))) {
+    //   this.props.setGeneration("forties", false);
+    // }
+
+    // if (inViewport(document.querySelector(".fifties"))) {
+    //   this.props.setGeneration("fifties", false);
+    // }
+
+    // if (inViewport(document.querySelector(".sixties"))) {
+    //   this.props.setGeneration("sixties", false);
+    // }
+
+    // if (inViewport(document.querySelector(".seventiesandover"))) {
+    //   this.props.setGeneration("seventiesandover", false);
+    // }
   };
 
   render() {
