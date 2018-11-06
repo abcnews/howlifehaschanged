@@ -1,6 +1,11 @@
 const React = require("react");
 const styles = require("./styles.scss");
-const d3 = Object.assign({}, require("d3-selection"), require("d3-scale"));
+const d3 = Object.assign(
+  {},
+  require("d3-selection"),
+  require("d3-scale"),
+  require("d3-transition")
+);
 const ScrollReveal = require("scrollreveal").default;
 
 const { ContextConsumer } = require("../ContextProvider");
@@ -8,7 +13,6 @@ const { ContextConsumer } = require("../ContextProvider");
 // Increase > 1.0 or decrease < 1.0 height of all charts
 const yScaleFactor = 4.0;
 
-// const CHART_WIDTH = 300;
 const MIN_CHART_HEIGHT = 180;
 
 const MARGIN_TOP = 42;
@@ -27,6 +31,7 @@ class SlopeChart extends React.Component {
   constructor(props) {
     super(props);
 
+    this.lines = [];
     this.node = React.createRef();
   }
 
@@ -44,7 +49,9 @@ class SlopeChart extends React.Component {
   }
 
   componentWillUnmount() {
-    ScrollReveal().reveal(this.node.current);
+    // console.log("cleaning......");
+    // ScrollReveal().clean(this.node.current);
+    ScrollReveal().destroy();
   }
 
   attachChart = () => {
@@ -116,7 +123,7 @@ class SlopeChart extends React.Component {
       // Style main this.svg container
       this.svg
         .attr("width", chartWidth()) //this.props.width || CHART_WIDTH)
-        .attr("height", chartHeight)
+        .attr("height", chartHeight);
       // .style("background-color", "rgba(0, 0, 0, 0.03"); // remove later
 
       this.leftBound
@@ -167,18 +174,18 @@ class SlopeChart extends React.Component {
     // Second pass now that we know the upper limits
     this.props.lines.forEach((line, iteration) => {
       // The first line
-      this.svg
+      this.lines[iteration] = this.svg
         .append("line")
         .attr("x1", this.scaleX(0))
         .attr("y1", scaleY(line.first))
-        .attr("x2", this.scaleX(chartWidth()))
-        .attr("y2", scaleY(line.last))
+        .attr("x2", this.scaleX(0))
+        .attr("y2", scaleY(line.first))
         .attr("stroke-width", 3)
         .attr("stroke", () => {
           if (line.labelSex === "All") return line1color;
           else if (line.labelSex === "Female") return line2color;
           else if (line.labelSex === "Male") return line3color;
-        });
+        }).attr("stroke-dasharray", 3);
 
       // Start circle
       this.svg
@@ -453,7 +460,20 @@ class SlopeChart extends React.Component {
       scale: 0.9,
       distance: "20px",
       reset: true,
-      viewFactor: 0.3
+      viewFactor: 0.3,
+      beforeReveal: el => {
+        this.props.lines.forEach((line, iteration) => {
+          this.lines[iteration]
+            .attr("x2", this.scaleX(0))
+            .attr("y2", scaleY(line.first));
+
+          this.lines[iteration]
+            .transition()
+            .duration(2500)
+            .attr("x2", this.scaleX(chartWidth()))
+            .attr("y2", scaleY(line.last));
+        });
+      }
     });
   };
 
@@ -465,7 +485,9 @@ class SlopeChart extends React.Component {
             <div className={styles.wrapper}>
               <div className={styles.title}>{this.props.title}</div>
               <div ref={this.node} className={"chart-div"} />
-              {this.props.note ? <div className={styles.note}>{this.props.note}</div> : null}
+              {this.props.note ? (
+                <div className={styles.note}>{this.props.note}</div>
+              ) : null}
             </div>
           );
         }}
