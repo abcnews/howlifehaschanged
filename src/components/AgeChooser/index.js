@@ -2,7 +2,6 @@ const React = require("react");
 const styles = require("./styles.scss");
 const ReactResizeDetector = require("react-resize-detector").default;
 const d3 = Object.assign({}, require("d3-selection"));
-const inViewport = require("in-viewport");
 
 // A library that makes scroll triggering easier
 require("waypoints/lib/noframework.waypoints.min.js");
@@ -11,6 +10,7 @@ const ChooserButtonGroup = require("../ChooserButtonGroup");
 const ChooserDropdown = require("../ChooserDropdown");
 
 const TABLET_PORTRAIT_OR_UP = 600;
+const GENERATION_WAYPOINT_OFFSET = "25%";
 
 class AgeChooser extends React.Component {
   constructor(props) {
@@ -76,7 +76,7 @@ class AgeChooser extends React.Component {
         if (generation === "") return;
         this.waypointGenerations[iteration] = new Waypoint({
           element: document.querySelector("." + generation),
-          offset: "20%",
+          offset: GENERATION_WAYPOINT_OFFSET,
           handler: direction => {
             if (direction === "down") {
               this.props.setGeneration(generation);
