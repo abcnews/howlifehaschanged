@@ -10,8 +10,19 @@ const root = document.querySelector(`[data-${PROJECT_NAME}-root]`);
 // Runs at page load and full request but not on hot reload
 function preFlight(odyssey) {
   // Odyssey header modifications
-  const header = d3.select(".Header");
-  header.insert("div", ":first-child").classed("pre-header", true);
+  // const header = d3.select(".Header");
+  // header.insert("div", ":first-child").classed("pre-header", true);
+
+
+  const h1 = d3.select(".Header h1");
+  const h1original = h1.html();
+  console.log(
+    h1.html(
+      `<div class="pre-header"></div>
+        ${h1original}
+      <div class="post-header"></div>`
+    )
+  );
 
   const classesToHide = require("./data").classesToHide;
 
@@ -31,11 +42,11 @@ function preFlight(odyssey) {
 // Re-loads on hot reload
 function init(odyssey) {
   const App = require("./components/App");
-  const TeaserIllo = require("./components/TeaserIllo");
+  const PreHeader = require("./components/PreHeader");
 
   // Render the pre-header animation
   render(
-    <TeaserIllo projectName={PROJECT_NAME} />,
+    <PreHeader projectName={PROJECT_NAME} />,
     document.querySelector(".pre-header")
   );
 
@@ -44,7 +55,7 @@ function init(odyssey) {
 }
 
 if (module.hot) {
-  module.hot.accept(["./components/App", "./components/TeaserIllo"], () => {
+  module.hot.accept(["./components/App", "./components/PreHeader"], () => {
     try {
       init();
     } catch (err) {
