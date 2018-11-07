@@ -6,7 +6,7 @@
 :global {
   .Header {
     // Match header color to that of the CoreMedia theme
-    background-color: #175482 !important;
+    background-color: transparent !important;
   }
 
   #main_content > h2 {
@@ -14,10 +14,16 @@
   }
 
   .is-dark-mode body {
-    background-color: #175482 !important;
+    background: url("./background.png") #175482;
+    background-position: calc(50%) calc(50%); 
+    background-size: 900px;
   }
 
   .interactive-always-hidden {
     display: none !important;
+  }
+
+  html {
+    scroll-behavior: auto !important;
   }
 }
