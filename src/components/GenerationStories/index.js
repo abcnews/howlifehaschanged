@@ -479,8 +479,8 @@ class ChartStory extends React.Component {
                         labelPercent: "13%",
                         labelSign: "+",
                         labelSex: "Female",
-                        labelStart: "12%",
-                        labelEnd: "39%"
+                        labelStart: "25.6",
+                        labelEnd: "29"
                       }
                     ]}
                   />
@@ -727,13 +727,13 @@ class ChartStory extends React.Component {
                 years={["1984", "2016"]}
                 lines={[
                   {
-                    first: 43.86,
-                    last: 80.19,
-                    labelPercent: "83%",
+                    first: 13,
+                    last: 20,
+                    labelPercent: "54%",
                     labelSign: "+",
                     labelSex: "All",
-                    labelStart: "$43.86",
-                    labelEnd: "$80.19"
+                    labelStart: "13%",
+                    labelEnd: "20%"
                   }
                 ]}
               />
@@ -744,7 +744,7 @@ class ChartStory extends React.Component {
                 <div className={styles.column}>
                   <SlopeChart
                     title={getTitle("genxsmokers")}
-                    years={["1981", "2015"]}
+                    years={["1980", "2015"]}
                     lines={[
                       {
                         first: 26,
@@ -1208,7 +1208,7 @@ class ChartStory extends React.Component {
                   <SlopeChart
                     title={getTitle("boomerssmokers")}
                     note={"*Lung disease deaths per 100,000"}
-                    years={["1981", "2015"]}
+                    years={["1980", "2015"]}
                     lines={[
                       {
                         first: 23,
@@ -1234,6 +1234,7 @@ class ChartStory extends React.Component {
                 <div className={styles.column}>
                   <SlopeChart
                     title={getTitle("lungdisease")}
+                    note={"*Lung disease deaths per 100,000"}
                     years={["1981", "2016"]}
                     lines={[
                       {
@@ -1329,8 +1330,8 @@ class ChartStory extends React.Component {
                         labelPercent: "533%",
                         labelSign: "+",
                         labelSex: "Female",
-                        labelStart: "0.90%",
-                        labelEnd: "5.70%"
+                        labelStart: "0.9%",
+                        labelEnd: "5.7%"
                       },
                       {
                         first: 3.3,
@@ -1338,8 +1339,8 @@ class ChartStory extends React.Component {
                         labelPercent: "255%",
                         labelSign: "+",
                         labelSex: "Male",
-                        labelStart: "3.30%",
-                        labelEnd: "11.70%"
+                        labelStart: "3.3%",
+                        labelEnd: "11.7%"
                       }
                     ]}
                   />

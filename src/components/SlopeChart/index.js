@@ -189,7 +189,7 @@ class SlopeChart extends React.Component {
           else if (line.labelSex === "Female") return line2color;
           else if (line.labelSex === "Male") return line3color;
         })
-        .attr("stroke-dasharray", 3);
+        .attr("stroke-dasharray", 0);
 
       // Start circle
       this.svg
