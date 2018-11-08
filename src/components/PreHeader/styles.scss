@@ -8,3 +8,10 @@
 .cigarette {
   // margin-top: 10px;
 }
+
+:global {
+  .keyshape-svg svg {
+    // max-width: 100px;
+    max-height: 110px;
+  }
+}

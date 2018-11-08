@@ -4,24 +4,20 @@ const d3 = Object.assign({}, require("d3-selection"));
 // const hashify = require("spanify").hashify;
 import { hashify } from "spanify";
 
+require("./keyshape.js");
+
 const PROJECT_NAME = "howlifehaschanged";
 const root = document.querySelector(`[data-${PROJECT_NAME}-root]`);
 
 // Runs at page load and full request but not on hot reload
 function preFlight(odyssey) {
-  // Odyssey header modifications
-  // const header = d3.select(".Header");
-  // header.insert("div", ":first-child").classed("pre-header", true);
-
-
+  // Insert divs above and below header text
   const h1 = d3.select(".Header h1");
   const h1original = h1.html();
-  console.log(
-    h1.html(
-      `<div class="pre-header"></div>
+  h1.html(
+    `<div class="pre-header"></div>
         ${h1original}
       <div class="post-header"></div>`
-    )
   );
 
   const classesToHide = require("./data").classesToHide;
@@ -44,7 +40,7 @@ function init(odyssey) {
   const App = require("./components/App");
   const PreHeader = require("./components/PreHeader");
 
-  // Render the pre-header animation
+  // Render the header animations
   render(
     <PreHeader projectName={PROJECT_NAME} />,
     document.querySelector(".pre-header")
