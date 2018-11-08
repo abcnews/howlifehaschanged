@@ -1,8 +1,9 @@
 const React = require("react");
 const styles = require("./styles.scss");
-const Keyshape = require("react-keyshape").Keyshape;
 
+// For injecting into other areas of the page
 const Portal = require("../Portal");
+const AnimatedIcon = require("../AnimatedIcon");
 
 // Some assets
 const Booze = require("./svg/Booze.svg");
@@ -12,7 +13,6 @@ const Cigarette = require("./svg/Cigarette.svg");
 const MoneyAnimated = require("./svg/MoneyAnimated.svg");
 const CigaretteAnimated = require("./svg/CigaretteAnimated.svg");
 
-
 class PreHeader extends React.Component {
   render() {
     return (
@@ -21,14 +21,15 @@ class PreHeader extends React.Component {
           This is rendered above the h1 text 
         */}
         <div className={styles.pre}>
-          {/* <img className={styles.booze} src={Booze} width={64} /> */}
-          <Keyshape svg={MoneyAnimated}/>
+          <AnimatedIcon svg={MoneyAnimated} />
         </div>
 
+        {/* 
+          Rendered below the header text
+        */}
         <Portal into={document.querySelector(".post-header")}>
           <div className={styles.post}>
-            {/* <img className={styles.cigarette} src={Cigarette} width={64} /> */}
-            <Keyshape svg={CigaretteAnimated}/>
+            <AnimatedIcon svg={CigaretteAnimated} />
           </div>
         </Portal>
       </div>
