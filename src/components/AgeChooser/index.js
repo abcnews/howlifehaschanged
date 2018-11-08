@@ -1,6 +1,5 @@
 const React = require("react");
 const styles = require("./styles.scss");
-const ReactResizeDetector = require("react-resize-detector").default;
 const d3 = Object.assign({}, require("d3-selection"));
 
 // A library that makes scroll triggering easier
@@ -26,8 +25,8 @@ class AgeChooser extends React.Component {
     setTimeout(() => {
       // Waypoint to snap panel to top
       this.waypointPanel = new Waypoint({
-        element: this.node.current.querySelector("." + styles.chooser),
-        offset: 0,
+        element: this.node.current.querySelector("." + styles.question),
+        offset: -50,
         handler: direction => {
           const chooser = d3.select(
             this.node.current.querySelector("." + styles.chooser)
@@ -135,38 +134,32 @@ class AgeChooser extends React.Component {
             Which age-group would you like to know about?
           </div>
 
-          <ReactResizeDetector handleWidth>
-            {(width, height) => {
-              return (
-                <div className={styles.chooser}>
-                  {/*
+          <div className={styles.chooser}>
+            {/*
                 Dropdown box generation selector for
                 mobile devices that can't display all
                 the buttons.
               */}
-                  {width <= TABLET_PORTRAIT_OR_UP && (
-                    <ChooserDropdown
-                      currentGeneration={this.props.currentGeneration}
-                      setGeneration={setGeneration}
-                      clearGeneration={clearGeneration}
-                    />
-                  )}
+            {this.props.resizeWidth <= TABLET_PORTRAIT_OR_UP && (
+              <ChooserDropdown
+                currentGeneration={this.props.currentGeneration}
+                setGeneration={setGeneration}
+                clearGeneration={clearGeneration}
+              />
+            )}
 
-                  {/* 
+            {/* 
                 If the device isn't mobile
                 then show the buttons.
               */}
-                  {width > TABLET_PORTRAIT_OR_UP && (
-                    <ChooserButtonGroup
-                      currentGeneration={this.props.currentGeneration}
-                      setGeneration={setGeneration}
-                      clearGeneration={clearGeneration}
-                    />
-                  )}
-                </div>
-              );
-            }}
-          </ReactResizeDetector>
+            {this.props.resizeWidth > TABLET_PORTRAIT_OR_UP && (
+              <ChooserButtonGroup
+                currentGeneration={this.props.currentGeneration}
+                setGeneration={setGeneration}
+                clearGeneration={clearGeneration}
+              />
+            )}
+          </div>
         </div>
         <div className={styles.space} />
       </div>

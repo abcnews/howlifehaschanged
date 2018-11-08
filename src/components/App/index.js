@@ -83,6 +83,7 @@ class App extends React.Component {
                     setGeneration={this.setGeneration}
                     clearGeneration={this.clearGeneration}
                     currentGeneration={this.state.myGeneration}
+                    resizeWidth={width}
                   />
                 </Portal>
 
