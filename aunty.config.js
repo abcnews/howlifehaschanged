@@ -11,7 +11,7 @@ module.exports = {
     },
     output: {
       publicPath:
-        "/"
+        "http://www.abc.net.au/res/sites/news-projects/howlifehaschanged/master/"
     }
   },
   devServer: {
