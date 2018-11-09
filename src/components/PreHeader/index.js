@@ -23,6 +23,7 @@ class PreHeader extends React.Component {
         */}
         <div className={styles.pre}>
           <AnimatedIcon svg={MoneyAnimated} />
+          <AnimatedIcon svg={CigaretteAnimated} />
         </div>
 
         {/* 
@@ -30,7 +31,7 @@ class PreHeader extends React.Component {
         */}
         <Portal into={document.querySelector(".post-header")}>
           <div className={styles.post}>
-            <AnimatedIcon svg={CigaretteAnimated} />
+            
             <AnimatedIcon svg={RingAnimated} />
           </div>
         </Portal>
