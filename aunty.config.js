@@ -9,10 +9,10 @@ module.exports = {
     performance: {
       hints: false
     },
-    output: {
-      publicPath:
-        "/"
-    }
+    // output: {
+    //   publicPath:
+    //     "http://www.abc.net.au/res/sites/news-projects/howlifehaschanged/master/"
+    // }
   },
   devServer: {
     publicPath: '/',
