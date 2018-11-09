@@ -12,6 +12,7 @@ const Cigarette = require("./svg/Cigarette.svg");
 // Animated assets
 const MoneyAnimated = require("./svg/MoneyAnimated.svg");
 const CigaretteAnimated = require("./svg/CigaretteAnimated.svg");
+const RingAnimated = require("./svg/RingAnimated.svg");
 
 class PreHeader extends React.Component {
   render() {
@@ -30,6 +31,7 @@ class PreHeader extends React.Component {
         <Portal into={document.querySelector(".post-header")}>
           <div className={styles.post}>
             <AnimatedIcon svg={CigaretteAnimated} />
+            <AnimatedIcon svg={RingAnimated} />
           </div>
         </Portal>
       </div>
