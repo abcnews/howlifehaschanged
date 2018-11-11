@@ -22,16 +22,39 @@ class PreHeader extends React.Component {
           This is rendered above the h1 text 
         */}
         <div className={styles.pre}>
-          <AnimatedIcon svg={MoneyAnimated} />
-          <AnimatedIcon svg={CigaretteAnimated} />
-          <AnimatedIcon svg={RingAnimated} />
+          <AnimatedIcon
+            svg={MoneyAnimated}
+            paddingLeft={0}
+            paddingRight={5}
+            width={130}
+            nudgeX={0}
+            nudgeY={0}
+          />
+          <AnimatedIcon
+            svg={CigaretteAnimated}
+            paddingLeft={5}
+            paddingRight={5}
+            width={130}
+            nudgeX={3}
+            nudgeY={-13}
+          />
+          <AnimatedIcon
+            svg={RingAnimated}
+            paddingLeft={5}
+            paddingRight={0}
+            width={110}
+            nudgeX={1}
+            nudgeY={-11}
+          />
         </div>
 
         {/* 
           Rendered below the header text
         */}
         <Portal into={document.querySelector(".post-header")}>
-          <div className={styles.post} />
+          <div className={styles.post}>
+            
+          </div>
         </Portal>
       </div>
     );

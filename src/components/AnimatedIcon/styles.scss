@@ -1,12 +1,10 @@
 .wrapper {
-  display: inline-block;
   width: 200px;
-  padding-left: 20px;
-  padding-right: 20px;
-  
+  height: 100%;
 
+  // Sometimes Ben hasn't put 100% widths and heights in his exports
   svg {
     width: 100%;
-    height: 100%;
+    // height: 100%;
   }
 }

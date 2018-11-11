@@ -11,19 +11,23 @@ class AnimatedIcon extends React.Component {
   }
 
   componentDidMount() {
-    const svg = this.node.current
+    const svg = this.node.current;
 
     setTimeout(() => {
       console.log(svg.querySelector(".keyshape-svg svg"));
-    }, 2000)
-    
+    }, 2000);
   }
 
   render() {
     return (
       <div
         className={styles.wrapper}
-        style={{ marginBottom: "100px" }}
+        style={{
+          paddingLeft: this.props.paddingLeft,
+          paddingRight: this.props.paddingRight,
+          width: this.props.width + "px",
+          transform: `translate(${this.props.nudgeX}px, ${this.props.nudgeY}px)`
+        }}
         ref={this.node}
       >
         <Keyshape svg={this.props.svg} />
@@ -31,7 +35,13 @@ class AnimatedIcon extends React.Component {
     );
   }
 
-  static defaultProps = {};
+  static defaultProps = {
+    paddingLeft: "0px",
+    paddingRight: "0px",
+    width: "150px",
+    nudgeX: 0,
+    nudgeY: 0
+  };
 }
 
 module.exports = AnimatedIcon;
