@@ -53,7 +53,7 @@ class PreHeader extends React.Component {
         */}
         <Portal into={document.querySelector(".post-header")}>
           <div className={styles.post}>
-            
+            -
           </div>
         </Portal>
       </div>

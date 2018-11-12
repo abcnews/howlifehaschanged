@@ -11,11 +11,11 @@ class AnimatedIcon extends React.Component {
   }
 
   componentDidMount() {
-    const svg = this.node.current;
+    // const svg = this.node.current;
 
-    setTimeout(() => {
-      console.log(svg.querySelector(".keyshape-svg svg"));
-    }, 2000);
+    // setTimeout(() => {
+    //   console.log(svg.querySelector(".keyshape-svg svg"));
+    // }, 2000);
   }
 
   render() {

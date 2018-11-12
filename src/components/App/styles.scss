@@ -1,3 +1,19 @@
+@mixin for-phone-only {
+  @media (max-width: 599px) { @content; }
+}
+@mixin for-tablet-portrait-up {
+  @media (min-width: 600px) { @content; }
+}
+@mixin for-tablet-landscape-up {
+  @media (min-width: 900px) { @content; }
+}
+@mixin for-desktop-up {
+  @media (min-width: 1200px) { @content; }
+}
+@mixin for-big-desktop-up {
+  @media (min-width: 1800px) { @content; }
+}
+
 .hidden {
   display: none;
 }
@@ -16,8 +32,18 @@
   .is-dark-mode body {
     background: url("./background.png") #175482;
     background-position: calc(50%) calc(50%); 
-    background-size: 900px;
+    background-size: 500px;
     background-attachment: fixed;
+  }
+  
+
+  @include for-tablet-landscape-up {
+    .is-dark-mode body {
+      background: url("./background.png") #175482;
+      background-position: calc(50%) calc(50%); 
+      background-size: 900px;
+      background-attachment: fixed;
+    }
   }
 
   .interactive-always-hidden {
