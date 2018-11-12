@@ -49,7 +49,6 @@ const customStyles = {
     };
   },
   menuList: (base, state) => {
-    console.log(base);
     return { ...base, maxHeight: 350 };
   }
 };

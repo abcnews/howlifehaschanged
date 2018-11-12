@@ -28,6 +28,7 @@ const line2color = "#FFD70D";
 const line3color = "#4ECDC4";
 
 let drawDuration = 1700;
+const CIRCLE_DELAY_FACTOR = 0.81;
 
 class SlopeChart extends React.Component {
   constructor(props) {
@@ -495,7 +496,7 @@ class SlopeChart extends React.Component {
           // Transition the circles with delay
           this.endCircles[iteration]
             .transition()
-            .delay(drawDuration * 0.79)
+            .delay(drawDuration * CIRCLE_DELAY_FACTOR)
             .duration(250)
             .attr("r", CIRCLE_RADIUS);
         });

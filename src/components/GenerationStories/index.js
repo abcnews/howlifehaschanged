@@ -177,21 +177,21 @@ class ChartStory extends React.Component {
                     years={["1981", "2016"]}
                     lines={[
                       {
-                        first: 28084,
-                        last: 33800,
-                        labelPercent: "20%",
-                        labelSign: "+",
-                        labelSex: "Female",
-                        labelStart: "$28,084",
-                        labelEnd: "$33,800"
-                      },
-                      {
                         first: 29786,
                         last: 33800,
                         labelPercent: "13%",
                         labelSign: "+",
                         labelSex: "Male",
                         labelStart: "$29,786",
+                        labelEnd: "$33,800"
+                      },
+                      {
+                        first: 28084,
+                        last: 33800,
+                        labelPercent: "20%",
+                        labelSign: "+",
+                        labelSex: "Female",
+                        labelStart: "$28,084",
                         labelEnd: "$33,800"
                       }
                     ]}
@@ -933,25 +933,6 @@ class ChartStory extends React.Component {
                     title={getTitle("overonehundred")}
                     years={["1981", "2016"]}
                     lines={[
-                      // {
-                      //   first: 35,
-                      //   last: 15.01,
-                      //   labelPercent: "57%",
-                      //   labelSign: "-",
-                      //   labelSex: "All",
-                      //   labelStart: "35%",
-                      //   labelEnd: "15%",
-                      //   firstNudge: -2
-                      // },
-                      {
-                        first: 58,
-                        last: 15,
-                        labelPercent: "75%",
-                        labelSign: "-",
-                        labelSex: "Female",
-                        labelStart: "58%",
-                        labelEnd: "15%"
-                      },
                       {
                         first: 32,
                         last: 14.99,
@@ -961,6 +942,15 @@ class ChartStory extends React.Component {
                         labelStart: "32%",
                         labelEnd: "15%"
                         // firstNudge: 2
+                      },
+                      {
+                        first: 58,
+                        last: 15,
+                        labelPercent: "75%",
+                        labelSign: "-",
+                        labelSex: "Female",
+                        labelStart: "58%",
+                        labelEnd: "15%"
                       }
                     ]}
                   />
@@ -1280,24 +1270,6 @@ class ChartStory extends React.Component {
                     title={getTitle("lessthan15k")}
                     years={["1981", "2016"]}
                     lines={[
-                      // {
-                      //   first: 78,
-                      //   last: 18,
-                      //   labelPercent: "77%",
-                      //   labelSign: "-",
-                      //   labelSex: "All",
-                      //   labelStart: "78%",
-                      //   labelEnd: "18%"
-                      // },
-                      {
-                        first: 89,
-                        last: 19,
-                        labelPercent: "79%",
-                        labelSign: "-",
-                        labelSex: "Female",
-                        labelStart: "89%",
-                        labelEnd: "19%"
-                      },
                       {
                         first: 63,
                         last: 17,
@@ -1306,6 +1278,15 @@ class ChartStory extends React.Component {
                         labelSex: "Male",
                         labelStart: "63%",
                         labelEnd: "17%"
+                      },
+                      {
+                        first: 89,
+                        last: 19,
+                        labelPercent: "79%",
+                        labelSign: "-",
+                        labelSex: "Female",
+                        labelStart: "89%",
+                        labelEnd: "19%"
                       }
                     ]}
                   />
