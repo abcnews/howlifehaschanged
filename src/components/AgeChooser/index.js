@@ -8,7 +8,7 @@ require("waypoints/lib/noframework.waypoints.min.js");
 const ChooserButtonGroup = require("../ChooserButtonGroup");
 const ChooserDropdown = require("../ChooserDropdown");
 
-const TABLET_PORTRAIT_OR_UP = 600;
+const TABLET_PORTRAIT_OR_UP = 660;
 const GENERATION_WAYPOINT_OFFSET = "25%";
 
 class AgeChooser extends React.Component {
@@ -140,19 +140,26 @@ class AgeChooser extends React.Component {
                 mobile devices that can't display all
                 the buttons.
               */}
-            {this.props.resizeWidth <= TABLET_PORTRAIT_OR_UP && (
-              <ChooserDropdown
-                currentGeneration={this.props.currentGeneration}
-                setGeneration={setGeneration}
-                clearGeneration={clearGeneration}
-              />
-            )}
+            {this.props.resizeWidth <= TABLET_PORTRAIT_OR_UP &&
+            // React-resize in Odyssey returns 625.328125 in Chrome 
+            // and Safari and 625.333 in Firefox when wide. This is
+            // a temporary fix.
+            (this.props.resizeWidth < 625.31 ||
+              this.props.resizeWidth > 625.35) && ( 
+                <ChooserDropdown
+                  currentGeneration={this.props.currentGeneration}
+                  setGeneration={setGeneration}
+                  clearGeneration={clearGeneration}
+                />
+              )}
 
             {/* 
                 If the device isn't mobile
                 then show the buttons.
               */}
-            {this.props.resizeWidth > TABLET_PORTRAIT_OR_UP && (
+            {(this.props.resizeWidth > TABLET_PORTRAIT_OR_UP ||
+              (this.props.resizeWidth > 625.31 &&
+                this.props.resizeWidth < 625.35)) && (
               <ChooserButtonGroup
                 currentGeneration={this.props.currentGeneration}
                 setGeneration={setGeneration}

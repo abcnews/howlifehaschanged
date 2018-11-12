@@ -25,24 +25,32 @@ const customStyles = {
   },
   singleValue: (base, state) => {
     return {
-      ...base, color: "white"
-    }
+      ...base,
+      color: "white"
+    };
   },
   menu: (base, state) => {
     return {
-      ...base, borderRadius: "0"
-    }
+      ...base,
+      borderRadius: "0"
+    };
   },
   dropdownIndicator: (base, state) => {
     return {
-      ...base, color: "white"
+      ...base,
+      color: "white"
       // The :hover styles are in ./styles.css
-    }
+    };
   },
   placeholder: (base, state) => {
     return {
-      ...base, color: "#3170a0"
-    }
+      ...base,
+      color: "#3170a0"
+    };
+  },
+  menuList: (base, state) => {
+    console.log(base);
+    return { ...base, maxHeight: 350 };
   }
 };
 
@@ -52,7 +60,7 @@ class ChooserDropdown extends React.Component {
     // if (selectedOption instanceof Array) return;
 
     // Set the generation state back in the App component
-    if (selected === null) this.props.setGeneration("")
+    if (selected === null) this.props.setGeneration("");
     else this.props.setGeneration(selected.value, true);
   };
 
@@ -63,10 +71,13 @@ class ChooserDropdown extends React.Component {
     );
 
     // Set the selected option for React Select
-    const selectedOption = this.props.currentGeneration === "" ? null : {
-      value: this.props.currentGeneration,
-      label: currentOption ? currentOption.label : ""
-    };
+    const selectedOption =
+      this.props.currentGeneration === ""
+        ? null
+        : {
+            value: this.props.currentGeneration,
+            label: currentOption ? currentOption.label : ""
+          };
 
     return (
       <div className={styles.wrapper}>
