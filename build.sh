@@ -1,0 +1,1 @@
+aunty build --target=contentftp && aunty deploy && aunty build && surge -d lifechange.surge.sh build
