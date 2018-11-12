@@ -50,6 +50,13 @@ const customStyles = {
   },
   menuList: (base, state) => {
     return { ...base, maxHeight: 350 };
+  },
+  option: (base, state) => {
+    // Obscure focus a little bit as to not
+    // confuse people on mobile on what is 
+    // selected when there is no hover or keyboard.
+    if (state.isFocused && !state.isSelected) return { ...base, backgroundColor: "#f9f9f9" };
+    else return { ...base };
   }
 };
 
