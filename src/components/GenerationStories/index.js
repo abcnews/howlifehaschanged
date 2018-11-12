@@ -1348,8 +1348,6 @@ class ChartStory extends React.Component {
                     ]}
                   />
                 </div>
-                <div className={styles.column} />
-
                 <div className={styles.column}>
                   <SlopeChart
                     title={getTitle("medicalspending")}
