@@ -75,24 +75,24 @@ class PreHeader extends React.Component {
             <AnimatedIcon
               svg={MortarboardAnimated}
               paddingLeft={5}
-              paddingRight={5}
-              width={120}
-              nudgeX={0}
-              nudgeY={0}
+              paddingRight={8}
+              width={125}
+              nudgeX={-5}
+              nudgeY={20}
             />
             <AnimatedIcon
               svg={RingAnimated}
-              paddingLeft={5}
-              paddingRight={10}
-              width={100}
+              paddingLeft={8}
+              paddingRight={8}
+              width={95}
               nudgeX={0}
               nudgeY={0}
             />
             <AnimatedIcon
               svg={BoozeAnimated}
-              paddingLeft={10}
+              paddingLeft={8}
               paddingRight={0}
-              width={110}
+              width={100}
               nudgeX={0}
               nudgeY={0}
             />
