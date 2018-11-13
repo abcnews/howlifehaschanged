@@ -69,10 +69,4 @@
         <rect width="45.193" height="8.74" fill="#f7fff7" stroke="#0e334f" stroke-width="5px" transform="translate(0,0) translate(231.867,137.147)"/>
         <rect width="57.505" height="8.74" fill="#f7fff7" stroke="#0e334f" stroke-width="5px" transform="translate(0,0) translate(225.711,146.123)"/>
     </g>
-    <script><![CDATA[if(KeyshapeJS.version.indexOf('1.')!=0)throw Error('Expected KeyshapeJS v1.*.*');window.ks=document.ks=KeyshapeJS;(function(ks){
-ks.animate("#door",[{p:'d',t:[400,800,3000,3400,4200,6000],v:["path('M0,0L29.52,0L29.52,61.091L0,61.091Z')","path('M0,0L5.52,-5L5.52,66.091L0,61.091Z')","path('M0,0L5.52,-5L5.52,66.091L0,61.091Z')","path('M0,0L5.52,-5L5.52,66.091L0,61.091Z')","path('M0,0L29.52,0L29.52,61.091L0,61.091Z')","path('M0,0L29.52,0L29.52,61.091L0,61.091Z')"],e:[[1,0,0,0.58,1],[1,0,0,0.58,1],[1,0,0,0.58,1],[1,0,0,0.58,1],[0],[0]]}],
-"#handle",[{p:'mpath',t:[400,800,3000,3400,4200,6000],v:['0%','50%','50%','50%','100%','100%'],e:[[1,0,0,0.58,1],[1,0,0,0.58,1],[1,0,0,0.58,1],[1,0,0,0.58,1],[0],[0]],mp:"M13,0L-10,0L-10,0L-10,0L13,0L13,0"}],
-{autoremove:false}).range(0,6000).loop(true);
-if(document.location.search.substr(1).split('&').indexOf('global=paused')>=0)ks.globalPause()})(KeyshapeJS);
-]]></script>
 </svg>

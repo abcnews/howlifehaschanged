@@ -1,7 +1,7 @@
 const React = require("react");
 const styles = require("./styles.scss");
 const Keyshape = require("react-keyshape").Keyshape;
-const d3 = Object.assign({}, require("d3-selection"));
+// const d3 = Object.assign({}, require("d3-selection"));
 
 class AnimatedIcon extends React.Component {
   constructor(props) {
@@ -10,13 +10,7 @@ class AnimatedIcon extends React.Component {
     this.node = React.createRef();
   }
 
-  componentDidMount() {
-    // const svg = this.node.current;
-
-    // setTimeout(() => {
-    //   console.log(svg.querySelector(".keyshape-svg svg"));
-    // }, 2000);
-  }
+  componentDidMount() {}
 
   render() {
     return (
@@ -30,7 +24,7 @@ class AnimatedIcon extends React.Component {
         }}
         ref={this.node}
       >
-        <Keyshape svg={this.props.svg} />
+        {this.props.children}
       </div>
     );
   }

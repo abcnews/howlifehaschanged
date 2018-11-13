@@ -1,5 +1,6 @@
 const React = require("react");
 const styles = require("./styles.scss");
+const SVG = require("react-inlinesvg").default;
 
 // For injecting into other areas of the page
 const Portal = require("../Portal");
@@ -17,6 +18,16 @@ const BoozeAnimated = require("./svg/BoozeAnimated.svg");
 const MoneyAnimated = require("./svg/MoneyAnimated.svg");
 const CigaretteAnimated = require("./svg/CigaretteAnimated.svg");
 
+// Animation triggers pre
+const booze = require("./animations").booze;
+const tools = require("./animations").tools;
+const house = require("./animations").house;
+const heart = require("./animations").heart;
+const nappy = require("./animations").nappy;
+
+// Animation triggers post
+const notepad = require("./animations").notepad;
+
 class PreHeader extends React.Component {
   render() {
     return (
@@ -32,31 +43,68 @@ class PreHeader extends React.Component {
             width={100}
             nudgeX={0}
             nudgeY={-15}
-          />
+          >
+            <SVG
+              src={ToolsAnimated}
+              uniquifyIDs={true}
+              uniqueHash={"tools"}
+              onLoad={src => {
+                // Trigger the animation
+                tools(KeyshapeJS, "___tools");
+              }}
+            />
+          </AnimatedIcon>
           <AnimatedIcon
-            svg={HouseAnimated}
             paddingLeft={5}
             paddingRight={5}
             width={190}
             nudgeX={3}
             nudgeY={-13}
-          />
+          >
+            <SVG
+              src={HouseAnimated}
+              uniquifyIDs={true}
+              uniqueHash={"house"}
+              onLoad={src => {
+                // Trigger the animation
+                house(KeyshapeJS, "___house");
+              }}
+            />
+          </AnimatedIcon>
           <AnimatedIcon
-            svg={HeartAnimated}
             paddingLeft={5}
             paddingRight={10}
             width={75}
             nudgeX={1}
             nudgeY={-19}
-          />
+          >
+            <SVG
+              src={HeartAnimated}
+              uniquifyIDs={true}
+              uniqueHash={"heart"}
+              onLoad={src => {
+                // Trigger the animation
+                heart(KeyshapeJS, "___heart");
+              }}
+            />
+          </AnimatedIcon>
           <AnimatedIcon
-            svg={NappyAnimated}
             paddingLeft={10}
             paddingRight={0}
             width={110}
             nudgeX={1}
             nudgeY={-11}
-          />
+          >
+            <SVG
+              src={NappyAnimated}
+              uniquifyIDs={true}
+              uniqueHash="nappy"
+              onLoad={src => {
+                // Trigger the animation
+                nappy(KeyshapeJS, "___nappy");
+              }}
+            />
+          </AnimatedIcon>
         </div>
 
         {/* 
@@ -64,15 +112,24 @@ class PreHeader extends React.Component {
         */}
         <Portal into={document.querySelector(".post-header")}>
           <div className={styles.post}>
-            <AnimatedIcon
-              svg={NotepadAnimated}
+             <AnimatedIcon
               paddingLeft={0}
               paddingRight={5}
               width={120}
               nudgeX={0}
               nudgeY={0}
+            >
+            <SVG
+              src={NotepadAnimated}
+              uniquifyIDs={true}
+              uniqueHash={"notepad"}
+              onLoad={src => {
+                // Trigger the animation
+                notepad(KeyshapeJS, "___notepad");
+              }}
             />
-            <AnimatedIcon
+            </AnimatedIcon>
+           {/* <AnimatedIcon
               svg={MortarboardAnimated}
               paddingLeft={5}
               paddingRight={8}
@@ -87,15 +144,24 @@ class PreHeader extends React.Component {
               width={95}
               nudgeX={0}
               nudgeY={0}
-            />
+            /> */}
             <AnimatedIcon
-              svg={BoozeAnimated}
               paddingLeft={8}
               paddingRight={0}
               width={100}
               nudgeX={0}
               nudgeY={0}
-            />
+            >
+              <SVG
+                src={BoozeAnimated}
+                uniquifyIDs={true}
+                uniqueHash={"booze"}
+                onLoad={src => {
+                  // Trigger the animation
+                  booze(KeyshapeJS, "___booze");
+                }}
+              />
+            </AnimatedIcon>
           </div>
         </Portal>
       </div>

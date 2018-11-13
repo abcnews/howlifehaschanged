@@ -4,6 +4,7 @@ const d3 = Object.assign({}, require("d3-selection"));
 // const hashify = require("spanify").hashify;
 import { hashify } from "spanify";
 
+// Load Keyshape into global
 require("./keyshape.js");
 
 const PROJECT_NAME = "howlifehaschanged";

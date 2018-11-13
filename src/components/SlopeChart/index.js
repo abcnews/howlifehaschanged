@@ -53,8 +53,7 @@ class SlopeChart extends React.Component {
   }
 
   componentWillUnmount() {
-    // console.log("cleaning......");
-    // ScrollReveal().clean(this.node.current);
+    // Clean up
     ScrollReveal().destroy();
   }
 
