@@ -1,6 +1,4 @@
-if (KeyshapeJS.version.indexOf("1.") != 0)
-  throw Error("Expected KeyshapeJS v1.*.*");
-window.ks = document.ks = KeyshapeJS;
+// Functions to animated SVGs
 
 exports.tools = function(ks, hash) {
   ks.animate(

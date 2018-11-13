@@ -30,6 +30,11 @@ const mortarboard = require("./animations").mortarboard;
 const ring = require("./animations").ring;
 const booze = require("./animations").booze;
 
+// Make sure KeyshapeJS is in global
+if (KeyshapeJS.version.indexOf("1.") != 0)
+  throw Error("Expected KeyshapeJS v1.*.*");
+window.ks = document.ks = KeyshapeJS;
+
 class PreHeader extends React.Component {
   render() {
     return (

@@ -123,6 +123,8 @@ class AgeChooser extends React.Component {
     // Function passed down from main App
     const { setGeneration, clearGeneration } = this.props;
 
+    console.log(this.props.resizeWidth);
+
     return (
       <div ref={this.node} className={styles.wrapper}>
         <div className={styles.panel}>
@@ -145,7 +147,7 @@ class AgeChooser extends React.Component {
             // and Safari and 625.333 in Firefox when wide. This is
             // a temporary fix.
             (this.props.resizeWidth < 625.31 ||
-              this.props.resizeWidth > 625.35) && ( 
+              this.props.resizeWidth > 625.55) && ( 
                 <ChooserDropdown
                   currentGeneration={this.props.currentGeneration}
                   setGeneration={setGeneration}
@@ -159,7 +161,7 @@ class AgeChooser extends React.Component {
               */}
             {(this.props.resizeWidth > TABLET_PORTRAIT_OR_UP ||
               (this.props.resizeWidth > 625.31 &&
-                this.props.resizeWidth < 625.35)) && (
+                this.props.resizeWidth < 625.55)) && (
               <ChooserButtonGroup
                 currentGeneration={this.props.currentGeneration}
                 setGeneration={setGeneration}
