@@ -19,7 +19,6 @@ const MoneyAnimated = require("./svg/MoneyAnimated.svg");
 const CigaretteAnimated = require("./svg/CigaretteAnimated.svg");
 
 // Animation triggers pre
-const booze = require("./animations").booze;
 const tools = require("./animations").tools;
 const house = require("./animations").house;
 const heart = require("./animations").heart;
@@ -27,6 +26,9 @@ const nappy = require("./animations").nappy;
 
 // Animation triggers post
 const notepad = require("./animations").notepad;
+const mortarboard = require("./animations").mortarboard;
+const ring = require("./animations").ring;
+const booze = require("./animations").booze;
 
 class PreHeader extends React.Component {
   render() {
@@ -112,31 +114,40 @@ class PreHeader extends React.Component {
         */}
         <Portal into={document.querySelector(".post-header")}>
           <div className={styles.post}>
-             <AnimatedIcon
+            <AnimatedIcon
               paddingLeft={0}
               paddingRight={5}
               width={120}
               nudgeX={0}
               nudgeY={0}
             >
-            <SVG
-              src={NotepadAnimated}
-              uniquifyIDs={true}
-              uniqueHash={"notepad"}
-              onLoad={src => {
-                // Trigger the animation
-                notepad(KeyshapeJS, "___notepad");
-              }}
-            />
+              <SVG
+                src={NotepadAnimated}
+                uniquifyIDs={true}
+                uniqueHash={"notepad"}
+                onLoad={src => {
+                  // Trigger the animation
+                  notepad(KeyshapeJS, "___notepad");
+                }}
+              />
             </AnimatedIcon>
-           {/* <AnimatedIcon
-              svg={MortarboardAnimated}
+            <AnimatedIcon
               paddingLeft={5}
               paddingRight={8}
               width={125}
               nudgeX={-5}
               nudgeY={20}
-            />
+            >
+              <SVG
+                src={MortarboardAnimated}
+                uniquifyIDs={true}
+                uniqueHash={"mortarboard"}
+                onLoad={src => {
+                  // Trigger the animation
+                  mortarboard(KeyshapeJS, "___mortarboard");
+                }}
+              />
+            </AnimatedIcon>
             <AnimatedIcon
               svg={RingAnimated}
               paddingLeft={8}
@@ -144,7 +155,17 @@ class PreHeader extends React.Component {
               width={95}
               nudgeX={0}
               nudgeY={0}
-            /> */}
+            >
+            <SVG
+                src={RingAnimated}
+                uniquifyIDs={true}
+                uniqueHash={"ring"}
+                onLoad={src => {
+                  // Trigger the animation
+                  ring(KeyshapeJS, "___ring");
+                }}
+              />
+              </AnimatedIcon>
             <AnimatedIcon
               paddingLeft={8}
               paddingRight={0}
