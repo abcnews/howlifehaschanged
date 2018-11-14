@@ -243,7 +243,7 @@ class SlopeChart extends React.Component {
         .append("text")
         .text(line.labelEnd)
         .attr("x", this.scaleX(chartWidth()) + LABEL_RIGHT_OFFSET)
-        .attr("y", scaleY(line.last) + 1.3)
+        .attr("y", scaleY(line.last) + (line.labelSex === "All" ? -3 : 1.3))
         .attr("text-anchor", "start")
         .attr("dominant-baseline", "middle")
         .attr("fill", () => {
@@ -287,7 +287,7 @@ class SlopeChart extends React.Component {
         .append("text")
         .text(line.labelPercent)
         .attr("x", this.scaleX(chartWidth()) + LABEL_RIGHT_OFFSET)
-        .attr("y", scaleY(line.last) + 15)
+        .attr("y", scaleY(line.last) + (line.labelSex === "All" ? 15 - 3 :15))
         .attr("text-anchor", "start")
         .attr("dominant-baseline", "middle")
         .attr("fill", () => {
@@ -308,7 +308,7 @@ class SlopeChart extends React.Component {
         .append("text")
         .text(line.labelSign)
         .attr("x", this.scaleX(chartWidth()) + LABEL_RIGHT_OFFSET - 3)
-        .attr("y", scaleY(line.last) + 15)
+        .attr("y", scaleY(line.last) + (line.labelSex === "All" ? 15 - 3 :15))
         .attr("text-anchor", "end")
         .attr("dominant-baseline", "middle")
         .attr("fill", () => {

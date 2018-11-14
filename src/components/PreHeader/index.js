@@ -94,7 +94,7 @@ class PreHeader extends React.Component {
           <AnimatedIcon
             paddingLeft={HEADER_ICON_SPACING}
             paddingRight={HEADER_ICON_SPACING + 5}
-            width={75}
+            width={80}
             nudgeX={1}
             nudgeY={-19}
           >
@@ -134,7 +134,7 @@ class PreHeader extends React.Component {
           <div className={styles.post}>
             <AnimatedIcon
               paddingLeft={0}
-              paddingRight={HEADER_ICON_SPACING}
+              paddingRight={HEADER_ICON_SPACING - 3}
               width={120}
               nudgeX={0}
               nudgeY={0}
@@ -150,8 +150,8 @@ class PreHeader extends React.Component {
               />
             </AnimatedIcon>
             <AnimatedIcon
-              paddingLeft={HEADER_ICON_SPACING}
-              paddingRight={HEADER_ICON_SPACING + 3}
+              paddingLeft={HEADER_ICON_SPACING - 3}
+              paddingRight={HEADER_ICON_SPACING + 1}
               width={125}
               nudgeX={-5}
               nudgeY={20}
@@ -168,7 +168,7 @@ class PreHeader extends React.Component {
             </AnimatedIcon>
             <AnimatedIcon
               svg={RingAnimated}
-              paddingLeft={HEADER_ICON_SPACING + 3}
+              paddingLeft={HEADER_ICON_SPACING + 1}
               paddingRight={HEADER_ICON_SPACING + 3}
               width={95}
               nudgeX={0}
@@ -298,7 +298,7 @@ class PreHeader extends React.Component {
             paddingLeft={0}
             paddingRight={0}
             paddingBottom={5}
-            width={100}
+            width={90}
             nudgeX={0}
             nudgeY={0}
           >
