@@ -36,56 +36,56 @@ function preFlight(odyssey) {
   const childrenHeader = d3.select("h2.children");
   const childrenHeaderOriginal = childrenHeader.html();
   childrenHeader.html(
-    `<div class="children-icon"></div>
+    `<div class="children-icon" aria-hidden="true"></div>
         ${childrenHeaderOriginal}`
   );
 
   const teenagersHeader = d3.select("h2.teenagers");
   const teenagersHeaderOriginal = teenagersHeader.html();
   teenagersHeader.html(
-    `<div class="teenagers-icon"></div>
+    `<div class="teenagers-icon" aria-hidden="true"></div>
         ${teenagersHeaderOriginal}`
   );
 
   const twentiesHeader = d3.select("h2.twenties");
   const twentiesHeaderOriginal = twentiesHeader.html();
   twentiesHeader.html(
-    `<div class="twenties-icon"></div>
+    `<div class="twenties-icon" aria-hidden="true"></div>
         ${twentiesHeaderOriginal}`
   );
 
   const thirtiesHeader = d3.select("h2.thirties");
   const thirtiesHeaderOriginal = thirtiesHeader.html();
   thirtiesHeader.html(
-    `<div class="thirties-icon"></div>
+    `<div class="thirties-icon" aria-hidden="true"></div>
         ${thirtiesHeaderOriginal}`
   );
 
   const fortiesHeader = d3.select("h2.forties");
   const fortiesHeaderOriginal = fortiesHeader.html();
   fortiesHeader.html(
-    `<div class="forties-icon"></div>
+    `<div class="forties-icon" aria-hidden="true"></div>
         ${fortiesHeaderOriginal}`
   );
 
   const fiftiesHeader = d3.select("h2.fifties");
   const fiftiesHeaderOriginal = fiftiesHeader.html();
   fiftiesHeader.html(
-    `<div class="fifties-icon"></div>
+    `<div class="fifties-icon" aria-hidden="true"></div>
         ${fiftiesHeaderOriginal}`
   );
 
   const sixtiesHeader = d3.select("h2.sixties");
   const sixtiesHeaderOriginal = sixtiesHeader.html();
   sixtiesHeader.html(
-    `<div class="sixties-icon"></div>
+    `<div class="sixties-icon" aria-hidden="true"></div>
         ${sixtiesHeaderOriginal}`
   );
 
   const seventiesandoverHeader = d3.select("h2.seventiesandover");
   const seventiesandoverHeaderOriginal = seventiesandoverHeader.html();
   seventiesandoverHeader.html(
-    `<div class="seventiesandover-icon"></div>
+    `<div class="seventiesandover-icon" aria-hidden="true"></div>
         ${seventiesandoverHeaderOriginal}`
   );
 
