@@ -123,8 +123,6 @@ class AgeChooser extends React.Component {
     // Function passed down from main App
     const { setGeneration, clearGeneration } = this.props;
 
-    console.log(this.props.resizeWidth);
-
     return (
       <div ref={this.node} className={styles.wrapper}>
         <div className={styles.panel}>

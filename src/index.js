@@ -54,6 +54,41 @@ function preFlight(odyssey) {
         ${twentiesHeaderOriginal}`
   );
 
+  const thirtiesHeader = d3.select("h2.thirties");
+  const thirtiesHeaderOriginal = thirtiesHeader.html();
+  thirtiesHeader.html(
+    `<div class="thirties-icon"></div>
+        ${thirtiesHeaderOriginal}`
+  );
+
+  const fortiesHeader = d3.select("h2.forties");
+  const fortiesHeaderOriginal = fortiesHeader.html();
+  fortiesHeader.html(
+    `<div class="forties-icon"></div>
+        ${fortiesHeaderOriginal}`
+  );
+
+  const fiftiesHeader = d3.select("h2.fifties");
+  const fiftiesHeaderOriginal = fiftiesHeader.html();
+  fiftiesHeader.html(
+    `<div class="fifties-icon"></div>
+        ${fiftiesHeaderOriginal}`
+  );
+
+  const sixtiesHeader = d3.select("h2.sixties");
+  const sixtiesHeaderOriginal = sixtiesHeader.html();
+  sixtiesHeader.html(
+    `<div class="sixties-icon"></div>
+        ${sixtiesHeaderOriginal}`
+  );
+
+  const seventiesandoverHeader = d3.select("h2.seventiesandover");
+  const seventiesandoverHeaderOriginal = seventiesandoverHeader.html();
+  seventiesandoverHeader.html(
+    `<div class="seventiesandover-icon"></div>
+        ${seventiesandoverHeaderOriginal}`
+  );
+
   // Hide the chart title text coming in from CoreMedia
   hideTitles(classesToHide);
 }

@@ -938,3 +938,146 @@ exports.money = function(ks, hash) {
   )
     ks.globalPause();
 };
+
+exports.cigarette = function(ks, hash) {
+  ks.animate(
+    "#_a0" + hash,
+    [
+      {
+        p: "strokeDashoffset",
+        t: [0, 4000],
+        v: [0, 90],
+        e: [[0], [0]],
+        iterations: Infinity
+      }
+    ],
+    "#_a1" + hash,
+    [
+      {
+        p: "strokeDashoffset",
+        t: [0, 4000],
+        v: [0, -90],
+        e: [[0], [0]],
+        iterations: Infinity
+      }
+    ],
+    { autoremove: false }
+  )
+    .range(0, 4000)
+    .loop(true);
+  if (
+    document.location.search
+      .substr(1)
+      .split("&")
+      .indexOf("global=paused") >= 0
+  )
+    ks.globalPause();
+};
+
+exports.fuel = function(ks, hash) {
+  ks.animate(
+    "#drip" + hash,
+    [
+      {
+        p: "mpath",
+        t: [0, 2233, 2516],
+        v: ["0%", "4.152026%", "100%"],
+        e: [[0], [0], [0]],
+        mp: "M14.9726,72.0892L15.9726,75.0892L15.9726,148.089"
+      },
+      {
+        p: "skewX",
+        t: [
+          583,
+          700,
+          816,
+          933,
+          1050,
+          1166,
+          1283,
+          1400,
+          1516,
+          1633,
+          1750,
+          1866,
+          1983,
+          2066,
+          2150,
+          2233
+        ],
+        v: [0, -3, 0, 3, -3, -5, 3, -3, 0, 3, -3, 5, 3, -3, 0, 0],
+        e: [
+          [0],
+          [0],
+          [0],
+          [0],
+          [0],
+          [0],
+          [0],
+          [0],
+          [0],
+          [0],
+          [0],
+          [0],
+          [0],
+          [0],
+          [0],
+          [0]
+        ]
+      },
+      {
+        p: "skewY",
+        t: [
+          583,
+          700,
+          816,
+          933,
+          1050,
+          1166,
+          1283,
+          1400,
+          1516,
+          1633,
+          1750,
+          1866,
+          1983,
+          2066,
+          2150,
+          2233
+        ],
+        v: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        e: [
+          [0],
+          [0],
+          [0],
+          [0],
+          [0],
+          [0],
+          [0],
+          [0],
+          [0],
+          [0],
+          [0],
+          [0],
+          [0],
+          [0],
+          [0],
+          [0]
+        ]
+      },
+      { p: "scaleX", t: [0, 2233], v: [0.3, 1], e: [[0], [0]] },
+      { p: "scaleY", t: [0, 2233], v: [0.3, 1], e: [[0], [0]] },
+      { p: "opacity", t: [2350, 2516], v: [1, 0], e: [[0], [0]] }
+    ],
+    { autoremove: false }
+  )
+    .range(0, 2516)
+    .loop(true);
+  if (
+    document.location.search
+      .substr(1)
+      .split("&")
+      .indexOf("global=paused") >= 0
+  )
+    ks.globalPause();
+};

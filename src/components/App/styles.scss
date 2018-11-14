@@ -71,18 +71,19 @@
   h2.teenagers::before,
   h2.twenties::before,
   h2.thirties::before,
-  h2.foties::before,
+  h2.forties::before,
   h2.fifties::before,
   h2.sixties::before,
   h2.seventiesandover::before {
-    display: none;
+    background-color: transparent;
+    margin-top: 70px;
   }
 
   h2.children,
   h2.teenagers,
   h2.twenties,
   h2.thirties,
-  h2.foties,
+  h2.forties,
   h2.fifties,
   h2.sixties,
   h2.seventiesandover {

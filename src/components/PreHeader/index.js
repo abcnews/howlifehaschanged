@@ -18,6 +18,7 @@ const RingAnimated = require("./svg/RingAnimated.svg");
 const BoozeAnimated = require("./svg/BoozeAnimated.svg");
 const MoneyAnimated = require("./svg/MoneyAnimated.svg");
 const CigaretteAnimated = require("./svg/CigaretteAnimated.svg");
+const FuelAnimated = require("./svg/FuelAnimated.svg");
 
 // Animation triggers pre
 const tools = require("./animations").tools;
@@ -33,6 +34,8 @@ const booze = require("./animations").booze;
 
 // Section header only animations
 const money = require("./animations").money;
+const cigarette = require("./animations").cigarette;
+const fuel = require("./animations").fuel;
 
 // Make sure KeyshapeJS is in global
 if (KeyshapeJS.version.indexOf("1.") != 0)
@@ -247,7 +250,7 @@ class PreHeader extends React.Component {
           <AnimatedIcon
             paddingLeft={0}
             paddingRight={0}
-            width={100}
+            width={90}
             nudgeX={0}
             nudgeY={0}
           >
@@ -258,6 +261,106 @@ class PreHeader extends React.Component {
               onLoad={src => {
                 // Trigger the animation
                 ring(KeyshapeJS, "___ringicon");
+              }}
+            />
+          </AnimatedIcon>
+        </Portal>
+
+        <Portal into={document.querySelector(".thirties-icon")}>
+          <AnimatedIcon
+            paddingLeft={0}
+            paddingRight={0}
+            width={190}
+            nudgeX={0}
+            nudgeY={0}
+          >
+            <SVG
+              src={HouseAnimated}
+              uniquifyIDs={true}
+              uniqueHash="houseicon"
+              onLoad={src => {
+                // Trigger the animation
+                house(KeyshapeJS, "___houseicon");
+              }}
+            />
+          </AnimatedIcon>
+        </Portal>
+
+        <Portal into={document.querySelector(".forties-icon")}>
+          <AnimatedIcon
+            paddingLeft={0}
+            paddingRight={0}
+            width={140}
+            nudgeX={0}
+            nudgeY={0}
+          >
+            <SVG
+              src={MortarboardAnimated}
+              uniquifyIDs={true}
+              uniqueHash="mortarboardicon"
+              onLoad={src => {
+                // Trigger the animation
+                mortarboard(KeyshapeJS, "___mortarboardicon");
+              }}
+            />
+          </AnimatedIcon>
+        </Portal>
+
+        <Portal into={document.querySelector(".fifties-icon")}>
+          <AnimatedIcon
+            paddingLeft={0}
+            paddingRight={0}
+            width={110}
+            nudgeX={0}
+            nudgeY={0}
+          >
+            <SVG
+              src={CigaretteAnimated}
+              uniquifyIDs={true}
+              uniqueHash="cigaretteicon"
+              onLoad={src => {
+                // Trigger the animation
+                cigarette(KeyshapeJS, "___cigaretteicon");
+              }}
+            />
+          </AnimatedIcon>
+        </Portal>
+
+         <Portal into={document.querySelector(".sixties-icon")}>
+          <AnimatedIcon
+            paddingLeft={0}
+            paddingRight={0}
+            width={90}
+            nudgeX={0}
+            nudgeY={0}
+          >
+            <SVG
+              src={HeartAnimated}
+              uniquifyIDs={true}
+              uniqueHash="hearticon"
+              onLoad={src => {
+                // Trigger the animation
+                heart(KeyshapeJS, "___hearticon");
+              }}
+            />
+          </AnimatedIcon>
+        </Portal>
+
+        <Portal into={document.querySelector(".seventiesandover-icon")}>
+          <AnimatedIcon
+            paddingLeft={0}
+            paddingRight={0}
+            width={130}
+            nudgeX={0}
+            nudgeY={0}
+          >
+            <SVG
+              src={FuelAnimated}
+              uniquifyIDs={true}
+              uniqueHash="fuelicon"
+              onLoad={src => {
+                // Trigger the animation
+                fuel(KeyshapeJS, "___fuelicon");
               }}
             />
           </AnimatedIcon>
