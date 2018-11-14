@@ -287,7 +287,7 @@ class SlopeChart extends React.Component {
         .append("text")
         .text(line.labelPercent)
         .attr("x", this.scaleX(chartWidth()) + LABEL_RIGHT_OFFSET)
-        .attr("y", scaleY(line.last) + (line.labelSex === "All" ? 15 - 3 :15))
+        .attr("y", scaleY(line.last) + (line.labelSex === "All" ? 15 - 3 : 15))
         .attr("text-anchor", "start")
         .attr("dominant-baseline", "middle")
         .attr("fill", () => {
@@ -308,7 +308,7 @@ class SlopeChart extends React.Component {
         .append("text")
         .text(line.labelSign)
         .attr("x", this.scaleX(chartWidth()) + LABEL_RIGHT_OFFSET - 3)
-        .attr("y", scaleY(line.last) + (line.labelSex === "All" ? 15 - 3 :15))
+        .attr("y", scaleY(line.last) + (line.labelSex === "All" ? 15 - 3 : 15))
         .attr("text-anchor", "end")
         .attr("dominant-baseline", "middle")
         .attr("fill", () => {
@@ -511,9 +511,37 @@ class SlopeChart extends React.Component {
       <ContextConsumer>
         {context => {
           return (
-            <div className={styles.wrapper} ariaHidden={true}>
-              <div className={styles.title}>{this.props.title}</div>
-              <div ref={this.node} className={"chart-div"} />
+            <div className={styles.wrapper}>
+              <div
+                className={styles.title}
+                aria-label={
+                  this.props.title +
+                  ". Chart: years from " +
+                  this.props.years[0] +
+                  " to " +
+                  this.props.years[1] +
+                  ", " +
+                  this.props.lines.map(line => {
+                    return (
+                      "First value for " +
+                      line.labelSex +
+                      " population: " +
+                      line.labelStart +
+                      ", Second value for " +
+                      line.labelSex +
+                      " population: " +
+                      line.labelEnd +
+                      ". That is a " +
+                      line.labelPercent +
+                      (line.labelSign === "+" ? " increase." : " decrease.")
+                    );
+                  })
+                }
+              >
+                {this.props.title}
+              </div>
+
+              <div ref={this.node} className={"chart-div"} aria-hidden={true} />
               {this.props.note ? (
                 <div className={styles.note}>{this.props.note}</div>
               ) : null}
