@@ -511,7 +511,7 @@ class SlopeChart extends React.Component {
       <ContextConsumer>
         {context => {
           return (
-            <div className={styles.wrapper}>
+            <div className={styles.wrapper} ariaHidden={true}>
               <div className={styles.title}>{this.props.title}</div>
               <div ref={this.node} className={"chart-div"} />
               {this.props.note ? (
