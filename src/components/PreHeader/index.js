@@ -1,7 +1,9 @@
 const React = require("react");
 const styles = require("./styles.scss");
 const SVG = require("react-inlinesvg").default;
-const d3 = Object.assign({}, require("d3-selection"));
+// const d3 = Object.assign({}, require("d3-selection"));
+
+const HEADER_ICON_SPACING = 10;
 
 // For injecting into other areas of the page
 const Portal = require("../Portal");
@@ -57,7 +59,7 @@ class PreHeader extends React.Component {
           <AnimatedIcon
             svg={ToolsAnimated}
             paddingLeft={0}
-            paddingRight={5}
+            paddingRight={HEADER_ICON_SPACING - 3}
             width={100}
             nudgeX={0}
             nudgeY={-15}
@@ -73,8 +75,8 @@ class PreHeader extends React.Component {
             />
           </AnimatedIcon>
           <AnimatedIcon
-            paddingLeft={5}
-            paddingRight={5}
+            paddingLeft={HEADER_ICON_SPACING - 3}
+            paddingRight={HEADER_ICON_SPACING}
             width={190}
             nudgeX={3}
             nudgeY={-13}
@@ -90,8 +92,8 @@ class PreHeader extends React.Component {
             />
           </AnimatedIcon>
           <AnimatedIcon
-            paddingLeft={5}
-            paddingRight={10}
+            paddingLeft={HEADER_ICON_SPACING}
+            paddingRight={HEADER_ICON_SPACING + 5}
             width={75}
             nudgeX={1}
             nudgeY={-19}
@@ -107,7 +109,7 @@ class PreHeader extends React.Component {
             />
           </AnimatedIcon>
           <AnimatedIcon
-            paddingLeft={10}
+            paddingLeft={HEADER_ICON_SPACING + 5}
             paddingRight={0}
             width={110}
             nudgeX={1}
@@ -132,7 +134,7 @@ class PreHeader extends React.Component {
           <div className={styles.post}>
             <AnimatedIcon
               paddingLeft={0}
-              paddingRight={5}
+              paddingRight={HEADER_ICON_SPACING}
               width={120}
               nudgeX={0}
               nudgeY={0}
@@ -148,8 +150,8 @@ class PreHeader extends React.Component {
               />
             </AnimatedIcon>
             <AnimatedIcon
-              paddingLeft={5}
-              paddingRight={8}
+              paddingLeft={HEADER_ICON_SPACING}
+              paddingRight={HEADER_ICON_SPACING + 3}
               width={125}
               nudgeX={-5}
               nudgeY={20}
@@ -166,8 +168,8 @@ class PreHeader extends React.Component {
             </AnimatedIcon>
             <AnimatedIcon
               svg={RingAnimated}
-              paddingLeft={8}
-              paddingRight={8}
+              paddingLeft={HEADER_ICON_SPACING + 3}
+              paddingRight={HEADER_ICON_SPACING + 3}
               width={95}
               nudgeX={0}
               nudgeY={0}
@@ -183,7 +185,7 @@ class PreHeader extends React.Component {
               />
             </AnimatedIcon>
             <AnimatedIcon
-              paddingLeft={8}
+              paddingLeft={HEADER_ICON_SPACING + 3}
               paddingRight={0}
               width={100}
               nudgeX={0}
@@ -210,8 +212,10 @@ class PreHeader extends React.Component {
           <AnimatedIcon
             paddingLeft={0}
             paddingRight={0}
-            width={110}
-            nudgeX={0}
+            paddingTop={0}
+            paddingBottom={10}
+            width={90}
+            nudgeX={3}
             nudgeY={0}
           >
             <SVG
@@ -230,7 +234,8 @@ class PreHeader extends React.Component {
           <AnimatedIcon
             paddingLeft={0}
             paddingRight={0}
-            width={110}
+            paddingBottom={10}
+            width={90}
             nudgeX={0}
             nudgeY={0}
           >
@@ -250,7 +255,8 @@ class PreHeader extends React.Component {
           <AnimatedIcon
             paddingLeft={0}
             paddingRight={0}
-            width={90}
+            paddingBottom={10}
+            width={70}
             nudgeX={0}
             nudgeY={0}
           >
@@ -270,7 +276,8 @@ class PreHeader extends React.Component {
           <AnimatedIcon
             paddingLeft={0}
             paddingRight={0}
-            width={190}
+            paddingBottom={10}
+            width={160}
             nudgeX={0}
             nudgeY={0}
           >
@@ -290,7 +297,8 @@ class PreHeader extends React.Component {
           <AnimatedIcon
             paddingLeft={0}
             paddingRight={0}
-            width={140}
+            paddingBottom={5}
+            width={100}
             nudgeX={0}
             nudgeY={0}
           >
@@ -310,7 +318,8 @@ class PreHeader extends React.Component {
           <AnimatedIcon
             paddingLeft={0}
             paddingRight={0}
-            width={110}
+            paddingBottom={15}
+            width={80}
             nudgeX={0}
             nudgeY={0}
           >
@@ -330,7 +339,8 @@ class PreHeader extends React.Component {
           <AnimatedIcon
             paddingLeft={0}
             paddingRight={0}
-            width={90}
+            paddingBottom={10}
+            width={50}
             nudgeX={0}
             nudgeY={0}
           >
@@ -350,7 +360,8 @@ class PreHeader extends React.Component {
           <AnimatedIcon
             paddingLeft={0}
             paddingRight={0}
-            width={130}
+            paddingBottom={10}
+            width={100}
             nudgeX={0}
             nudgeY={0}
           >
