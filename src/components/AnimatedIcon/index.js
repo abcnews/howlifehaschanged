@@ -17,8 +17,10 @@ class AnimatedIcon extends React.Component {
       <div
         className={styles.wrapper}
         style={{
-          paddingLeft: this.props.paddingLeft,
-          paddingRight: this.props.paddingRight,
+          paddingLeft: this.props.paddingLeft + "px",
+          paddingRight: this.props.paddingRight + "px",
+          paddingTop: this.props.paddingTop + "px",
+          paddingBottom: this.props.paddingBottom + "px",
           width: this.props.width + "px",
           transform: `translate(${this.props.nudgeX}px, ${this.props.nudgeY}px)`
         }}
@@ -30,9 +32,11 @@ class AnimatedIcon extends React.Component {
   }
 
   static defaultProps = {
-    paddingLeft: "0px",
-    paddingRight: "0px",
-    width: "150px",
+    paddingLeft: 0,
+    paddingRight: 0,
+    paddingTop: 0,
+    paddingBottom: 0,
+    width: 150,
     nudgeX: 0,
     nudgeY: 0
   };

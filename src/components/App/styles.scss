@@ -77,4 +77,18 @@
   h2.seventiesandover::before {
     display: none;
   }
+
+  h2.children,
+  h2.teenagers,
+  h2.twenties,
+  h2.thirties,
+  h2.foties,
+  h2.fifties,
+  h2.sixties,
+  h2.seventiesandover {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 }

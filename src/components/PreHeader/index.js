@@ -1,6 +1,7 @@
 const React = require("react");
 const styles = require("./styles.scss");
 const SVG = require("react-inlinesvg").default;
+const d3 = Object.assign({}, require("d3-selection"));
 
 // For injecting into other areas of the page
 const Portal = require("../Portal");
@@ -30,12 +31,19 @@ const mortarboard = require("./animations").mortarboard;
 const ring = require("./animations").ring;
 const booze = require("./animations").booze;
 
+// Section header only animations
+const money = require("./animations").money;
+
 // Make sure KeyshapeJS is in global
 if (KeyshapeJS.version.indexOf("1.") != 0)
   throw Error("Expected KeyshapeJS v1.*.*");
 window.ks = document.ks = KeyshapeJS;
 
 class PreHeader extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     return (
       <div>
@@ -161,7 +169,7 @@ class PreHeader extends React.Component {
               nudgeX={0}
               nudgeY={0}
             >
-            <SVG
+              <SVG
                 src={RingAnimated}
                 uniquifyIDs={true}
                 uniqueHash={"ring"}
@@ -170,7 +178,7 @@ class PreHeader extends React.Component {
                   ring(KeyshapeJS, "___ring");
                 }}
               />
-              </AnimatedIcon>
+            </AnimatedIcon>
             <AnimatedIcon
               paddingLeft={8}
               paddingRight={0}
@@ -190,9 +198,77 @@ class PreHeader extends React.Component {
             </AnimatedIcon>
           </div>
         </Portal>
+
+        {/* 
+          Now we are portalling the section header animations
+        */}
+
+        <Portal into={document.querySelector(".children-icon")}>
+          <AnimatedIcon
+            paddingLeft={0}
+            paddingRight={0}
+            width={110}
+            nudgeX={0}
+            nudgeY={0}
+          >
+            <SVG
+              src={NappyAnimated}
+              uniquifyIDs={true}
+              uniqueHash="nappyicon"
+              onLoad={src => {
+                // Trigger the animation
+                nappy(KeyshapeJS, "___nappyicon");
+              }}
+            />
+          </AnimatedIcon>
+        </Portal>
+
+        <Portal into={document.querySelector(".teenagers-icon")}>
+          <AnimatedIcon
+            paddingLeft={0}
+            paddingRight={0}
+            width={110}
+            nudgeX={0}
+            nudgeY={0}
+          >
+            <SVG
+              src={MoneyAnimated}
+              uniquifyIDs={true}
+              uniqueHash="moneyicon"
+              onLoad={src => {
+                // Trigger the animation
+                money(KeyshapeJS, "___moneyicon");
+              }}
+            />
+          </AnimatedIcon>
+        </Portal>
+
+        <Portal into={document.querySelector(".twenties-icon")}>
+          <AnimatedIcon
+            paddingLeft={0}
+            paddingRight={0}
+            width={100}
+            nudgeX={0}
+            nudgeY={0}
+          >
+            <SVG
+              src={RingAnimated}
+              uniquifyIDs={true}
+              uniqueHash="ringicon"
+              onLoad={src => {
+                // Trigger the animation
+                ring(KeyshapeJS, "___ringicon");
+              }}
+            />
+          </AnimatedIcon>
+        </Portal>
       </div>
     );
   }
+}
+
+function insertBefore(el, referenceNode) {
+  referenceNode.parentNode.insertBefore(el, referenceNode);
 }
 
 module.exports = PreHeader;

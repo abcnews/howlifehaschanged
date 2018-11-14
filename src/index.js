@@ -32,6 +32,28 @@ function preFlight(odyssey) {
   // Add classes to paragraphs
   hashNext("class");
 
+  // Pre-headers on all subheadings
+  const childrenHeader = d3.select("h2.children");
+  const childrenHeaderOriginal = childrenHeader.html();
+  childrenHeader.html(
+    `<div class="children-icon"></div>
+        ${childrenHeaderOriginal}`
+  );
+
+  const teenagersHeader = d3.select("h2.teenagers");
+  const teenagersHeaderOriginal = teenagersHeader.html();
+  teenagersHeader.html(
+    `<div class="teenagers-icon"></div>
+        ${teenagersHeaderOriginal}`
+  );
+
+  const twentiesHeader = d3.select("h2.twenties");
+  const twentiesHeaderOriginal = twentiesHeader.html();
+  twentiesHeader.html(
+    `<div class="twenties-icon"></div>
+        ${twentiesHeaderOriginal}`
+  );
+
   // Hide the chart title text coming in from CoreMedia
   hideTitles(classesToHide);
 }
