@@ -1,17 +1,27 @@
 @mixin for-phone-only {
-  @media (max-width: 599px) { @content; }
+  @media (max-width: 599px) {
+    @content;
+  }
 }
 @mixin for-tablet-portrait-up {
-  @media (min-width: 600px) { @content; }
+  @media (min-width: 600px) {
+    @content;
+  }
 }
 @mixin for-tablet-landscape-up {
-  @media (min-width: 900px) { @content; }
+  @media (min-width: 900px) {
+    @content;
+  }
 }
 @mixin for-desktop-up {
-  @media (min-width: 1200px) { @content; }
+  @media (min-width: 1200px) {
+    @content;
+  }
 }
 @mixin for-big-desktop-up {
-  @media (min-width: 1800px) { @content; }
+  @media (min-width: 1800px) {
+    @content;
+  }
 }
 
 .hidden {
@@ -26,21 +36,20 @@
   }
 
   #main_content > h2 {
-    max-width: 700px
+    max-width: 700px;
   }
 
   .is-dark-mode body {
     background: url("./background.png") #175482;
-    background-position: calc(50%) calc(50%); 
+    background-position: calc(50%) calc(50%);
     background-size: 500px;
     background-attachment: fixed;
   }
-  
 
   @include for-tablet-landscape-up {
     .is-dark-mode body {
       background: url("./background.png") #175482;
-      background-position: calc(50%) calc(50%); 
+      background-position: calc(50%) calc(50%);
       background-size: 900px;
       background-attachment: fixed;
     }
@@ -54,7 +63,18 @@
     scroll-behavior: auto !important;
   }
 
-  .Header-content>h1:after {
+  .Header-content > h1:after {
     background-color: transparent;
+  }
+
+  h2.children::before,
+  h2.teenagers::before,
+  h2.twenties::before,
+  h2.thirties::before,
+  h2.foties::before,
+  h2.fifties::before,
+  h2.sixties::before,
+  h2.seventiesandover::before {
+    display: none;
   }
 }

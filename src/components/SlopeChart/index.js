@@ -259,25 +259,28 @@ class SlopeChart extends React.Component {
         .style("font-weight", "bold");
 
       // Label sex
-      this.rightLabels[iteration]
-        .append("text")
-        .text(line.labelSex)
-        .attr("x", this.scaleX(chartWidth()) + LABEL_RIGHT_OFFSET)
-        .attr("y", scaleY(line.last) - 11)
-        .attr("text-anchor", "start")
-        .attr("dominant-baseline", "middle")
-        .attr("fill", () => {
-          if (line.labelSex === "All") return line1color;
-          else if (line.labelSex === "Female") return line2color;
-          else if (line.labelSex === "Male") return line3color;
-        })
-        .style(
-          "font-family",
-          `"ABCSans-bold", ABCSans, Helvetica, Arial, sans-serif`
-        )
-        .style("font-size", "11px")
-        .style("font-weight", "900")
-        .style("text-transform", "uppercase");
+      // Only show when not ALL
+      if (line.labelSex !== "All") {
+        this.rightLabels[iteration]
+          .append("text")
+          .text(line.labelSex)
+          .attr("x", this.scaleX(chartWidth()) + LABEL_RIGHT_OFFSET)
+          .attr("y", scaleY(line.last) - 11)
+          .attr("text-anchor", "start")
+          .attr("dominant-baseline", "middle")
+          .attr("fill", () => {
+            if (line.labelSex === "All") return line1color;
+            else if (line.labelSex === "Female") return line2color;
+            else if (line.labelSex === "Male") return line3color;
+          })
+          .style(
+            "font-family",
+            `"ABCSans-bold", ABCSans, Helvetica, Arial, sans-serif`
+          )
+          .style("font-size", "11px")
+          .style("font-weight", "900")
+          .style("text-transform", "uppercase");
+      }
 
       // Label percent
       this.rightLabels[iteration]
