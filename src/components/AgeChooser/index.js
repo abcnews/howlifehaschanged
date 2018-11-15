@@ -131,7 +131,7 @@ class AgeChooser extends React.Component {
           Maybe think about resizing this on mobile
         */}
           <div className={styles.question}>
-            Which age-group would you like to know about?
+            Which age group would you like to know about?
           </div>
 
           <div className={styles.chooser}>

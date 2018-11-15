@@ -460,50 +460,52 @@ class SlopeChart extends React.Component {
       bottom().attr("transform", `translate(0, ${bottomTranslate})`);
     }
 
-    // Chart animations when they enter the page
-    ScrollReveal().reveal(this.node.current, {
-      delay: 0,
-      duration: 750,
-      scale: 0.95,
-      distance: "5px",
-      reset: true,
-      viewFactor: 0.3,
-      beforeReveal: el => {
-        this.props.lines.forEach((line, iteration) => {
-          // Modify speed of line depending on the length
-          let length = distance(
-            this.lines[iteration].attr("x1"),
-            this.scaleX(chartWidth()),
-            this.lines[iteration].attr("y1"),
-            scaleY(line.last)
-          );
+    setTimeout(() => {
+      // Chart animations when they enter the page
+      ScrollReveal().reveal(this.node.current, {
+        delay: 0,
+        duration: 750,
+        scale: 0.95,
+        distance: "5px",
+        reset: true,
+        viewFactor: 0.3,
+        beforeReveal: el => {
+          this.props.lines.forEach((line, iteration) => {
+            // Modify speed of line depending on the length
+            let length = distance(
+              this.lines[iteration].attr("x1"),
+              this.scaleX(chartWidth()),
+              this.lines[iteration].attr("y1"),
+              scaleY(line.last)
+            );
 
-          drawDuration = length * 5;
+            drawDuration = length * 5;
 
-          // Reset the lines
-          this.lines[iteration]
-            .attr("x2", this.scaleX(0))
-            .attr("y2", scaleY(line.first));
+            // Reset the lines
+            this.lines[iteration]
+              .attr("x2", this.scaleX(0))
+              .attr("y2", scaleY(line.first));
 
-          // Set line transitions
-          this.lines[iteration]
-            .transition()
-            .duration(drawDuration)
-            .attr("x2", this.scaleX(chartWidth()))
-            .attr("y2", scaleY(line.last));
+            // Set line transitions
+            this.lines[iteration]
+              .transition()
+              .duration(drawDuration)
+              .attr("x2", this.scaleX(chartWidth()))
+              .attr("y2", scaleY(line.last));
 
-          // Reset the cirlces
-          this.endCircles[iteration].attr("r", 0);
+            // Reset the cirlces
+            this.endCircles[iteration].attr("r", 0);
 
-          // Transition the circles with delay
-          this.endCircles[iteration]
-            .transition()
-            .delay(drawDuration * CIRCLE_DELAY_FACTOR)
-            .duration(250)
-            .attr("r", CIRCLE_RADIUS);
-        });
-      }
-    });
+            // Transition the circles with delay
+            this.endCircles[iteration]
+              .transition()
+              .delay(drawDuration * CIRCLE_DELAY_FACTOR)
+              .duration(250)
+              .attr("r", CIRCLE_RADIUS);
+          });
+        }
+      });
+    }, 1000);
   };
 
   render() {
