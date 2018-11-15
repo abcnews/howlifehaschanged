@@ -91,6 +91,12 @@ function preFlight(odyssey) {
 
   // Hide the chart title text coming in from CoreMedia
   hideTitles(classesToHide);
+
+  // Add fixe background element (for iOS mobile Safari being stupid)
+  if (iOSSafari) {
+    const fixedBackground = d3.select("body").insert("div", ":first-child");
+    fixedBackground.classed("fixed-background", true);
+  }
 }
 
 // Re-loads on hot reload
@@ -177,3 +183,9 @@ function hideTitles(classesToHide) {
     }
   });
 }
+
+// User agent detection
+var ua = window.navigator.userAgent;
+var iOS = !!ua.match(/iPad/i) || !!ua.match(/iPhone/i);
+var webkit = !!ua.match(/WebKit/i);
+var iOSSafari = iOS && webkit && !ua.match(/CriOS/i);

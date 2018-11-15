@@ -365,100 +365,100 @@ class SlopeChart extends React.Component {
     // 3 labels makes things harder
     // NOTE: There shouldn't be any with 3 now after
     // removing "All" from those with "Male" and "Female" lines
-    if (this.rightLabels.length === 3) {
-      const label1 = this.rightLabels[0].node().getBBox();
-      const label2 = this.rightLabels[1].node().getBBox();
-      const label3 = this.rightLabels[2].node().getBBox();
+    // if (this.rightLabels.length === 3) {
+    //   const label1 = this.rightLabels[0].node().getBBox();
+    //   const label2 = this.rightLabels[1].node().getBBox();
+    //   const label3 = this.rightLabels[2].node().getBBox();
 
-      // Calculate which order they are in, top to bottom
-      const top = () => {
-        if (label1.y === Math.min(label1.y, label2.y, label3.y))
-          return this.rightLabels[0];
-        if (label2.y === Math.min(label2.y, label2.y, label3.y))
-          return this.rightLabels[1];
-        if (label3.y === Math.min(label3.y, label2.y, label3.y))
-          return this.rightLabels[2];
-      };
+    //   // Calculate which order they are in, top to bottom
+    //   const top = () => {
+    //     if (label1.y === Math.min(label1.y, label2.y, label3.y))
+    //       return this.rightLabels[0];
+    //     if (label2.y === Math.min(label2.y, label2.y, label3.y))
+    //       return this.rightLabels[1];
+    //     if (label3.y === Math.min(label3.y, label2.y, label3.y))
+    //       return this.rightLabels[2];
+    //   };
 
-      const bottom = () => {
-        if (label1.y === Math.max(label1.y, label2.y, label3.y))
-          return this.rightLabels[0];
-        if (label2.y === Math.max(label2.y, label2.y, label3.y))
-          return this.rightLabels[1];
-        if (label3.y === Math.max(label3.y, label2.y, label3.y))
-          return this.rightLabels[2];
-      };
+    //   const bottom = () => {
+    //     if (label1.y === Math.max(label1.y, label2.y, label3.y))
+    //       return this.rightLabels[0];
+    //     if (label2.y === Math.max(label2.y, label2.y, label3.y))
+    //       return this.rightLabels[1];
+    //     if (label3.y === Math.max(label3.y, label2.y, label3.y))
+    //       return this.rightLabels[2];
+    //   };
 
-      const middle = () => {
-        if (this.rightLabels[0] !== top() && this.rightLabels[0] !== bottom())
-          return this.rightLabels[0];
-        if (this.rightLabels[1] !== top() && this.rightLabels[1] !== bottom())
-          return this.rightLabels[1];
-        if (this.rightLabels[2] !== top() && this.rightLabels[2] !== bottom())
-          return this.rightLabels[2];
-      };
+    //   const middle = () => {
+    //     if (this.rightLabels[0] !== top() && this.rightLabels[0] !== bottom())
+    //       return this.rightLabels[0];
+    //     if (this.rightLabels[1] !== top() && this.rightLabels[1] !== bottom())
+    //       return this.rightLabels[1];
+    //     if (this.rightLabels[2] !== top() && this.rightLabels[2] !== bottom())
+    //       return this.rightLabels[2];
+    //   };
 
-      const topBox = top()
-        .node()
-        .getBBox();
-      const middleBox = middle()
-        .node()
-        .getBBox();
-      const bottomBox = bottom()
-        .node()
-        .getBBox();
+    //   const topBox = top()
+    //     .node()
+    //     .getBBox();
+    //   const middleBox = middle()
+    //     .node()
+    //     .getBBox();
+    //   const bottomBox = bottom()
+    //     .node()
+    //     .getBBox();
 
-      // There can be 2 overlaps (maybe 3???)
-      const topLowest = topBox.y + topBox.height;
-      const middleLowest = middleBox.y + middleBox.height;
-      const bottomLowest = middleBox.y + topBox.height;
+    //   // There can be 2 overlaps (maybe 3???)
+    //   const topLowest = topBox.y + topBox.height;
+    //   const middleLowest = middleBox.y + middleBox.height;
+    //   const bottomLowest = middleBox.y + topBox.height;
 
-      const topOverlap = topLowest - middleBox.y;
+    //   const topOverlap = topLowest - middleBox.y;
 
-      const bottomOverlap = bottomLowest - bottomBox.y;
+    //   const bottomOverlap = bottomLowest - bottomBox.y;
 
-      // Set up the translates to change later
-      // Zero means we leave the labels alone
-      let topTranslate = 0;
-      let middleTranslate = 0;
-      let bottomTranslate = 0;
+    //   // Set up the translates to change later
+    //   // Zero means we leave the labels alone
+    //   let topTranslate = 0;
+    //   let middleTranslate = 0;
+    //   let bottomTranslate = 0;
 
-      // Use the difference between overlaps
-      // to smooth out average of all
-      const diff = topOverlap - bottomOverlap;
+    //   // Use the difference between overlaps
+    //   // to smooth out average of all
+    //   const diff = topOverlap - bottomOverlap;
 
-      // If only top overlaps
-      if (topOverlap > 0 && bottomOverlap <= 0) {
-        bottomTranslate = 0;
-        middleTranslate = topOverlap / 2;
-        topTranslate = -topOverlap / 2;
-        // Just in case the nudge overlaps the bottom
-        if (middleLowest + middleTranslate > bottomBox.y)
-          bottomTranslate = middleLowest + middleTranslate - bottomBox.y;
-      }
+    //   // If only top overlaps
+    //   if (topOverlap > 0 && bottomOverlap <= 0) {
+    //     bottomTranslate = 0;
+    //     middleTranslate = topOverlap / 2;
+    //     topTranslate = -topOverlap / 2;
+    //     // Just in case the nudge overlaps the bottom
+    //     if (middleLowest + middleTranslate > bottomBox.y)
+    //       bottomTranslate = middleLowest + middleTranslate - bottomBox.y;
+    //   }
 
-      // If only bottom overlaps
-      else if (bottomOverlap > 0 && topOverlap <= 0) {
-        topTranslate = 0;
-        middleTranslate = -bottomOverlap / 2;
-        bottomTranslate = bottomOverlap / 2;
-        // Just in case the nudge overlaps the top
-        if (middleBox.y + middleTranslate < topLowest)
-          topTranslate = middleBox.y + middleTranslate - topLowest;
-      }
+    //   // If only bottom overlaps
+    //   else if (bottomOverlap > 0 && topOverlap <= 0) {
+    //     topTranslate = 0;
+    //     middleTranslate = -bottomOverlap / 2;
+    //     bottomTranslate = bottomOverlap / 2;
+    //     // Just in case the nudge overlaps the top
+    //     if (middleBox.y + middleTranslate < topLowest)
+    //       topTranslate = middleBox.y + middleTranslate - topLowest;
+    //   }
 
-      // If both overlap
-      else if (bottomOverlap > 0 && topOverlap > 0) {
-        topTranslate = -topOverlap + diff / 2;
-        middleTranslate = 0 + diff / 2;
-        bottomTranslate = bottomOverlap + diff / 2;
-      }
+    //   // If both overlap
+    //   else if (bottomOverlap > 0 && topOverlap > 0) {
+    //     topTranslate = -topOverlap + diff / 2;
+    //     middleTranslate = 0 + diff / 2;
+    //     bottomTranslate = bottomOverlap + diff / 2;
+    //   }
 
-      // Now actually do the label translations
-      top().attr("transform", `translate(0, ${topTranslate})`);
-      middle().attr("transform", `translate(0, ${middleTranslate})`);
-      bottom().attr("transform", `translate(0, ${bottomTranslate})`);
-    }
+    //   // Now actually do the label translations
+    //   top().attr("transform", `translate(0, ${topTranslate})`);
+    //   middle().attr("transform", `translate(0, ${middleTranslate})`);
+    //   bottom().attr("transform", `translate(0, ${bottomTranslate})`);
+    // }
 
     setTimeout(() => {
       // Chart animations when they enter the page

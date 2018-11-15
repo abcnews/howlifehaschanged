@@ -1,7 +1,6 @@
 const React = require("react");
 const styles = require("./styles.scss");
-const Keyshape = require("react-keyshape").Keyshape;
-// const d3 = Object.assign({}, require("d3-selection"));
+
 
 class AnimatedIcon extends React.Component {
   constructor(props) {

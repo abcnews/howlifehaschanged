@@ -57,7 +57,6 @@ class PreHeader extends React.Component {
       <div>
         <ReactResizeDetector handleWidth>
           {(width, height) => {
-            console.log(width);
             return (
               <div>
                 {/* 

@@ -91,4 +91,32 @@
     justify-content: center;
     align-items: center;
   }
+
+  .fixed-background {
+    position: fixed;
+    display: block;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: url("./background.png") #175482;
+    background-position: calc(50%) calc(50%);
+    background-size: 500px;
+  }
+
+  @include for-tablet-landscape-up {
+    .fixed-background {
+      position: fixed;
+      display: block;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: url("./background.png") #175482;
+      background-position: calc(50%) calc(50%);
+      background-size: 900px;
+    }
+  }
 }
