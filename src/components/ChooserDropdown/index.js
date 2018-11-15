@@ -53,14 +53,18 @@ const customStyles = {
   },
   option: (base, state) => {
     // Obscure focus a little bit as to not
-    // confuse people on mobile on what is 
+    // confuse people on mobile on what is
     // selected when there is no hover or keyboard.
-    if (state.isFocused && !state.isSelected) return { ...base, backgroundColor: "#f9f9f9" };
+    if (state.isFocused && !state.isSelected)
+      return { ...base, backgroundColor: "#f9f9f9" };
     else return { ...base };
   }
 };
 
 class ChooserDropdown extends React.Component {
+  componentDidMount() {
+    
+  }
   handleChange = selected => {
     // Don't process if user backspaces
     // if (selectedOption instanceof Array) return;
@@ -97,6 +101,8 @@ class ChooserDropdown extends React.Component {
             styles={customStyles}
             classNamePrefix="react-select"
             placeholder="Please select..."
+            menuShouldScrollIntoView={false}
+            menuShouldBlockScroll={false}
           />
         </div>
       </div>

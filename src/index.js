@@ -10,6 +10,12 @@ require("./keyshape.js");
 const PROJECT_NAME = "howlifehaschanged";
 const root = document.querySelector(`[data-${PROJECT_NAME}-root]`);
 
+// User agent detection for iOS bug
+var ua = window.navigator.userAgent;
+var iOS = !!ua.match(/iPad/i) || !!ua.match(/iPhone/i);
+var webkit = !!ua.match(/WebKit/i);
+var iOSSafari = iOS && webkit && !ua.match(/CriOS/i);
+
 // Runs at page load and full request but not on hot reload
 function preFlight(odyssey) {
   // Insert divs above and below header text
@@ -184,8 +190,3 @@ function hideTitles(classesToHide) {
   });
 }
 
-// User agent detection
-var ua = window.navigator.userAgent;
-var iOS = !!ua.match(/iPad/i) || !!ua.match(/iPhone/i);
-var webkit = !!ua.match(/WebKit/i);
-var iOSSafari = iOS && webkit && !ua.match(/CriOS/i);
