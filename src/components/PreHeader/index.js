@@ -24,6 +24,7 @@ const BoozeAnimated = require("./svg/BoozeAnimated.svg");
 const MoneyAnimated = require("./svg/MoneyAnimated.svg");
 const CigaretteAnimated = require("./svg/CigaretteAnimated.svg");
 const FuelAnimated = require("./svg/FuelAnimated.svg");
+const PowerAnimated = require("./svg/PowerAnimated.svg");
 
 // Animation triggers pre
 const tools = require("./animations").tools;
@@ -41,6 +42,7 @@ const booze = require("./animations").booze;
 const money = require("./animations").money;
 const cigarette = require("./animations").cigarette;
 const fuel = require("./animations").fuel;
+const power = require("./animations").power;
 
 // Make sure KeyshapeJS is in global
 if (KeyshapeJS.version.indexOf("1.") != 0)
@@ -66,7 +68,11 @@ class PreHeader extends React.Component {
                   <AnimatedIcon
                     svg={ToolsAnimated}
                     paddingLeft={0}
-                    paddingRight={width < MOBILE_OR_LESS ? MOBILE_HEADER_ICON_SPACING - 3: HEADER_ICON_SPACING - 3}
+                    paddingRight={
+                      width < MOBILE_OR_LESS
+                        ? MOBILE_HEADER_ICON_SPACING - 3
+                        : HEADER_ICON_SPACING - 3
+                    }
                     width={100}
                     nudgeX={0}
                     nudgeY={-15}
@@ -82,8 +88,16 @@ class PreHeader extends React.Component {
                     />
                   </AnimatedIcon>
                   <AnimatedIcon
-                    paddingLeft={width < MOBILE_OR_LESS ? MOBILE_HEADER_ICON_SPACING - 3: HEADER_ICON_SPACING - 3}
-                    paddingRight={width < MOBILE_OR_LESS ? MOBILE_HEADER_ICON_SPACING: HEADER_ICON_SPACING}
+                    paddingLeft={
+                      width < MOBILE_OR_LESS
+                        ? MOBILE_HEADER_ICON_SPACING - 3
+                        : HEADER_ICON_SPACING - 3
+                    }
+                    paddingRight={
+                      width < MOBILE_OR_LESS
+                        ? MOBILE_HEADER_ICON_SPACING
+                        : HEADER_ICON_SPACING
+                    }
                     width={190}
                     nudgeX={3}
                     nudgeY={-13}
@@ -99,8 +113,16 @@ class PreHeader extends React.Component {
                     />
                   </AnimatedIcon>
                   <AnimatedIcon
-                    paddingLeft={width < MOBILE_OR_LESS ? MOBILE_HEADER_ICON_SPACING: HEADER_ICON_SPACING}
-                    paddingRight={width < MOBILE_OR_LESS ? MOBILE_HEADER_ICON_SPACING + 5: HEADER_ICON_SPACING + 5}
+                    paddingLeft={
+                      width < MOBILE_OR_LESS
+                        ? MOBILE_HEADER_ICON_SPACING
+                        : HEADER_ICON_SPACING
+                    }
+                    paddingRight={
+                      width < MOBILE_OR_LESS
+                        ? MOBILE_HEADER_ICON_SPACING + 5
+                        : HEADER_ICON_SPACING + 5
+                    }
                     width={80}
                     nudgeX={1}
                     nudgeY={-19}
@@ -116,7 +138,11 @@ class PreHeader extends React.Component {
                     />
                   </AnimatedIcon>
                   <AnimatedIcon
-                    paddingLeft={width < MOBILE_OR_LESS ? MOBILE_HEADER_ICON_SPACING + 5: HEADER_ICON_SPACING + 5}
+                    paddingLeft={
+                      width < MOBILE_OR_LESS
+                        ? MOBILE_HEADER_ICON_SPACING + 5
+                        : HEADER_ICON_SPACING + 5
+                    }
                     paddingRight={0}
                     width={110}
                     nudgeX={1}
@@ -141,7 +167,11 @@ class PreHeader extends React.Component {
                   <div className={styles.post}>
                     <AnimatedIcon
                       paddingLeft={0}
-                      paddingRight={width < MOBILE_OR_LESS ? MOBILE_HEADER_ICON_SPACING - 3: HEADER_ICON_SPACING - 3}
+                      paddingRight={
+                        width < MOBILE_OR_LESS
+                          ? MOBILE_HEADER_ICON_SPACING - 3
+                          : HEADER_ICON_SPACING - 3
+                      }
                       width={120}
                       nudgeX={0}
                       nudgeY={0}
@@ -157,8 +187,16 @@ class PreHeader extends React.Component {
                       />
                     </AnimatedIcon>
                     <AnimatedIcon
-                      paddingLeft={width < MOBILE_OR_LESS ? MOBILE_HEADER_ICON_SPACING - 3: HEADER_ICON_SPACING - 3}
-                      paddingRight={width < MOBILE_OR_LESS ? MOBILE_HEADER_ICON_SPACING - 2: HEADER_ICON_SPACING + 1}
+                      paddingLeft={
+                        width < MOBILE_OR_LESS
+                          ? MOBILE_HEADER_ICON_SPACING - 3
+                          : HEADER_ICON_SPACING - 3
+                      }
+                      paddingRight={
+                        width < MOBILE_OR_LESS
+                          ? MOBILE_HEADER_ICON_SPACING - 2
+                          : HEADER_ICON_SPACING + 1
+                      }
                       width={125}
                       nudgeX={-5}
                       nudgeY={20}
@@ -175,8 +213,16 @@ class PreHeader extends React.Component {
                     </AnimatedIcon>
                     <AnimatedIcon
                       svg={RingAnimated}
-                      paddingLeft={width < MOBILE_OR_LESS ? MOBILE_HEADER_ICON_SPACING - 2: HEADER_ICON_SPACING + 1}
-                      paddingRight={width < MOBILE_OR_LESS ? MOBILE_HEADER_ICON_SPACING + 3: HEADER_ICON_SPACING + 3}
+                      paddingLeft={
+                        width < MOBILE_OR_LESS
+                          ? MOBILE_HEADER_ICON_SPACING - 2
+                          : HEADER_ICON_SPACING + 1
+                      }
+                      paddingRight={
+                        width < MOBILE_OR_LESS
+                          ? MOBILE_HEADER_ICON_SPACING + 3
+                          : HEADER_ICON_SPACING + 3
+                      }
                       width={95}
                       nudgeX={0}
                       nudgeY={0}
@@ -192,7 +238,11 @@ class PreHeader extends React.Component {
                       />
                     </AnimatedIcon>
                     <AnimatedIcon
-                      paddingLeft={width < MOBILE_OR_LESS ? MOBILE_HEADER_ICON_SPACING + 3: HEADER_ICON_SPACING + 3}
+                      paddingLeft={
+                        width < MOBILE_OR_LESS
+                          ? MOBILE_HEADER_ICON_SPACING + 3
+                          : HEADER_ICON_SPACING + 3
+                      }
                       paddingRight={0}
                       width={100}
                       nudgeX={0}
@@ -212,8 +262,8 @@ class PreHeader extends React.Component {
                 </Portal>
 
                 {/* 
-              Now we are portalling the section header animations
-            */}
+                  Now we are portalling the section header animations
+                */}
 
                 <Portal into={document.querySelector(".children-icon")}>
                   <AnimatedIcon
@@ -372,17 +422,17 @@ class PreHeader extends React.Component {
             paddingLeft={0}
             paddingRight={0}
             paddingBottom={10}
-            width={100}
+            width={50}
             nudgeX={0}
             nudgeY={0}
           >
             <SVG
-              src={FuelAnimated}
+              src={PowerAnimated}
               uniquifyIDs={true}
-              uniqueHash="fuelicon"
+              uniqueHash="powericon"
               onLoad={src => {
                 // Trigger the animation
-                fuel(KeyshapeJS, "___fuelicon");
+                power(KeyshapeJS, "___powericon");
               }}
             />
           </AnimatedIcon>
