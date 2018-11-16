@@ -119,4 +119,16 @@
       background-size: 900px;
     }
   }
+
+  #docking-chooser.padding {
+    padding-top: 50px;
+  }
+
+  .Nav.is-above .Nav-bar {
+    position: static !important;
+  }
+
+  .Nav-bar.is-hiding {
+    transform: none !important;
+  }
 }

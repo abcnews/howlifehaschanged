@@ -13,7 +13,7 @@
 .chooser {
   width: 100%;
   position: absolute;
-  transition: all 0.2s ease;
+  transition: opacity 0.2s ease;
 }
 
 .space {
@@ -50,6 +50,6 @@
   display: none;
 }
 
-.padding {
-  padding-top: 45px;
-}
+// .padding {
+//   padding-top: 45px;
+// }

@@ -1,6 +1,13 @@
 const React = require("react");
 const styles = require("./styles.scss");
 const Select = require("react-select").default;
+const d3 = Object.assign({}, require("d3-selection"));
+
+// User agent detection for iOS bugs
+var ua = window.navigator.userAgent;
+var iOS = !!ua.match(/iPad/i) || !!ua.match(/iPhone/i);
+var webkit = !!ua.match(/WebKit/i);
+var iOSSafari = iOS && webkit && !ua.match(/CriOS/i);
 
 const options = [
   { value: "children", label: "Children" },
@@ -63,7 +70,8 @@ const customStyles = {
 
 class ChooserDropdown extends React.Component {
   componentDidMount() {
-    
+    this.innerHeight = window.innerHeight;
+    console.log(this.innerHeight)
   }
   handleChange = selected => {
     // Don't process if user backspaces
@@ -103,6 +111,25 @@ class ChooserDropdown extends React.Component {
             placeholder="Please select..."
             menuShouldScrollIntoView={false}
             menuShouldBlockScroll={false}
+            blurInputOnSelect={true}
+            closeMenuOnScroll={true}
+            onMenuOpen={() => {
+              if (iOSSafari) {
+                const y = window.scrollY;
+                window.scrollTo(0, y);
+
+                if (this.innerHeight < window.innerHeight) {
+                  d3.select("#docking-chooser").classed("padding", true);
+                }
+              }
+            }}
+            onMenuClose={() => {
+              if (iOSSafari) {
+              if (this.innerHeight < window.innerHeight) {
+                d3.select("#docking-chooser").classed("padding", false);
+              }
+            }
+            }}
           />
         </div>
       </div>

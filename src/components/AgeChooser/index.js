@@ -21,6 +21,10 @@ class AgeChooser extends React.Component {
   }
 
   componentDidMount() {
+    // d3.select(this.node.current.querySelector("." + styles.chooser)).classed(
+    //   "padding",
+    //   true
+    // );
     // Waits a sec to bind as a hacky way of not screwing up waypoints
     setTimeout(() => {
       // Waypoint to snap panel to top
@@ -86,7 +90,7 @@ class AgeChooser extends React.Component {
         });
       });
 
-      window.addEventListener("scroll", this.doOnScroll);
+      // window.addEventListener("scroll", this.doOnScroll);
     }, 1000);
   }
 
@@ -97,26 +101,25 @@ class AgeChooser extends React.Component {
     this.waypointGenerations.forEach(waypoint => {
       waypoint.destroy();
     });
-    window.removeEventListener("scroll", this.doOnScroll);
+    
+    // window.removeEventListener("scroll", this.doOnScroll);
   }
 
   doOnScroll = () => {
     // First check that the ABC Nav bar is still there
     // There have been talks of taking it out
-    if (document.querySelector(".Nav-bar")) {
-      const topNavHiding = document.querySelector(".Nav-bar.is-hiding");
-
-      const chooser = d3.select(
-        this.node.current.querySelector("." + styles.chooser)
-      );
-      if (!chooser.classed(styles.fixed))
-        chooser.classed(styles.padding, false);
-      else if (topNavHiding) {
-        chooser.classed(styles.padding, false);
-      } else {
-        chooser.classed(styles.padding, true);
-      } // TODO: maybe make this more efficient by breaking out if not needed
-    }
+    // if (document.querySelector(".Nav-bar")) {
+    //   const topNavHiding = document.querySelector(".Nav-bar.is-hiding");
+    //   const chooser = d3.select(
+    //     this.node.current.querySelector("." + styles.chooser)
+    //   );
+    //   if (!chooser.classed(styles.fixed)) chooser.classed("padding", false);
+    //   else if (topNavHiding) {
+    //     chooser.classed("padding", false);
+    //   } else {
+    //     chooser.classed("padding", true);
+    //   } // TODO: maybe make this more efficient by breaking out if not needed
+    // }
   };
 
   render() {
@@ -134,18 +137,18 @@ class AgeChooser extends React.Component {
             Which age group would you like to know about?
           </div>
 
-          <div className={styles.chooser}>
+          <div id={"docking-chooser"} className={styles.chooser}>
             {/*
                 Dropdown box generation selector for
                 mobile devices that can't display all
                 the buttons.
               */}
             {this.props.resizeWidth <= TABLET_PORTRAIT_OR_UP &&
-            // React-resize in Odyssey returns 625.328125 in Chrome 
-            // and Safari and 625.333 in Firefox when wide. This is
-            // a temporary fix.
-            (this.props.resizeWidth < 625.31 ||
-              this.props.resizeWidth > 625.55) && ( 
+              // React-resize in Odyssey returns 625.328125 in Chrome
+              // and Safari and 625.333 in Firefox when wide. This is
+              // a temporary fix.
+              (this.props.resizeWidth < 625.31 ||
+                this.props.resizeWidth > 625.55) && (
                 <ChooserDropdown
                   currentGeneration={this.props.currentGeneration}
                   setGeneration={setGeneration}
