@@ -15,7 +15,7 @@ class AgeChooser extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { isScrolledPast: true };
+    this.state = { isScrolledPast: true, yPos: 0};
 
     this.node = React.createRef();
   }
@@ -101,15 +101,18 @@ class AgeChooser extends React.Component {
     this.waypointGenerations.forEach(waypoint => {
       waypoint.destroy();
     });
-    
     // window.removeEventListener("scroll", this.doOnScroll);
   }
 
   doOnScroll = () => {
+    // this.setState(yPos, window.scrollY)
+    // document.querySelector("#docking-chooser input").blur();
+
     // First check that the ABC Nav bar is still there
     // There have been talks of taking it out
     // if (document.querySelector(".Nav-bar")) {
     //   const topNavHiding = document.querySelector(".Nav-bar.is-hiding");
+
     //   const chooser = d3.select(
     //     this.node.current.querySelector("." + styles.chooser)
     //   );
