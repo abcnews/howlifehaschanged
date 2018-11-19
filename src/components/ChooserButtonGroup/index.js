@@ -16,7 +16,7 @@ class ChooserButtonGroup extends React.Component {
           currentGeneration={this.props.currentGeneration}
           generationSlug={"children"}
         >
-          Children
+          0 - 10
         </ChooserButton>
         <ChooserButton
           setGeneration={setGeneration}
@@ -24,7 +24,7 @@ class ChooserButtonGroup extends React.Component {
           currentGeneration={this.props.currentGeneration}
           generationSlug={"teenagers"}
         >
-          Teenagers
+          11 - 20
         </ChooserButton>
         <ChooserButton
           setGeneration={setGeneration}
@@ -32,7 +32,7 @@ class ChooserButtonGroup extends React.Component {
           currentGeneration={this.props.currentGeneration}
           generationSlug={"twenties"}
         >
-          Twenties
+          21 - 30
         </ChooserButton>
         <ChooserButton
           setGeneration={setGeneration}
@@ -40,7 +40,7 @@ class ChooserButtonGroup extends React.Component {
           currentGeneration={this.props.currentGeneration}
           generationSlug={"thirties"}
         >
-          Thirties
+          31 - 40
         </ChooserButton>
         <ChooserButton
           setGeneration={setGeneration}
@@ -48,7 +48,7 @@ class ChooserButtonGroup extends React.Component {
           currentGeneration={this.props.currentGeneration}
           generationSlug={"forties"}
         >
-          Forties
+          41 - 50
         </ChooserButton>
         <ChooserButton
           setGeneration={setGeneration}
@@ -56,7 +56,7 @@ class ChooserButtonGroup extends React.Component {
           currentGeneration={this.props.currentGeneration}
           generationSlug={"fifties"}
         >
-          Fifties
+          51 - 60
         </ChooserButton>
         <ChooserButton
           setGeneration={setGeneration}
@@ -64,7 +64,7 @@ class ChooserButtonGroup extends React.Component {
           currentGeneration={this.props.currentGeneration}
           generationSlug={"sixties"}
         >
-          Sixties
+          61 - 70
         </ChooserButton>
         <ChooserButton
           setGeneration={setGeneration}
@@ -72,7 +72,7 @@ class ChooserButtonGroup extends React.Component {
           currentGeneration={this.props.currentGeneration}
           generationSlug={"seventiesandover"}
         >
-          Seventies and over
+          70 +
         </ChooserButton>
       </div>
     );
