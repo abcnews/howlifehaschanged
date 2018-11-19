@@ -72,6 +72,7 @@ class PreHeader extends React.Component {
                         : HEADER_ICON_SPACING - 3
                     }
                     width={100}
+                    height={92.69}
                     nudgeX={0}
                     nudgeY={-15}
                   >
@@ -97,6 +98,7 @@ class PreHeader extends React.Component {
                         : HEADER_ICON_SPACING
                     }
                     width={190}
+                    height={85.45}
                     nudgeX={3}
                     nudgeY={-13}
                   >
@@ -122,6 +124,7 @@ class PreHeader extends React.Component {
                         : HEADER_ICON_SPACING + 5
                     }
                     width={80}
+                    height={86.89}
                     nudgeX={1}
                     nudgeY={-19}
                   >
@@ -143,6 +146,7 @@ class PreHeader extends React.Component {
                     }
                     paddingRight={0}
                     width={110}
+                    height={74.58}
                     nudgeX={1}
                     nudgeY={-11}
                   >
@@ -171,6 +175,7 @@ class PreHeader extends React.Component {
                           : HEADER_ICON_SPACING - 3
                       }
                       width={120}
+                      height={104.61}
                       nudgeX={0}
                       nudgeY={0}
                     >
@@ -196,6 +201,7 @@ class PreHeader extends React.Component {
                           : HEADER_ICON_SPACING + 1
                       }
                       width={125}
+                      height={93.67}
                       nudgeX={-5}
                       nudgeY={20}
                     >
@@ -222,6 +228,7 @@ class PreHeader extends React.Component {
                           : HEADER_ICON_SPACING + 3
                       }
                       width={95}
+                      height={114.19}
                       nudgeX={0}
                       nudgeY={0}
                     >
@@ -243,6 +250,7 @@ class PreHeader extends React.Component {
                       }
                       paddingRight={0}
                       width={100}
+                      height={124.36}
                       nudgeX={0}
                       nudgeY={0}
                     >
