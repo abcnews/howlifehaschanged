@@ -21,10 +21,6 @@ class AgeChooser extends React.Component {
   }
 
   componentDidMount() {
-    // d3.select(this.node.current.querySelector("." + styles.chooser)).classed(
-    //   "padding",
-    //   true
-    // );
     // Waits a sec to bind as a hacky way of not screwing up waypoints
     setTimeout(() => {
       // Waypoint to snap panel to top

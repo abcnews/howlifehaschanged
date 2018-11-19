@@ -69,10 +69,13 @@ const customStyles = {
 };
 
 class ChooserDropdown extends React.Component {
+  state = {
+    innerHeight: 0
+  };
   componentDidMount() {
-    this.innerHeight = window.innerHeight;
-    console.log(this.innerHeight);
+    this.setState({ innerHeight: window.innerHeight });
   }
+
   handleChange = selected => {
     // Don't process if user backspaces
     // if (selectedOption instanceof Array) return;
@@ -119,7 +122,7 @@ class ChooserDropdown extends React.Component {
                 const y = window.scrollY;
                 window.scrollTo(0, y);
 
-                if (this.innerHeight < window.innerHeight) {
+                if (this.state.innerHeight < window.innerHeight) {
                   d3.select("#docking-chooser").classed("padding", true);
                 }
               }
@@ -127,10 +130,10 @@ class ChooserDropdown extends React.Component {
             onMenuClose={() => {
               // Hack fixes for Mobile Safari issues
               if (iOSSafari) {
-                if (this.innerHeight < window.innerHeight) {
+                if (this.state.innerHeight < window.innerHeight) {
                   d3.select("#docking-chooser").classed("padding", false);
                 }
-                
+
                 // Onfocus dropdown so it doesn't scroll up beyond top
                 document.querySelector("#docking-chooser input").blur();
               }

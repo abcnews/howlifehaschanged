@@ -30,8 +30,8 @@ class App extends React.Component {
             speed: 750,
             easing: "easeInOutCubic",
             offset: function(anchor, toggle) {
-              const standardOffset = 80;
-              const toggleOffset = 34;
+              const standardOffset = 50;
+              const toggleOffset = 0; // No toggle offset now that there's no appearing header
               const boundsTop = anchor.getBoundingClientRect().top;
 
               // Adjust the offset depending on scroll direction

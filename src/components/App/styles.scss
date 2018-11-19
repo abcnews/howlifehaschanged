@@ -75,7 +75,21 @@
   h2.sixties::before,
   h2.seventiesandover::before {
     background-color: transparent;
-    margin-top: 30px;
+    margin-top: 10px;
+  }
+
+  @include for-tablet-landscape-up {
+    h2.children::before,
+    h2.teenagers::before,
+    h2.twenties::before,
+    h2.thirties::before,
+    h2.forties::before,
+    h2.fifties::before,
+    h2.sixties::before,
+    h2.seventiesandover::before {
+      background-color: transparent;
+      margin-top: 30px;
+    }
   }
 
   h2.children,
@@ -124,6 +138,7 @@
     padding-top: 50px;
   }
 
+  // Disable ABC nav pre-emptively
   .Nav.is-above .Nav-bar {
     position: static !important;
   }

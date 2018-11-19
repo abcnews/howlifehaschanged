@@ -23,7 +23,6 @@ const RingAnimated = require("./svg/RingAnimated.svg");
 const BoozeAnimated = require("./svg/BoozeAnimated.svg");
 const MoneyAnimated = require("./svg/MoneyAnimated.svg");
 const CigaretteAnimated = require("./svg/CigaretteAnimated.svg");
-const FuelAnimated = require("./svg/FuelAnimated.svg");
 const PowerAnimated = require("./svg/PowerAnimated.svg");
 
 // Animation triggers pre
@@ -41,7 +40,6 @@ const booze = require("./animations").booze;
 // Section header only animations
 const money = require("./animations").money;
 const cigarette = require("./animations").cigarette;
-const fuel = require("./animations").fuel;
 const power = require("./animations").power;
 
 // Make sure KeyshapeJS is in global
