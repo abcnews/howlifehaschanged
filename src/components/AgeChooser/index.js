@@ -133,7 +133,7 @@ class AgeChooser extends React.Component {
           Maybe think about resizing this on mobile
         */}
           <div className={styles.question}>
-            Which age group would you like to know about?
+            Choose an age group to start with or just keep scrolling
           </div>
 
           <div id={"docking-chooser"} className={styles.chooser}>

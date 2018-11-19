@@ -15,9 +15,9 @@ const yScaleFactor = 4.0;
 
 const MIN_CHART_HEIGHT = 180;
 
-const MARGIN_TOP = 42;
+const MARGIN_TOP = 45;
 const MARGIN_RIGHT = 66;
-const MARGIN_BOTTOM = 42;
+const MARGIN_BOTTOM = 47;
 const MARGIN_LEFT = 66;
 const LABEL_RIGHT_OFFSET = 20;
 const LABEL_LEFT_OFFSET = 10;
@@ -222,7 +222,7 @@ class SlopeChart extends React.Component {
         .attr("x", this.scaleX(0) - LABEL_LEFT_OFFSET)
         .attr(
           "y",
-          scaleY(line.first) + 1.35 + (line.firstNudge ? line.firstNudge : 0)
+          scaleY(line.first) + 1.38 + (line.firstNudge ? line.firstNudge : 0)
         )
         .attr("text-anchor", "end")
         .attr("dominant-baseline", "middle")
@@ -235,7 +235,7 @@ class SlopeChart extends React.Component {
           "font-family",
           `"ABCSans-bold", ABCSans, Helvetica, Arial, sans-serif`
         )
-        .style("font-size", "11px")
+        .style("font-size", "12px")
         .style("font-weight", "bold");
 
       // Label end
@@ -255,7 +255,7 @@ class SlopeChart extends React.Component {
           "font-family",
           `"ABCSans-bold", ABCSans, Helvetica, Arial, sans-serif`
         )
-        .style("font-size", "11px")
+        .style("font-size", "12px")
         .style("font-weight", "bold");
 
       // Label sex
@@ -265,7 +265,7 @@ class SlopeChart extends React.Component {
           .append("text")
           .text(line.labelSex)
           .attr("x", this.scaleX(chartWidth()) + LABEL_RIGHT_OFFSET)
-          .attr("y", scaleY(line.last) - 11)
+          .attr("y", scaleY(line.last) - 14)
           .attr("text-anchor", "start")
           .attr("dominant-baseline", "middle")
           .attr("fill", () => {
@@ -277,17 +277,22 @@ class SlopeChart extends React.Component {
             "font-family",
             `"ABCSans-bold", ABCSans, Helvetica, Arial, sans-serif`
           )
-          .style("font-size", "11px")
+          .style("font-size", "12px")
           .style("font-weight", "900")
           .style("text-transform", "uppercase");
       }
 
       // Label percent
+      const yOffset = 20;
+
       this.rightLabels[iteration]
         .append("text")
         .text(line.labelPercent)
         .attr("x", this.scaleX(chartWidth()) + LABEL_RIGHT_OFFSET)
-        .attr("y", scaleY(line.last) + (line.labelSex === "All" ? 15 - 3 : 15))
+        .attr(
+          "y",
+          scaleY(line.last) + (line.labelSex === "All" ? yOffset - 3 : yOffset)
+        )
         .attr("text-anchor", "start")
         .attr("dominant-baseline", "middle")
         .attr("fill", () => {
@@ -299,7 +304,7 @@ class SlopeChart extends React.Component {
           "font-family",
           `"ABCSans-bold", ABCSans, Helvetica, Arial, sans-serif`
         )
-        .style("font-size", "14px")
+        .style("font-size", "15px")
         .style("font-weight", "900")
         .style("font-variant-numeric", "tabular-nums");
 
@@ -308,7 +313,10 @@ class SlopeChart extends React.Component {
         .append("text")
         .text(line.labelSign)
         .attr("x", this.scaleX(chartWidth()) + LABEL_RIGHT_OFFSET - 3)
-        .attr("y", scaleY(line.last) + (line.labelSex === "All" ? 15 - 3 : 15))
+        .attr(
+          "y",
+          scaleY(line.last) + (line.labelSex === "All" ? yOffset - 3 : yOffset)
+        )
         .attr("text-anchor", "end")
         .attr("dominant-baseline", "middle")
         .attr("fill", () => {
