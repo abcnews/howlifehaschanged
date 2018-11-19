@@ -1,6 +1,6 @@
 .wrapper {
   padding: 0 0;
-  text-align: center;
+  text-align: left;
   color: #f7fff7;
   font-family: "ABCSans-bold", ABCSans, Helvetica, Arial, sans-serif;
   font-weight: bold;
@@ -13,19 +13,17 @@
 // }
 
 .title {
-  // To prevent side-by-side headers running
-  // into each other on desktop
-  padding-left: 5px;
-  padding-right: 5px;
-
   margin-bottom: 16px;
-
-  max-width: 290px;
-  margin-left: auto;
-  margin-right: auto;
+  max-width: 350px;
+  padding-left: 60px;
+  padding-right: 30px;
+  text-align: left;
 }
 
 .note {
+  color: #B0E6FF;
   font-size: 11px;
-  margin-bottom: 1.5em;
+  max-width: 218px;
+  padding-left: 60px;
+  padding-right: 30px;
 }

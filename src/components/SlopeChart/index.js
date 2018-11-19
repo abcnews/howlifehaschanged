@@ -556,10 +556,11 @@ class SlopeChart extends React.Component {
                 {this.props.title}
               </div>
 
-              <div ref={this.node} className={"chart-div"} aria-hidden={true} />
               {this.props.note ? (
                 <div className={styles.note}>{this.props.note}</div>
               ) : null}
+
+              <div ref={this.node} className={"chart-div"} aria-hidden={true} />
             </div>
           );
         }}
@@ -576,6 +577,7 @@ class SlopeChart extends React.Component {
 }
 
 // if small phone go smaller
+// Updates on context consumer change (I think...)
 function chartWidth() {
   if (window.innerWidth > 330) return 350;
   else return 300;

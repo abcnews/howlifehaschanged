@@ -102,39 +102,47 @@ class ChartStory extends React.Component {
             </Portal>
 
             <Portal into={document.querySelector(".twoparentswork")}>
-              <SlopeChart
-                title={getTitle("twoparentswork")}
-                years={["1981", "2016"]}
-                lines={[
-                  {
-                    first: 39,
-                    last: 63,
-                    labelPercent: "62%",
-                    labelSign: "+",
-                    labelSex: "All",
-                    labelStart: "39%",
-                    labelEnd: "63%"
-                  }
-                ]}
-              />
+              <div className={styles.row}>
+                <div className={styles.column}>
+                  <SlopeChart
+                    title={getTitle("twoparentswork")}
+                    years={["1981", "2016"]}
+                    lines={[
+                      {
+                        first: 39,
+                        last: 63,
+                        labelPercent: "62%",
+                        labelSign: "+",
+                        labelSex: "All",
+                        labelStart: "39%",
+                        labelEnd: "63%"
+                      }
+                    ]}
+                  />
+                </div>
+              </div>
             </Portal>
 
             <Portal into={document.querySelector(".kidsobese")}>
-              <SlopeChart
-                title={getTitle("kidsobese")}
-                years={["1985", "2015"]}
-                lines={[
-                  {
-                    first: 11,
-                    last: 27,
-                    labelPercent: "145%",
-                    labelSign: "+",
-                    labelSex: "All",
-                    labelStart: "11%",
-                    labelEnd: "27%"
-                  }
-                ]}
-              />
+              <div className={styles.row}>
+                <div className={styles.column}>
+                  <SlopeChart
+                    title={getTitle("kidsobese")}
+                    years={["1985", "2015"]}
+                    lines={[
+                      {
+                        first: 11,
+                        last: 27,
+                        labelPercent: "145%",
+                        labelSign: "+",
+                        labelSex: "All",
+                        labelStart: "11%",
+                        labelEnd: "27%"
+                      }
+                    ]}
+                  />
+                </div>
+              </div>
             </Portal>
 
             <Portal into={document.querySelector(".schooltoyrtwelve")}>
@@ -252,22 +260,26 @@ class ChartStory extends React.Component {
             </Portal>
 
             <Portal into={document.querySelector(".roadaccidents")}>
-              <SlopeChart
-                title={getTitle("roadaccidents")}
-                note={"*Deaths per 100,000"}
-                years={["1981", "2016"]}
-                lines={[
-                  {
-                    first: 53,
-                    last: 9,
-                    labelPercent: "83%",
-                    labelSign: "-",
-                    labelSex: "All",
-                    labelStart: "53",
-                    labelEnd: "9"
-                  }
-                ]}
-              />
+              <div className={styles.row}>
+                <div className={styles.column}>
+                  <SlopeChart
+                    title={getTitle("roadaccidents")}
+                    note={"*Deaths per 100,000"}
+                    years={["1981", "2016"]}
+                    lines={[
+                      {
+                        first: 53,
+                        last: 9,
+                        labelPercent: "83%",
+                        labelSign: "-",
+                        labelSex: "All",
+                        labelStart: "53",
+                        labelEnd: "9"
+                      }
+                    ]}
+                  />
+                </div>
+              </div>
             </Portal>
           </div>
         )}
@@ -341,48 +353,56 @@ class ChartStory extends React.Component {
             </Portal>
 
             <Portal into={document.querySelector(".livingwithparents")}>
-              <SlopeChart
-                title={getTitle("livingwithparents")}
-                years={["1981", "2016"]}
-                lines={[
-                  {
-                    first: 24,
-                    last: 30,
-                    labelPercent: "25%",
-                    labelSign: "+",
-                    labelSex: "All",
-                    labelStart: "24%",
-                    labelEnd: "30%"
-                  }
-                ]}
-              />
+              <div className={styles.row}>
+                <div className={styles.column}>
+                  <SlopeChart
+                    title={getTitle("livingwithparents")}
+                    years={["1981", "2016"]}
+                    lines={[
+                      {
+                        first: 24,
+                        last: 30,
+                        labelPercent: "25%",
+                        labelSign: "+",
+                        labelSex: "All",
+                        labelStart: "24%",
+                        labelEnd: "30%"
+                      }
+                    ]}
+                  />
+                </div>
+              </div>
             </Portal>
 
             <Portal into={document.querySelector(".defacto")}>
-              <SlopeChart
-                title={getTitle("defacto")}
-                years={["1982", "2016"]}
-                lines={[
-                  {
-                    first: 1,
-                    last: 17,
-                    labelPercent: "1600%",
-                    labelSign: "+",
-                    labelSex: "Female",
-                    labelStart: "1%",
-                    labelEnd: "17%"
-                  },
-                  {
-                    first: 3,
-                    last: 19,
-                    labelPercent: "533%",
-                    labelSign: "+",
-                    labelSex: "Male",
-                    labelStart: "3%",
-                    labelEnd: "19%"
-                  }
-                ]}
-              />
+              <div className={styles.row}>
+                <div className={styles.column}>
+                  <SlopeChart
+                    title={getTitle("defacto")}
+                    years={["1982", "2016"]}
+                    lines={[
+                      {
+                        first: 1,
+                        last: 17,
+                        labelPercent: "1600%",
+                        labelSign: "+",
+                        labelSex: "Female",
+                        labelStart: "1%",
+                        labelEnd: "17%"
+                      },
+                      {
+                        first: 3,
+                        last: 19,
+                        labelPercent: "533%",
+                        labelSign: "+",
+                        labelSex: "Male",
+                        labelStart: "3%",
+                        labelEnd: "19%"
+                      }
+                    ]}
+                  />
+                </div>
+              </div>
             </Portal>
 
             <Portal into={document.querySelector(".highestdegreethirties")}>
@@ -473,21 +493,25 @@ class ChartStory extends React.Component {
             </Portal>
 
             <Portal into={document.querySelector(".doleperweek")}>
-              <SlopeChart
-                title={getTitle("doleperweek")}
-                years={["1981", "2016"]}
-                lines={[
-                  {
-                    first: 219.61,
-                    last: 263.8,
-                    labelPercent: "20%",
-                    labelSign: "+",
-                    labelSex: "All",
-                    labelStart: "$219.61",
-                    labelEnd: "$263.80"
-                  }
-                ]}
-              />
+              <div className={styles.row}>
+                <div className={styles.column}>
+                  <SlopeChart
+                    title={getTitle("doleperweek")}
+                    years={["1981", "2016"]}
+                    lines={[
+                      {
+                        first: 219.61,
+                        last: 263.8,
+                        labelPercent: "20%",
+                        labelSign: "+",
+                        labelSex: "All",
+                        labelStart: "$219.61",
+                        labelEnd: "$263.80"
+                      }
+                    ]}
+                  />
+                </div>
+              </div>
             </Portal>
 
             <Portal into={document.querySelector(".medianhouseprice")}>
@@ -593,30 +617,34 @@ class ChartStory extends React.Component {
             </Portal>
 
             <Portal into={document.querySelector(".marriednotworking")}>
-              <SlopeChart
-                title={getTitle("marriednotworking")}
-                years={["1981", "2016"]}
-                lines={[
-                  {
-                    first: 5.8,
-                    last: 7.3,
-                    labelPercent: "26%",
-                    labelSign: "+",
-                    labelSex: "Male",
-                    labelStart: "5.8%",
-                    labelEnd: "7.3%"
-                  },
-                  {
-                    first: 48,
-                    last: 19,
-                    labelPercent: "60%",
-                    labelSign: "-",
-                    labelSex: "Female",
-                    labelStart: "48%",
-                    labelEnd: "19%"
-                  }
-                ]}
-              />
+              <div className={styles.row}>
+                <div className={styles.column}>
+                  <SlopeChart
+                    title={getTitle("marriednotworking")}
+                    years={["1981", "2016"]}
+                    lines={[
+                      {
+                        first: 5.8,
+                        last: 7.3,
+                        labelPercent: "26%",
+                        labelSign: "+",
+                        labelSex: "Male",
+                        labelStart: "5.8%",
+                        labelEnd: "7.3%"
+                      },
+                      {
+                        first: 48,
+                        last: 19,
+                        labelPercent: "60%",
+                        labelSign: "-",
+                        labelSex: "Female",
+                        labelStart: "48%",
+                        labelEnd: "19%"
+                      }
+                    ]}
+                  />
+                </div>
+              </div>
             </Portal>
 
             <Portal into={document.querySelector(".householdspending")}>
@@ -659,21 +687,25 @@ class ChartStory extends React.Component {
             </Portal>
 
             <Portal into={document.querySelector(".mortgageinterest")}>
-              <SlopeChart
-                title={getTitle("mortgageinterest")}
-                years={["1984", "2016"]}
-                lines={[
-                  {
-                    first: 13,
-                    last: 20,
-                    labelPercent: "54%",
-                    labelSign: "+",
-                    labelSex: "All",
-                    labelStart: "13%",
-                    labelEnd: "20%"
-                  }
-                ]}
-              />
+              <div className={styles.row}>
+                <div className={styles.column}>
+                  <SlopeChart
+                    title={getTitle("mortgageinterest")}
+                    years={["1984", "2016"]}
+                    lines={[
+                      {
+                        first: 13,
+                        last: 20,
+                        labelPercent: "54%",
+                        labelSign: "+",
+                        labelSex: "All",
+                        labelStart: "13%",
+                        labelEnd: "20%"
+                      }
+                    ]}
+                  />
+                </div>
+              </div>
             </Portal>
 
             <Portal into={document.querySelector(".genxsmokers")}>
@@ -782,31 +814,36 @@ class ChartStory extends React.Component {
                 </div>
               </div>
             </Portal>
+
             <Portal into={document.querySelector(".adultobese")}>
-              <SlopeChart
-                title={getTitle("adultobese")}
-                years={["1989", "2016"]}
-                lines={[
-                  {
-                    first: 42,
-                    last: 65,
-                    labelPercent: "55%",
-                    labelSign: "+",
-                    labelSex: "Female",
-                    labelStart: "42%",
-                    labelEnd: "65%"
-                  },
-                  {
-                    first: 54,
-                    last: 81,
-                    labelPercent: "50%",
-                    labelSign: "+",
-                    labelSex: "Male",
-                    labelStart: "54%",
-                    labelEnd: "81%"
-                  }
-                ]}
-              />
+              <div className={styles.row}>
+                <div className={styles.column}>
+                  <SlopeChart
+                    title={getTitle("adultobese")}
+                    years={["1989", "2016"]}
+                    lines={[
+                      {
+                        first: 42,
+                        last: 65,
+                        labelPercent: "55%",
+                        labelSign: "+",
+                        labelSex: "Female",
+                        labelStart: "42%",
+                        labelEnd: "65%"
+                      },
+                      {
+                        first: 54,
+                        last: 81,
+                        labelPercent: "50%",
+                        labelSign: "+",
+                        labelSex: "Male",
+                        labelStart: "54%",
+                        labelEnd: "81%"
+                      }
+                    ]}
+                  />
+                </div>
+              </div>
             </Portal>
           </div>
         )}
