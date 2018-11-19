@@ -507,6 +507,7 @@ class ChartStory extends React.Component {
                         labelEnd: "$703,100"
                       }
                     ]}
+                    labelRightNudge={-5}
                   />
                 </div>
                 <div className={styles.column}>

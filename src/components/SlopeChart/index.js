@@ -242,8 +242,13 @@ class SlopeChart extends React.Component {
       this.rightLabels[iteration]
         .append("text")
         .text(line.labelEnd)
-        .attr("x", this.scaleX(chartWidth()) + LABEL_RIGHT_OFFSET)
-        .attr("y", scaleY(line.last) + (line.labelSex === "All" ? -3 : 1.3))
+        .attr(
+          "x",
+          this.scaleX(chartWidth()) +
+            LABEL_RIGHT_OFFSET +
+            this.props.labelRightNudge
+        )
+        .attr("y", scaleY(line.last) + (line.labelSex === "All" ? -0 : -0))
         .attr("text-anchor", "start")
         .attr("dominant-baseline", "middle")
         .attr("fill", () => {
@@ -291,7 +296,7 @@ class SlopeChart extends React.Component {
         .attr("x", this.scaleX(chartWidth()) + LABEL_RIGHT_OFFSET)
         .attr(
           "y",
-          scaleY(line.last) + (line.labelSex === "All" ? yOffset - 3 : yOffset)
+          scaleY(line.last) + (line.labelSex === "All" ? yOffset - 0 : yOffset)
         )
         .attr("text-anchor", "start")
         .attr("dominant-baseline", "middle")
@@ -315,7 +320,7 @@ class SlopeChart extends React.Component {
         .attr("x", this.scaleX(chartWidth()) + LABEL_RIGHT_OFFSET - 3)
         .attr(
           "y",
-          scaleY(line.last) + (line.labelSex === "All" ? yOffset - 3 : yOffset)
+          scaleY(line.last) + (line.labelSex === "All" ? yOffset - 0 : yOffset)
         )
         .attr("text-anchor", "end")
         .attr("dominant-baseline", "middle")
@@ -565,7 +570,8 @@ class SlopeChart extends React.Component {
   // Set default props
   static defaultProps = {
     width: chartWidth(),
-    line: [100, 300]
+    line: [100, 300],
+    labelRightNudge: 0
   };
 }
 
