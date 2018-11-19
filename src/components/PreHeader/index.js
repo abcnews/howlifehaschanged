@@ -270,6 +270,7 @@ class PreHeader extends React.Component {
                     paddingTop={0}
                     paddingBottom={10}
                     width={90}
+                    height={76.44}
                     nudgeX={3}
                     nudgeY={0}
                   >
@@ -291,6 +292,7 @@ class PreHeader extends React.Component {
                     paddingRight={0}
                     paddingBottom={10}
                     width={90}
+                    height={87.39}
                     nudgeX={0}
                     nudgeY={0}
                   >
@@ -316,6 +318,7 @@ class PreHeader extends React.Component {
             paddingRight={0}
             paddingBottom={10}
             width={70}
+            height={117.78}
             nudgeX={0}
             nudgeY={0}
           >
@@ -336,7 +339,7 @@ class PreHeader extends React.Component {
             paddingLeft={0}
             paddingRight={0}
             paddingBottom={0}
-            marginBottom={10}
+            paddingBottom={10}
             width={160}
             height={75.16}
             nudgeX={0}
@@ -360,6 +363,7 @@ class PreHeader extends React.Component {
             paddingRight={0}
             paddingBottom={5}
             width={90}
+            height={87.17}
             nudgeX={0}
             nudgeY={0}
           >
@@ -381,6 +385,7 @@ class PreHeader extends React.Component {
             paddingRight={0}
             paddingBottom={15}
             width={80}
+            height={89.39}
             nudgeX={0}
             nudgeY={0}
           >
@@ -402,6 +407,7 @@ class PreHeader extends React.Component {
             paddingRight={0}
             paddingBottom={10}
             width={50}
+            height={85.34}
             nudgeX={0}
             nudgeY={0}
           >
@@ -423,6 +429,7 @@ class PreHeader extends React.Component {
             paddingRight={0}
             paddingBottom={10}
             width={50}
+            height={90.58}
             nudgeX={0}
             nudgeY={0}
           >
