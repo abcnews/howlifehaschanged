@@ -10,14 +10,14 @@ var webkit = !!ua.match(/WebKit/i);
 var iOSSafari = iOS && webkit && !ua.match(/CriOS/i);
 
 const options = [
-  { value: "children", label: "Children" },
-  { value: "teenagers", label: "Teenagers" },
-  { value: "twenties", label: "Twenties" },
-  { value: "thirties", label: "Thirties" },
-  { value: "forties", label: "Forties" },
-  { value: "fifties", label: "Fifties" },
-  { value: "sixties", label: "Sixties" },
-  { value: "seventiesandover", label: "Seventies and over" }
+  { value: "children", label: "0 - 10" },
+  { value: "teenagers", label: "11 -20" },
+  { value: "twenties", label: "21 - 30" },
+  { value: "thirties", label: "31 - 40" },
+  { value: "forties", label: "41 - 50" },
+  { value: "fifties", label: "51 - 60" },
+  { value: "sixties", label: "61 - 70" },
+  { value: "seventiesandover", label: "70 +" }
 ];
 
 // React Select v2 now uses a wrapper around Emotion for CSS-in-JS
