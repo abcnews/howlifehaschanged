@@ -1,6 +1,6 @@
 const React = require("react");
 const styles = require("./styles.scss"); // Mostly global
-const d3 = Object.assign({}, require("d3-selection"));
+// const d3 = Object.assign({}, require("d3-selection"));
 const ReactResizeDetector = require("react-resize-detector").default;
 
 const SmoothScroll = require("smooth-scroll");
@@ -20,6 +20,14 @@ class App extends React.Component {
   setGeneration = (whatGeneration, doScroll) => {
     // Only scroll if directed to
     if (doScroll) {
+      // Only buttons or dropdown options cause auto-scroll
+      // so we can track when a user clicks them here
+      // ABC.News.trackEvent({
+      //   category: "navigationClick",
+      //   action: whatGeneration,
+      //   label: "storyLabLifeHasChanged"
+      // });
+
       // Select element and scroll to it
       const sectionHead = document.querySelector("." + whatGeneration);
       if (sectionHead) {
@@ -41,9 +49,19 @@ class App extends React.Component {
           }
         );
       }
-      // Scroll now sets generation so only set the generation
-      // if we are not auto-scrolling 
-    } else this.setState({ myGeneration: whatGeneration });
+      // Scroll now sets generation so this will be called
+      // if a generation waypoint is hit
+    } else {
+      // Scrolling past a generation waypoint sets the generation
+      // so we can track scrolling here
+      // ABC.News.trackEvent({
+      //   category: "navigationScroll",
+      //   action: whatGeneration,
+      //   label: "storyLabLifeHasChanged"
+      // });
+
+      this.setState({ myGeneration: whatGeneration });
+    }
   };
 
   clearGeneration = () => {

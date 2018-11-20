@@ -71,6 +71,7 @@ class AgeChooser extends React.Component {
 
       this.waypointGenerations = [];
 
+      // Loop through the generations and mark waypoints on page for each
       generations.forEach((generation, iteration) => {
         if (generation === "") return;
         this.waypointGenerations[iteration] = new Waypoint({
