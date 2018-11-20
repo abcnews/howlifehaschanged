@@ -105,6 +105,13 @@ function preFlight(odyssey) {
     const fixedBackground = d3.select("body").insert("div", ":first-child");
     fixedBackground.classed("fixed-background", true);
   }
+
+  // Fix incorrect inverted commas
+  const quoteFix = d3.select(".quotefix");
+  const quoteString = quoteFix.html()
+  const newString = quoteString.replace("’", "‘")
+  const realNewString = newString.replace("′", "’")
+  quoteFix.html(realNewString)
 }
 
 // Re-loads on hot reload
