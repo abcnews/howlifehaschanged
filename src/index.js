@@ -108,10 +108,12 @@ function preFlight(odyssey) {
 
   // Fix incorrect inverted commas
   const quoteFix = d3.select(".quotefix");
-  const quoteString = quoteFix.html()
-  const newString = quoteString.replace("’", "‘")
-  const realNewString = newString.replace("′", "’")
-  quoteFix.html(realNewString)
+  if (!quoteFix.empty()) {
+    const quoteString = quoteFix.html();
+    const newString = quoteString.replace("’", "‘");
+    const realNewString = newString.replace("′", "’");
+    quoteFix.html(realNewString);
+  }
 }
 
 // Re-loads on hot reload
