@@ -113,9 +113,9 @@ class App extends React.Component {
     this.isAutoScrolling = false; //this.setState({ isAutoScrolling: false });
 
     // Set to off after 10 seconds anyway just in case
-    setTimeout(() => {
-      this.isAutoScrolling = false; //this.setState({ isAutoScrolling: false });
-    }, 10000);
+    // setTimeout(() => {
+    //   this.isAutoScrolling = false; //this.setState({ isAutoScrolling: false });
+    // }, 10000);
   };
 
   render() {
