@@ -1,9 +1,12 @@
 const React = require("react");
-const styles = require("./styles.scss"); // Mostly global
-// const d3 = Object.assign({}, require("d3-selection"));
+const styles = require("./styles.scss"); // Mostly for global css
 const ReactResizeDetector = require("react-resize-detector").default;
+const { Client } = require("../../poll-counter");
 
 const SmoothScroll = require("smooth-scroll");
+
+// Init the poll counter client
+const client = new Client("interactive-howlifehaschanged");
 
 // Smooth scroll library
 var scroll = new SmoothScroll('a[href*="#"]');
@@ -30,6 +33,7 @@ class App extends React.Component {
 
       // Select element and scroll to it
       const sectionHead = document.querySelector("." + whatGeneration);
+
       if (sectionHead) {
         scroll.animateScroll(
           sectionHead, // Node
@@ -49,6 +53,14 @@ class App extends React.Component {
           }
         );
       }
+
+      // Firebase poll count for clicks
+      client.increment(
+        { question: "age-group-clicked", answer: whatGeneration },
+        (err, question) => {
+          if (err) return console.log("Err:", err);
+        }
+      );
       // Scroll now sets generation so this will be called
       // if a generation waypoint is hit
     } else {
@@ -69,7 +81,13 @@ class App extends React.Component {
   };
 
   componentDidMount() {
-    // hideOtherGenrations(this.state.myGeneration);
+    // Poll count page load
+    client.increment(
+      { question: "page-loaded-with-js", answer: "loaded" },
+      (err, question) => {
+        if (err) return console.log("Err:", err);
+      }
+    );
   }
 
   componentDidUpdate() {
