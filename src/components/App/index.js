@@ -18,19 +18,13 @@ const GenerationStories = require("../GenerationStories");
 const { ContextProvider } = require("../ContextProvider");
 
 class App extends React.Component {
-  state = { myGeneration: "" };
+  state = { myGeneration: "", isAutoScrolling: false };
+
+  isAutoScrolling = false;
 
   setGeneration = (whatGeneration, doScroll) => {
     // Only scroll if directed to
     if (doScroll) {
-      // Only buttons or dropdown options cause auto-scroll
-      // so we can track when a user clicks them here
-      // ABC.News.trackEvent({
-      //   category: "navigationClick",
-      //   action: whatGeneration,
-      //   label: "storyLabLifeHasChanged"
-      // });
-
       // Select element and scroll to it
       const sectionHead = document.querySelector("." + whatGeneration);
 
@@ -64,15 +58,17 @@ class App extends React.Component {
       // Scroll now sets generation so this will be called
       // if a generation waypoint is hit
     } else {
-      // Scrolling past a generation waypoint sets the generation
-      // so we can track scrolling here
-      // ABC.News.trackEvent({
-      //   category: "navigationScroll",
-      //   action: whatGeneration,
-      //   label: "storyLabLifeHasChanged"
-      // });
-
       this.setState({ myGeneration: whatGeneration });
+
+      // Scrolling only by user logging
+      if (!this.isAutoScrolling && whatGeneration !== "") {
+        client.increment(
+          { question: "age-group-scrolled", answer: whatGeneration },
+          (err, question) => {
+            if (err) return console.log("Err:", err);
+          }
+        );
+      }
     }
   };
 
@@ -88,11 +84,39 @@ class App extends React.Component {
         if (err) return console.log("Err:", err);
       }
     );
+
+    // Listen for scroll events
+    document.addEventListener("scrollStart", this.fireScrollEvent, false);
+    document.addEventListener("scrollStop", this.fireScrollEvent, false);
+    document.addEventListener("scrollCancel", this.fireScrollEvent, false);
   }
 
   componentDidUpdate() {
     // hideOtherGenrations(this.state.myGeneration);
   }
+
+  componentWillUnmount() {
+    document.removeEventListener("scrollStart", this.fireScrollEvent);
+    document.removeEventListener("scrollStop", this.fireScrollEvent);
+    document.removeEventListener("scrollCancel", this.fireScrollEvent);
+  }
+
+  // Auto scroll events handler
+  fireScrollEvent = event => {
+    // The event type
+    // console.log("type:", event.type);
+
+    // So we know whether we are auto-scrolling or not
+    if (event.type === "scrollStart") this.isAutoScrolling = true; //this.setState({ isAutoScrolling: true });
+    if (event.type === "scrollStop") this.isAutoScrolling = false; //this.setState({ isAutoScrolling: false });
+    if (event.type === "scrollCancel")
+    this.isAutoScrolling = false; //this.setState({ isAutoScrolling: false });
+
+    // Set to off after 10 seconds anyway just in case
+    setTimeout(() => {
+      this.isAutoScrolling = false; //this.setState({ isAutoScrolling: false });
+    }, 10000);
+  };
 
   render() {
     return (
