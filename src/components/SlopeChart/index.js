@@ -16,7 +16,7 @@ const yScaleFactor = 4.0;
 const MIN_CHART_HEIGHT = 180;
 
 const MARGIN_TOP = 45;
-const MARGIN_BOTTOM = 65;
+const MARGIN_BOTTOM = 68;
 const MARGIN_RIGHT = 80;
 const MARGIN_LEFT = 80;
 const LABEL_RIGHT_OFFSET = 17;
@@ -338,7 +338,8 @@ class SlopeChart extends React.Component {
         .attr(
           "y",
           scaleY(line.last) +
-            (line.labelSex === "All" ? yOffset + allYOffset : yOffset)
+            (line.labelSex === "All" ? yOffset + allYOffset : yOffset) +
+            (line.labelSign === "-" ? -1 : 0)
         )
         .attr("text-anchor", "middle")
         // .attr("dominant-baseline", "middle")
@@ -394,7 +395,7 @@ class SlopeChart extends React.Component {
     // Nudge labels that may overlap
     // for exactly 2 labels
 
-    const yOffset = 4;
+    const yOffset = 5;
 
     if (this.rightLabels.length === 2) {
       const label1 = this.rightLabels[0].node().getBBox();
