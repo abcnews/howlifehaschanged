@@ -16,11 +16,11 @@ const yScaleFactor = 4.0;
 const MIN_CHART_HEIGHT = 180;
 
 const MARGIN_TOP = 45;
-const MARGIN_RIGHT = 75;
-const MARGIN_BOTTOM = 72;
-const MARGIN_LEFT = 75;
+const MARGIN_BOTTOM = 65;
+const MARGIN_RIGHT = 80;
+const MARGIN_LEFT = 80;
 const LABEL_RIGHT_OFFSET = 17;
-const LABEL_LEFT_OFFSET = 10;
+const LABEL_LEFT_OFFSET = 12;
 
 const CIRCLE_RADIUS = 5;
 const line1color = "#F7FFF7";
@@ -359,7 +359,7 @@ class SlopeChart extends React.Component {
 
       // Box around percent
       const paddingX = 6;
-      const paddingY = 0;
+      const paddingY = 1;
       const signPadding = 8;
       const bbox = percentText.node().getBBox();
       const box1color = "#ffffff";
@@ -372,7 +372,7 @@ class SlopeChart extends React.Component {
         .attr("x", bbox.x - paddingX - signPadding)
         .attr("y", bbox.y - paddingY)
         .attr("width", bbox.width + paddingX * 2 + signPadding)
-        .attr("height", bbox.height + paddingY * 2)
+        .attr("height", bbox.height + 1 + paddingY * 2)
         .attr("ry", borderRadius)
         .attr("fill", () => {
           if (line.labelSex === "All") return box1color;
@@ -384,6 +384,9 @@ class SlopeChart extends React.Component {
     // COLLISION DETECTION!!!!
     // Nudge labels that may overlap
     // for exactly 2 labels
+
+    const yOffset = 7;
+
     if (this.rightLabels.length === 2) {
       const label1 = this.rightLabels[0].node().getBBox();
       const label2 = this.rightLabels[1].node().getBBox();
@@ -398,9 +401,9 @@ class SlopeChart extends React.Component {
         if (overlap > 0) {
           this.rightLabels[0].attr(
             "transform",
-            `translate(0, -${overlap / 2 + 2})`
+            `translate(0, -${overlap / 2 + 4 + yOffset})`
           );
-          this.rightLabels[1].attr("transform", `translate(0, ${overlap / 2 + 2})`);
+          this.rightLabels[1].attr("transform", `translate(0, ${overlap / 2 - yOffset})`);
         }
       } else {
         const label2Lowest = label2.y + label2.height;
@@ -409,9 +412,9 @@ class SlopeChart extends React.Component {
         if (overlap > 0) {
           this.rightLabels[1].attr(
             "transform",
-            `translate(0, -${overlap / 2 + 2})`
+            `translate(0, -${overlap / 2 + 4 + yOffset})`
           );
-          this.rightLabels[0].attr("transform", `translate(0, ${overlap / 2 + 2})`);
+          this.rightLabels[0].attr("transform", `translate(0, ${overlap / 2 - yOffset})`);
         }
       }
     }
