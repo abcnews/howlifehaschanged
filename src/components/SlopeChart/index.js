@@ -16,16 +16,18 @@ const yScaleFactor = 4.0;
 const MIN_CHART_HEIGHT = 180;
 
 const MARGIN_TOP = 45;
-const MARGIN_RIGHT = 66;
-const MARGIN_BOTTOM = 49;
-const MARGIN_LEFT = 66;
-const LABEL_RIGHT_OFFSET = 20;
+const MARGIN_RIGHT = 75;
+const MARGIN_BOTTOM = 72;
+const MARGIN_LEFT = 75;
+const LABEL_RIGHT_OFFSET = 17;
 const LABEL_LEFT_OFFSET = 10;
 
 const CIRCLE_RADIUS = 5;
 const line1color = "#F7FFF7";
 const line2color = "#FFD70D";
 const line3color = "#4ECDC4";
+
+const PERCENT_NUDGE = 9;
 
 let drawDuration = 1700;
 const CIRCLE_DELAY_FACTOR = 0.81;
@@ -238,31 +240,6 @@ class SlopeChart extends React.Component {
         .style("font-size", "12px")
         .style("font-weight", "bold");
 
-      // Label end
-      this.rightLabels[iteration]
-        .append("text")
-        .text(line.labelEnd)
-        .attr(
-          "x",
-          this.scaleX(chartWidth()) +
-            LABEL_RIGHT_OFFSET +
-            this.props.labelRightNudge
-        )
-        .attr("y", scaleY(line.last) + (line.labelSex === "All" ? -0 : -0))
-        .attr("text-anchor", "start")
-        .attr("dominant-baseline", "middle")
-        .attr("fill", () => {
-          if (line.labelSex === "All") return line1color;
-          else if (line.labelSex === "Female") return line2color;
-          else if (line.labelSex === "Male") return line3color;
-        })
-        .style(
-          "font-family",
-          `"ABCSans-bold", ABCSans, Helvetica, Arial, sans-serif`
-        )
-        .style("font-size", "12px")
-        .style("font-weight", "bold");
-
       // Label sex
       // Only show when not ALL
       if (line.labelSex !== "All") {
@@ -270,7 +247,7 @@ class SlopeChart extends React.Component {
           .append("text")
           .text(line.labelSex)
           .attr("x", this.scaleX(chartWidth()) + LABEL_RIGHT_OFFSET)
-          .attr("y", scaleY(line.last) - 14)
+          .attr("y", scaleY(line.last))
           .attr("text-anchor", "start")
           .attr("dominant-baseline", "middle")
           .attr("fill", () => {
@@ -287,24 +264,61 @@ class SlopeChart extends React.Component {
           .style("text-transform", "uppercase");
       }
 
-      // Label percent
-      const yOffset = 20;
-
+      // Label end
       this.rightLabels[iteration]
         .append("text")
-        .text(line.labelPercent)
-        .attr("x", this.scaleX(chartWidth()) + LABEL_RIGHT_OFFSET)
+        .text(line.labelEnd)
+        .attr(
+          "x",
+          this.scaleX(chartWidth()) +
+            LABEL_RIGHT_OFFSET +
+            this.props.labelRightNudge
+        )
         .attr(
           "y",
-          scaleY(line.last) + (line.labelSex === "All" ? yOffset - 0 : yOffset)
+          scaleY(line.last) +
+            (line.labelSex === "All" ? 0 : 13) +
+            // Optical illusion means minus looks slightly askew
+            (line.labelSex === "All" && line.labelSign === "-" ? 1 : 0)
         )
         .attr("text-anchor", "start")
-        .attr("dominant-baseline", "middle")
+        .attr("dominant-baseline", "central")
         .attr("fill", () => {
           if (line.labelSex === "All") return line1color;
           else if (line.labelSex === "Female") return line2color;
           else if (line.labelSex === "Male") return line3color;
         })
+        .style(
+          "font-family",
+          `"ABCSans-bold", ABCSans, Helvetica, Arial, sans-serif`
+        )
+        .style("font-size", "12px")
+        .style("font-weight", "bold");
+
+      // Label percent
+      const yOffset = 35;
+      const allYOffset = -8;
+
+      const percentText = this.rightLabels[iteration]
+        .append("text")
+        .text(line.labelPercent)
+        .attr(
+          "x",
+          this.scaleX(chartWidth()) + LABEL_RIGHT_OFFSET + PERCENT_NUDGE
+        )
+        .attr(
+          "y",
+          scaleY(line.last) +
+            (line.labelSex === "All" ? yOffset + allYOffset : yOffset)
+        )
+        .attr("text-anchor", "start")
+        .attr("dominant-baseline", "middle")
+        // .attr("fill", () => {
+        //   if (line.labelSex === "All") return line1color;
+        //   else if (line.labelSex === "Female") return line2color;
+        //   else if (line.labelSex === "Male") return line3color;
+        // })
+        .attr("fill", "#0E334F")
         .style(
           "font-family",
           `"ABCSans-bold", ABCSans, Helvetica, Arial, sans-serif`
@@ -317,26 +331,54 @@ class SlopeChart extends React.Component {
       this.rightLabels[iteration]
         .append("text")
         .text(line.labelSign)
-        .attr("x", this.scaleX(chartWidth()) + LABEL_RIGHT_OFFSET - 3)
+        .attr(
+          "x",
+          this.scaleX(chartWidth()) + LABEL_RIGHT_OFFSET - 5 + PERCENT_NUDGE
+        )
         .attr(
           "y",
-          scaleY(line.last) + (line.labelSex === "All" ? yOffset - 0 : yOffset)
+          scaleY(line.last) +
+            (line.labelSex === "All" ? yOffset + allYOffset : yOffset)
         )
-        .attr("text-anchor", "end")
+        .attr("text-anchor", "middle")
         .attr("dominant-baseline", "middle")
-        .attr("fill", () => {
-          if (line.labelSex === "All") return line1color;
-          else if (line.labelSex === "Female") return line2color;
-          else if (line.labelSex === "Male") return line3color;
-        })
+        // .attr("fill", () => {
+        //   if (line.labelSex === "All") return line1color;
+        //   else if (line.labelSex === "Female") return line2color;
+        //   else if (line.labelSex === "Male") return line3color;
+        // })
+        .attr("fill", "#0E334F")
         .style(
           "font-family",
           `"ABCSans-bold", ABCSans, Helvetica, Arial, sans-serif`
         )
-        .style("font-size", "14px")
+        .style("font-size", "15px")
         .style("font-weight", "900")
         .style("text-transform", "uppercase")
         .style("font-variant-numeric", "tabular-nums");
+
+      // Box around percent
+      const paddingX = 6;
+      const paddingY = 0;
+      const signPadding = 8;
+      const bbox = percentText.node().getBBox();
+      const box1color = "#ffffff";
+      const box2color = "#FFD70D";
+      const box3color = "#34E7D8";
+      const borderRadius = 10;
+
+      this.rightLabels[iteration]
+        .insert("rect", "text")
+        .attr("x", bbox.x - paddingX - signPadding)
+        .attr("y", bbox.y - paddingY)
+        .attr("width", bbox.width + paddingX * 2 + signPadding)
+        .attr("height", bbox.height + paddingY * 2)
+        .attr("ry", borderRadius)
+        .attr("fill", () => {
+          if (line.labelSex === "All") return box1color;
+          else if (line.labelSex === "Female") return box2color;
+          else if (line.labelSex === "Male") return box3color;
+        });
     });
 
     // COLLISION DETECTION!!!!
@@ -356,9 +398,9 @@ class SlopeChart extends React.Component {
         if (overlap > 0) {
           this.rightLabels[0].attr(
             "transform",
-            `translate(0, -${overlap / 2})`
+            `translate(0, -${overlap / 2 + 2})`
           );
-          this.rightLabels[1].attr("transform", `translate(0, ${overlap / 2})`);
+          this.rightLabels[1].attr("transform", `translate(0, ${overlap / 2 + 2})`);
         }
       } else {
         const label2Lowest = label2.y + label2.height;
@@ -367,12 +409,16 @@ class SlopeChart extends React.Component {
         if (overlap > 0) {
           this.rightLabels[1].attr(
             "transform",
-            `translate(0, -${overlap / 2})`
+            `translate(0, -${overlap / 2 + 2})`
           );
-          this.rightLabels[0].attr("transform", `translate(0, ${overlap / 2})`);
+          this.rightLabels[0].attr("transform", `translate(0, ${overlap / 2 + 2})`);
         }
       }
     }
+
+    /*
+     * KEEP THIS SECTION FOR FUTURE POSTERITY
+     */
 
     // Charts with 3 lines
     // 3 labels makes things harder
@@ -472,6 +518,10 @@ class SlopeChart extends React.Component {
     //   middle().attr("transform", `translate(0, ${middleTranslate})`);
     //   bottom().attr("transform", `translate(0, ${bottomTranslate})`);
     // }
+
+    /*
+     * KEEP THIS SECTION FOR FUTURE POSTERITY
+     */
 
     setTimeout(() => {
       // Chart animations when they enter the page
