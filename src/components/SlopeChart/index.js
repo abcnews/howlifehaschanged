@@ -296,8 +296,8 @@ class SlopeChart extends React.Component {
         .style("font-weight", "bold");
 
       // Label percent
-      const yOffset = 35;
-      const allYOffset = -8;
+      const yOffset = 37;
+      const allYOffset = -10;
 
       const percentText = this.rightLabels[iteration]
         .append("text")
@@ -358,7 +358,7 @@ class SlopeChart extends React.Component {
         .style("font-variant-numeric", "tabular-nums");
 
       // Box around percent
-      const paddingX = 6;
+      const paddingX = 5;
       const paddingY = 1;
       const signPadding = 8;
       const bbox = percentText.node().getBBox();
@@ -370,9 +370,9 @@ class SlopeChart extends React.Component {
       this.rightLabels[iteration]
         .insert("rect", "text")
         .attr("x", bbox.x - paddingX - signPadding)
-        .attr("y", bbox.y - paddingY)
+        .attr("y", bbox.y - paddingY - 1)
         .attr("width", bbox.width + paddingX * 2 + signPadding)
-        .attr("height", bbox.height + 1 + paddingY * 2)
+        .attr("height", bbox.height + 2 + paddingY * 2)
         .attr("ry", borderRadius)
         .attr("fill", () => {
           if (line.labelSex === "All") return box1color;
