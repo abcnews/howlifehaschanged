@@ -224,10 +224,10 @@ class SlopeChart extends React.Component {
         .attr("x", this.scaleX(0) - LABEL_LEFT_OFFSET)
         .attr(
           "y",
-          scaleY(line.first) + 1.38 + (line.firstNudge ? line.firstNudge : 0)
+          scaleY(line.first) + 5 + (line.firstNudge ? line.firstNudge : 0)
         )
         .attr("text-anchor", "end")
-        .attr("dominant-baseline", "middle")
+        // .attr("dominant-baseline", "mathematical")
         .attr("fill", () => {
           if (line.labelSex === "All") return line1color;
           else if (line.labelSex === "Female") return line2color;
@@ -247,9 +247,9 @@ class SlopeChart extends React.Component {
           .append("text")
           .text(line.labelSex)
           .attr("x", this.scaleX(chartWidth()) + LABEL_RIGHT_OFFSET)
-          .attr("y", scaleY(line.last))
+          .attr("y", scaleY(line.last) + 3)
           .attr("text-anchor", "start")
-          .attr("dominant-baseline", "middle")
+          // .attr("dominant-baseline", "middle")
           .attr("fill", () => {
             if (line.labelSex === "All") return line1color;
             else if (line.labelSex === "Female") return line2color;
@@ -277,12 +277,12 @@ class SlopeChart extends React.Component {
         .attr(
           "y",
           scaleY(line.last) +
-            (line.labelSex === "All" ? 0 : 13) +
+            (line.labelSex === "All" ? 3 : 17) +
             // Optical illusion means minus looks slightly askew
             (line.labelSex === "All" && line.labelSign === "-" ? 1 : 0)
         )
         .attr("text-anchor", "start")
-        .attr("dominant-baseline", "central")
+        // .attr("dominant-baseline", "mathematical")
         .attr("fill", () => {
           if (line.labelSex === "All") return line1color;
           else if (line.labelSex === "Female") return line2color;
@@ -296,8 +296,8 @@ class SlopeChart extends React.Component {
         .style("font-weight", "bold");
 
       // Label percent
-      const yOffset = 37;
-      const allYOffset = -11;
+      const yOffset = 40;
+      const allYOffset = -12;
 
       const percentText = this.rightLabels[iteration]
         .append("text")
@@ -312,7 +312,7 @@ class SlopeChart extends React.Component {
             (line.labelSex === "All" ? yOffset + allYOffset : yOffset)
         )
         .attr("text-anchor", "start")
-        .attr("dominant-baseline", "middle")
+        // .attr("dominant-baseline", "middle")
         // .attr("fill", () => {
         //   if (line.labelSex === "All") return line1color;
         //   else if (line.labelSex === "Female") return line2color;
@@ -341,7 +341,7 @@ class SlopeChart extends React.Component {
             (line.labelSex === "All" ? yOffset + allYOffset : yOffset)
         )
         .attr("text-anchor", "middle")
-        .attr("dominant-baseline", "middle")
+        // .attr("dominant-baseline", "middle")
         // .attr("fill", () => {
         //   if (line.labelSex === "All") return line1color;
         //   else if (line.labelSex === "Female") return line2color;
@@ -367,7 +367,7 @@ class SlopeChart extends React.Component {
       const box3color = "#34E7D8";
       const borderRadius = 10;
 
-      this.rightLabels[iteration]
+      const losenge = this.rightLabels[iteration]
         .insert("rect", "text")
         .attr("x", bbox.x - paddingX - signPadding)
         .attr("y", bbox.y - paddingY - 1)
@@ -379,13 +379,18 @@ class SlopeChart extends React.Component {
           else if (line.labelSex === "Female") return box2color;
           else if (line.labelSex === "Male") return box3color;
         });
+
+      // Hack to make Edge behave
+      if (window.navigator.userAgent.indexOf("Edge") > -1) {
+        losenge.attr("width", bbox.width + paddingX * 2 + signPadding - 3);
+      }
     });
 
     // COLLISION DETECTION!!!!
     // Nudge labels that may overlap
     // for exactly 2 labels
 
-    const yOffset = 7;
+    const yOffset = 4;
 
     if (this.rightLabels.length === 2) {
       const label1 = this.rightLabels[0].node().getBBox();
@@ -403,7 +408,10 @@ class SlopeChart extends React.Component {
             "transform",
             `translate(0, -${overlap / 2 + 4 + yOffset})`
           );
-          this.rightLabels[1].attr("transform", `translate(0, ${overlap / 2 - yOffset})`);
+          this.rightLabels[1].attr(
+            "transform",
+            `translate(0, ${overlap / 2 - yOffset})`
+          );
         }
       } else {
         const label2Lowest = label2.y + label2.height;
@@ -414,7 +422,10 @@ class SlopeChart extends React.Component {
             "transform",
             `translate(0, -${overlap / 2 + 4 + yOffset})`
           );
-          this.rightLabels[0].attr("transform", `translate(0, ${overlap / 2 - yOffset})`);
+          this.rightLabels[0].attr(
+            "transform",
+            `translate(0, ${overlap / 2 - yOffset})`
+          );
         }
       }
     }
