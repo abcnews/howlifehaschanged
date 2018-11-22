@@ -357,33 +357,37 @@ class SlopeChart extends React.Component {
         .style("text-transform", "uppercase")
         .style("font-variant-numeric", "tabular-nums");
 
-      // Box around percent
-      const paddingX = 5;
-      const paddingY = 1;
-      const signPadding = 8;
-      const bbox = percentText.node().getBBox();
-      const box1color = "#ffffff";
-      const box2color = "#FFD70D";
-      const box3color = "#34E7D8";
-      const borderRadius = 10;
+      // Give this some time otherwise MS Edge freaks out and gives
+      // incorrect bbox values
+      setTimeout(() => {
+        // Box around percent
+        const paddingX = 5;
+        const paddingY = 1;
+        const signPadding = 8;
+        const bbox = percentText.node().getBBox();
+        const box1color = "#ffffff";
+        const box2color = "#FFD70D";
+        const box3color = "#34E7D8";
+        const borderRadius = 10;
 
-      const losenge = this.rightLabels[iteration]
-        .insert("rect", "text")
-        .attr("x", bbox.x - paddingX - signPadding)
-        .attr("y", bbox.y - paddingY - 1)
-        .attr("width", bbox.width + paddingX * 2 + signPadding)
-        .attr("height", bbox.height + 2 + paddingY * 2)
-        .attr("ry", borderRadius)
-        .attr("fill", () => {
-          if (line.labelSex === "All") return box1color;
-          else if (line.labelSex === "Female") return box2color;
-          else if (line.labelSex === "Male") return box3color;
-        });
+        const losenge = this.rightLabels[iteration]
+          .insert("rect", "text")
+          .attr("x", bbox.x - paddingX - signPadding)
+          .attr("y", bbox.y - paddingY - 1)
+          .attr("width", bbox.width + paddingX * 2 + signPadding)
+          .attr("height", bbox.height + 2 + paddingY * 2)
+          .attr("ry", borderRadius)
+          .attr("fill", () => {
+            if (line.labelSex === "All") return box1color;
+            else if (line.labelSex === "Female") return box2color;
+            else if (line.labelSex === "Male") return box3color;
+          });
 
-      // Hack to make Edge behave
-      if (window.navigator.userAgent.indexOf("Edge") > -1) {
-        losenge.attr("width", bbox.width + paddingX * 2 + signPadding - 3);
-      }
+        // Hack to make Edge behave
+        // if (window.navigator.userAgent.indexOf("Edge") > -1) {
+        //   losenge.attr("width", bbox.width + paddingX * 2 + signPadding - 3);
+        // }
+      }, 1000);
     });
 
     // COLLISION DETECTION!!!!
