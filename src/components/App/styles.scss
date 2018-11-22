@@ -147,14 +147,16 @@
     transform: none !important;
   }
 
+  body > main > p > strong,
   #main_content > p > strong {
     background-color: rgba(14, 51, 79, 0.55);
-    font-family: ABCSans;
+    font-family: ABCSans, sans-serif;
     font-weight: 900;
     border-radius: 23px;
     padding-left: 10px;
     padding-right: 10px;
     padding-top: 3px;
     padding-bottom: 4px;
+    // white-space: nowrap;
   }
 }
