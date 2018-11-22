@@ -20,7 +20,7 @@ const MARGIN_BOTTOM = 65;
 const MARGIN_RIGHT = 80;
 const MARGIN_LEFT = 80;
 const LABEL_RIGHT_OFFSET = 17;
-const LABEL_LEFT_OFFSET = 12;
+const LABEL_LEFT_OFFSET = 14;
 
 const CIRCLE_RADIUS = 5;
 const line1color = "#F7FFF7";
@@ -297,7 +297,7 @@ class SlopeChart extends React.Component {
 
       // Label percent
       const yOffset = 37;
-      const allYOffset = -10;
+      const allYOffset = -11;
 
       const percentText = this.rightLabels[iteration]
         .append("text")
