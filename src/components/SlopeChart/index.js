@@ -396,6 +396,8 @@ class SlopeChart extends React.Component {
     // for exactly 2 labels
 
     const yOffset = 5;
+    const minSeparation = 4;
+
 
     if (this.rightLabels.length === 2) {
       const label1 = this.rightLabels[0].node().getBBox();
@@ -411,11 +413,11 @@ class SlopeChart extends React.Component {
         if (overlap > 0) {
           this.rightLabels[0].attr(
             "transform",
-            `translate(0, -${overlap / 2 + 4 + yOffset})`
+            `translate(0, -${overlap / 2 + yOffset + minSeparation * 1.9})`
           );
           this.rightLabels[1].attr(
             "transform",
-            `translate(0, ${overlap / 2 - yOffset})`
+            `translate(0, ${overlap / 2 - yOffset + minSeparation * 0.1})`
           );
         }
       } else {
@@ -425,11 +427,11 @@ class SlopeChart extends React.Component {
         if (overlap > 0) {
           this.rightLabels[1].attr(
             "transform",
-            `translate(0, -${overlap / 2 + 4 + yOffset})`
+            `translate(0, -${overlap / 2 + yOffset + minSeparation * 1.9})`
           );
           this.rightLabels[0].attr(
             "transform",
-            `translate(0, ${overlap / 2 - yOffset})`
+            `translate(0, ${overlap / 2  - yOffset + minSeparation * 0.1})`
           );
         }
       }
@@ -587,7 +589,7 @@ class SlopeChart extends React.Component {
           });
         }
       });
-    }, 1000);
+    }, 750);
   };
 
   render() {

@@ -9,7 +9,7 @@ const SmoothScroll = require("smooth-scroll");
 const client = new Client("interactive-howlifehaschanged");
 
 // Smooth scroll library
-var scroll = new SmoothScroll('a[href*="#"]');
+const scroll = new SmoothScroll('a[href*="#"]');
 
 const Portal = require("../Portal"); // To inject components into other page areas
 const AgeChooser = require("../AgeChooser");
@@ -36,7 +36,7 @@ class App extends React.Component {
             speed: 750,
             easing: "easeInOutCubic",
             offset: function(anchor, toggle) {
-              const standardOffset = 50;
+              const standardOffset = 80;
               const toggleOffset = 0; // No toggle offset now that there's no appearing header
               const boundsTop = anchor.getBoundingClientRect().top;
 
