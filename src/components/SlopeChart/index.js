@@ -358,7 +358,7 @@ class SlopeChart extends React.Component {
         const box1color = "#ffffff";
         const box2color = "#FFD70D";
         const box3color = "#34E7D8";
-        const borderRadius = 11;
+        const borderRadius = 11.5;
 
         const losenge = this.rightLabels[iteration]
           .insert("rect", "text")
