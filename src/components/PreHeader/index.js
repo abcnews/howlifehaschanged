@@ -249,10 +249,10 @@ class PreHeader extends React.Component {
                           : HEADER_ICON_SPACING + 3
                       }
                       paddingRight={0}
-                      width={100}
-                      height={124.36}
+                      width={90}
+                      height={111.8}
                       nudgeX={0}
-                      nudgeY={0}
+                      nudgeY={2}
                     >
                       <SVG
                         src={BoozeAnimated}

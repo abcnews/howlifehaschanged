@@ -25,7 +25,7 @@ const LABEL_LEFT_OFFSET = 14;
 const CIRCLE_RADIUS = 5;
 const line1color = "#F7FFF7";
 const line2color = "#FFD70D";
-const line3color = "#4ECDC4";
+const line3color = "#34E7D8";
 
 const PERCENT_NUDGE = 9;
 
@@ -277,8 +277,8 @@ class SlopeChart extends React.Component {
         .attr(
           "y",
           scaleY(line.last) +
-            (line.labelSex === "All" ? 3 : 17) +
-            // Optical illusion means minus looks slightly askew
+            (line.labelSex === "All" ? 4 : 17) +
+            // Optical illusion means minus looks slightly higher
             (line.labelSex === "All" && line.labelSign === "-" ? 1 : 0)
         )
         .attr("text-anchor", "start")
@@ -369,7 +369,7 @@ class SlopeChart extends React.Component {
         const box1color = "#ffffff";
         const box2color = "#FFD70D";
         const box3color = "#34E7D8";
-        const borderRadius = 10;
+        const borderRadius = 11;
 
         const losenge = this.rightLabels[iteration]
           .insert("rect", "text")
