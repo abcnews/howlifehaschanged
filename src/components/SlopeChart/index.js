@@ -15,8 +15,8 @@ const yScaleFactor = 4.0;
 
 const MIN_CHART_HEIGHT = 180;
 
-const MARGIN_TOP = 45;
-const MARGIN_BOTTOM = 68;
+const MARGIN_TOP = 48;
+const MARGIN_BOTTOM = 73;
 const MARGIN_RIGHT = 80;
 const MARGIN_LEFT = 80;
 const LABEL_RIGHT_OFFSET = 17;
@@ -126,10 +126,7 @@ class SlopeChart extends React.Component {
       const didIncrease = () => line.first < line.last;
 
       // Style main this.svg container
-      this.svg
-        .attr("width", chartWidth()) //this.props.width || CHART_WIDTH)
-        .attr("height", chartHeight);
-      // .style("background-color", "rgba(0, 0, 0, 0.03"); // remove later
+      this.svg.attr("width", chartWidth()).attr("height", chartHeight);
 
       this.leftBound
         .attr("x1", this.scaleX(0))
@@ -190,8 +187,8 @@ class SlopeChart extends React.Component {
           if (line.labelSex === "All") return line1color;
           else if (line.labelSex === "Female") return line2color;
           else if (line.labelSex === "Male") return line3color;
-        })
-        .attr("stroke-dasharray", 0);
+        });
+      // .attr("stroke-dasharray", 0); // Dotted line support
 
       // Start circle
       this.svg
@@ -210,7 +207,7 @@ class SlopeChart extends React.Component {
         .append("circle")
         .attr("cx", this.scaleX(chartWidth()))
         .attr("cy", scaleY(line.last))
-        .attr("r", 0) //CIRCLE_RADIUS)
+        .attr("r", 0) // Changed afterwards in animation
         .attr("fill", () => {
           if (line.labelSex === "All") return line1color;
           else if (line.labelSex === "Female") return line2color;
@@ -227,7 +224,6 @@ class SlopeChart extends React.Component {
           scaleY(line.first) + 5 + (line.firstNudge ? line.firstNudge : 0)
         )
         .attr("text-anchor", "end")
-        // .attr("dominant-baseline", "mathematical")
         .attr("fill", () => {
           if (line.labelSex === "All") return line1color;
           else if (line.labelSex === "Female") return line2color;
@@ -249,7 +245,6 @@ class SlopeChart extends React.Component {
           .attr("x", this.scaleX(chartWidth()) + LABEL_RIGHT_OFFSET)
           .attr("y", scaleY(line.last) + 3)
           .attr("text-anchor", "start")
-          // .attr("dominant-baseline", "middle")
           .attr("fill", () => {
             if (line.labelSex === "All") return line1color;
             else if (line.labelSex === "Female") return line2color;
@@ -277,12 +272,12 @@ class SlopeChart extends React.Component {
         .attr(
           "y",
           scaleY(line.last) +
-            (line.labelSex === "All" ? 4 : 17) +
-            // Optical illusion means minus looks slightly higher
+            (line.labelSex === "All" ? 4 : 18) +
+            // Optical illusion means declining values looks slightly
+            // higher than they should. So let's compensate
             (line.labelSex === "All" && line.labelSign === "-" ? 1 : 0)
         )
         .attr("text-anchor", "start")
-        // .attr("dominant-baseline", "mathematical")
         .attr("fill", () => {
           if (line.labelSex === "All") return line1color;
           else if (line.labelSex === "Female") return line2color;
@@ -296,8 +291,8 @@ class SlopeChart extends React.Component {
         .style("font-weight", "bold");
 
       // Label percent
-      const yOffset = 40;
-      const allYOffset = -12;
+      const yOffset = 43;
+      const allYOffset = -13;
 
       const percentText = this.rightLabels[iteration]
         .append("text")
@@ -312,12 +307,6 @@ class SlopeChart extends React.Component {
             (line.labelSex === "All" ? yOffset + allYOffset : yOffset)
         )
         .attr("text-anchor", "start")
-        // .attr("dominant-baseline", "middle")
-        // .attr("fill", () => {
-        //   if (line.labelSex === "All") return line1color;
-        //   else if (line.labelSex === "Female") return line2color;
-        //   else if (line.labelSex === "Male") return line3color;
-        // })
         .attr("fill", "#0E334F")
         .style(
           "font-family",
@@ -398,7 +387,6 @@ class SlopeChart extends React.Component {
     const yOffset = 5;
     const minSeparation = 4;
 
-
     if (this.rightLabels.length === 2) {
       const label1 = this.rightLabels[0].node().getBBox();
       const label2 = this.rightLabels[1].node().getBBox();
@@ -431,7 +419,7 @@ class SlopeChart extends React.Component {
           );
           this.rightLabels[0].attr(
             "transform",
-            `translate(0, ${overlap / 2  - yOffset + minSeparation * 0.1})`
+            `translate(0, ${overlap / 2 - yOffset + minSeparation * 0.1})`
           );
         }
       }
