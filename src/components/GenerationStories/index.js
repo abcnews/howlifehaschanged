@@ -84,6 +84,7 @@ class ChartStory extends React.Component {
                 <div className={styles.column}>
                   <SlopeChart
                     title={getTitle("costchildcare")}
+                    note={"Figures normalised in 2016 dollars"}
                     years={["1984", "2016"]}
                     lines={[
                       {
@@ -106,6 +107,7 @@ class ChartStory extends React.Component {
                 <div className={styles.column}>
                   <SlopeChart
                     title={getTitle("twoparentswork")}
+                    note={"Households with kids under 15"}
                     years={["1981", "2016"]}
                     lines={[
                       {
@@ -128,6 +130,7 @@ class ChartStory extends React.Component {
                 <div className={styles.column}>
                   <SlopeChart
                     title={getTitle("kidsobese")}
+                    note={"Compares ages 7-15 in 1985 to ages 5-17 in 2016"}
                     years={["1985", "2015"]}
                     lines={[
                       {
@@ -176,6 +179,7 @@ class ChartStory extends React.Component {
                 <div className={styles.column}>
                   <SlopeChart
                     title={getTitle("incometeens")}
+                    note={"Figures normalised in 2016 dollars"}
                     years={["1981", "2016"]}
                     lines={[
                       {
@@ -207,6 +211,7 @@ class ChartStory extends React.Component {
                 <div className={styles.column}>
                   <SlopeChart
                     title={getTitle("unemployedteens")}
+                    note={"Ages 15-19"}
                     years={["1981", "2016"]}
                     lines={[
                       {
@@ -233,6 +238,7 @@ class ChartStory extends React.Component {
                 <div className={styles.column}>
                   <SlopeChart
                     title={getTitle("underemployed")}
+                    note={"Ages 15-24"}
                     years={["1981", "2016"]}
                     lines={[
                       {
@@ -264,7 +270,7 @@ class ChartStory extends React.Component {
                 <div className={styles.column}>
                   <SlopeChart
                     title={getTitle("roadaccidents")}
-                    note={"Deaths per 100,000"}
+                    note={"Deaths per 100,000, among ages 15 to 25"}
                     years={["1981", "2016"]}
                     lines={[
                       {
@@ -458,6 +464,7 @@ class ChartStory extends React.Component {
                 <div className={styles.column}>
                   <SlopeChart
                     title={getTitle("youthallowance")}
+                    note={"Figures normalised in 2016 dollars"}
                     years={["1981", "2016"]}
                     lines={[
                       {
@@ -475,6 +482,7 @@ class ChartStory extends React.Component {
                 <div className={styles.column}>
                   <SlopeChart
                     title={getTitle("costofrent")}
+                    note={"Figures normalised in 2016 dollars"}
                     years={["1984", "2016"]}
                     lines={[
                       {
@@ -497,6 +505,7 @@ class ChartStory extends React.Component {
                 <div className={styles.column}>
                   <SlopeChart
                     title={getTitle("doleperweek")}
+                    note={"Figures normalised in 2016 dollars"}
                     years={["1981", "2016"]}
                     lines={[
                       {
@@ -519,6 +528,7 @@ class ChartStory extends React.Component {
                 <div className={styles.column}>
                   <SlopeChart
                     title={getTitle("medianhouseprice")}
+                    note={"Figures normalised in 2016 dollars"}
                     years={["1981", "2016"]}
                     lines={[
                       {
@@ -652,6 +662,7 @@ class ChartStory extends React.Component {
                 <div className={styles.column}>
                   <SlopeChart
                     title={getTitle("householdspending")}
+                    note={"Figures normalised in 2016 dollars"}
                     years={["1984", "2016"]}
                     lines={[
                       {
@@ -669,6 +680,7 @@ class ChartStory extends React.Component {
                 <div className={styles.column}>
                   <SlopeChart
                     title={getTitle("householdincome")}
+                    note={"Figures normalised in 2016 dollars"}
                     years={["1981", "2016"]}
                     lines={[
                       {
@@ -896,6 +908,7 @@ class ChartStory extends React.Component {
                 <div className={styles.column}>
                   <SlopeChart
                     title={getTitle("overonehundred")}
+                    note={"Figures normalised in 2016 dollars"}
                     years={["1981", "2016"]}
                     lines={[
                       {
@@ -1196,6 +1209,7 @@ class ChartStory extends React.Component {
                 <div className={styles.column}>
                   <SlopeChart
                     title={getTitle("lessthan15k")}
+                    note={"Figures normalised in 2016 dollars"}
                     years={["1981", "2016"]}
                     lines={[
                       {
@@ -1222,6 +1236,7 @@ class ChartStory extends React.Component {
                 <div className={styles.column}>
                   <SlopeChart
                     title={getTitle("morethan65k")}
+                    note={"Figures normalised in 2016 dollars"}
                     years={["1981", "2016"]}
                     lines={[
                       {
@@ -1253,6 +1268,7 @@ class ChartStory extends React.Component {
                 <div className={styles.column}>
                   <SlopeChart
                     title={getTitle("powerspending")}
+                    note={"Figures normalised in 2016 dollars"}
                     years={["1984", "2016"]}
                     lines={[
                       {
@@ -1270,6 +1286,7 @@ class ChartStory extends React.Component {
                 <div className={styles.column}>
                   <SlopeChart
                     title={getTitle("medicalspending")}
+                    note={"Figures normalised in 2016 dollars"}
                     years={["1984", "2016"]}
                     lines={[
                       {
@@ -1292,6 +1309,7 @@ class ChartStory extends React.Component {
                 <div className={styles.column}>
                   <SlopeChart
                     title={getTitle("annualpension")}
+                    note={"Figures normalised in 2016 dollars"}
                     years={["1981", "2016"]}
                     lines={[
                       {
@@ -1309,6 +1327,7 @@ class ChartStory extends React.Component {
                 <div className={styles.column}>
                   <SlopeChart
                     title={getTitle("householdincomebuilders")}
+                    note={"Figures normalised in 2016 dollars"}
                     years={["1984", "2016"]}
                     lines={[
                       {
