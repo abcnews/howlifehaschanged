@@ -1,6 +1,5 @@
 const React = require("react");
 const ReactDOM = require("react-dom");
-const styles = require("./styles.scss");
 
 class Portal extends React.Component {
   render() {
