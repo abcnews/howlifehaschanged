@@ -86,9 +86,7 @@ class AgeChooser extends React.Component {
           }
         });
       });
-
-      // window.addEventListener("scroll", this.doOnScroll);
-    }, 1000);
+    }, 2000); // Jank defer
   }
 
   componentWillUnmount() {

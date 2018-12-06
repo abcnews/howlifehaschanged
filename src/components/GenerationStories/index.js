@@ -385,6 +385,7 @@ class ChartStory extends React.Component {
                 <div className={styles.column}>
                   <SlopeChart
                     title={getTitle("defacto")}
+                    note={"Ages 30-34"}
                     years={["1982", "2016"]}
                     lines={[
                       {
@@ -416,6 +417,7 @@ class ChartStory extends React.Component {
                 <div className={styles.column}>
                   <SlopeChart
                     title={getTitle("highestdegreethirties")}
+                    note={"People aged 30-34 with at least a bachelor's degree"}
                     years={["1981", "2016"]}
                     lines={[
                       {
@@ -442,6 +444,7 @@ class ChartStory extends React.Component {
                 <div className={styles.column}>
                   <SlopeChart
                     title={getTitle("firstchild")}
+                    note={"Median age"}
                     years={["1981", "2016"]}
                     lines={[
                       {
@@ -459,26 +462,8 @@ class ChartStory extends React.Component {
               </div>
             </Portal>
 
-            <Portal into={document.querySelector(".youthallowance")}>
+            <Portal into={document.querySelector(".costofrent")}>
               <div className={styles.row}>
-                <div className={styles.column}>
-                  <SlopeChart
-                    title={getTitle("youthallowance")}
-                    note={"Figures normalised in 2016 dollars"}
-                    years={["1981", "2016"]}
-                    lines={[
-                      {
-                        first: 375,
-                        last: 433.2,
-                        labelPercent: "16%",
-                        labelSign: "+",
-                        labelSex: "All",
-                        labelStart: "$375",
-                        labelEnd: "$433.20"
-                      }
-                    ]}
-                  />
-                </div>
                 <div className={styles.column}>
                   <SlopeChart
                     title={getTitle("costofrent")}
@@ -493,6 +478,24 @@ class ChartStory extends React.Component {
                         labelSex: "All",
                         labelStart: "$43.68",
                         labelEnd: "$105.40"
+                      }
+                    ]}
+                  />
+                </div>
+                <div className={styles.column}>
+                  <SlopeChart
+                    title={getTitle("youthallowance")}
+                    note={"Figures normalised in 2016 dollars"}
+                    years={["1981", "2016"]}
+                    lines={[
+                      {
+                        first: 375,
+                        last: 433.2,
+                        labelPercent: "16%",
+                        labelSign: "+",
+                        labelSex: "All",
+                        labelStart: "$375",
+                        labelEnd: "$433.20"
                       }
                     ]}
                   />
@@ -583,6 +586,7 @@ class ChartStory extends React.Component {
                 <div className={styles.column}>
                   <SlopeChart
                     title={getTitle("bachelorsforties")}
+                    note={"People aged 40-44 with at least a bachelor's degree"}
                     years={["1981", "2016"]}
                     lines={[
                       {
@@ -609,6 +613,7 @@ class ChartStory extends React.Component {
                 <div className={styles.column}>
                   <SlopeChart
                     title={getTitle("fourchildren")}
+                    note={"Among women aged 45-49"}
                     years={["1981", "2016"]}
                     lines={[
                       {
@@ -631,6 +636,7 @@ class ChartStory extends React.Component {
                 <div className={styles.column}>
                   <SlopeChart
                     title={getTitle("marriednotworking")}
+                    note={"Women aged 45-49"}
                     years={["1981", "2016"]}
                     lines={[
                       {
@@ -751,6 +757,7 @@ class ChartStory extends React.Component {
                 <div className={styles.column}>
                   <SlopeChart
                     title={getTitle("adultdrinking")}
+                    note={"Litres consumed per person per year"}
                     years={["1981", "2016"]}
                     lines={[
                       {
@@ -773,7 +780,7 @@ class ChartStory extends React.Component {
                 <div className={styles.column}>
                   <SlopeChart
                     title={getTitle("heartattackgenx")}
-                    note={"Heart attack deaths per 100,000"}
+                    note={"Heart attack deaths per 100,000, for ages 45-54"}
                     years={["1981", "2016"]}
                     lines={[
                       {
@@ -800,7 +807,7 @@ class ChartStory extends React.Component {
                 <div className={styles.column}>
                   <SlopeChart
                     title={getTitle("strokegenx")}
-                    note={"Stroke deaths per 100,000"}
+                    note={"Stroke deaths per 100,000, for ages 45-54"}
                     years={["1981", "2016"]}
                     lines={[
                       {
@@ -832,6 +839,7 @@ class ChartStory extends React.Component {
                 <div className={styles.column}>
                   <SlopeChart
                     title={getTitle("adultobese")}
+                    note={"Ages 45-64"}
                     years={["1989", "2016"]}
                     lines={[
                       {
@@ -876,7 +884,7 @@ class ChartStory extends React.Component {
                 <div className={styles.column}>
                   <SlopeChart
                     title={getTitle("divorceboomers")}
-                    note={"Divorces per 1,000"}
+                    note={"Divorces per 1,000, among ages 55-59"}
                     years={["1981", "2016"]}
                     lines={[
                       {
@@ -903,8 +911,34 @@ class ChartStory extends React.Component {
               </div>
             </Portal>
 
-            <Portal into={document.querySelector(".overonehundred")}>
+            <Portal into={document.querySelector(".highestdegreeboomers")}>
               <div className={styles.row}>
+                <div className={styles.column}>
+                  <SlopeChart
+                    title={getTitle("highestdegreeboomers")}
+                    years={["1981", "2016"]}
+                    lines={[
+                      {
+                        first: 0.7,
+                        last: 14,
+                        labelPercent: "1900%",
+                        labelSign: "+",
+                        labelSex: "Female",
+                        labelStart: "0.7%",
+                        labelEnd: "14%"
+                      },
+                      {
+                        first: 2.2,
+                        last: 13.4,
+                        labelPercent: "509%",
+                        labelSign: "+",
+                        labelSex: "Male",
+                        labelStart: "2.2%",
+                        labelEnd: "13.4%"
+                      }
+                    ]}
+                  />
+                </div>
                 <div className={styles.column}>
                   <SlopeChart
                     title={getTitle("overonehundred")}
@@ -929,32 +963,6 @@ class ChartStory extends React.Component {
                         labelSex: "Female",
                         labelStart: "58%",
                         labelEnd: "15%"
-                      }
-                    ]}
-                  />
-                </div>
-                <div className={styles.column}>
-                  <SlopeChart
-                    title={getTitle("highestdegreeboomers")}
-                    years={["1981", "2016"]}
-                    lines={[
-                      {
-                        first: 0.7,
-                        last: 14,
-                        labelPercent: "1900%",
-                        labelSign: "+",
-                        labelSex: "Female",
-                        labelStart: "0.7%",
-                        labelEnd: "14%"
-                      },
-                      {
-                        first: 2.2,
-                        last: 13.4,
-                        labelPercent: "509%",
-                        labelSign: "+",
-                        labelSex: "Male",
-                        labelStart: "2.2%",
-                        labelEnd: "13.4%"
                       }
                     ]}
                   />
@@ -1081,6 +1089,7 @@ class ChartStory extends React.Component {
                 <div className={styles.column}>
                   <SlopeChart
                     title={getTitle("lifeexpectancyboomers")}
+                    note={"Life expectancy (years)"}
                     years={["1981", "2016"]}
                     lines={[
                       {
@@ -1107,7 +1116,7 @@ class ChartStory extends React.Component {
                 <div className={styles.column}>
                   <SlopeChart
                     title={getTitle("heartattackboomers")}
-                    note={"Heart attack deaths per 100,000"}
+                    note={"Heart attack deaths per 100,000, among ages 65-74"}
                     years={["1981", "2016"]}
                     lines={[
                       {
@@ -1139,6 +1148,7 @@ class ChartStory extends React.Component {
                 <div className={styles.column}>
                   <SlopeChart
                     title={getTitle("boomerssmokers")}
+                    note={"Ages 55-64"}
                     years={["1980", "2015"]}
                     lines={[
                       {
@@ -1165,7 +1175,7 @@ class ChartStory extends React.Component {
                 <div className={styles.column}>
                   <SlopeChart
                     title={getTitle("lungdisease")}
-                    note={"Lung disease deaths per 100,000"}
+                    note={"Lung disease deaths per 100,000,among ages 65-74"}
                     years={["1981", "2016"]}
                     lines={[
                       {
@@ -1341,6 +1351,21 @@ class ChartStory extends React.Component {
                       }
                     ]}
                   />
+                  <SlopeChart
+                    title={getTitle("ownedhomeoutright")}
+                    years={["1984", "2016"]}
+                    lines={[
+                      {
+                        first: 78,
+                        last: 75,
+                        labelPercent: "4%",
+                        labelSign: "-",
+                        labelSex: "All",
+                        labelStart: "78%",
+                        labelEnd: "75%"
+                      }
+                    ]}
+                  />
                 </div>
               </div>
             </Portal>
@@ -1433,7 +1458,7 @@ class ChartStory extends React.Component {
                     ]}
                   />
                 </div>
-                <div className={styles.column}>
+                {/* <div className={styles.column}>
                   <SlopeChart
                     title={getTitle("ownedhomeoutright")}
                     years={["1984", "2016"]}
@@ -1449,7 +1474,7 @@ class ChartStory extends React.Component {
                       }
                     ]}
                   />
-                </div>
+                </div> */}
               </div>
             </Portal>
           </div>
