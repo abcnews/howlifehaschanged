@@ -1,5 +1,6 @@
 <html>
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <base target="_parent" />
     <style>
       body {
@@ -7,7 +8,7 @@
         overflow: hidden;
         background-color: rgb(23, 84, 130);
       }
-
+    
       a {
         display: block;
         position: absolute;
@@ -16,12 +17,12 @@
         width: 100%;
         height: 100%;
       }
-
+    
       div.flex-container {
         margin-left: 5px;
         margin-right: 5px;
       }
-
+    
       div.flex {
         width: 100%;
         height: 50%;
@@ -30,7 +31,7 @@
         align-items: flex-end;
         /* padding-bottom: 34px; */
       }
-
+    
       div.flex-2 {
         width: 100%;
         height: 50%;
@@ -39,69 +40,136 @@
         align-items: flex-start;
         /* padding-top: 14px; */
       }
-
+    
       .nappy {
         padding: 0px 4px 20px 0px;
         width: 110px;
         height: 74.58px;
         transform: translate(0px, 0);
       }
-
+    
       .ring {
         padding: 0px 5px 15px 4px;
         width: 100px;
         height: 120.2px;
         transform: translate(0px, 0px);
       }
-
+    
       .heart {
         padding: 0px 12px 20px 5px;
         width: 80px;
         height: 86.89px;
         transform: translate(0px, 0px);
       }
-
+    
       .power {
-        padding: 0px 15px 20px 12px;
+        padding: 0px 15px 10px 12px;
         width: 60px;
-        /* height: 90.58px; */
+        height: 100px;
         transform: translate(0px, 0px);
       }
-
+    
       .cigarette {
         padding: 10px 0px 10px 15px;
         width: 100px;
         height: 111.7375px;
         transform: translate(0px, 0px);
       }
-
+    
       .house {
         padding: 35px 4px 0px 0px;
         width: 190px;
         height: 85.45px;
         transform: translate(0px, 0px);
       }
-
+    
       .booze {
         padding: 10px 10px 0px 4px;
         width: 90px;
         height: 111.8px;
         transform: translate(0px, 0px);
       }
-
+    
       .mortarboard {
         padding: 35px 10px 0px 10px;
         width: 125px;
         height: 93.67px;
         transform: translate(0px, 0px);
       }
-
+    
       .notepad {
         padding: 10px 0px 0px 10px;
         width: 120px;
         height: 104.61px;
         transform: translate(0px, 0px);
       }
+    
+      @media (max-width: 499px) {
+        .nappy {
+          padding: 0px 2px 5px 0px;
+          width: 110px;
+          height: 74.58px;
+          transform: translate(0px, 0px);
+        }
+    
+        .ring {
+          padding: 0px 2px 2px 2px;
+          width: 100px;
+          height: 120.2px;
+          transform: translate(0px, 0px);
+        }
+    
+        .heart {
+          padding: 0px 6px 5px 2px;
+          width: 80px;
+          height: 86.89px;
+          transform: translate(0px, 0px);
+        }
+    
+        .power {
+          padding: 0px 7px 0px 6px;
+          width: 60px;
+          height: 100px;
+          transform: translate(0px, 0px);
+        }
+    
+        .cigarette {
+          padding: 0px 0px 5px 7px;
+          width: 100px;
+          height: 111.7375px;
+          transform: translate(0px, 0px);
+        }
+    
+        .house {
+          padding: 12px 2px 0px 0px;
+          width: 190px;
+          height: 85.45px;
+          transform: translate(0px, 0px);
+        }
+    
+        .booze {
+          padding: 0px 5px 0px 2px;
+          width: 90px;
+          height: 111.8px;
+          transform: translate(0px, 0px);
+        }
+    
+        .mortarboard {
+          padding: 12px 5px 0px 5px;
+          width: 125px;
+          height: 93.67px;
+          transform: translate(0px, 0px);
+        }
+    
+        .notepad {
+          padding: 0px 0px 0px 5px;
+          width: 120px;
+          height: 104.61px;
+          transform: translate(0px, 0px);
+        }
+      }
+    
+      @media (max-width: 499px) {}
     </style>
   </head>
 
@@ -110,7 +178,7 @@
       <div class="flex-container">
         <div class="flex">
           <!-- NAPPY SVG -->
-          <div class="nappy">
+          <div class="nappy animated-icon">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -340,7 +408,7 @@
           </div>
 
           <!-- RING SVG -->
-          <div class="ring">
+          <div class="ring animated-icon">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -486,7 +554,7 @@
           </div>
 
           <!-- HEART SVG -->
-          <div class="heart">
+          <div class="heart animated-icon">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -646,10 +714,12 @@
           </div>
 
           <!-- POWER LIGHT SVG -->
-          <div class="power">
+          <div class="power animated-icon">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               xmlns:xlink="http://www.w3.org/1999/xlink"
+              width="100%"
+              height="100%"
               viewBox="0 0 136 192"
               clip-rule="evenodd"
               fill-rule="evenodd"
@@ -793,7 +863,7 @@
           </div>
 
           <!-- CIGARETTE SVG -->
-          <div class="cigarette">
+          <div class="cigarette animated-icon">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -983,7 +1053,7 @@
 
         <div class="flex-2">
           <!-- HOUSE SVG -->
-          <div class="house">
+          <div class="house animated-icon">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -1316,7 +1386,7 @@
           </div>
 
           <!-- BOOZE SVG -->
-          <div class="booze">
+          <div class="booze animated-icon">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -1543,7 +1613,7 @@
           </div>
 
           <!-- MORTARBOARD SVG -->
-          <div class="mortarboard">
+          <div class="mortarboard animated-icon">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -1669,7 +1739,7 @@
           </div>
 
           <!-- NOTEPAD SVG -->
-          <div class="notepad">
+          <div class="notepad animated-icon">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -1994,6 +2064,29 @@
         }
       })("originalLinkTarget=", String(window.location));
 
+
+      // Get elemenets
+      var nappyEl = document.querySelector(".nappy");
+      var ringEl = document.querySelector(".ring");
+      var heartEl = document.querySelector(".heart");
+      var powerEl = document.querySelector(".power");
+      var cigaretteEl = document.querySelector(".cigarette");
+      var houseEl = document.querySelector(".house");
+      var boozeEl = document.querySelector(".booze");
+      var mortarboardEl = document.querySelector(".mortarboard");
+      var notepadEl = document.querySelector(".notepad");
+
+      // Get original aspect ratios
+      var nappyRatio = nappyEl.getBoundingClientRect().height / nappyEl.getBoundingClientRect().width;
+      var ringRatio = ringEl.getBoundingClientRect().height / ringEl.getBoundingClientRect().width;
+      var heartRatio = heartEl.getBoundingClientRect().height / heartEl.getBoundingClientRect().width;
+      var powerRatio = powerEl.getBoundingClientRect().height / powerEl.getBoundingClientRect().width;
+      var cigaretteRatio = cigaretteEl.getBoundingClientRect().height / cigaretteEl.getBoundingClientRect().width;
+      var houseRatio = houseEl.getBoundingClientRect().height / houseEl.getBoundingClientRect().width;
+      var boozeRatio = boozeEl.getBoundingClientRect().height / boozeEl.getBoundingClientRect().width;
+      var mortarboardRatio = mortarboardEl.getBoundingClientRect().height / mortarboardEl.getBoundingClientRect().width;
+      var notepadRatio = notepadEl.getBoundingClientRect().height / notepadEl.getBoundingClientRect().width;
+      
       function setDimensions() {
         [].slice
           .call(document.querySelectorAll("video"))
@@ -2001,18 +2094,29 @@
             video.setAttribute("width", window.innerWidth);
             video.setAttribute("height", window.innerHeight);
           });
+
+          // Keep aspect ratio on small devices
+          nappyEl.style.height = nappyEl.getBoundingClientRect().width * nappyRatio + "px";
+          ringEl.style.height = ringEl.getBoundingClientRect().width * ringRatio + "px";
+          heartEl.style.height = heartEl.getBoundingClientRect().width * heartRatio + "px";
+          powerEl.style.height = powerEl.getBoundingClientRect().width * powerRatio + "px";
+          cigaretteEl.style.height = cigaretteEl.getBoundingClientRect().width * cigaretteRatio + "px";
+          houseEl.style.height = houseEl.getBoundingClientRect().width * houseRatio + "px";
+          boozeEl.style.height = boozeEl.getBoundingClientRect().width * boozeRatio + "px";
+          mortarboardEl.style.height = mortarboardEl.getBoundingClientRect().width * mortarboardRatio + "px";
+          notepadEl.style.height = notepadEl.getBoundingClientRect().width * notepadRatio + "px";
       }
       setDimensions();
 
       window.addEventListener("resize", setDimensions);
 
       // Actually animate the svgs
-      house(KeyshapeJS, "___house");
       nappy(KeyshapeJS, "___nappy");
       ring(KeyshapeJS, "___ring");
       heart(KeyshapeJS, "___heart");
       power(KeyshapeJS, "___powericon");
       cigarette(KeyshapeJS, "___cigaretteicon");
+      house(KeyshapeJS, "___house");
       booze(KeyshapeJS, "___booze");
       mortarboard(KeyshapeJS, "___mortarboard");
       notepad(KeyshapeJS, "___notepad");
