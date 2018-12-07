@@ -3,6 +3,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  
+  min-width: 0;
 }
 
 .post {
@@ -11,3 +13,16 @@
   justify-content: center;
   align-items: center;
 }
+
+.pre > div {
+  min-width: 0;
+}
+
+.post > div {
+  min-width: 0;
+}
+
+// .pre > div > svg {
+//   width: unset;
+//   height: unset;
+// }
