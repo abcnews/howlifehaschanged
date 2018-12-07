@@ -30,6 +30,12 @@
         justify-content: center;
         align-items: flex-end;
         /* padding-bottom: 34px; */
+        position: relative;
+      }
+
+      div.flex > div > svg {
+        position: absolute;
+        bottom: 0;
       }
     
       div.flex-2 {
@@ -40,44 +46,54 @@
         align-items: flex-start;
         /* padding-top: 14px; */
       }
+
+      .animated-icon {
+        flex-basis: auto;
+        flex-shrink: 2;
+      }
+
+      .animated-icon svg {
+        width: unset;
+        height: unset;
+      }
     
       .nappy {
-        padding: 0px 4px 20px 0px;
+        margin: 0px 4px 20px 0px;
         width: 110px;
         height: 74.58px;
         transform: translate(0px, 0);
       }
     
       .ring {
-        padding: 0px 5px 15px 4px;
-        width: 100px;
+        margin: 0px 8px 15px 4px;
+        width: 95px;
         height: 120.2px;
         transform: translate(0px, 0px);
       }
     
       .heart {
-        padding: 0px 12px 20px 5px;
-        width: 80px;
+        margin: 0px 12px 25px 8px;
+        width: 70px;
         height: 86.89px;
         transform: translate(0px, 0px);
       }
     
       .power {
-        padding: 0px 15px 10px 12px;
+        margin: 0px 15px 25px 12px;
         width: 60px;
         height: 100px;
         transform: translate(0px, 0px);
       }
     
       .cigarette {
-        padding: 10px 0px 10px 15px;
+        margin: 10px 0px 30px 15px;
         width: 100px;
         height: 111.7375px;
         transform: translate(0px, 0px);
       }
     
       .house {
-        padding: 35px 4px 0px 0px;
+        padding: 40px 4px 0px 0px;
         width: 190px;
         height: 85.45px;
         transform: translate(0px, 0px);
@@ -106,42 +122,42 @@
     
       @media (max-width: 499px) {
         .nappy {
-          padding: 0px 2px 5px 0px;
+          margin: 0px 2px 5px 0px;
           width: 110px;
           height: 74.58px;
           transform: translate(0px, 0px);
         }
     
         .ring {
-          padding: 0px 2px 2px 2px;
+          margin: 0px 2px 2px 2px;
           width: 100px;
           height: 120.2px;
           transform: translate(0px, 0px);
         }
     
         .heart {
-          padding: 0px 6px 5px 2px;
+          margin: 0px 6px 5px 2px;
           width: 80px;
           height: 86.89px;
           transform: translate(0px, 0px);
         }
     
         .power {
-          padding: 0px 7px 0px 6px;
+          margin: 0px 7px 10px 6px;
           width: 60px;
           height: 100px;
           transform: translate(0px, 0px);
         }
     
         .cigarette {
-          padding: 0px 0px 5px 7px;
+          margin: 0px 0px 10px 7px;
           width: 100px;
           height: 111.7375px;
           transform: translate(0px, 0px);
         }
     
         .house {
-          padding: 12px 2px 0px 0px;
+          padding: 22px 2px 0px 0px;
           width: 190px;
           height: 85.45px;
           transform: translate(0px, 0px);
