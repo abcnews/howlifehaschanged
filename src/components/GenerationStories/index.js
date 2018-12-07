@@ -712,13 +712,13 @@ class ChartStory extends React.Component {
                     years={["1984", "2016"]}
                     lines={[
                       {
-                        first: 13,
-                        last: 20,
-                        labelPercent: "54%",
+                        first: 9,
+                        last: 18,
+                        labelPercent: "100%",
                         labelSign: "+",
                         labelSex: "All",
-                        labelStart: "13%",
-                        labelEnd: "20%"
+                        labelStart: "9%",
+                        labelEnd: "18%"
                       }
                     ]}
                   />
