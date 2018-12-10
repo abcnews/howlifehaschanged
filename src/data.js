@@ -53,6 +53,8 @@ module.exports = {
     "eightyfiveplusasproportion",
     "deathscancer",
     "widowedbuilders",
-    "ownedhomeoutright"
+    "ownedhomeoutright",
+    "homeownership",
+    "recreationspending"
   ]
 };

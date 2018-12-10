@@ -566,6 +566,48 @@ class ChartStory extends React.Component {
                 </div>
               </div>
             </Portal>
+
+            <Portal into={document.querySelector(".homeownership")}>
+            <div className={styles.row}>
+                <div className={styles.column}>
+                  <SlopeChart
+                    title={getTitle("homeownership")}
+                    note={"People aged 25-34 who own their home"}
+                    years={["1981", "2016"]}
+                    lines={[
+                      {
+                        first: 61,
+                        last: 45,
+                        labelPercent: "26%",
+                        labelSign: "-",
+                        labelSex: "All",
+                        labelStart: "61%",
+                        labelEnd: "45%"
+                      }
+                    ]}
+                    // labelRightNudge={-5}
+                  />
+                </div>
+                <div className={styles.column}>
+                  <SlopeChart
+                    title={getTitle("recreationspending")}
+                    note={"Weekly spending 25-34-year-olds"}
+                    years={["1981", "2016"]}
+                    lines={[
+                      {
+                        first: 11,
+                        last: 9,
+                        labelPercent: "18%",
+                        labelSign: "-",
+                        labelSex: "All",
+                        labelStart: "11%",
+                        labelEnd: "9%"
+                      }
+                    ]}
+                  />
+                </div>
+              </div>
+            </Portal>
           </div>
         )}
 
