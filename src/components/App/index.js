@@ -1,27 +1,33 @@
 const React = require("react");
 const styles = require("./styles.scss"); // Mostly for global css
 const ReactResizeDetector = require("react-resize-detector").default;
-const { Client } = require("../../poll-counter");
+const { Client } = require("../../poll-counter"); // Tracking clicks and scrolls
 
 const SmoothScroll = require("smooth-scroll");
 
-// Init the poll counter client
+// Initialise the poll counter client
 const client = new Client("interactive-howlifehaschanged");
 
 // Smooth scroll library
 const scroll = new SmoothScroll('a[href*="#"]');
 
 const Portal = require("../Portal"); // To inject components into other page areas
+
+// Other components
 const AgeChooser = require("../AgeChooser");
 const GenerationStories = require("../GenerationStories");
 
+// Set up a global React context to consume down the chain
 const { ContextProvider } = require("../ContextProvider");
 
 class App extends React.Component {
-  state = { myGeneration: "", isAutoScrolling: false };
+  // Can set state directly if no constructor needed
+  state = { myGeneration: "" };
 
-  isAutoScrolling = false;
+  isAutoScrolling = false; // Used for poll tracking
 
+  // Handles when the user selects the generation they want to jump to (scroll enabled)
+  // Or sets the generation when a user scrolls to that section (do not auto-scroll)
   setGeneration = (whatGeneration, doScroll) => {
     // Only scroll if directed to
     if (doScroll) {
@@ -55,6 +61,7 @@ class App extends React.Component {
           if (err) return console.log("Err:", err);
         }
       );
+
       // Scroll now sets generation so this will be called
       // if a generation waypoint is hit
     } else {
@@ -72,6 +79,7 @@ class App extends React.Component {
     }
   };
 
+  // Resets myGeneration back to nothing (initial state)
   clearGeneration = () => {
     this.setState({ myGeneration: "" });
   };
@@ -91,11 +99,8 @@ class App extends React.Component {
     document.addEventListener("scrollCancel", this.fireScrollEvent, false);
   }
 
-  componentDidUpdate() {
-    // hideOtherGenrations(this.state.myGeneration);
-  }
-
   componentWillUnmount() {
+    // Clean up our event listeners on hot reload
     document.removeEventListener("scrollStart", this.fireScrollEvent);
     document.removeEventListener("scrollStop", this.fireScrollEvent);
     document.removeEventListener("scrollCancel", this.fireScrollEvent);
@@ -103,19 +108,11 @@ class App extends React.Component {
 
   // Auto scroll events handler
   fireScrollEvent = event => {
-    // The event type
-    // console.log("type:", event.type);
-
     // So we know whether we are auto-scrolling or not
-    if (event.type === "scrollStart") this.isAutoScrolling = true; //this.setState({ isAutoScrolling: true });
-    if (event.type === "scrollStop") this.isAutoScrolling = false; //this.setState({ isAutoScrolling: false });
+    if (event.type === "scrollStart") this.isAutoScrolling = true;
+    if (event.type === "scrollStop") this.isAutoScrolling = false;
     if (event.type === "scrollCancel")
-    this.isAutoScrolling = false; //this.setState({ isAutoScrolling: false });
-
-    // Set to off after 10 seconds anyway just in case
-    // setTimeout(() => {
-    //   this.isAutoScrolling = false; //this.setState({ isAutoScrolling: false });
-    // }, 10000);
+    this.isAutoScrolling = false; 
   };
 
   render() {
@@ -128,7 +125,6 @@ class App extends React.Component {
               // consumers.
               <ContextProvider
                 value={{
-                  // state: this.state,
                   width: width
                 }}
               >
@@ -164,22 +160,5 @@ class App extends React.Component {
     );
   }
 }
-
-// WE ARE NOT DOING THIS ANY MORE
-// JUST SCROLLING TO SECTION INSTEAD
-// function hideOtherGenrations(visibleGeneration) {
-//   generations.forEach(generation => {
-//     const gens = d3.selectAll("." + generation);
-//     if (visibleGeneration === "") gens.classed(styles.hidden, true);
-//     else if (
-//       visibleGeneration === "allages" ||
-//       generation === visibleGeneration
-//     )
-//       gens.classed(styles.hidden, false);
-//     else {
-//       gens.classed(styles.hidden, true);
-//     }
-//   });
-// }
 
 module.exports = App;
