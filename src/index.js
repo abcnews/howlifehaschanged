@@ -1,13 +1,24 @@
-require("./pollyfills");
+/*
 
-const React = require("react");
-const { render } = require("react-dom");
-const d3 = Object.assign({}, require("d3-selection"));
-// const hashify = require("spanify").hashify;
+
+This is the main entry point for the 
+interactive part of the article.
+
+
+*/
+
+require("./pollyfills"); // To make IE11 work etc
+
+import React from "react";
+import { render } from "react-dom";
 import { hashify } from "spanify";
 
+// Only import what we need from D3
+// There may be an es6 way of doing this in future
+const d3 = Object.assign({}, require("d3-selection"));
+
 // Load Keyshape into global
-require("./keyshape.js");
+require("./keyshape.js"); // This controls SVG animations
 
 const PROJECT_NAME = "howlifehaschanged";
 const root = document.querySelector(`[data-${PROJECT_NAME}-root]`);
@@ -23,6 +34,7 @@ function preFlight(odyssey) {
   // Insert divs above and below header text
   const h1 = d3.select(".Header h1");
   const h1original = h1.html();
+
   h1.html(
     `<div class="pre-header"></div>
         ${h1original}
@@ -40,7 +52,7 @@ function preFlight(odyssey) {
   // Add classes to paragraphs
   hashNext("class");
 
-  // Pre-headers on all subheadings
+  // Add pre-header animations on all subheadings
   const childrenHeader = d3.select("h2.children");
   const childrenHeaderOriginal = childrenHeader.html();
   childrenHeader.html(
@@ -106,7 +118,8 @@ function preFlight(odyssey) {
     fixedBackground.classed("fixed-background", true);
   }
 
-  // Fix incorrect inverted commas
+  // Fix incorrect inverted commas ‘20: too young to get married?’
+  // Caused by spartquotes library
   const quoteFix = d3.select(".quotefix");
   if (!quoteFix.empty()) {
     const quoteString = quoteFix.html();
@@ -131,6 +144,7 @@ function init(odyssey) {
   render(<App projectName={PROJECT_NAME} />, root);
 }
 
+// Set up hot reload with webpack dev server
 if (module.hot) {
   module.hot.accept(["./components/App", "./components/PreHeader"], () => {
     try {
@@ -158,6 +172,7 @@ if (window.__ODYSSEY__) {
 }
 
 // Add class via CoreMedia hashtags eg. #classverytop
+// This functionality is now part of Spanify (for future reference)
 function hashNext(targetString) {
   // Set deafult for params
   if (targetString === undefined) {
@@ -191,6 +206,7 @@ function hashNext(targetString) {
   });
 }
 
+// Helper function. Just adds hidden class to matched element
 function hideTitles(classesToHide) {
   classesToHide.forEach(paragraphClass => {
     if (document.querySelector("." + paragraphClass)) {

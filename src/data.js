@@ -1,3 +1,6 @@
+// We will look for these a=names and 
+// convert them to div classes
+// then attach chart components to them
 module.exports = {
   classesToHide: [
     "infantmortality",
