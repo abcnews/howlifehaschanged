@@ -564,7 +564,7 @@ class ChartStory extends React.Component {
                 <div className={styles.column}>
                   <SlopeChart
                     title={getTitle("homeownership")}
-                    note={"People aged 25-34 who own their home"}
+                    note={"People aged 25-34"}
                     years={["1981", "2016"]}
                     lines={[
                       {
