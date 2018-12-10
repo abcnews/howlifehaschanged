@@ -331,12 +331,6 @@ class SlopeChart extends React.Component {
             (line.labelSign === "-" ? -1 : 0)
         )
         .attr("text-anchor", "middle")
-        // .attr("dominant-baseline", "middle")
-        // .attr("fill", () => {
-        //   if (line.labelSex === "All") return line1color;
-        //   else if (line.labelSex === "Female") return line2color;
-        //   else if (line.labelSex === "Male") return line3color;
-        // })
         .attr("fill", "#0E334F")
         .style(
           "font-family",

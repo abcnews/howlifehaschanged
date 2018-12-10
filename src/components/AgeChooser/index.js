@@ -99,25 +99,6 @@ class AgeChooser extends React.Component {
     // window.removeEventListener("scroll", this.doOnScroll);
   }
 
-  doOnScroll = () => {
-    // this.setState(yPos, window.scrollY)
-    // document.querySelector("#docking-chooser input").blur();
-    // First check that the ABC Nav bar is still there
-    // There have been talks of taking it out
-    // if (document.querySelector(".Nav-bar")) {
-    //   const topNavHiding = document.querySelector(".Nav-bar.is-hiding");
-    //   const chooser = d3.select(
-    //     this.node.current.querySelector("." + styles.chooser)
-    //   );
-    //   if (!chooser.classed(styles.fixed)) chooser.classed("padding", false);
-    //   else if (topNavHiding) {
-    //     chooser.classed("padding", false);
-    //   } else {
-    //     chooser.classed("padding", true);
-    //   } // TODO: maybe make this more efficient by breaking out if not needed
-    // }
-  };
-
   render() {
     // Function passed down from main App
     const { setGeneration, clearGeneration } = this.props;

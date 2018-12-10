@@ -77,9 +77,6 @@ class ChooserDropdown extends React.Component {
   }
 
   handleChange = selected => {
-    // Don't process if user backspaces
-    // if (selectedOption instanceof Array) return;
-
     // Set the generation state back in the App component
     if (selected === null) this.props.setGeneration("");
     else this.props.setGeneration(selected.value, true);

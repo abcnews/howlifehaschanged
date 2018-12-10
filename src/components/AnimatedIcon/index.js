@@ -8,24 +8,6 @@ class AnimatedIcon extends React.Component {
     this.node = React.createRef();
   }
 
-  componentDidMount() {
-    // THIS IS NOW HANDLED BY MANUALLY SETTING THE HEIGHT OF SVGS
-    // setTimeout(() => {
-    //   const svg = d3.select(this.node.current.querySelector("svg"));
-    //   // const svgSelection = d3.select(this.node.current.querySelector("svg"));
-    //   const viewBox = svg.attr("viewBox").split(" ");
-    //   const vbWidth = viewBox[2];
-    //   const vbHeight = viewBox[3];
-    //   console.log(vbWidth, vbHeight)
-    //   console.log(svg.node().getBBox());
-    //   const bbWidth = svg.node().getBBox().width;
-    //   console.log(bbWidth)
-    //   const newSvgHeight = bbWidth / vbWidth * vbHeight
-    //   console.log(newSvgHeight)
-    //   svg.attr("height", newSvgHeight / 2);
-    // }, 10000);
-  }
-
   render() {
     return (
       <div
