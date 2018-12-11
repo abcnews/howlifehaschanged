@@ -564,7 +564,7 @@ class ChartStory extends React.Component {
                 <div className={styles.column}>
                   <SlopeChart
                     title={getTitle("homeownership")}
-                    note={"People aged 25-34"}
+                    note={"Estimated home ownership, ages 25-34"}
                     years={["1981", "2016"]}
                     lines={[
                       {
@@ -1374,7 +1374,11 @@ class ChartStory extends React.Component {
                       }
                     ]}
                   />
-                  <SlopeChart
+                </div>
+              </div>
+              <div className={styles.row}>
+                    <div className={styles.column}>
+                    <SlopeChart
                     title={getTitle("ownedhomeoutright")}
                     years={["1984", "2016"]}
                     lines={[
@@ -1389,7 +1393,7 @@ class ChartStory extends React.Component {
                       }
                     ]}
                   />
-                </div>
+                    </div>
               </div>
             </Portal>
 
