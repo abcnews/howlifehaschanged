@@ -821,7 +821,7 @@ class ChartStory extends React.Component {
               <SlopeChart
                 title={getTitle("manufacturing")}
                 titleText={
-                  "Only one in ten 55 to 59-year-old men now work in manufacturing"
+                  "Only 10 per cent of 55 to 59-year-old men now work in manufacturing"
                 }
                 years={["1981", "2016"]}
                 lines={[
@@ -1255,7 +1255,7 @@ class ChartStory extends React.Component {
               <SlopeChart
                 title={getTitle("highestdegreeboomers")}
                 titleText={
-                  "Far more 60-64-year-olds have at least a Bachelor’s degree now"
+                  "Far more 60-64-year-olds have at least a bachelor’s degree now"
                 }
                 years={["1981", "2016"]}
                 lines={[
