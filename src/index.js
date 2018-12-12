@@ -110,7 +110,8 @@ function preFlight(odyssey) {
   );
 
   // Hide the chart title text coming in from CoreMedia
-  hideTitles(classesToHide);
+  // (We removed the titles in CoreMedia so not needed any more)
+  // hideTitles(classesToHide);
 
   // Add fixe background element (for iOS mobile Safari being stupid)
   if (iOSSafari) {
@@ -207,12 +208,12 @@ function hashNext(targetString) {
 }
 
 // Helper function. Just adds hidden class to matched element
-function hideTitles(classesToHide) {
-  classesToHide.forEach(paragraphClass => {
-    if (document.querySelector("." + paragraphClass)) {
-      d3.select(
-        document.querySelector("." + paragraphClass).previousSibling
-      ).classed("interactive-always-hidden", true);
-    }
-  });
-}
+// function hideTitles(classesToHide) {
+//   classesToHide.forEach(paragraphClass => {
+//     if (document.querySelector("." + paragraphClass)) {
+//       d3.select(
+//         document.querySelector("." + paragraphClass).previousSibling
+//       ).classed("interactive-always-hidden", true);
+//     }
+//   });
+// }

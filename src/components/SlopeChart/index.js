@@ -583,7 +583,7 @@ class SlopeChart extends React.Component {
               <div
                 className={styles.title}
                 aria-label={
-                  this.props.title +
+                  this.props.titleText +
                   ". Chart: years from " +
                   this.props.years[0] +
                   " to " +
@@ -606,7 +606,7 @@ class SlopeChart extends React.Component {
                   })
                 }
               >
-                {this.props.title}
+                {this.props.titleText}
               </div>
 
               {this.props.note ? (
