@@ -6,6 +6,6 @@ Live article can be seen [in the wild here](https://www.abc.net.au/news/2018-12-
 
 ## Authors
 
-Developer: Joshua Byrd ([phocks@gmail.com](mailto:phocks@gmail.com)) 
-Designer: Ben Spraggon 
-Journalist: Catherine Hanrahan 
+* Developer: Joshua Byrd ([phocks@gmail.com](mailto:phocks@gmail.com)) 
+* Designer: Ben Spraggon 
+* Journalist: Catherine Hanrahan 
