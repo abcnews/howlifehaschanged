@@ -912,7 +912,7 @@ class ChartStory extends React.Component {
             <div className={styles.column}>
               <SlopeChart
                 title={getTitle("adultdrinking")}
-                titleText={"Pure alcohol consumption has fallen by a third"}
+                titleText={"Pure alcohol consumption has fallen by a quarter"}
                 note={"Litres consumed per person per year"}
                 years={["1981", "2016"]}
                 lines={[
