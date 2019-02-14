@@ -559,7 +559,7 @@ class ChartStory extends React.Component {
             <div className={styles.column}>
               <SlopeChart
                 title={getTitle("medianhouseprice")}
-                titleText={"The median house price is more than twice as high"}
+                titleText={"The median house price is more than two times higher"}
                 note={"Figures normalised in 2016 dollars"}
                 years={["1981", "2016"]}
                 lines={[
