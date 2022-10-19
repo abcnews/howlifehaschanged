@@ -1,5 +1,5 @@
 const React = require("react");
-const styles = require("./styles.scss"); // Mostly for global css
+const styles = require("./styles.scss").default; // Mostly global css
 const ReactResizeDetector = require("react-resize-detector").default;
 const { Client } = require("../../poll-counter"); // Tracking clicks and scrolls
 
@@ -41,7 +41,7 @@ class App extends React.Component {
           {
             speed: 750,
             easing: "easeInOutCubic",
-            offset: function(anchor, toggle) {
+            offset: function (anchor, toggle) {
               const standardOffset = 80;
               const toggleOffset = 0; // No toggle offset now that there's no appearing header
               const boundsTop = anchor.getBoundingClientRect().top;
@@ -49,7 +49,7 @@ class App extends React.Component {
               // Adjust the offset depending on scroll direction
               if (boundsTop > 0) return standardOffset;
               else return standardOffset + toggleOffset;
-            }
+            },
           }
         );
       }
@@ -107,12 +107,11 @@ class App extends React.Component {
   }
 
   // Auto scroll events handler
-  fireScrollEvent = event => {
+  fireScrollEvent = (event) => {
     // So we know whether we are auto-scrolling or not
     if (event.type === "scrollStart") this.isAutoScrolling = true;
     if (event.type === "scrollStop") this.isAutoScrolling = false;
-    if (event.type === "scrollCancel")
-    this.isAutoScrolling = false; 
+    if (event.type === "scrollCancel") this.isAutoScrolling = false;
   };
 
   render() {
@@ -125,7 +124,7 @@ class App extends React.Component {
               // consumers.
               <ContextProvider
                 value={{
-                  width: width
+                  width: width,
                 }}
               >
                 {/*
@@ -134,7 +133,7 @@ class App extends React.Component {
                   It sets the App state to whichever generation the
                   user is interested in learning about.
                 */}
-                <Portal into={document.querySelector(".hashchooser")}>
+                <Portal into={document.getElementById("hashchooser")}>
                   <AgeChooser
                     setGeneration={this.setGeneration}
                     clearGeneration={this.clearGeneration}
@@ -147,7 +146,7 @@ class App extends React.Component {
                   The Generation Stories component displays different content
                   depending on the current generation.
                 */}
-                <Portal into={document.querySelector(".hashcharts")}>
+                <Portal into={document.getElementById("hashcharts")}>
                   <GenerationStories
                     currentGeneration={this.state.myGeneration}
                   />

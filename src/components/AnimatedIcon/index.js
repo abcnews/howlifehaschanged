@@ -1,5 +1,5 @@
 const React = require("react");
-const styles = require("./styles.scss");
+const styles = require("./styles.scss").default;
 
 class AnimatedIcon extends React.Component {
   constructor(props) {

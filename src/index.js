@@ -24,7 +24,8 @@ const d3 = Object.assign({}, require("d3-selection"));
 require("./keyshape.js"); // This controls SVG animations
 
 const PROJECT_NAME = "howlifehaschanged";
-const root = document.querySelector(`[data-${PROJECT_NAME}-root]`);
+// const root = document.querySelector(`[data-${PROJECT_NAME}-root]`); <- Old phase 1 way
+let root;
 
 // User agent detection for iOS bug
 var ua = window.navigator.userAgent;
@@ -34,6 +35,9 @@ var iOSSafari = iOS && webkit && !ua.match(/CriOS/i);
 
 // Runs at page load and full request but not on hot reload
 function preFlight(odyssey) {
+  // Get main mount point for the App
+  root = selectMounts("howlifehaschangedmount")[0];
+
   // Insert divs above and below header text
   const h1 = d3.select(".Header h1");
   const h1original = h1.html();
@@ -47,14 +51,22 @@ function preFlight(odyssey) {
   const classesToHide = require("./data").classesToHide;
 
   // Turn anchors into divs
-  hashify({
-    hashList: ["hashchooser", "hashcharts", ...classesToHide],
-    defaultClass: "u-full",
+  // hashify({
+  //   hashList: ["hashchooser", "hashcharts", ...classesToHide],
+  //   defaultClass: "u-full",
+  // });
+  // ^^^^^^ No longer works in PL so do it manually
+
+  const idList = ["hashchooser", "hashcharts", ...classesToHide];
+
+  idList.forEach((id) => {
+    const hashChooser = selectMounts(id)[0];
+    if (hashChooser) hashChooser.classList.add("u-full");
   });
 
   // Add classes to paragraphs
   // hashNext("class"); <-- no longer works due to PL #hashes being ids now
-  addClassToNext("class")
+  addClassToNext("class");
 
   // Add pre-header animations on all subheadings
   const childrenHeader = d3.select("h2.children");
@@ -136,7 +148,7 @@ function preFlight(odyssey) {
 
 // Re-loads on hot reload
 function init(odyssey) {
-  // const App = require("./components/App");
+  const App = require("./components/App");
   const PreHeader = require("./components/PreHeader");
 
   // Render the header animations
@@ -146,7 +158,7 @@ function init(odyssey) {
   );
 
   // Render main App
-  // render(<App projectName={PROJECT_NAME} />, root);
+  render(<App projectName={PROJECT_NAME} />, root);
 }
 
 // Set up hot reload with webpack dev server
@@ -178,7 +190,7 @@ if (window.__ODYSSEY__) {
 
 /**
  * Applies classes to the next element following a mount
- * @param {string} targetString 
+ * @param {string} targetString
  */
 function addClassToNext(targetString) {
   // Set deafult for params
