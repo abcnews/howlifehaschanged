@@ -118,23 +118,28 @@ class AgeChooser extends React.Component {
                 mobile devices that can't display all
                 the buttons.
               */}
+            {/* {this.props.resizeWidth <= TABLET_PORTRAIT_OR_UP && */}
             {window.innerWidth <= TABLET_PORTRAIT_OR_UP && (
               // React-resize in Odyssey returns 625.328125 in Chrome
               // and Safari and 625.333 in Firefox when snapping wide. This is
               // a temporary hacky fix.
-              // TODO: Make this go by screen size or something maybe........
-
+              // NOTE: Just used window.innerWidth instead
+              // (this.props.resizeWidth < 653.32 ||
+              //   this.props.resizeWidth > 653.3333) && (
               <ChooserDropdown
                 currentGeneration={this.props.currentGeneration}
                 setGeneration={setGeneration}
                 clearGeneration={clearGeneration}
               />
             )}
-
             {/* 
                 If the device isn't mobile
                 then show the buttons.
               */}
+            {/* {(this.props.resizeWidth > TABLET_PORTRAIT_OR_UP ||
+              (this.props.resizeWidth > 653.32 &&
+                this.props.resizeWidth < 653.3333)) && ( */}
+            {/* ^^^^^ fixing this */}
             {window.innerWidth > TABLET_PORTRAIT_OR_UP && (
               <ChooserButtonGroup
                 currentGeneration={this.props.currentGeneration}
