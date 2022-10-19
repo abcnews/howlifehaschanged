@@ -9,9 +9,12 @@ interactive part of the article.
 
 require("./pollyfills"); // To make IE11 work etc
 
+console.log("we are running...");
+
 import React from "react";
 import { render } from "react-dom";
 import { hashify } from "spanify";
+import { isMount, getMountValue, selectMounts } from "@abcnews/mount-utils";
 
 // Only import what we need from D3
 // There may be an es6 way of doing this in future
@@ -46,11 +49,12 @@ function preFlight(odyssey) {
   // Turn anchors into divs
   hashify({
     hashList: ["hashchooser", "hashcharts", ...classesToHide],
-    defaultClass: "u-full"
+    defaultClass: "u-full",
   });
 
   // Add classes to paragraphs
-  hashNext("class");
+  // hashNext("class"); <-- no longer works due to PL #hashes being ids now
+  addClassToNext("class")
 
   // Add pre-header animations on all subheadings
   const childrenHeader = d3.select("h2.children");
@@ -120,7 +124,7 @@ function preFlight(odyssey) {
   }
 
   // Fix incorrect inverted commas ‘20: too young to get married?’
-  // Caused by spartquotes library
+  // Caused by smartquotes library
   const quoteFix = d3.select(".quotefix");
   if (!quoteFix.empty()) {
     const quoteString = quoteFix.html();
@@ -132,7 +136,7 @@ function preFlight(odyssey) {
 
 // Re-loads on hot reload
 function init(odyssey) {
-  const App = require("./components/App");
+  // const App = require("./components/App");
   const PreHeader = require("./components/PreHeader");
 
   // Render the header animations
@@ -142,7 +146,7 @@ function init(odyssey) {
   );
 
   // Render main App
-  render(<App projectName={PROJECT_NAME} />, root);
+  // render(<App projectName={PROJECT_NAME} />, root);
 }
 
 // Set up hot reload with webpack dev server
@@ -161,59 +165,49 @@ if (process.env.NODE_ENV === "development") {
   console.debug(`[${PROJECT_NAME}] public path: ${__webpack_public_path__}`);
 }
 
-// Wait for Odyssey to load
+// Wait for Odyssey to load and then proceed with init
 if (window.__ODYSSEY__) {
   preFlight(window.__ODYSSEY__);
   init(window.__ODYSSEY__);
 } else {
-  window.addEventListener("odyssey:api", e => {
+  window.addEventListener("odyssey:api", (e) => {
     preFlight(e.detail);
     init(e.detail);
   });
 }
 
-// Add class via CoreMedia hashtags eg. #classverytop
-// This functionality is now part of Spanify (for future reference)
-function hashNext(targetString) {
+/**
+ * Applies classes to the next element following a mount
+ * @param {string} targetString 
+ */
+function addClassToNext(targetString) {
   // Set deafult for params
   if (targetString === undefined) {
     targetString = "class";
   }
 
-  const anchors = document.querySelectorAll("a");
+  const foundMounts = selectMounts(targetString);
 
   // Loop through all the anchor nodes
-  anchors.forEach(anchor => {
-    // Leave normal links on the page alone
-    if (anchor.innerHTML !== " ") return;
-
+  foundMounts.forEach((mount) => {
     // Get name value
-    const elementName = anchor.getAttribute("name");
+    const elementName = mount.getAttribute("id");
+
+    if (elementName === null) return;
 
     // Detect class
     if (elementName.slice(0, targetString.length) !== targetString) return;
 
     // Get class name to apply
-    const classToApply = elementName.substr(targetString.length);
+    const classToApply = elementName.substring(targetString.length);
 
     // Get the next paragraph to work with
-    const nextElement = anchor.nextElementSibling;
+    const nextElement = mount.nextElementSibling;
 
     // Apply the class
     nextElement.classList.add(classToApply);
 
     // Remove anchor
-    anchor.parentNode.removeChild(anchor);
+    mount.parentNode.removeChild(mount);
   });
 }
-
-// Helper function. Just adds hidden class to matched element
-// function hideTitles(classesToHide) {
-//   classesToHide.forEach(paragraphClass => {
-//     if (document.querySelector("." + paragraphClass)) {
-//       d3.select(
-//         document.querySelector("." + paragraphClass).previousSibling
-//       ).classed("interactive-always-hidden", true);
-//     }
-//   });
-// }

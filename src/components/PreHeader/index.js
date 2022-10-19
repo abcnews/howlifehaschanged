@@ -346,7 +346,6 @@ class PreHeader extends React.Component {
           <AnimatedIcon
             paddingLeft={0}
             paddingRight={0}
-            paddingBottom={0}
             paddingBottom={10}
             width={160}
             height={75.16}
