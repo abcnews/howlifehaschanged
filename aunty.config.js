@@ -14,9 +14,9 @@ module.exports = {
     //     "http://www.abc.net.au/res/sites/news-projects/howlifehaschanged/master/"
     // }
   },
-  devServer: {
-    publicPath: "/",
-    contentBase: path.resolve(__dirname, "dist"),
-    https: false
-  }
+  // devServer: {
+  //   publicPath: "/",
+  //   contentBase: path.resolve(__dirname, "dist"),
+  //   https: false
+  // }
 };

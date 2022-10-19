@@ -16,6 +16,9 @@ import { render } from "react-dom";
 import { hashify } from "spanify";
 import { isMount, getMountValue, selectMounts } from "@abcnews/mount-utils";
 
+// SCSS png imports playing up so let's import here
+const bg = require("./components/App/background.png").default;
+
 // Only import what we need from D3
 // There may be an es6 way of doing this in future
 const d3 = Object.assign({}, require("d3-selection"));
@@ -133,6 +136,12 @@ function preFlight(odyssey) {
   if (iOSSafari) {
     const fixedBackground = d3.select("body").insert("div", ":first-child");
     fixedBackground.classed("fixed-background", true);
+    fixedBackground.style("background-image", `url("${bg}")`);
+  } else {
+    // Background image from scss styles not working for some reason.
+    // So let's try to set here instead
+    const body = d3.select("body");
+    body.style("background-image", `url("${bg}")`);
   }
 
   // Fix incorrect inverted commas ‘20: too young to get married?’
