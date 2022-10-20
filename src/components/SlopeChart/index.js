@@ -523,8 +523,9 @@ class SlopeChart extends React.Component {
     // }
 
     /*
-     * KEEP THIS SECTION FOR FUTURE POSTERITY
+     * KEEP ABOVE SECTION FOR FUTURE POSTERITY
      */
+
 
     setTimeout(() => {
       // Chart animations when they enter the page
@@ -571,7 +572,9 @@ class SlopeChart extends React.Component {
           });
         }
       });
-    }, 750);
+    }, 1000);
+    // This timeout is a bit of a hack to make work in Chrome
+    // Otherwise percentage value positions are skewed.
   };
 
   render() {
