@@ -7,11 +7,7 @@ interactive part of the article.
 
 */
 
-
-
 require("./pollyfills"); // To make IE11 work etc
-
-console.log("we are running...");
 
 import React from "react";
 import { render } from "react-dom";
