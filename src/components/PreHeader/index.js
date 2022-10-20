@@ -1,5 +1,5 @@
 const React = require("react");
-const styles = require("./styles.scss");
+const styles = require("./styles.scss").default;
 const SVG = require("react-inlinesvg").default;
 const ReactResizeDetector = require("react-resize-detector").default;
 
@@ -13,17 +13,17 @@ const Portal = require("../Portal");
 const AnimatedIcon = require("../AnimatedIcon");
 
 // Animated assets
-const ToolsAnimated = require("./svg/ToolsAnimated.svg");
-const HouseAnimated = require("./svg/HouseAnimated.svg");
-const HeartAnimated = require("./svg/HeartAnimated.svg");
-const NappyAnimated = require("./svg/NappyAnimated.svg");
-const NotepadAnimated = require("./svg/NotepadAnimated.svg");
-const MortarboardAnimated = require("./svg/MortarboardAnimated.svg");
-const RingAnimated = require("./svg/RingAnimated.svg");
-const BoozeAnimated = require("./svg/BoozeAnimated.svg");
-const MoneyAnimated = require("./svg/MoneyAnimated.svg");
-const CigaretteAnimated = require("./svg/CigaretteAnimated.svg");
-const PowerAnimated = require("./svg/PowerAnimated.svg");
+const ToolsAnimated = require("./svg/ToolsAnimated.svg").default;
+const HouseAnimated = require("./svg/HouseAnimated.svg").default;
+const HeartAnimated = require("./svg/HeartAnimated.svg").default;
+const NappyAnimated = require("./svg/NappyAnimated.svg").default;
+const NotepadAnimated = require("./svg/NotepadAnimated.svg").default;
+const MortarboardAnimated = require("./svg/MortarboardAnimated.svg").default;
+const RingAnimated = require("./svg/RingAnimated.svg").default;
+const BoozeAnimated = require("./svg/BoozeAnimated.svg").default;
+const MoneyAnimated = require("./svg/MoneyAnimated.svg").default;
+const CigaretteAnimated = require("./svg/CigaretteAnimated.svg").default;
+const PowerAnimated = require("./svg/PowerAnimated.svg").default;
 
 // Animation triggers pre
 const tools = require("./animations").tools;
@@ -346,7 +346,6 @@ class PreHeader extends React.Component {
           <AnimatedIcon
             paddingLeft={0}
             paddingRight={0}
-            paddingBottom={0}
             paddingBottom={10}
             width={160}
             height={75.16}
@@ -455,10 +454,6 @@ class PreHeader extends React.Component {
       </div>
     );
   }
-}
-
-function insertBefore(el, referenceNode) {
-  referenceNode.parentNode.insertBefore(el, referenceNode);
 }
 
 module.exports = PreHeader;

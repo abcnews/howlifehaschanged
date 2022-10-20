@@ -12,6 +12,10 @@ require("./pollyfills"); // To make IE11 work etc
 import React from "react";
 import { render } from "react-dom";
 import { hashify } from "spanify";
+import { isMount, getMountValue, selectMounts } from "@abcnews/mount-utils";
+
+// SCSS png imports playing up so let's import here
+const bg = require("./components/App/background.png").default;
 
 // Only import what we need from D3
 // There may be an es6 way of doing this in future
@@ -21,7 +25,8 @@ const d3 = Object.assign({}, require("d3-selection"));
 require("./keyshape.js"); // This controls SVG animations
 
 const PROJECT_NAME = "howlifehaschanged";
-const root = document.querySelector(`[data-${PROJECT_NAME}-root]`);
+// const root = document.querySelector(`[data-${PROJECT_NAME}-root]`); <- Old phase 1 way
+let root;
 
 // User agent detection for iOS bug
 var ua = window.navigator.userAgent;
@@ -31,6 +36,9 @@ var iOSSafari = iOS && webkit && !ua.match(/CriOS/i);
 
 // Runs at page load and full request but not on hot reload
 function preFlight(odyssey) {
+  // Get main mount point for the App
+  root = selectMounts("howlifehaschangedmount")[0];
+
   // Insert divs above and below header text
   const h1 = d3.select(".Header h1");
   const h1original = h1.html();
@@ -44,13 +52,22 @@ function preFlight(odyssey) {
   const classesToHide = require("./data").classesToHide;
 
   // Turn anchors into divs
-  hashify({
-    hashList: ["hashchooser", "hashcharts", ...classesToHide],
-    defaultClass: "u-full"
+  // hashify({
+  //   hashList: ["hashchooser", "hashcharts", ...classesToHide],
+  //   defaultClass: "u-full",
+  // });
+  // ^^^^^^ No longer works in PL so do it manually
+
+  const idList = ["hashchooser", "hashcharts", ...classesToHide];
+
+  idList.forEach((id) => {
+    const hashChooser = selectMounts(id)[0];
+    if (hashChooser) hashChooser.classList.add("u-full");
   });
 
   // Add classes to paragraphs
-  hashNext("class");
+  // hashNext("class"); <-- no longer works due to PL #hashes being ids now
+  addClassToNext("class");
 
   // Add pre-header animations on all subheadings
   const childrenHeader = d3.select("h2.children");
@@ -117,10 +134,16 @@ function preFlight(odyssey) {
   if (iOSSafari) {
     const fixedBackground = d3.select("body").insert("div", ":first-child");
     fixedBackground.classed("fixed-background", true);
+    fixedBackground.style("background-image", `url("${bg}")`);
+  } else {
+    // Background image from scss styles not working for some reason.
+    // So let's try to set here instead
+    const body = d3.select("body");
+    body.style("background-image", `url("${bg}")`);
   }
 
   // Fix incorrect inverted commas ‘20: too young to get married?’
-  // Caused by spartquotes library
+  // Caused by smartquotes library
   const quoteFix = d3.select(".quotefix");
   if (!quoteFix.empty()) {
     const quoteString = quoteFix.html();
@@ -161,59 +184,49 @@ if (process.env.NODE_ENV === "development") {
   console.debug(`[${PROJECT_NAME}] public path: ${__webpack_public_path__}`);
 }
 
-// Wait for Odyssey to load
+// Wait for Odyssey to load and then proceed with init
 if (window.__ODYSSEY__) {
   preFlight(window.__ODYSSEY__);
   init(window.__ODYSSEY__);
 } else {
-  window.addEventListener("odyssey:api", e => {
+  window.addEventListener("odyssey:api", (e) => {
     preFlight(e.detail);
     init(e.detail);
   });
 }
 
-// Add class via CoreMedia hashtags eg. #classverytop
-// This functionality is now part of Spanify (for future reference)
-function hashNext(targetString) {
+/**
+ * Applies classes to the next element following a mount
+ * @param {string} targetString
+ */
+function addClassToNext(targetString) {
   // Set deafult for params
   if (targetString === undefined) {
     targetString = "class";
   }
 
-  const anchors = document.querySelectorAll("a");
+  const foundMounts = selectMounts(targetString);
 
   // Loop through all the anchor nodes
-  anchors.forEach(anchor => {
-    // Leave normal links on the page alone
-    if (anchor.innerHTML !== " ") return;
-
+  foundMounts.forEach((mount) => {
     // Get name value
-    const elementName = anchor.getAttribute("name");
+    const elementName = mount.getAttribute("id");
+
+    if (elementName === null) return;
 
     // Detect class
     if (elementName.slice(0, targetString.length) !== targetString) return;
 
     // Get class name to apply
-    const classToApply = elementName.substr(targetString.length);
+    const classToApply = elementName.substring(targetString.length);
 
     // Get the next paragraph to work with
-    const nextElement = anchor.nextElementSibling;
+    const nextElement = mount.nextElementSibling;
 
     // Apply the class
     nextElement.classList.add(classToApply);
 
     // Remove anchor
-    anchor.parentNode.removeChild(anchor);
+    mount.parentNode.removeChild(mount);
   });
 }
-
-// Helper function. Just adds hidden class to matched element
-// function hideTitles(classesToHide) {
-//   classesToHide.forEach(paragraphClass => {
-//     if (document.querySelector("." + paragraphClass)) {
-//       d3.select(
-//         document.querySelector("." + paragraphClass).previousSibling
-//       ).classed("interactive-always-hidden", true);
-//     }
-//   });
-// }

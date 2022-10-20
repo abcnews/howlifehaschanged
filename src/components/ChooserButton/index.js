@@ -1,5 +1,5 @@
 const React = require("react");
-const styles = require("./styles.scss");
+const styles = require("./styles.scss").default;
 
 class ChooserButton extends React.Component {
   handleClick = () => {

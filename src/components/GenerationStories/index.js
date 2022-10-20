@@ -1,5 +1,5 @@
 const React = require("react");
-const styles = require("./styles.scss");
+const styles = require("./styles.scss").default;
 const Portal = require("../Portal"); // To inject components into other page areas
 
 const SlopeChart = require("../SlopeChart");
@@ -16,7 +16,7 @@ class ChartStory extends React.Component {
           *    
           */}
 
-        <Portal into={document.querySelector(".infantmortality")}>
+        <Portal into={document.querySelector("#infantmortality")}>
           <div className={styles.row}>
             <div className={styles.column}>
               <SlopeChart
@@ -61,7 +61,7 @@ class ChartStory extends React.Component {
           </div>
         </Portal>
 
-        <Portal into={document.querySelector(".formalchildcare")}>
+        <Portal into={document.querySelector("#formalchildcare")}>
           <div className={styles.row}>
             <div className={styles.column}>
               <SlopeChart
@@ -103,7 +103,7 @@ class ChartStory extends React.Component {
           </div>
         </Portal>
 
-        <Portal into={document.querySelector(".twoparentswork")}>
+        <Portal into={document.querySelector("#twoparentswork")}>
           <div className={styles.row}>
             <div className={styles.column}>
               <SlopeChart
@@ -129,7 +129,7 @@ class ChartStory extends React.Component {
           </div>
         </Portal>
 
-        <Portal into={document.querySelector(".kidsobese")}>
+        <Portal into={document.querySelector("#kidsobese")}>
           <div className={styles.row}>
             <div className={styles.column}>
               <SlopeChart
@@ -153,7 +153,7 @@ class ChartStory extends React.Component {
           </div>
         </Portal>
 
-        <Portal into={document.querySelector(".schooltoyrtwelve")}>
+        <Portal into={document.querySelector("#schooltoyrtwelve")}>
           <div className={styles.row}>
             <div className={styles.column}>
               <SlopeChart
@@ -213,7 +213,7 @@ class ChartStory extends React.Component {
           </div>
         </Portal>
 
-        <Portal into={document.querySelector(".unemployedteens")}>
+        <Portal into={document.querySelector("#unemployedteens")}>
           <div className={styles.row}>
             <div className={styles.column}>
               <SlopeChart
@@ -276,7 +276,7 @@ class ChartStory extends React.Component {
           </div>
         </Portal>
 
-        <Portal into={document.querySelector(".roadaccidents")}>
+        <Portal into={document.querySelector("#roadaccidents")}>
           <div className={styles.row}>
             <div className={styles.column}>
               <SlopeChart
@@ -310,7 +310,7 @@ class ChartStory extends React.Component {
           *    
           */}
 
-        <Portal into={document.querySelector(".twentiesmarried")}>
+        <Portal into={document.querySelector("#twentiesmarried")}>
           <div className={styles.row}>
             <div className={styles.column}>
               <SlopeChart
@@ -371,7 +371,7 @@ class ChartStory extends React.Component {
           </div>
         </Portal>
 
-        <Portal into={document.querySelector(".livingwithparents")}>
+        <Portal into={document.querySelector("#livingwithparents")}>
           <div className={styles.row}>
             <div className={styles.column}>
               <SlopeChart
@@ -396,7 +396,7 @@ class ChartStory extends React.Component {
           </div>
         </Portal>
 
-        <Portal into={document.querySelector(".costofrent")}>
+        <Portal into={document.querySelector("#costofrent")}>
           <div className={styles.row}>
             <div className={styles.column}>
               <SlopeChart
@@ -441,7 +441,7 @@ class ChartStory extends React.Component {
           </div>
         </Portal>
 
-        <Portal into={document.querySelector(".doleperweek")}>
+        <Portal into={document.querySelector("#doleperweek")}>
           <div className={styles.row}>
             <div className={styles.column}>
               <SlopeChart
@@ -467,7 +467,7 @@ class ChartStory extends React.Component {
           </div>
         </Portal>
 
-        <Portal into={document.querySelector(".defacto")}>
+        <Portal into={document.querySelector("#defacto")}>
           <div className={styles.row}>
             <div className={styles.column}>
               <SlopeChart
@@ -500,7 +500,7 @@ class ChartStory extends React.Component {
           </div>
         </Portal>
 
-        <Portal into={document.querySelector(".highestdegreethirties")}>
+        <Portal into={document.querySelector("#highestdegreethirties")}>
           <div className={styles.row}>
             <div className={styles.column}>
               <SlopeChart
@@ -554,7 +554,7 @@ class ChartStory extends React.Component {
           </div>
         </Portal>
 
-        <Portal into={document.querySelector(".medianhouseprice")}>
+        <Portal into={document.querySelector("#medianhouseprice")}>
           <div className={styles.row}>
             <div className={styles.column}>
               <SlopeChart
@@ -599,7 +599,7 @@ class ChartStory extends React.Component {
           </div>
         </Portal>
 
-        <Portal into={document.querySelector(".homeownership")}>
+        <Portal into={document.querySelector("#homeownership")}>
           <div className={styles.row}>
             <div className={styles.column}>
               <SlopeChart
@@ -653,7 +653,7 @@ class ChartStory extends React.Component {
           *    
           */}
 
-        <Portal into={document.querySelector(".bachelorsforties")}>
+        <Portal into={document.querySelector("#bachelorsforties")}>
           <div className={styles.row}>
             <div className={styles.column}>
               <SlopeChart
@@ -709,7 +709,7 @@ class ChartStory extends React.Component {
           </div>
         </Portal>
 
-        <Portal into={document.querySelector(".marriednotworking")}>
+        <Portal into={document.querySelector("#marriednotworking")}>
           <div className={styles.row}>
             <div className={styles.column}>
               <SlopeChart
@@ -742,7 +742,7 @@ class ChartStory extends React.Component {
           </div>
         </Portal>
 
-        <Portal into={document.querySelector(".householdspending")}>
+        <Portal into={document.querySelector("#householdspending")}>
           <div className={styles.row}>
             <div className={styles.column}>
               <SlopeChart
@@ -787,7 +787,7 @@ class ChartStory extends React.Component {
           </div>
         </Portal>
 
-        <Portal into={document.querySelector(".mortgageinterest")}>
+        <Portal into={document.querySelector("#mortgageinterest")}>
           <div className={styles.row}>
             <div className={styles.column}>
               <SlopeChart
@@ -815,7 +815,7 @@ class ChartStory extends React.Component {
 
         {/* People in their 50s */}
 
-        <Portal into={document.querySelector(".manufacturing")}>
+        <Portal into={document.querySelector("#manufacturing")}>
           <div className={styles.row}>
             <div className={styles.column}>
               <SlopeChart
@@ -878,7 +878,7 @@ class ChartStory extends React.Component {
           </div>
         </Portal>
 
-        <Portal into={document.querySelector(".genxsmokers")}>
+        <Portal into={document.querySelector("#genxsmokers")}>
           <div className={styles.row}>
             <div className={styles.column}>
               <SlopeChart
@@ -931,7 +931,7 @@ class ChartStory extends React.Component {
           </div>
         </Portal>
 
-        <Portal into={document.querySelector(".heartattackgenx")}>
+        <Portal into={document.querySelector("#heartattackgenx")}>
           <div className={styles.row}>
             <div className={styles.column}>
               <SlopeChart
@@ -994,7 +994,7 @@ class ChartStory extends React.Component {
           </div>
         </Portal>
 
-        <Portal into={document.querySelector(".adultobese")}>
+        <Portal into={document.querySelector("#adultobese")}>
           <div className={styles.row}>
             <div className={styles.column}>
               <SlopeChart
@@ -1029,7 +1029,7 @@ class ChartStory extends React.Component {
           </div>
         </Portal>
 
-        <Portal into={document.querySelector(".divorceboomers")}>
+        <Portal into={document.querySelector("#divorceboomers")}>
           <div className={styles.row}>
             <div className={styles.column}>
               <SlopeChart
@@ -1064,7 +1064,7 @@ class ChartStory extends React.Component {
 
         {/* People in their 60s */}
 
-        <Portal into={document.querySelector(".lifeexpectancyboomers")}>
+        <Portal into={document.querySelector("#lifeexpectancyboomers")}>
           <div className={styles.row}>
             <div className={styles.column}>
               <SlopeChart
@@ -1127,7 +1127,7 @@ class ChartStory extends React.Component {
           </div>
         </Portal>
 
-        <Portal into={document.querySelector(".boomerssmokers")}>
+        <Portal into={document.querySelector("#boomerssmokers")}>
           <div className={styles.row}>
             <div className={styles.column}>
               <SlopeChart
@@ -1188,7 +1188,7 @@ class ChartStory extends React.Component {
           </div>
         </Portal>
 
-        <Portal into={document.querySelector(".boomersretired")}>
+        <Portal into={document.querySelector("#boomersretired")}>
           <div className={styles.row}>
             <div className={styles.column}>
               <SlopeChart
@@ -1249,7 +1249,7 @@ class ChartStory extends React.Component {
           </div>
         </Portal>
 
-        <Portal into={document.querySelector(".highestdegreeboomers")}>
+        <Portal into={document.querySelector("#highestdegreeboomers")}>
           <div className={styles.row}>
             <div className={styles.column}>
               <SlopeChart
@@ -1322,7 +1322,7 @@ class ChartStory extends React.Component {
           *    
           */}
 
-        <Portal into={document.querySelector(".lessthan15k")}>
+        <Portal into={document.querySelector("#lessthan15k")}>
           <div className={styles.row}>
             <div className={styles.column}>
               <SlopeChart
@@ -1387,7 +1387,7 @@ class ChartStory extends React.Component {
           </div>
         </Portal>
 
-        <Portal into={document.querySelector(".powerspending")}>
+        <Portal into={document.querySelector("#powerspending")}>
           <div className={styles.row}>
             <div className={styles.column}>
               <SlopeChart
@@ -1434,7 +1434,7 @@ class ChartStory extends React.Component {
           </div>
         </Portal>
 
-        <Portal into={document.querySelector(".annualpension")}>
+        <Portal into={document.querySelector("#annualpension")}>
           <div className={styles.row}>
             <div className={styles.column}>
               <SlopeChart
@@ -1503,7 +1503,7 @@ class ChartStory extends React.Component {
           </div>
         </Portal>
 
-        <Portal into={document.querySelector(".eightyfiveplusasproportion")}>
+        <Portal into={document.querySelector("#eightyfiveplusasproportion")}>
           <div className={styles.row}>
             <div className={styles.column}>
               <SlopeChart
@@ -1565,7 +1565,7 @@ class ChartStory extends React.Component {
           </div>
         </Portal>
 
-        <Portal into={document.querySelector(".widowedbuilders")}>
+        <Portal into={document.querySelector("#widowedbuilders")}>
           <div className={styles.row}>
             <div className={styles.column}>
               <SlopeChart
@@ -1604,9 +1604,9 @@ class ChartStory extends React.Component {
 }
 
 function getTitle(selector) {
-  const element = document.querySelector("." + selector);
+  const element = document.querySelector("#" + selector);
   if (element) {
-    return document.querySelector("." + selector).previousSibling.innerText;
+    return document.querySelector("#" + selector).previousSibling.innerText;
   } else return null;
 }
 

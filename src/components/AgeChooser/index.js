@@ -1,5 +1,5 @@
 const React = require("react");
-const styles = require("./styles.scss");
+const styles = require("./styles.scss").default;
 const d3 = Object.assign({}, require("d3-selection"));
 
 // A library that makes scroll triggering easier
@@ -14,9 +14,7 @@ const GENERATION_WAYPOINT_OFFSET = "25%";
 class AgeChooser extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = { isScrolledPast: true, yPos: 0 };
-
     this.node = React.createRef();
   }
 
@@ -27,7 +25,7 @@ class AgeChooser extends React.Component {
       this.waypointPanel = new Waypoint({
         element: this.node.current.querySelector("." + styles.question),
         offset: -50,
-        handler: direction => {
+        handler: (direction) => {
           const chooser = d3.select(
             this.node.current.querySelector("." + styles.chooser)
           );
@@ -37,13 +35,13 @@ class AgeChooser extends React.Component {
           } else {
             chooser.classed(styles.fixed, false);
           }
-        }
+        },
       });
 
       // Waypoint to hide when we reach the bottom
       this.waypointPanelEnd = new Waypoint({
         element: document.querySelector(".endofstorywaypoint"),
-        handler: direction => {
+        handler: (direction) => {
           const chooser = d3.select(
             this.node.current.querySelector("." + styles.chooser)
           );
@@ -53,7 +51,7 @@ class AgeChooser extends React.Component {
           } else {
             chooser.classed(styles.faded, false);
           }
-        }
+        },
       });
 
       // Section waypoints
@@ -66,7 +64,7 @@ class AgeChooser extends React.Component {
         "forties",
         "fifties",
         "sixties",
-        "seventiesandover"
+        "seventiesandover",
       ];
 
       this.waypointGenerations = [];
@@ -77,13 +75,13 @@ class AgeChooser extends React.Component {
         this.waypointGenerations[iteration] = new Waypoint({
           element: document.querySelector("." + generation),
           offset: GENERATION_WAYPOINT_OFFSET,
-          handler: direction => {
+          handler: (direction) => {
             if (direction === "down") {
               this.props.setGeneration(generation);
             } else {
               this.props.setGeneration(generations[iteration - 1]);
             }
-          }
+          },
         });
       });
     }, 2000); // Jank defer
@@ -93,7 +91,7 @@ class AgeChooser extends React.Component {
     // Removes waypoint event listeners on hot reload
     this.waypointPanel.destroy();
     this.waypointPanelEnd.destroy();
-    this.waypointGenerations.forEach(waypoint => {
+    this.waypointGenerations.forEach((waypoint) => {
       waypoint.destroy();
     });
     // window.removeEventListener("scroll", this.doOnScroll);
@@ -120,26 +118,29 @@ class AgeChooser extends React.Component {
                 mobile devices that can't display all
                 the buttons.
               */}
-            {this.props.resizeWidth <= TABLET_PORTRAIT_OR_UP &&
+            {/* {this.props.resizeWidth <= TABLET_PORTRAIT_OR_UP && */}
+            {window.innerWidth <= TABLET_PORTRAIT_OR_UP && (
               // React-resize in Odyssey returns 625.328125 in Chrome
-              // and Safari and 625.333 in Firefox when wide. This is
-              // a temporary fix.
-              (this.props.resizeWidth < 625.31 ||
-                this.props.resizeWidth > 625.55) && (
-                <ChooserDropdown
-                  currentGeneration={this.props.currentGeneration}
-                  setGeneration={setGeneration}
-                  clearGeneration={clearGeneration}
-                />
-              )}
-
+              // and Safari and 625.333 in Firefox when snapping wide. This is
+              // a temporary hacky fix.
+              // NOTE: Just used window.innerWidth instead
+              // (this.props.resizeWidth < 653.32 ||
+              //   this.props.resizeWidth > 653.3333) && (
+              <ChooserDropdown
+                currentGeneration={this.props.currentGeneration}
+                setGeneration={setGeneration}
+                clearGeneration={clearGeneration}
+              />
+            )}
             {/* 
                 If the device isn't mobile
                 then show the buttons.
               */}
-            {(this.props.resizeWidth > TABLET_PORTRAIT_OR_UP ||
-              (this.props.resizeWidth > 625.31 &&
-                this.props.resizeWidth < 625.55)) && (
+            {/* {(this.props.resizeWidth > TABLET_PORTRAIT_OR_UP ||
+              (this.props.resizeWidth > 653.32 &&
+                this.props.resizeWidth < 653.3333)) && ( */}
+            {/* ^^^^^ fixing this */}
+            {window.innerWidth > TABLET_PORTRAIT_OR_UP && (
               <ChooserButtonGroup
                 currentGeneration={this.props.currentGeneration}
                 setGeneration={setGeneration}

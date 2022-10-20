@@ -1,5 +1,5 @@
 const React = require("react");
-const styles = require("./styles.scss");
+const styles = require("./styles.scss").default;
 
 const ChooserButton = require("../ChooserButton");
 

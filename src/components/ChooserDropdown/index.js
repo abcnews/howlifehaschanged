@@ -1,5 +1,5 @@
 const React = require("react");
-const styles = require("./styles.scss");
+const styles = require("./styles.scss").default;
 const Select = require("react-select").default;
 const d3 = Object.assign({}, require("d3-selection"));
 
